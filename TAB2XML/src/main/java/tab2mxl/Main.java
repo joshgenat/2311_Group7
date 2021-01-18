@@ -1,4 +1,4 @@
-package tab2mxl;
+package src.main.java.tab2mxl;
 
 public class Main {
 
