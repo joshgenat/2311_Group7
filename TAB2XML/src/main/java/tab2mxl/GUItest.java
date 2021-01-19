@@ -55,7 +55,7 @@ public class GUItest implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String choice = b1.getText();
-		System.out.println("Selected: " + choice);
+		System.out.println("You Selected: " + choice);
 	}
 
 }
