@@ -38,8 +38,8 @@ public class GUItest implements ActionListener{
 		b2 = new JButton("Drums");
 		b1.setBounds(70, 20, 160, 25);
 		b2.setBounds(70, 50, 160, 25);
-		
-		b1.addActionListener(new GUItest());
+//		
+//		b1.addActionListener(new GUItest());
 		
 		p.add(b1);
 		p.add(b2);
