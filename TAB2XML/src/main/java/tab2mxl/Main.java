@@ -17,6 +17,10 @@ public class Main {
 		
 		System.out.println("test (Jan. 16)");
 		
+		/*
+		 * Just a sample of how we can get the user to tell us which instrument, they are going to enter the tab
+		 * for. Still working on it, need to make it a loop.
+		 */
 		String instrument;
 		Scanner scan = new Scanner(System.in);
 		System.out.println("For what instrument will you be providing the tablature");
