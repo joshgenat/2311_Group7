@@ -19,9 +19,9 @@ public class GUItest implements ActionListener{
 	private JButton b2;
 	private JLabel lab;
 	
-//	public GUItest() {
-//		gui();
-//	}
+	public GUItest() {
+		gui();
+	}
 	
 	public void gui() {
 		f = new JFrame("Select an Instrument");
@@ -50,7 +50,6 @@ public class GUItest implements ActionListener{
 	
 	public static void main(String[] args) {
 		GUItest test = new GUItest();
-		test.gui();
 	}
 
 	@Override
