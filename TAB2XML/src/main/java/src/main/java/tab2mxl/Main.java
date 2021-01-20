@@ -10,6 +10,7 @@ public class Main {
 		System.out.println("New Test by Josh");
 		System.out.println("Test by Uthith");
 		System.out.println("test");
+		System.out.println("test2");
 		
 	}
 }
