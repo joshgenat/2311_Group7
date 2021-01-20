@@ -7,3 +7,5 @@ build
 /.settings/
 /gradle/
 /main/
+/default/
+/test/
