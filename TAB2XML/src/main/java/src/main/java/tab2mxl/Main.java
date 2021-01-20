@@ -9,6 +9,7 @@ public class Main {
 		System.out.println("Group 7 Created!");
 		System.out.println("New Test by Josh");
 		System.out.println("Test by Uthith");
+		System.out.println("test");
 		
 	}
 }
