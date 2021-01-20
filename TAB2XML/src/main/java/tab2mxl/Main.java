@@ -7,6 +7,7 @@ public class Main {
 	public static void main(String[] args) {
 		
 		System.out.println("Group 7 Created!");
+		System.out.println("hi");
 		
 		/*
 		 * Just a sample of how we can get the user to tell us which instrument, they are going to enter the tab
