@@ -11,7 +11,8 @@ public class Main {
 		System.out.println("Test by Uthith");
 		System.out.println("test");
 		System.out.println("test2");
-		
+		System.out.println("Hey guys");
+		System.out.println("Nicolae");
 	}
 }
 		

@@ -4,8 +4,11 @@
 # Ignore Gradle build output directory
 build
 /src/
+<<<<<<< HEAD
+=======
 /.settings/
 /gradle/
 /main/
 /default/
 /test/
+>>>>>>> branch 'master' of https://github.com/joshgenat/2311_Group7.git
