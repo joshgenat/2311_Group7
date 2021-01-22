@@ -1,4 +1,4 @@
-package src.main.java.tab2mxl;
+package tab2mxl;
 
 import java.util.Scanner;
 
