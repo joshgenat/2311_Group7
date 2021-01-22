@@ -1,4 +1,4 @@
-package tab2mxl;
+package tab2xml;
 
 import java.io.File;
 import java.io.FileNotFoundException;

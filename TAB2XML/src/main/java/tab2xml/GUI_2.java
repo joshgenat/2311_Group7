@@ -1,31 +1,24 @@
-package src.main.java.tab2mxl;
+package tab2xml;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+public class GUI_2 {
 
-public class GUItest implements ActionListener{
-	
-	
 	private JFrame f;
 	private JPanel p;
 	private JButton b1, b2, b3;
 	private JLabel lab;
+
 	
-	public GUItest() {
-		gui();
-		
-	}
 	
-	public void gui() {
-		f = new JFrame("Select an Instrument");
+	GUI_2 (String c) {
+		f = new JFrame("Selected: " + c);
 		f.setVisible(true);
 		f.setSize(500, 300);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -36,9 +29,9 @@ public class GUItest implements ActionListener{
 		
 		lab = new JLabel("Select an Instrument");
 		
-		b1 = new JButton("Guitar");
-		b2 = new JButton("Drums");
-		b3 = new JButton("Bass");
+		b1 = new JButton("A");
+		b2 = new JButton("B");
+		b3 = new JButton("C");
 		
 		b1.setFont(new Font(null, Font.BOLD, 25));
 		b2.setFont(new Font(null, Font.BOLD, 25));
@@ -55,11 +48,6 @@ public class GUItest implements ActionListener{
 		b3.setForeground(Color.white);
 		b3.setBackground(Color.GRAY);
 		
-		b1.addActionListener(this);
-		b2.addActionListener(this);
-		b3.addActionListener(this);
-		
-		
 		p.add(b1);
 		p.add(b2);
 		p.add(b3);
@@ -67,27 +55,4 @@ public class GUItest implements ActionListener{
 		
 		f.add(p);
 	}
-	
-	public static void main(String[] args) {
-		GUItest test = new GUItest();
-		
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		String choice = b1.getText();
-		String choice2 = b2.getText();
-		String choice3 = b2.getText();
-		
-		if (e.getSource() == b1) {
-			GUI_2 gui2 = new GUI_2(choice);
-		}
-		if (e.getSource() == b2) {
-			GUI_2 gui2 = new GUI_2(choice2);
-		}
-		if (e.getSource() == b3) {
-			GUI_2 gui2 = new GUI_2(choice3);
-		}
-	}
-
 }
