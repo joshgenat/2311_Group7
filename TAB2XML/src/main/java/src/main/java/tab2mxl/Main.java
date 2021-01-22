@@ -15,6 +15,7 @@ public class Main {
 		System.out.println("Nicolae");
 		
 	
+		
 		System.out.println("lab task 2");
 	}
 }
