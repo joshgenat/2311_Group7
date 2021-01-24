@@ -8,7 +8,7 @@ public class Main {
 		
 		System.out.println("Group 7 Created!");
 		
-		System.out.println("new test branch");
+		System.out.println("new test");
 	}
 }
 		
