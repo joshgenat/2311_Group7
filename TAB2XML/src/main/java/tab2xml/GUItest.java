@@ -26,15 +26,18 @@ public class GUItest implements ActionListener{
 	}
 	
 	public void gui() {
+		// Frame
 		f = new JFrame("Select an Instrument");
 		f.setVisible(true);
 		f.setSize(500, 300);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
+		// Panels
 		p = new JPanel();
 		p.setLayout(null);
 		p.setBackground(Color.DARK_GRAY);
 		
+		// Buttons
 		b1 = new JButton("Guitar");
 		b2 = new JButton("Drums");
 		b3 = new JButton("Bass");
