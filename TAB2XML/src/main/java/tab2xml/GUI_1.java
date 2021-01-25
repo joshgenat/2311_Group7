@@ -1,5 +1,6 @@
 package tab2xml;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -29,6 +30,7 @@ public class GUI_1 implements ActionListener{
 		// Frame
 		f = new JFrame("Select an Instrument");
 		f.setVisible(true);
+		f.setLayout(new BorderLayout());
 		f.setSize(500, 300);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -60,6 +62,9 @@ public class GUI_1 implements ActionListener{
 		b2.setBackground(Color.GRAY);
 		b3.setForeground(Color.white);
 		b3.setBackground(Color.GRAY);
+		
+		b1.setHorizontalAlignment(JButton.CENTER);
+		
 		
 		b1.addActionListener(this);
 		b2.addActionListener(this);

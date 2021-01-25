@@ -14,6 +14,8 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public class GUI_2 implements ActionListener{
@@ -21,8 +23,9 @@ public class GUI_2 implements ActionListener{
 	private JFrame f;
 	private JPanel p1, p2, p3;
 	private JButton b1, b2;
-	private JTextField text;
+	private JTextArea text;
 	private JLabel l;
+	private JScrollPane s;
 	
 	GUI_2 (String c) {
 		
@@ -49,10 +52,12 @@ public class GUI_2 implements ActionListener{
 		b2.addActionListener(this);
 		b2.setFont(new Font(null, Font.BOLD, 25));
 		
-		// Text Field
-		text = new JTextField();
-		text.setPreferredSize(new Dimension(250,40));
+		// Text Area
+		text = new JTextArea();
+		text.setPreferredSize(new Dimension(250,80));
 		text.setText("Paste tab here");
+		s = new JScrollPane(text, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		
 		
 		// Frame
 		f = new JFrame("Selected: " + c);
@@ -63,11 +68,15 @@ public class GUI_2 implements ActionListener{
 		
 		p1.add(text);
 		p1.add(b1);
+		p1.add(s);
+		p1.revalidate();
+		p1.repaint();
 		p2.add(b2);
 		p3.add(l);
 		f.add(p3, BorderLayout.NORTH);
 		f.add(p1, BorderLayout.CENTER);
 		f.add(p2, BorderLayout.SOUTH);
+		
 	}
 
 	@Override
