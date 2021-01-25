@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 
@@ -34,15 +35,17 @@ public class GUItest implements ActionListener{
 		p.setLayout(null);
 		p.setBackground(Color.DARK_GRAY);
 		
-		lab = new JLabel("Select an Instrument");
-		
 		b1 = new JButton("Guitar");
 		b2 = new JButton("Drums");
 		b3 = new JButton("Bass");
 		
-		b1.setFont(new Font(null, Font.BOLD, 25));
-		b2.setFont(new Font(null, Font.BOLD, 25));
-		b3.setFont(new Font(null, Font.BOLD, 25));
+		b1.setFocusable(false);
+		b2.setFocusable(false);
+		b3.setFocusable(false);
+		
+		b1.setFont(new Font("Consolas", Font.BOLD, 25));
+		b2.setFont(new Font("Consolas", Font.BOLD, 25));
+		b3.setFont(new Font("DialogInput", Font.BOLD, 25));
 		
 		b1.setBounds(100, 20, 300, 50);
 		b2.setBounds(100, 100, 300, 50);
@@ -62,9 +65,7 @@ public class GUItest implements ActionListener{
 		
 		p.add(b1);
 		p.add(b2);
-		p.add(b3);
-		p.add(lab);
-		
+//		p.add(b3);
 		f.add(p);
 	}
 	
@@ -80,12 +81,15 @@ public class GUItest implements ActionListener{
 		String choice3 = b2.getText();
 		
 		if (e.getSource() == b1) {
+			f.dispose();
 			GUI_2 gui2 = new GUI_2(choice);
 		}
 		if (e.getSource() == b2) {
+			f.dispose();
 			GUI_2 gui2 = new GUI_2(choice2);
 		}
 		if (e.getSource() == b3) {
+			f.dispose();
 			GUI_2 gui2 = new GUI_2(choice3);
 		}
 	}
