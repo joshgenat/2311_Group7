@@ -34,10 +34,14 @@ public class GUI_1 implements ActionListener{
 		f.setSize(500, 300);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
+		
+		
 		// Panels
 		p = new JPanel();
 		p.setLayout(null);
 		p.setBackground(Color.DARK_GRAY);
+		
+		
 		
 		// Buttons
 		b1 = new JButton("Guitar");
@@ -69,6 +73,7 @@ public class GUI_1 implements ActionListener{
 		b1.addActionListener(this);
 		b2.addActionListener(this);
 		b3.addActionListener(this);
+		
 		
 		
 		p.add(b1);

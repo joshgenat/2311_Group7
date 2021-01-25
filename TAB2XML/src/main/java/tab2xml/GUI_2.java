@@ -33,9 +33,12 @@ public class GUI_2 implements ActionListener{
 		p3 = new JPanel();
 		p3.setPreferredSize(new Dimension(100,100));
 		
+		
 		// Label
 		l = new JLabel("Copy and Paste Tab or Select a File");
 		l.setFont(new Font(null, Font.BOLD, 25));
+		
+		
 		
 		// Buttons
 		b1 = new JButton("Submit");
@@ -46,11 +49,14 @@ public class GUI_2 implements ActionListener{
 		b2.addActionListener(this);
 		b2.setFont(new Font(null, Font.BOLD, 25));
 		
+		
+		
 		// Text Area
 		text = new JTextArea();
 		text.setPreferredSize(new Dimension(250,80));
 		text.setText("Paste tab here");
 		s = new JScrollPane(text, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		
 		
 		
 		// Frame
