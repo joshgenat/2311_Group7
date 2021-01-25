@@ -73,14 +73,8 @@ public class GUI_2 implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == b2) {
-			JFileChooser fileChooser = new JFileChooser();
-			int response = fileChooser.showOpenDialog(null);
-			
-			if (response == JFileChooser.APPROVE_OPTION) {
-				f.dispose();
-				File file = new File(fileChooser.getSelectedFile().getAbsolutePath());
-				System.out.println(file);
-			}
+			Parser parse = new Parser();
+			parse.printline();
 		}
 		
 		if (e.getSource() == b1) {
