@@ -6,9 +6,8 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		System.out.println("Group 7 Created!");
 		
-		GUI_1 test = new GUI_1();
+		GUI_2 test = new GUI_2();
 		
 	}
 }

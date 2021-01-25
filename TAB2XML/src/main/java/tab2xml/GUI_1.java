@@ -91,15 +91,15 @@ public class GUI_1 implements ActionListener{
 		
 		if (e.getSource() == b1) {
 			f.dispose();
-			GUI_2 gui2 = new GUI_2(choice);
+			GUI_2 gui2 = new GUI_2();
 		}
 		if (e.getSource() == b2) {
 			f.dispose();
-			GUI_2 gui2 = new GUI_2(choice2);
+			GUI_2 gui2 = new GUI_2();
 		}
 		if (e.getSource() == b3) {
 			f.dispose();
-			GUI_2 gui2 = new GUI_2(choice3);
+			GUI_2 gui2 = new GUI_2();
 		}
 	}
 
