@@ -63,8 +63,6 @@ public class GUI_2 implements ActionListener{
 		p1.add(text);
 		p1.add(b1);
 		p1.add(s);
-		p1.revalidate();
-		p1.repaint();
 		p2.add(b2);
 		p3.add(l);
 		f.add(p3, BorderLayout.NORTH);
@@ -76,6 +74,7 @@ public class GUI_2 implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == b2) {
+			f.dispose();
 			Parser parse = new Parser();
 			parse.printline();
 		}
