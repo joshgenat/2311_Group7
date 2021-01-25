@@ -8,8 +8,7 @@ public class Main {
 		
 		System.out.println("Group 7 Created!");
 		
-		System.out.println("master branch");
-		System.out.println("test branch");
+		GUI_1 test = new GUI_1();
 		
 	}
 }

@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 
-public class GUItest implements ActionListener{
+public class GUI_1 implements ActionListener{
 	
 	
 	private JFrame f;
@@ -20,7 +20,7 @@ public class GUItest implements ActionListener{
 	private JButton b1, b2, b3;
 	private JLabel lab;
 	
-	public GUItest() {
+	public GUI_1() {
 		gui();
 		
 	}
@@ -72,10 +72,6 @@ public class GUItest implements ActionListener{
 		f.add(p);
 	}
 	
-	public static void main(String[] args) {
-		GUItest test = new GUItest();
-		
-	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
