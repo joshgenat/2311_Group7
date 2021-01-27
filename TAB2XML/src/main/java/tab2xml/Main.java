@@ -12,7 +12,7 @@ public class Main {
 		System.out.println("Hey Uthithmenon and Josh (x4)");
 		System.out.println("Hey Uthithmenon and Josh (x3)");
 		System.out.println("Hey Uthithmenon and Josh (x2)");
-		System.out.println("Nicolae (x2)");
+		System.out.println("Nicolae (x3)");
 	}
 }
 		
