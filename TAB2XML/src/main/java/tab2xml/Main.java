@@ -10,7 +10,7 @@ public class Main {
 		
 		GUI_2 test = new GUI_2();
 		System.out.println("Hey Uthithmenon and Josh (x5)");
-		System.out.println("test");
+		System.out.println("test x2");
 	}
 }
 		
