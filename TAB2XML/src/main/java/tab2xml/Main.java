@@ -9,6 +9,7 @@ public class Main {
 		
 		GUI_2 test = new GUI_2();
 		
+		System.out.println("lab task 2");
 	}
 }
 		
