@@ -10,9 +10,7 @@ public class Main {
 		
 		GUI_2 test = new GUI_2();
 		System.out.println("Hey Uthithmenon and Josh and friends");
-		System.out.println("Hey Uthithmenon and Josh (x4)");
-		System.out.println("Hey Uthithmenon and Josh (x3)");
-		System.out.println("Hey Uthithmenon and Josh (x2)");
+		System.out.println("Andy is a great guy");
 		System.out.println("Nicolae");
 	}
 }
