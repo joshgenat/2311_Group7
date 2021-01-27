@@ -8,6 +8,7 @@ public class Main {
 		
 		
 		GUI_2 test = new GUI_2();
+		System.out.println("Test 2");
 		
 	}
 }
