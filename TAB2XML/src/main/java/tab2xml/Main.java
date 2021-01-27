@@ -6,17 +6,9 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		System.out.println("Group 7 Created!");
-		System.out.println("New Test by Josh");
-		System.out.println("Test by Uthith");
-		System.out.println("test");
-		System.out.println("test2");
-		System.out.println("Hey guys");
-		System.out.println("Nicolae");
 		
-	
+		GUI_2 test = new GUI_2();
 		
-		System.out.println("lab task 2");
 	}
 }
 		

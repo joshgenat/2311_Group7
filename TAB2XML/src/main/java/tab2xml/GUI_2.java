@@ -1,58 +1,95 @@
 package tab2xml;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
-public class GUI_2 {
+public class GUI_2 implements ActionListener{
 
 	private JFrame f;
-	private JPanel p;
-	private JButton b1, b2, b3;
-	private JLabel lab;
-
+	private JPanel p1, p2, p3;
+	private JButton b1, b2;
+	private JTextArea text;
+	private JLabel l;
+	private JScrollPane s;
 	
-	
-	GUI_2 (String c) {
-		f = new JFrame("Selected: " + c);
-		f.setVisible(true);
-		f.setSize(500, 300);
+	GUI_2 () {
+		f = new JFrame();
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		f.setSize(1000,500);
+		f.setLayout(new BorderLayout());
 		
-		p = new JPanel();
-		p.setLayout(null);
-		p.setBackground(Color.DARK_GRAY);
+		// Label
+		l = new JLabel("Copy and Paste Tab or Select a File");
+		l.setFont(new Font(null, Font.PLAIN, 25));
 		
-		lab = new JLabel("Select an Instrument");
+		// Panels
+		p1 = new JPanel();
+		p1.setLayout(new FlowLayout());
+		p1.add(l);
+		f.add(p1, BorderLayout.NORTH);
 		
-		b1 = new JButton("A");
-		b2 = new JButton("B");
-		b3 = new JButton("C");
+		p2 = new JPanel();
+		p2.setLayout(new FlowLayout());
+		f.add(p2, BorderLayout.SOUTH);
 		
-		b1.setFont(new Font(null, Font.BOLD, 25));
-		b2.setFont(new Font(null, Font.BOLD, 25));
-		b3.setFont(new Font(null, Font.BOLD, 25));
+		p3 = new JPanel();
+		p3.setLayout(new FlowLayout());
+		f.add(p3, BorderLayout.CENTER);
+		// 
 		
-		b1.setBounds(100, 20, 300, 50);
-		b2.setBounds(100, 100, 300, 50);
-		b3.setBounds(100, 180, 300, 50);
+		// Buttons
+		b1 = new JButton("Submit");
+		b1.addActionListener(this);
+		b1.setFont(new Font(null, Font.PLAIN, 15));
 		
-		b1.setForeground(Color.white);
-		b1.setBackground(Color.GRAY);
-		b2.setForeground(Color.white);
-		b2.setBackground(Color.GRAY);
-		b3.setForeground(Color.white);
-		b3.setBackground(Color.GRAY);
+		b2 = new JButton("Select a File");
+		b2.addActionListener(this);
+		b2.setFont(new Font(null, Font.PLAIN, 15));
 		
-		p.add(b1);
-		p.add(b2);
-		p.add(b3);
-		p.add(lab);
 		
-		f.add(p);
+		// Text Area
+		text = new JTextArea(20, 70);
+		s = new JScrollPane(text,
+				JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, 
+				JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		text.setText("Paste tab here");
+		text.setLineWrap(true);
+		text.setWrapStyleWord(true);
+		text.setBackground(Color.white);
+		text.setBorder(BorderFactory.createBevelBorder(1));
+		
+		
+		p3.add(s);
+		p3.add(b1);
+		p2.add(b2);
+		f.setVisible(true);
+		f.setLocationRelativeTo(null);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == b2) {
+			f.dispose();
+			Parser parse = new Parser();
+			parse.printline();
+		}
+		
+		if (e.getSource() == b1) {
+			f.dispose();
+			System.out.println(text.getText());
+		}
 	}
 }
