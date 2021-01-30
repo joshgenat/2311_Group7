@@ -2,11 +2,12 @@ package tab2xml;
 
 public class Guitar_Converter {
 	
+	//Main
 	public static void main(String args[]) {
-		char[][] test = {
-				{'0','3','-','-','6','-',}, 
-				{'0','-','4','-','-','-',},
-				{'1','-','4','-','7','-',},
+		String[][] test = {
+				{"10", "11", "12", "11", "11", "10"}, 
+				{"12", "12", "12", "12", "12", "12"},
+				{"0", "0", "0", "0", "0", "0"},
 		};
 		String[][] notes = GuitarConverter(test);
 		
@@ -20,7 +21,21 @@ public class Guitar_Converter {
 		//System.out.println(test[0][1]);
 	}
 	
-	public static String[][] GuitarConverter(char[][] in) { 
+	/*
+	 * Returns 2D array of notes, stored as strings
+	 * argument is a 2D array that has been parsed from a tab
+	 * e.g 
+	 * 1---------	Stored as a 2d array of strings representing
+	 * -----0----	the characters and numbers, String[rows][columns]
+	 * -2---0----	example, first column {"1", "-", "-", "-", "-", "-"}
+	 * -----0----
+	 * ---3------
+	 * -------10-- 
+	 * 
+	 * @param	in	2d String array parsed from tab format
+	 * @return	out	2d String array of notes at their corresponding positions on the tab
+	 */
+	public static String[][] GuitarConverter(String[][] in) { 
 		String[][] out;
 		String tmp; 
 		int i, j, j2;
@@ -45,6 +60,11 @@ public class Guitar_Converter {
 		return out;
 	}
 	
+	/*
+	 * Returns a note string that corresponds to the tab column
+	 * @param	in	String representing a column of characters from a tab e.g "-1-4--"
+	 * @return		Note string, corresponding to tab
+	 */
 	public static String StringToNote(String in) {
 		
 		switch(in) {
@@ -53,7 +73,7 @@ public class Guitar_Converter {
 			case "-0----":
 				return "B";
 			case "--0---":
-				return "g";
+				return "G";
 			case "---0--":
 				return "D";
 			case "----0-":
@@ -132,6 +152,78 @@ public class Guitar_Converter {
 				return "D#";
 			case "-----6":
 				return "A#";
+			case "7-----":
+				return "B";
+			case "-7----":
+				return "F#";
+			case "--7---":
+				return "D";
+			case "---7--":
+				return "A";
+			case "----7-":
+				return "E";
+			case "-----7":
+				return "B";
+			case "8-----":
+				return "C";
+			case "-8----":
+				return "G";
+			case "--8---":
+				return "D#";
+			case "---8--":
+				return "A#";
+			case "----8-":
+				return "F";
+			case "-----8":
+				return "C";
+			case "9-----":
+				return "C#";
+			case "-9----":
+				return "G#";
+			case "--9---":
+				return "E";
+			case "---9--":
+				return "B";
+			case "----9-":
+				return "F#";
+			case "-----9":
+				return "C#";
+			case "10-----":
+				return "D";
+			case "-10----":
+				return "A";
+			case "--10---":
+				return "F";
+			case "---10--":
+				return "C";
+			case "----10-":
+				return "G";
+			case "-----10":
+				return "D";
+			case "11-----":
+				return "D#";
+			case "-11----":
+				return "A#";
+			case "--11---":
+				return "F#";
+			case "---11--":
+				return "C#";
+			case "----11-":
+				return "G#";
+			case "-----11":
+				return "D#";
+			case "12-----":
+				return "E";
+			case "-12----":
+				return "B";
+			case "--12---":
+				return "G";
+			case "---12--":
+				return "D";
+			case "----12-":
+				return "A";
+			case "-----12":
+				return "E";
 			default:
 				return "-";
 		}
