@@ -4,10 +4,10 @@ public class Guitar_Converter {
 	
 	//Main
 	public static void main(String args[]) {
-		String[][] test = {
-				{"10", "11", "12", "11", "11", "10"}, 
-				{"12", "12", "12", "12", "12", "12"},
-				{"0", "0", "0", "0", "0", "0"},
+		char[][] test = {
+				{'1', '-', '-', '-', '5', '-'},
+				{'-', '2', '-', '4', '-', '6'},
+				{'-', '-', '3', '-', '-', '-'}
 		};
 		String[][] notes = GuitarConverter(test);
 		
@@ -25,17 +25,17 @@ public class Guitar_Converter {
 	 * Returns 2D array of notes, stored as strings
 	 * argument is a 2D array that has been parsed from a tab
 	 * e.g 
-	 * 1---------	Stored as a 2d array of strings representing
-	 * -----0----	the characters and numbers, String[rows][columns]
-	 * -2---0----	example, first column {"1", "-", "-", "-", "-", "-"}
+	 * 1---------	Stored as a 2d array of chars representing
+	 * -----0----	the characters and numbers, char[rows][columns]
+	 * -2---0----	example, first column {'1', '-', '-', '-', '5', '-'}
 	 * -----0----
 	 * ---3------
-	 * -------10-- 
+	 * -------9-- 
 	 * 
-	 * @param	in	2d String array parsed from tab format
+	 * @param	in	2d char array parsed from tab format
 	 * @return	out	2d String array of notes at their corresponding positions on the tab
 	 */
-	public static String[][] GuitarConverter(String[][] in) { 
+	public static String[][] GuitarConverter(char[][] in) { 
 		String[][] out;
 		String tmp; 
 		int i, j, j2;
@@ -188,6 +188,7 @@ public class Guitar_Converter {
 				return "F#";
 			case "-----9":
 				return "C#";
+			/*
 			case "10-----":
 				return "D";
 			case "-10----":
@@ -224,6 +225,7 @@ public class Guitar_Converter {
 				return "A";
 			case "-----12":
 				return "E";
+				*/
 			default:
 				return "-";
 		}
