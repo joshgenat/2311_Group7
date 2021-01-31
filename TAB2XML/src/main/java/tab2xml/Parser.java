@@ -22,6 +22,7 @@ public class Parser {
 		this.readFile();
 	}
 	
+	
 	/**
 	 * Method to read file and put into arraylist lines
 	 */
@@ -62,5 +63,12 @@ public class Parser {
 		for(int i = 0;i < lines.size(); i++) {
 			System.out.println(lines.get(i));
 		}
+	}
+	
+	/*
+	 * Helper Method to get the lines
+	 */
+	public ArrayList<Object> getLines(){
+		return new ArrayList<Object>(lines);	
 	}
 }

@@ -7,6 +7,7 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -15,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+
 
 public class GUI_2 implements ActionListener{
 
@@ -84,12 +86,39 @@ public class GUI_2 implements ActionListener{
 		if (e.getSource() == b2) {
 			f.dispose();
 			Parser parse = new Parser();
-			parse.printline();
+			Tab b = new Tab(parse.getLines());
+			
+			System.out.println(b.Type);
+			for(int i = 0; i < b.nodes.size();i++) {
+				for(int j = 0; j < b.nodes.get(i).nodes.length; j++) {
+					for(int k = 0; k < b.nodes.get(i).nodes[j].length; k++) {
+						System.out.print(b.nodes.get(i).nodes[j][k]);
+					}
+					System.out.println();
+				}
+				System.out.println();
+			}
 		}
 		
 		if (e.getSource() == b1) {
 			f.dispose();
-			System.out.println(text.getText());
+			String [] parse = text.getText().split("\n");
+			ArrayList<Object> lines = new ArrayList<Object>();
+			for(int i = 0; i < parse.length; i++) {
+				lines.add(parse[i]);
+			}
+			Tab b = new Tab(lines);
+			
+			System.out.println(b.Type);
+			for(int i = 0; i < b.nodes.size();i++) {
+				for(int j = 0; j < b.nodes.get(i).nodes.length; j++) {
+					for(int k = 0; k < b.nodes.get(i).nodes[j].length; k++) {
+						System.out.print(b.nodes.get(i).nodes[j][k]);
+					}
+					System.out.println();
+				}
+				System.out.println();
+			}
 		}
 	}
 }
