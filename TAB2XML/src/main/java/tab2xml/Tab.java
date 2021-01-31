@@ -19,7 +19,7 @@ public class Tab {
 			if(read && lines.get(i).toString().contains("-") && lines.get(i).toString().lastIndexOf('|') - lines.get(i).toString().indexOf('|') > 0) {
 				pass.add(lines.get(i));
 			}
-			else if(read || pass.size()==6) {
+			else if(read) {
 				if(typed == false) {
 					Type = "Guitar";
 					for(int j = 0; j < pass.size(); j++) {
