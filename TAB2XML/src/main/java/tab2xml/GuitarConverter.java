@@ -1,6 +1,6 @@
 package tab2xml;
 
-public class Guitar_Converter {
+public class GuitarConverter {
 	
 	//Main
 	public static void main(String args[]) {
@@ -188,44 +188,42 @@ public class Guitar_Converter {
 				return "F#";
 			case "-----9":
 				return "C#";
-			/*
-			case "10-----":
+			case "!-----":
 				return "D";
-			case "-10----":
+			case "-!----":
 				return "A";
-			case "--10---":
+			case "--!---":
 				return "F";
-			case "---10--":
+			case "---!--":
 				return "C";
-			case "----10-":
+			case "----!-":
 				return "G";
-			case "-----10":
+			case "-----!":
 				return "D";
-			case "11-----":
+			case "@-----":
 				return "D#";
-			case "-11----":
+			case "-@----":
 				return "A#";
-			case "--11---":
+			case "--@---":
 				return "F#";
-			case "---11--":
+			case "---@--":
 				return "C#";
-			case "----11-":
+			case "----@-":
 				return "G#";
-			case "-----11":
+			case "-----@":
 				return "D#";
-			case "12-----":
+			case "#-----":
 				return "E";
-			case "-12----":
+			case "-#----":
 				return "B";
-			case "--12---":
+			case "--#---":
 				return "G";
-			case "---12--":
+			case "---#--":
 				return "D";
-			case "----12-":
+			case "----#-":
 				return "A";
-			case "-----12":
+			case "-----#":
 				return "E";
-				*/
 			default:
 				return "-";
 		}
