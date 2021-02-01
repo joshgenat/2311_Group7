@@ -33,27 +33,45 @@ public class toXML {
 
 		// Iterating rows
 		for( int i=0; i <test.length ; i++){
-			Element student = doc.createElement("technical");    // create a new student
-			rootElement.appendChild(student);                // append it to measure
-
-//			Attr attr = doc.createAttribute("id");			// create attribute
-//			attr.setValue("1");
-//			student.setAttributeNode(attr);
+			// Main Root element 
+			Element student = doc.createElement("technical");   
+			rootElement.appendChild(student);               
     
 			Element name = doc.createElement("string");        // tag name
-			name.appendChild(doc.createTextNode("3")); // value inside tag
+			name.appendChild(doc.createTextNode("" + i) ); // value inside tag
 			student.appendChild(name);                       // append name to student
 
 			Element name2 = doc.createElement("fret");        // tag name
-			name2.appendChild(doc.createTextNode("4") ); // value inside tag
+			name2.appendChild(doc.createTextNode("" + i) ); // value inside tag
 			student.appendChild(name2);                       // append name to student
+			
+			/** Should Print out:
+			
+			<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+			<measure>
+				<technical>
+					<string>0</string>
+					<fret>0</fret>
+				</technical>
+			
+				<technical>
+					<string>1</string>
+					<fret>1</fret>
+				</technical>
+			</measure> 
+			*/
 		}
 	
 		// write content into XML file
 		TransformerFactory transformerFactory = TransformerFactory.newInstance();
 		Transformer transformer = transformerFactory.newTransformer();
+		transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+		transformer.setOutputProperty(OutputKeys.INDENT, "yes");
 		DOMSource source = new DOMSource(doc);
+		
+		// Print to console
 		StreamResult result = new StreamResult(System.out);
+		// StreamResult result = new StreamResult(new File());
 		
 		transformer.transform(source, result);
 		
