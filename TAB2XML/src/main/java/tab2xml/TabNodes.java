@@ -12,8 +12,14 @@ public class TabNodes {
 	 */
 	public TabNodes(ArrayList<Object> lines) {
 		//Get The size of 2D string array and initialize
+		int maxsize = 0;
+		for(int i = 0; i < lines.size(); i++) {
+			if(lines.get(i).toString().length() > maxsize) {
+				maxsize = lines.get(i).toString().length();
+			}
+		}
 		
-		nodes = new char[lines.size()][lines.get(0).toString().length()];
+		nodes = new char[lines.size()][maxsize];
 		
 		for(int i = 0; i < nodes.length; i++) {
 			for(int j = 0; j < nodes[i].length; j++) {
