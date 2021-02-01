@@ -18,7 +18,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 
-public class GUI_2 implements ActionListener{
+public class GUI implements ActionListener{
 
 	private JFrame f;
 	private JPanel p1, p2, p3;
@@ -27,8 +27,8 @@ public class GUI_2 implements ActionListener{
 	private JLabel l;
 	private JScrollPane s;
 	
-	GUI_2 () {
-		f = new JFrame();
+	GUI () {
+		f = new JFrame("Music Tab to XML File Convertor");
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setSize(1000,500);
 		f.setLayout(new BorderLayout());
