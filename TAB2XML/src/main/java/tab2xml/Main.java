@@ -10,6 +10,7 @@ public class Main {
 		
 		//GUI test = new GUI();
 		System.out.println("Lab Test");
+		System.out.println("Lab Test part 2");
 
 
 	}
