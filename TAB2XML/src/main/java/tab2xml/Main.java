@@ -9,9 +9,6 @@ public class Main {
 		
 		
 		//GUI test = new GUI();
-		System.out.println("Lab Test");
-
-
 
 	}
 }
