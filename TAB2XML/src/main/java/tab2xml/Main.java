@@ -8,8 +8,11 @@ public class Main {
 	public static void main(String[] args) {
 		
 		
+
 		//GUI test = new GUI();
-		System.out.println("lab3");
+		GUI test = new GUI();
+		
+		System.out.println("nicolae lab test");
 
 	}
 }
