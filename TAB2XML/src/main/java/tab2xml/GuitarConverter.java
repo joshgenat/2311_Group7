@@ -69,161 +69,161 @@ public class GuitarConverter {
 		
 		switch(in) {
 			case "0-----":
-				return "E";
+				return "E4";
 			case "-0----":
-				return "B";
+				return "B3";
 			case "--0---":
-				return "G";
+				return "G3";
 			case "---0--":
-				return "D";
+				return "D3";
 			case "----0-":
-				return "A";
+				return "A2";
 			case "-----0":
-				return "E";
+				return "E2";
 			case "1-----":
-				return "F";
+				return "F4";
 			case "-1----":
-				return "C";
+				return "C4";
 			case "--1---":
-				return "G#";
+				return "Ab3";
 			case "---1--":
-				return "D#";
+				return "Eb3";
 			case "----1-":
-				return "A#";
+				return "Bb2";
 			case "-----1":
-				return "F";
+				return "F2";
 			case "2-----":
-				return "F#";
+				return "F#4";
 			case "-2----":
-				return "C#";
+				return "C#4";
 			case "--2---":
-				return "A";
+				return "A3";
 			case "---2--":
-				return "E";
+				return "E3";
 			case "----2-":
-				return "B";
+				return "B2";
 			case "-----2":
-				return "F#";
+				return "F#2";
 			case "3-----":
-				return "G";
+				return "G4";
 			case "-3----":
-				return "D";
+				return "D4";
 			case "--3---":
-				return "A#";
+				return "Bb3";
 			case "---3--":
-				return "F";
+				return "F3";
 			case "----3-":
-				return "C";
+				return "C3";
 			case "-----3":
-				return "G";
+				return "G2";
 			case "4-----":
-				return "G#";
+				return "Ab4";
 			case "-4----":
-				return "D#";
+				return "Eb4";
 			case "--4---":
-				return "B";
+				return "B3";
 			case "---4--":
-				return "F#";
+				return "F#3";
 			case "----4-":
-				return "C#";
+				return "C#3";
 			case "-----4":
-				return "G#";
+				return "Ab2";
 			case "5-----":
-				return "A";
+				return "A4";
 			case "-5----":
-				return "E";
+				return "E4";
 			case "--5---":
-				return "C";
+				return "C4";
 			case "---5--":
-				return "G";
+				return "G3";
 			case "----5-":
-				return "D";
+				return "D3";
 			case "-----5":
-				return "A";
+				return "A2";
 			case "6-----":
-				return "A#";
+				return "Bb4";
 			case "-6----":
-				return "F";
+				return "F4";
 			case "--6---":
-				return "C#";
+				return "C#4";
 			case "---6--":
-				return "G#";
+				return "Ab3";
 			case "----6-":
-				return "D#";
+				return "Eb3";
 			case "-----6":
-				return "A#";
+				return "Bb2";
 			case "7-----":
-				return "B";
+				return "B4";
 			case "-7----":
-				return "F#";
+				return "F#4";
 			case "--7---":
-				return "D";
+				return "D4";
 			case "---7--":
-				return "A";
+				return "A3";
 			case "----7-":
-				return "E";
+				return "E3";
 			case "-----7":
-				return "B";
+				return "B2";
 			case "8-----":
-				return "C";
+				return "C5";
 			case "-8----":
-				return "G";
+				return "G4";
 			case "--8---":
-				return "D#";
+				return "Eb4";
 			case "---8--":
-				return "A#";
+				return "Bb3";
 			case "----8-":
-				return "F";
+				return "F3";
 			case "-----8":
-				return "C";
+				return "C3";
 			case "9-----":
-				return "C#";
+				return "C#5";
 			case "-9----":
-				return "G#";
+				return "Ab4";
 			case "--9---":
-				return "E";
+				return "E4";
 			case "---9--":
-				return "B";
+				return "B3";
 			case "----9-":
-				return "F#";
+				return "F#3";
 			case "-----9":
-				return "C#";
+				return "C#3";
 			case "!-----":
-				return "D";
+				return "D5";
 			case "-!----":
-				return "A";
+				return "A4";
 			case "--!---":
-				return "F";
+				return "F4";
 			case "---!--":
-				return "C";
+				return "C4";
 			case "----!-":
-				return "G";
+				return "G3";
 			case "-----!":
-				return "D";
+				return "D3";
 			case "@-----":
-				return "D#";
+				return "Eb5";
 			case "-@----":
-				return "A#";
+				return "Bb4";
 			case "--@---":
-				return "F#";
+				return "F#4";
 			case "---@--":
-				return "C#";
+				return "C#4";
 			case "----@-":
-				return "G#";
+				return "Ab3";
 			case "-----@":
-				return "D#";
+				return "Eb3";
 			case "#-----":
-				return "E";
+				return "E5";
 			case "-#----":
-				return "B";
+				return "B4";
 			case "--#---":
-				return "G";
+				return "G4";
 			case "---#--":
-				return "D";
+				return "D4";
 			case "----#-":
-				return "A";
+				return "A3";
 			case "-----#":
-				return "E";
+				return "E3";
 			default:
 				return "-";
 		}
