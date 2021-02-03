@@ -28,22 +28,28 @@ public class toXML {
 
 		// root elements
 		Document doc = docBuilder.newDocument();
-		Element rootElement = doc.createElement("measure");
+		
+		Element rootElement = doc.createElement("part-list");
 		doc.appendChild(rootElement);
+			
+			Element scorePart = doc.createElement("score-part"); 
+			rootElement.appendChild(scorePart); 
+			scorePart.setAttribute("id", "P1");
 
-		// Iterating rows
-		for( int i=0; i <test.length ; i++){
-			// Main Root element 
-			Element student = doc.createElement("technical");   
-			rootElement.appendChild(student);               
+				Element partName = doc.createElement("part-name");   
+				partName.appendChild(doc.createTextNode("Guitar") ); 
+				scorePart.appendChild(partName);               
     
-			Element name = doc.createElement("string");        // tag name
-			name.appendChild(doc.createTextNode("" + i) ); // value inside tag
-			student.appendChild(name);                       // append name to student
-
-			Element name2 = doc.createElement("fret");        // tag name
-			name2.appendChild(doc.createTextNode("" + i) ); // value inside tag
-			student.appendChild(name2);                       // append name to student
+				
+		Element measureNumber = doc.createElement("measure"); 
+		rootElement.appendChild(measureNumber);    
+		measureNumber.setAttribute("number", "1");
+			
+			Element attributes = doc.createElement("attributes");        
+			attributes.appendChild(doc.createTextNode("5") ); 
+			measureNumber.appendChild(attributes);   
+			
+			
 			
 			/** Should Print out:
 			
@@ -60,7 +66,7 @@ public class toXML {
 				</technical>
 			</measure> 
 			*/
-		}
+		
 	
 		// write content into XML file
 		TransformerFactory transformerFactory = TransformerFactory.newInstance();
