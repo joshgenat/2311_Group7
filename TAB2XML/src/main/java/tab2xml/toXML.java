@@ -49,23 +49,6 @@ public class toXML {
 			attributes.appendChild(doc.createTextNode("5") ); 
 			measureNumber.appendChild(attributes);   
 			
-			
-			
-			/** Should Print out:
-			
-			<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-			<measure>
-				<technical>
-					<string>0</string>
-					<fret>0</fret>
-				</technical>
-			
-				<technical>
-					<string>1</string>
-					<fret>1</fret>
-				</technical>
-			</measure> 
-			*/
 		
 	
 		// write content into XML file
