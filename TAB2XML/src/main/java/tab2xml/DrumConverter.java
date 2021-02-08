@@ -1,12 +1,28 @@
 package tab2xml;
 
+import java.util.ArrayList;
+
+import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
+
 public class DrumConverter {
 
 	public static void main(String[] args) {
 		
-		boolean isDrum = false; 
+
 		char checker = ' ';
 		String type;
+		
+		int crashRow = 0;
+		int hiHatFootRow = 0;
+		int hiHatRow = 0;
+		int snearRow = 0;
+		int bassRow = 0;
+		int lowTomRow = 0;
+		int highTomRow = 0;
+		int floorTomRow = 0;
+		
+		ArrayList<String> drumType = new ArrayList<String>();
+		
 		char[][] tester = 
 				{
 				{'C', ' ', '-', '-', '-', 'x', '-', '-', '-'},
@@ -23,37 +39,74 @@ public class DrumConverter {
             {
             	checker = tester[row][col];
             	
-            	// the following statement is to help us see if the tab is for drums
-            	if ((checker == 'x' || checker == 'o') && isDrum == false)
-        		{
-        		isDrum = true;
-        		type = "drum";
-        		}
                 System.out.print(tester[row][col]);
-                
-                /* the following loop is to help us find drum tab notations 
-                 * 
-                 */     
-                if (checker == 'c' || checker == 'H' || checker == 'S' || checker == 'B' || checker == 'T' || checker == 'F')
-                {
-                	if (tester[row][col+1] == 'D' || tester[row][col+1] == 'T' || tester[row][col+1] == 'f' || tester[row][col+1] == '1' || tester[row][col+1] == '2')
-                	{
-                		/* 
-                		 * this will allow us to see is the checker and the character after it
-                		 * are equal to any of the drum tab notations we are looking for 
-                		 * such as 'S''D' = Snare Drum, 'F''T' = floor tom, 'T''2' = low tom
-                		 */
-                		
-                	}
-                	else if (tester[row][col+1] == ' ' || tester[row][col-1] == ' ')
-                	{
-                		/* just like the above if statement, expect this else if statement 
-                		 * will allow us to find the single letter notations such as C = crash cymbal
-                		 * H = hi-hat, B = bass drum 
-                		 */
-                	}
-	
-                }
+
+                switch (checker) {
+               
+                case 'C':
+            	  type = "Crash Cymbal";
+            	  crashRow = row + 1;
+            	  drumType.add (type);
+                  break;
+              
+               case 'H':
+            	   	if (tester[row][col+1] == 'f')
+            	   	{
+            	  	  type = "Hi-Hat with Foot";	
+              	   	  hiHatFootRow = row + 1;
+              	   	drumType.add (type);
+            	   	}
+            	   	else 
+            	   	{
+            	   	  type = "Hi-Hat";        	   	
+            	   	  hiHatRow = row + 1;
+            	   	drumType.add (type);
+            	   	}
+                  break;
+               
+               case 'S':
+            	   type = "Snare Drum";
+         	   	   snearRow = row + 1;
+         	   	   drumType.add (type);
+                    break;
+               
+               case 'B':
+            	   type = "Bass Drum";
+            	   bassRow = row + 1;
+            	   drumType.add (type);
+                   break;
+                   
+               case 'T':
+            	   if (tester[row][col+1] == '1')
+            	   {
+             	  	  type = "Low Tom";	
+            		  lowTomRow = row + 1;
+            		  drumType.add (type);
+            	   }
+             	   	else if (tester[row][col+1] == '2')
+             	   	{
+             	   	  type = "Hi Tom";
+             	   	highTomRow = row + 1;
+             	   	drumType.add (type);
+             	   	}   
+                   break;
+               
+               case 'F':
+            	   if (tester[row][col+1] == 'T')
+            	   {
+              	  	  type = "Floor Tom";
+            	      floorTomRow = row + 1;
+            	      drumType.add (type);
+            	   }
+                   break;
+              
+                default:
+                	break;
+                	
+                	
+                	
+               
+              } 
             }
             System.out.println();
 	}
