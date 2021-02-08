@@ -107,6 +107,7 @@ public class DrumConverter {
             
                 if (checker == 'x' || checker == 'o')
                 	
+                	
                 	System.out.println("<display-step>"+ drumType.get(0) + "</display-step>");
                            	
                
