@@ -29,26 +29,35 @@ public class toXML {
 		// root elements
 		Document doc = docBuilder.newDocument();
 		
-		Element rootElement = doc.createElement("part-list");
+		Element rootElement = doc.createElement("score-partwise");
+		rootElement.setAttribute("version", "3.1");
 		doc.appendChild(rootElement);
 			
-			Element scorePart = doc.createElement("score-part"); 
-			rootElement.appendChild(scorePart); 
-			scorePart.setAttribute("id", "P1");
+			Element partList = doc.createElement("part-list"); 
+			rootElement.appendChild(partList); 
+			partList.setAttribute("id", "P1");
+			
+				Element scorePart = doc.createElement("score-part"); 
+				partList.appendChild(scorePart); 
+				scorePart.setAttribute("id", "P1");
 
-				Element partName = doc.createElement("part-name");   
-				partName.appendChild(doc.createTextNode("Guitar") ); 
-				scorePart.appendChild(partName);               
+					Element partName = doc.createElement("part-name");   
+					partList.appendChild(doc.createTextNode("Guitar") ); 
+					scorePart.appendChild(partName);               
     
+			
+			Element partId = doc.createElement("part"); 
+			rootElement.appendChild(partList); 
+			partList.setAttribute("id", "P1");
+			
+				Element measureNumber = doc.createElement("measure"); 
+				partId.appendChild(measureNumber);    
+				measureNumber.setAttribute("number", "1");
+			
+					Element attributes = doc.createElement("attributes");        
+					attributes.appendChild(doc.createTextNode("5") ); 
+					measureNumber.appendChild(attributes);   
 				
-		Element measureNumber = doc.createElement("measure"); 
-		rootElement.appendChild(measureNumber);    
-		measureNumber.setAttribute("number", "1");
-			
-			Element attributes = doc.createElement("attributes");        
-			attributes.appendChild(doc.createTextNode("5") ); 
-			measureNumber.appendChild(attributes);   
-			
 		
 	
 		// write content into XML file
