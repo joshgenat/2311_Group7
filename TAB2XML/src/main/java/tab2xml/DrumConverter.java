@@ -24,11 +24,6 @@ public class DrumConverter {
             	checker = tester[row][col];
             	
             	// the following statement is to help us see if the tab is for drums
-            	if ((checker == 'x' || checker == 'o') && isDrum == false)
-        		{
-        		isDrum = true;
-        		type = "drum";
-        		}
                 System.out.print(tester[row][col]);
                 
                 /* the following loop is to help us find drum tab notations 
