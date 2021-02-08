@@ -93,7 +93,7 @@ public class BassConverter {
 			case 4:
 				switch(in) {
 					case "0---":
-						return "E4";
+						return "E";
 					case "-0--":
 						return "B3";
 					case "--0-":
