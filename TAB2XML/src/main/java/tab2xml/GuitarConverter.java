@@ -9,7 +9,7 @@ public class GuitarConverter {
 				{'-', '2', '-', '4', '-', '6'},
 				{'-', '-', '3', '-', '-', '-'}
 		};
-		String[][] notes = GuitarConverter(test);
+		String[][] notes = Converter(test);
 		
 		for(int i = 0; i < notes.length; i++) {
 			for(int j = 0; j < notes[i].length; j++) {
@@ -35,7 +35,7 @@ public class GuitarConverter {
 	 * @param	in	2d char array parsed from tab format
 	 * @return	out	2d String array of notes at their corresponding positions on the tab
 	 */
-	public static String[][] GuitarConverter(char[][] in) { 
+	public static String[][] Converter(char[][] in) { 
 		String[][] out;
 		String tmp; 
 		int i, j, j2;
