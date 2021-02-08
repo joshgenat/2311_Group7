@@ -93,244 +93,244 @@ public class BassConverter {
 			case 4:
 				switch(in) {
 					case "0---":
-						return "E";
+						return "E1";
 					case "-0--":
-						return "B3";
+						return "A1";
 					case "--0-":
-						return "G3";
+						return "D2";
 					case "---0":
-						return "D3";
+						return "G2";
 					case "1---":
-						return "F4";
+						return "F1";
 					case "-1--":
-						return "C4";
+						return "A#1";
 					case "--1-":
-						return "Ab3";
+						return "D#2";
 					case "---1":
-						return "Eb3";
+						return "G#2";
 					case "2---":
-						return "F#4";
+						return "F#1";
 					case "-2--":
-						return "C#4";
+						return "B1";
 					case "--2-":
-						return "A3";
+						return "E2";
 					case "---2":
-						return "E3";
+						return "A2";
 					case "3---":
-						return "G4";
+						return "G1";
 					case "-3--":
-						return "D4";
+						return "C2";
 					case "--3-":
-						return "Bb3";
+						return "F2";
 					case "---3":
-						return "F3";
+						return "A#2";
 					case "4---":
-						return "Ab4";
+						return "G#1";
 					case "-4--":
-						return "Eb4";
+						return "C#2";
 					case "--4-":
-						return "B3";
+						return "F#2";
 					case "---4":
-						return "F#3";
+						return "B2";
 					case "5---":
-						return "A4";
+						return "A1";
 					case "-5--":
-						return "E4";
+						return "D2";
 					case "--5-":
-						return "C4";
+						return "G2";
 					case "---5":
-						return "G3";
+						return "C3";
 					case "6---":
-						return "Bb4";
+						return "A#1";
 					case "-6--":
-						return "F4";
+						return "D#2";
 					case "--6-":
-						return "C#4";
+						return "G#2";
 					case "---6":
-						return "Ab3";
+						return "C#3";
 					case "7---":
-						return "B4";
+						return "B1";
 					case "-7--":
-						return "F#4";
+						return "E2";
 					case "--7-":
-						return "D4";
+						return "A2";
 					case "---7":
-						return "A3";
+						return "D3";
 					case "8---":
-						return "C5";
+						return "C2";
 					case "-8--":
-						return "G4";
+						return "F2";
 					case "--8-":
-						return "Eb4";
+						return "A#2";
 					case "---8":
-						return "Bb3";
+						return "D#3";
 					case "9---":
-						return "C#5";
+						return "C#2";
 					case "-9--":
-						return "Ab4";
+						return "F#2";
 					case "--9-":
-						return "E4";
+						return "B2";
 					case "---9":
-						return "B3";
+						return "E3";
 					case "!---":
-						return "D5";
+						return "D2";
 					case "-!--":
-						return "A4";
+						return "G2";
 					case "--!-":
-						return "F4";
+						return "C3";
 					case "---!":
-						return "C4";
+						return "F3";
 					case "@---":
-						return "Eb5";
+						return "D#2";
 					case "-@--":
-						return "Bb4";
+						return "G#2";
 					case "--@-":
-						return "F#4";
+						return "C#3";
 					case "---@":
-						return "C#4";
+						return "F#3";
 					case "#---":
-						return "E5";
+						return "E2";
 					case "-#--":
-						return "B4";
+						return "A2";
 					case "--#-":
-						return "G4";
+						return "D3";
 					case "---#":
-						return "D4";
+						return "G3";
 					default:
 						return "-";
 				}
 			case 5:
 				switch(in) {
 					case "0----":
-						return "E4";
+						return "B0";
 					case "-0---":
-						return "B3";
+						return "E1";
 					case "--0--":
-						return "G3";
+						return "A1";
 					case "---0-":
-						return "D3";
+						return "D2";
 					case "----0":
-						return "A2";
+						return "G2";
 					case "1----":
-						return "F4";
+						return "C1";
 					case "-1---":
-						return "C4";
+						return "F1";
 					case "--1--":
-						return "Ab3";
+						return "A#1";
 					case "---1-":
-						return "Eb3";
+						return "D#2";
 					case "----1":
-						return "Bb2";
+						return "G#2";
 					case "2----":
-						return "F#4";
+						return "C#1";
 					case "-2---":
-						return "C#4";
+						return "F#1";
 					case "--2--":
-						return "A3";
+						return "B1";
 					case "---2-":
-						return "E3";
+						return "E2";
 					case "----2":
-						return "B2";
+						return "A2";
 					case "3----":
-						return "G4";
+						return "D1";
 					case "-3---":
-						return "D4";
+						return "G1";
 					case "--3--":
-						return "Bb3";
+						return "C2";
 					case "---3-":
-						return "F3";
+						return "F2";
 					case "----3":
-						return "C3";
+						return "A#2";
 					case "4----":
-						return "Ab4";
+						return "D#1";
 					case "-4---":
-						return "Eb4";
+						return "G#1";
 					case "--4--":
-						return "B3";
+						return "C#2";
 					case "---4-":
-						return "F#3";
+						return "F#2";
 					case "----4":
-						return "C#3";
+						return "B2";
 					case "5----":
-						return "A4";
+						return "E1";
 					case "-5---":
-						return "E4";
+						return "A1";
 					case "--5--":
-						return "C4";
+						return "D2";
 					case "---5-":
-						return "G3";
+						return "G2";
 					case "----5":
-						return "D3";
+						return "C3";
 					case "6----":
-						return "Bb4";
+						return "F1";
 					case "-6---":
-						return "F4";
+						return "A#1";
 					case "--6--":
-						return "C#4";
+						return "D#2";
 					case "---6-":
-						return "Ab3";
+						return "G#2";
 					case "----6":
-						return "Eb3";
+						return "C#3";
 					case "7----":
-						return "B4";
+						return "F#1";
 					case "-7---":
-						return "F#4";
+						return "B1";
 					case "--7--":
-						return "D4";
+						return "E2";
 					case "---7-":
-						return "A3";
+						return "A2";
 					case "----7":
-						return "E3";
+						return "D3";
 					case "8----":
-						return "C5";
+						return "G1";
 					case "-8---":
-						return "G4";
+						return "C2";
 					case "--8--":
-						return "Eb4";
+						return "F2";
 					case "---8-":
-						return "Bb3";
+						return "A#2";
 					case "----8":
-						return "F3";
+						return "D#3";
 					case "9----":
-						return "C#5";
+						return "G#1";
 					case "-9---":
-						return "Ab4";
+						return "C#2";
 					case "--9--":
-						return "E4";
+						return "F#2";
 					case "---9-":
-						return "B3";
+						return "B2";
 					case "----9":
-						return "F#3";
+						return "E3";
 					case "!----":
-						return "D5";
+						return "A1";
 					case "-!---":
-						return "A4";
+						return "D2";
 					case "--!--":
-						return "F4";
+						return "G2";
 					case "---!-":
-						return "C4";
+						return "C3";
 					case "----!":
-						return "G3";
+						return "F3";
 					case "@-----":
-						return "Eb5";
+						return "A#1";
 					case "-@---":
-						return "Bb4";
+						return "D#2";
 					case "--@--":
-						return "F#4";
+						return "G#2";
 					case "---@-":
-						return "C#4";
+						return "C#3";
 					case "----@":
-						return "Ab3";
+						return "F#3";
 					case "#----":
-						return "E5";
+						return "B1";
 					case "-#---":
-						return "B4";
+						return "E2";
 					case "--#--":
-						return "G4";
+						return "A2";
 					case "---#-":
-						return "D4";
+						return "D3";
 					case "----#":
-						return "A3";
+						return "G3";
 					default:
 						return "-";
 				}
