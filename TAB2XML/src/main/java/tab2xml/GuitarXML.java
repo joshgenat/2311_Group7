@@ -60,27 +60,8 @@ public class GuitarXML {
 					Divisions.divisions(doc, attributes, 1);
 					Time.time(doc, attributes);
 					Clef.clef(doc, attributes);
+					Staff.staff(doc, attributes, 4);
 
-//							
-//						Element staffDetails = doc.createElement("staff-details");    
-//						attributes.appendChild(staffDetails); 
-//								
-//							Element staffLines = doc.createElement("staff-lines");        
-//							staffLines.appendChild(doc.createTextNode("6") ); 
-//							staffDetails.appendChild(staffLines); 
-//									
-//							Element staffTuning= doc.createElement("staff-tuning");        
-//							staffTuning.setAttribute("line", "1");
-//							staffDetails.appendChild(staffTuning);	
-//							
-//								Element tuningStep = doc.createElement("tuning-step");        
-//								tuningStep.appendChild(doc.createTextNode("E") ); 
-//								staffTuning.appendChild(tuningStep); 
-//						
-//								Element tuningOctave = doc.createElement("tuning-octave");        
-//								tuningOctave.appendChild(doc.createTextNode("2") ); 
-//								staffTuning.appendChild(tuningOctave); 
-//								
 			
 	
 		// write content into XML file
