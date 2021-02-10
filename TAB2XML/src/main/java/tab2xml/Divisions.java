@@ -5,7 +5,9 @@ import org.w3c.dom.Element;
 
 public class Divisions {
 	
-	public static void divisions(Document doc, Element attributes, int i) {
+//	public static  String divisions(Document doc, Element attributes, int i) {
+	
+	public static  String divisions(int i, int j, int k) {
 //		Element divisions = doc.createElement("divisions");        
 //		divisions.appendChild(doc.createTextNode("" + i) ); 
 //		attributes.appendChild(divisions); 
@@ -17,9 +19,9 @@ public class Divisions {
 //			fifths.appendChild(doc.createTextNode("5") ); 
 //			key.appendChild(fifths);
 //			
-		System.out.println("<divisions>1</divisions>\r\n" + 
+		return ("<divisions>" + i + "</divisions>\r\n" + 
 				"\t<key>\r\n" + 
-				"\t\t<fifths>5</fifths>\r\n" + 
+				"\t\t<fifths>" + j + "</fifths>\r\n" + 
 				"\t</key>");
 	}
 	
