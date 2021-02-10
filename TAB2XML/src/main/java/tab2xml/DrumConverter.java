@@ -33,13 +33,15 @@ public class DrumConverter {
 				{'H', 'f', '-', 'o', '-', '-', '-', '-', 'x'} 
 				};
 		
+	
+		
 		for (int row = 0; row < tester.length; row++)
         {
             for (int col = 0; col < tester[row].length; col++)
             {
             	checker = tester[row][col];
             	
-                //System.out.print(tester[row][col]);
+                System.out.print(tester[row][col]);
 
                 switch (checker) {
                
@@ -103,19 +105,15 @@ public class DrumConverter {
                 default:
                 	break;
                 }	
-               
-            
-                if (checker == 'x' || checker == 'o')
-                	
-                	
-                	System.out.println("<display-step>"+ drumType.get(0) + "</display-step>");
+            	
+            } 
+            System.out.println();
                            	
-               
-              } 
-            }
-            //System.out.println();
+        }
 	}
-
 }
+
+	
+           
 
 
