@@ -6,11 +6,14 @@ import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
 
 public class DrumConverter {
 
+	private static char[][] testers;
+	static String type;
+	
 	public static void main(String[] args) {
 		
 
 		char checker = ' ';
-		String type;
+		
 		
 		int crashRow = 0;
 		int hiHatFootRow = 0;
@@ -23,25 +26,21 @@ public class DrumConverter {
 		
 		ArrayList<String> drumType = new ArrayList<String>();
 		
-		char[][] tester = 
-				{
-				{'C', ' ', '-', '-', '-', 'x', '-', '-', '-'},
-				{'R', ' ', '-', '-', 'o', 'x', '-', '-', '-'},
-				{'S', 'D', '-', '-', '-', '-', '-', 'x', '-'},
-				{'F', 'T', '-', '-', '-', '-', 'x', '-', 'x'},
-				{'B', ' ', '-', '-', '-', '-', '-', '-', 'o'},
-				{'H', 'f', '-', 'o', '-', '-', '-', '-', 'x'} 
-				};
-		
+		testers = null;
+	
+	
+	
+	
+	
 	
 		
-		for (int row = 0; row < tester.length; row++)
+		for (int row = 0; row < testers.length; row++)
         {
-            for (int col = 0; col < tester[row].length; col++)
+            for (int col = 0; col < testers[row].length; col++)
             {
-            	checker = tester[row][col];
+            	checker = testers[row][col];
             	
-                System.out.print(tester[row][col]);
+                System.out.print(testers[row][col]);
 
                 switch (checker) {
                
@@ -52,7 +51,7 @@ public class DrumConverter {
                   break;
               
                case 'H':
-            	   	if (tester[row][col+1] == 'f')
+            	   	if (testers[row][col+1] == 'f')
             	   	{
             	  	  type = "Hi-Hat with Foot";	
               	   	  hiHatFootRow = row + 1;
@@ -79,13 +78,13 @@ public class DrumConverter {
                    break;
                    
                case 'T':
-            	   if (tester[row][col+1] == '1')
+            	   if (testers[row][col+1] == '1')
             	   {
              	  	  type = "Low Tom";	
             		  lowTomRow = row + 1;
             		  drumType.add (type);
             	   }
-             	   	else if (tester[row][col+1] == '2')
+             	   	else if (testers[row][col+1] == '2')
              	   	{
              	   	  type = "Hi Tom";
              	   	highTomRow = row + 1;
@@ -94,7 +93,7 @@ public class DrumConverter {
                    break;
                
                case 'F':
-            	   if (tester[row][col+1] == 'T')
+            	   if (testers[row][col+1] == 'T')
             	   {
               	  	  type = "Floor Tom";
             	      floorTomRow = row + 1;
@@ -110,6 +109,8 @@ public class DrumConverter {
             System.out.println();
                            	
         }
+		
+ 
 	}
 }
 
