@@ -9,56 +9,79 @@ import javax.xml.transform.stream.*;
 
 import org.w3c.dom.*;
 
-public class toXML {
+public class GuitarXML {
 	
 	public static void main(String[] args) {
 		char[][] test = {
 				{'a', 'b'}, {'c', 'd'}
 				};
-		
-		toXML(test);
-		
+		GuitarXML();
 	}
 	
-	private static void toXML(char[][] test) {
+	private static void GuitarXML() {
 
 		try {
 		DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 
-		// root elements
+		// The root elements
 		Document doc = docBuilder.newDocument();
 		
 		Element rootElement = doc.createElement("score-partwise");
 		rootElement.setAttribute("version", "3.1");
 		doc.appendChild(rootElement);
 			
+		
+		// The actual values
 			Element partList = doc.createElement("part-list"); 
 			rootElement.appendChild(partList); 
-			partList.setAttribute("id", "P1");
 			
 				Element scorePart = doc.createElement("score-part"); 
-				partList.appendChild(scorePart); 
 				scorePart.setAttribute("id", "P1");
+				partList.appendChild(scorePart); 
 
 					Element partName = doc.createElement("part-name");   
-					partList.appendChild(doc.createTextNode("Guitar") ); 
+					partName.appendChild(doc.createTextNode("Guitar") ); 
 					scorePart.appendChild(partName);               
     
 			
 			Element partId = doc.createElement("part"); 
-			rootElement.appendChild(partList); 
-			partList.setAttribute("id", "P1");
+			partId.setAttribute("id", "P1");
+			rootElement.appendChild(partId); 
 			
 				Element measureNumber = doc.createElement("measure"); 
-				partId.appendChild(measureNumber);    
 				measureNumber.setAttribute("number", "1");
+				partId.appendChild(measureNumber);    
 			
-					Element attributes = doc.createElement("attributes");        
-					attributes.appendChild(doc.createTextNode("5") ); 
-					measureNumber.appendChild(attributes);   
 				
-		
+					Element attributes = doc.createElement("attributes");   
+					measureNumber.appendChild(attributes);   
+					
+					Divisions.divisions(doc, attributes, 1);
+					Time.time(doc, attributes);
+					Clef.clef(doc, attributes);
+
+//							
+//						Element staffDetails = doc.createElement("staff-details");    
+//						attributes.appendChild(staffDetails); 
+//								
+//							Element staffLines = doc.createElement("staff-lines");        
+//							staffLines.appendChild(doc.createTextNode("6") ); 
+//							staffDetails.appendChild(staffLines); 
+//									
+//							Element staffTuning= doc.createElement("staff-tuning");        
+//							staffTuning.setAttribute("line", "1");
+//							staffDetails.appendChild(staffTuning);	
+//							
+//								Element tuningStep = doc.createElement("tuning-step");        
+//								tuningStep.appendChild(doc.createTextNode("E") ); 
+//								staffTuning.appendChild(tuningStep); 
+//						
+//								Element tuningOctave = doc.createElement("tuning-octave");        
+//								tuningOctave.appendChild(doc.createTextNode("2") ); 
+//								staffTuning.appendChild(tuningOctave); 
+//								
+			
 	
 		// write content into XML file
 		TransformerFactory transformerFactory = TransformerFactory.newInstance();
@@ -82,7 +105,9 @@ public class toXML {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	
+		
 	}
+	
+	
 }
 
