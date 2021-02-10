@@ -3,6 +3,7 @@ package tab2xml;
 public class BassConverter {
 	
 	//Main
+	/*
 	public static void main(String args[]) {
 		char[][] test4 = {
 				{'1', '-', '-', '6'},
@@ -15,15 +16,8 @@ public class BassConverter {
 				{'-', '-', '8', '-', '5'}
 		};
 		
-		char[][] test6 = {
-				{'4', '-', '-', '-', '-', '-'},
-				{'3', '-', '7', '-', '-', '-'},
-				{'-', '-', '8', '-', '5', '-'}
-		};
-		
 		String[][] notes4 = Converter(test4);
 		String[][] notes5 = Converter(test5);
-		//String[][] notes6 = GuitarConverter(test6);
 		
 		for(int i = 0; i < notes4.length; i++) {
 			for(int j = 0; j < notes4[i].length; j++) {
@@ -41,6 +35,7 @@ public class BassConverter {
 			
 		//System.out.println(test[0][1]);
 	}
+	*/
 	
 	/*
 	 * Returns 2D array of notes, stored as strings

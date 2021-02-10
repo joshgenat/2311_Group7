@@ -3,6 +3,7 @@ package tab2xml;
 public class GuitarConverter {
 	
 	//Main
+	/*
 	public static void main(String args[]) {
 		char[][] test = {
 				{'1', '-', '-', '-', '5', '-'},
@@ -20,6 +21,8 @@ public class GuitarConverter {
 			
 		//System.out.println(test[0][1]);
 	}
+	*/
+	
 	
 	/*
 	 * Returns 2D array of notes, stored as strings
@@ -29,13 +32,13 @@ public class GuitarConverter {
 	 * -----0----	the characters and numbers, char[rows][columns]
 	 * -2---0----	example, first column {'1', '-', '-', '-', '5', '-'}
 	 * -----0----
-	 * ---3------
+	 * 5--3------
 	 * -------9-- 
 	 * 
 	 * @param	in	2d char array parsed from tab format
 	 * @return	out	2d String array of notes at their corresponding positions on the tab
 	 */
-	public static String[][] Converter(char[][] in) { 
+	public String[][] Converter(char[][] in) { 
 		String[][] out;
 		String tmp; 
 		int i, j, j2;
@@ -52,10 +55,7 @@ public class GuitarConverter {
 				}
 				out[i][j] = StringToNote(tmp);
 			}
-			
-			
 		}
-		
 		
 		return out;
 	}
@@ -65,7 +65,7 @@ public class GuitarConverter {
 	 * @param	in	String representing a column of characters from a tab e.g "-1-4--"
 	 * @return		Note string, corresponding to tab
 	 */
-	public static String StringToNote(String in) {
+	public String StringToNote(String in) {
 		
 		switch(in) {
 			case "0-----":
