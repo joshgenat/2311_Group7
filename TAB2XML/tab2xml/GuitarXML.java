@@ -54,9 +54,9 @@ public class GuitarXML {
 					Element attributes = doc.createElement("attributes");   
 					measureNumber.appendChild(attributes);   
 					
-					Divisions.divisions(doc, attributes, 1);
-					Time.time(doc, attributes);
-					Clef.clef(doc, attributes);
+					Divisions.divisions(doc, attributes, 1, 5);
+					Time.time(doc, attributes, 1, 5);
+					Clef.clef(doc, attributes, 3);
 					Staff.staff(doc, attributes, 4);
 					
 					Note.note(doc, measureNumber);

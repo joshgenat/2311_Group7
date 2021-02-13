@@ -5,7 +5,7 @@ import org.w3c.dom.Element;
 
 public class Clef {
 	
-	public static void clef(Document doc, Element attributes) {
+	public static void clef(Document doc, Element attributes, int i) {
 	Element clef = doc.createElement("clef");    
 	attributes.appendChild(clef); 
 		
@@ -14,7 +14,7 @@ public class Clef {
 		clef.appendChild(sign); 
 			
 		Element line= doc.createElement("line");        
-		line.appendChild(doc.createTextNode("5") ); 
+		line.appendChild(doc.createTextNode("" + i) ); 
 		clef.appendChild(line);
 	}
 }
