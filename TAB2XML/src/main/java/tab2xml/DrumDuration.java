@@ -2,6 +2,8 @@ package tab2xml;
 
 public class DrumDuration {
 	
+	//  this class will be used to calculate how long each note will be played 
+	
 	char checker;
 	int durationcount;
 
