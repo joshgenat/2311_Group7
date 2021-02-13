@@ -60,6 +60,8 @@ public class GuitarXML {
 					Staff.staff(doc, attributes, 4);
 					
 					Note.note(doc, measureNumber);
+					
+					Barline.barline(doc, measureNumber);
 			
 	
 		// write content into XML file
