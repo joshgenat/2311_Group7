@@ -87,7 +87,6 @@ public class GUI implements ActionListener{
 			f.dispose();
 			Parser parse = new Parser();
 			Tab b = new Tab(parse.getLines());
-			
 			System.out.println(b.Type);
 			for(int i = 0; i < b.nodes.size();i++) {
 				for(int j = 0; j < b.nodes.get(i).nodes.length; j++) {
@@ -107,6 +106,7 @@ public class GUI implements ActionListener{
 			for(int i = 0; i < parse.length; i++) {
 				lines.add(parse[i]);
 			}
+			
 			Tab b = new Tab(lines);
 			
 			System.out.println(b.Type);

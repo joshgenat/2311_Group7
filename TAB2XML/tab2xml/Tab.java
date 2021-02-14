@@ -19,15 +19,13 @@ public class Tab {
 			
 			//Checks if Lines are actually tab nodes or just lyrics 
 			if(read && lines.get(i).toString().contains("-") && lines.get(i).toString().lastIndexOf('|') - lines.get(i).toString().indexOf('|') > 0) {
-				if(pass.size() < 6) {
 				pass.add(lines.get(i));
-				}
 			}
 			else if(read || pass.size() > 6) {
 				if(typed == false) {
 					Type = "Guitar";
 					for(int j = 0; j < pass.size(); j++) {
-						if (pass.get(j).toString().contains("x") || pass.get(j).toString().contains("o")) {
+						if (pass.get(j).toString().contains("x") && pass.get(j).toString().contains("o")) {
 							Type = "Drum";
 							break;
 						}
@@ -50,6 +48,7 @@ public class Tab {
 				read = true; 	
 			}
 		}
+		nodes.add(new TabNodes(pass));
 		
 		
 		
