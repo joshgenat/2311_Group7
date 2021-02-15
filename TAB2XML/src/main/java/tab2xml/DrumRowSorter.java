@@ -2,84 +2,79 @@ package tab2xml;
 
 public class DrumRowSorter {
 
-	int [] row; 
-	char [][] reader;
-	String type;
+	static int [] rowSymbols; 	
 	
-	int [] RowSorter()
+	public int [] rowSymbolsSorter(char [][] tab)
 	{
-		//i checks row and j checks col 
-		for (int i = 0; i < reader.length; i++)
+		//i checks rowSymbols and j checks col 
+		for (int i = 0; i < tab.length; i++)
         {
 			
-            for (int j = 0; j < reader[i].length; j++)
+            for (int j = 0; j < tab[i].length; j++)
             {
-            	if (reader[i][j] == 'C' && reader[i][j+1] == 'C')
+            	if (tab[i][j] == 'C' && tab[i][j+1] == 'C')
             	{
-            		row[i] = 1;
+            		rowSymbols[i] = 1;
             				
             	}
             	
-            	if (reader[i][j] == 'H' && reader[i][j+1] == 'H')
+            	else if (tab[i][j] == 'H' && tab[i][j+1] == 'H')
             	{
-            		row[i] = 2;
+            		rowSymbols[i] = 2;
             		
             	}
             		
-            	if (reader[i][j] == 'R' && reader[i][j+1] == 'D')
+            	else if (tab[i][j] == 'R' && tab[i][j+1] == 'D')
             	{
-            		row[i] = 3;
+            		rowSymbols[i] = 3;
             		
             	}
             	
-            	if (reader[i][j] == 'S' && reader[i][j+1] == 'N')
+            	else if (tab[i][j] == 'S' && tab[i][j+1] == 'N')
             	{
-            		row[i] = 4;
+            		rowSymbols[i] = 4;
             	
           		
             	}
             	
-            	if (reader[i][j] == 'T' && reader[i][j+1] == '1')
+            	else if (tab[i][j] == 'T' && tab[i][j+1] == '1')
             	{
-            		row[i] = 5;
+            		rowSymbols[i] = 5;
             		
             		
             	}
             	
-            	if (reader[i][j] == 'T' && reader[i][j+1] == '2')
+            	else if (tab[i][j] == 'T' && tab[i][j+1] == '2')
             	{
-            		row[i] = 6;
+            		rowSymbols[i] = 6;
             		
             		
             	}
             	
-            	if (reader[i][j] == 'F' && reader[i][j+1] == 'T')
+            	else if (tab[i][j] == 'F' && tab[i][j+1] == 'T')
             	{
-            		row[i] = 7;
+            		rowSymbols[i] = 7;
             		
             		
             	}
             	
-            	if (reader[i][j] == 'B' && reader[i][j+1] == 'D')
+            	else if (tab[i][j] == 'B' && tab[i][j+1] == 'D')
             	{
-            		row[i] = 9;
+            		rowSymbols[i] = 8;
             		
             		
             	}
             	
-            	if ((reader[i][j] == 'H' && reader[i][j+1] == 'f') || (reader[i][j] == 'F' && reader[i][j+1] == 'H'))
+            	else if ((tab[i][j] == 'H' && tab[i][j+1] == 'f') || (tab[i][j] == 'F' && tab[i][j+1] == 'H'))
             	{
-            		row[i] = 9;
+            		rowSymbols[i] = 9;
             		
             		
             	}
             }
         }
             	
-    
-		
-		return row;
-		
+		return rowSymbols;		
 	}
 }
 	
