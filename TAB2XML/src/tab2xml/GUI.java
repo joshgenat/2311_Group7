@@ -40,7 +40,7 @@ public class GUI {
 	private void initialize() {
 		frmMusicTabTo = new JFrame();
 		frmMusicTabTo.setTitle("Music Tab to XML File Convertor");
-		frmMusicTabTo.setBounds(100, 100, 1087, 708);
+		frmMusicTabTo.setBounds(0, 0, 1080, 708);
 		frmMusicTabTo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMusicTabTo.getContentPane().setLayout(null);
 		
@@ -108,6 +108,10 @@ public class GUI {
 	
 	public String getText() {
 		return this.viewerText.getText();
+	}
+	
+	public void setText(String text) {
+		this.viewerText.setText(text);
 	}
 }
 
