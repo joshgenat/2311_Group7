@@ -2,8 +2,8 @@ package tab2xml;
 
 public class DrumPartsList {
 
-	String partID;
-	String partName;
+	static String partID;
+	static String partName;
 	
 	String BassDrum1()
 	{
@@ -23,13 +23,13 @@ public class DrumPartsList {
 		return partID;	
 	}
 	
-	String Snare()
+	 String Snare()
 	{
 		partID = "P1-I39";
 		return partID;	
 	}
 	
-	String LowFloorTom()
+	 String LowFloorTom()
 	{
 		partID = "P1-I42";
 		return partID;	

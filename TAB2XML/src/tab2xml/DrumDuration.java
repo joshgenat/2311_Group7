@@ -2,24 +2,22 @@ package tab2xml;
 
 public class DrumDuration {
 	
-	//  this class will be used to calculate how long each note will be played 
-	
-	char checker;
 	int durationcount;
 
 	
-	int duration()
+	public int duration(int row, int col, int nextRow, int nextCol, int nextNextRow, int nextNextCol)
 	{
-
-	if (checker == 'x'|| checker == 'o') 
-	{
-		durationcount = 0;
-		durationcount++;
-		while (checker == '-')
+		if (col != nextCol)
 		{
-			durationcount++;
+			durationcount = nextCol- col;
 		}
-	}
+	
+		if (col == nextCol)
+		{
+			
+			durationcount = nextNextCol - col;
+		}
+		
 	
 	return durationcount;
 	}
