@@ -3,3 +3,15 @@
 
 # Ignore Gradle build output directory
 build
+/.classpath
+/.gitattributes
+/.gitignore
+/.project
+/.settings/
+/SampleTab.txt
+/build.gradle
+/gradle/
+/gradlew
+/gradlew.bat
+/settings.gradle
+/src/
