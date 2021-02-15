@@ -43,13 +43,16 @@ public class Tab {
 			}
 		}
 		nodes.add(new TabNodes(pass));
+		if(type) {
+			Type = this.getType(pass);
+			type = false;
+			}
 	}
 	private String getType(ArrayList<Object> lines) {
 		String type = "Guitar";
 		boolean x = false;
 		boolean o = false;
 		for(int i = 0; i < lines.size(); i++) {
-			System.out.println(lines.get(i));
 			if(lines.toString().contains("x")) {x = true;}
 			if(lines.toString().contains("o")) {o = true;}
 		}
