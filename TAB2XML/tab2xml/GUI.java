@@ -1,124 +1,113 @@
 package tab2xml;
 
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import java.awt.GridLayout;
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Font;
+import javax.swing.BoxLayout;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JTabbedPane;
+import javax.swing.JPanel;
+import javax.swing.JButton;
+import java.awt.Panel;
+import javax.swing.JTextArea;
+import javax.swing.JScrollBar;
+import java.awt.Scrollbar;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.awt.Checkbox;
+import java.awt.Font;
 
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
+public class GUI {
+	JTextArea viewerText;
+	private JFrame frmMusicTabTo;
 
+	/**
+	 * Create the application.
+	 */
+	public GUI() {
+		initialize();
+		frmMusicTabTo.setVisible(true);
+	}
 
-public class GUI implements ActionListener{
-
-	private JFrame f;
-	private JPanel p1, p2, p3;
-	private JButton b1, b2;
-	private JTextArea text;
-	private JLabel l;
-	private JScrollPane s;
-	
-	GUI () {
-		f = new JFrame("Music Tab to XML File Convertor");
-		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		f.setSize(1000,500);
-		f.setLayout(new BorderLayout());
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frmMusicTabTo = new JFrame();
+		frmMusicTabTo.setTitle("Music Tab to XML File Convertor");
+		frmMusicTabTo.setBounds(100, 100, 1087, 708);
+		frmMusicTabTo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmMusicTabTo.getContentPane().setLayout(null);
 		
-		// Label
-		l = new JLabel("Copy and Paste Tab or Select a File");
-		l.setFont(new Font(null, Font.PLAIN, 25));
+		JTabbedPane tabPane = new JTabbedPane(JTabbedPane.TOP);
+		tabPane.setBounds(10, 32, 1053, 34);
+		frmMusicTabTo.getContentPane().add(tabPane);
 		
-		// Panels
-		p1 = new JPanel();
-		p1.setLayout(new FlowLayout());
-		p1.add(l);
-		f.add(p1, BorderLayout.NORTH);
+		JPanel menuPane = new JPanel();
+		menuPane.setBounds(10, 11, 1053, 18);
+		frmMusicTabTo.getContentPane().add(menuPane);
 		
-		p2 = new JPanel();
-		p2.setLayout(new FlowLayout());
-		f.add(p2, BorderLayout.SOUTH);
+		Panel filesPanel = new Panel();
+		filesPanel.setBounds(10, 68, 215, 593);
+		frmMusicTabTo.getContentPane().add(filesPanel);
+		filesPanel.setLayout(null);
 		
-		p3 = new JPanel();
-		p3.setLayout(new FlowLayout());
-		f.add(p3, BorderLayout.CENTER);
-		// 
+		Panel optionPanel = new Panel();
+		optionPanel.setBounds(848, 68, 215, 593);
+		frmMusicTabTo.getContentPane().add(optionPanel);
+		optionPanel.setLayout(null);
 		
-		// Buttons
-		b1 = new JButton("Submit");
-		b1.addActionListener(this);
-		b1.setFont(new Font(null, Font.PLAIN, 15));
+		JButton convertBtn = new JButton("Convert");
+		convertBtn.setBounds(43, 25, 128, 25);
+		convertBtn.addActionListener(new optionListener(this));
+		optionPanel.add(convertBtn);
 		
-		b2 = new JButton("Select a File");
-		b2.addActionListener(this);
-		b2.setFont(new Font(null, Font.PLAIN, 15));
+		JButton fileBtn = new JButton("Select File");
+		fileBtn.setBounds(43, 61, 128, 25);
+		fileBtn.addActionListener(new optionListener(this));
+		optionPanel.add(fileBtn);
 		
+		Checkbox checkbox = new Checkbox("New check box");
+		checkbox.setBounds(10, 106, 92, 21);
+		optionPanel.add(checkbox);
 		
-		// Text Area
-		text = new JTextArea(20, 70);
-		s = new JScrollPane(text,
+		Checkbox checkbox_1 = new Checkbox("New check box");
+		checkbox_1.setBounds(108, 106, 92, 21);
+		optionPanel.add(checkbox_1);
+		
+		Checkbox checkbox_2 = new Checkbox("New check box");
+		checkbox_2.setBounds(10, 134, 92, 21);
+		optionPanel.add(checkbox_2);
+		
+		Checkbox checkbox_3 = new Checkbox("New check box");
+		checkbox_3.setBounds(108, 134, 92, 21);
+		optionPanel.add(checkbox_3);
+		
+		Checkbox checkbox_4 = new Checkbox("New check box");
+		checkbox_4.setBounds(10, 161, 92, 21);
+		optionPanel.add(checkbox_4);
+		
+		Checkbox checkbox_5 = new Checkbox("New check box");
+		checkbox_5.setBounds(108, 161, 92, 21);
+		optionPanel.add(checkbox_5);
+		
+		viewerText = new JTextArea(30,30);
+		viewerText.setFont(new Font("Courier New", Font.PLAIN, 12));
+		
+		JScrollPane viewerPane = new JScrollPane(viewerText,
 				JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, 
 				JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-		text.setText("Paste tab here");
-		text.setLineWrap(true);
-		text.setWrapStyleWord(true);
-		text.setBackground(Color.white);
-		text.setBorder(BorderFactory.createBevelBorder(1));
-		
-		
-		p3.add(s);
-		p3.add(b1);
-		p2.add(b2);
-		f.setVisible(true);
-		f.setLocationRelativeTo(null);
+		viewerPane.setBounds(231, 68, 611, 592);
+		frmMusicTabTo.getContentPane().add(viewerPane);
 	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == b2) {
-			f.dispose();
-			Parser parse = new Parser();
-			Tab b = new Tab(parse.getLines());
-			
-			System.out.println(b.Type);
-			for(int i = 0; i < b.nodes.size();i++) {
-				for(int j = 0; j < b.nodes.get(i).nodes.length; j++) {
-					for(int k = 0; k < b.nodes.get(i).nodes[j].length; k++) {
-						System.out.print(b.nodes.get(i).nodes[j][k]);
-					}
-					System.out.println();
-				}
-				System.out.println();
-			}
-		}
-		
-		if (e.getSource() == b1) {
-			f.dispose();
-			String [] parse = text.getText().split("\n");
-			ArrayList<Object> lines = new ArrayList<Object>();
-			for(int i = 0; i < parse.length; i++) {
-				lines.add(parse[i]);
-			}
-			Tab b = new Tab(lines);
-			
-			System.out.println(b.Type);
-			for(int i = 0; i < b.nodes.size();i++) {
-				for(int j = 0; j < b.nodes.get(i).nodes.length; j++) {
-					for(int k = 0; k < b.nodes.get(i).nodes[j].length; k++) {
-						System.out.print(b.nodes.get(i).nodes[j][k]);
-					}
-					System.out.println();
-				}
-				System.out.println();
-			}
-		}
+	
+	public String getText() {
+		return this.viewerText.getText();
 	}
 }
+
