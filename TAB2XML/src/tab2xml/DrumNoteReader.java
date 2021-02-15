@@ -16,7 +16,7 @@ public class DrumNoteReader {
             for (int row = 0; row < drumTab.length; row++)
             {
             	//if (rowSymbols[row] == 8) means voice two
-            	while ((drumTab[row][col] == 'x') && (rowSymbols[row] == 8))
+            	while ((drumTab[row][col] == 'x') && (rowSymbols[row] != 8))
             	{
             		rowCoordinates[counter] = row;
             		colCoordinates[counter] = col;
