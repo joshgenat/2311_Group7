@@ -11,7 +11,7 @@ public class Tab {
 	
 	public Tab(ArrayList<Object> lines) {
 		boolean read = false;
-		boolean typed = false;
+		boolean type = true;
 		pass = new ArrayList<Object>();
 		nodes = new ArrayList<TabNodes>();
 		
@@ -22,16 +22,10 @@ public class Tab {
 				pass.add(lines.get(i));
 			}
 			else if(read || pass.size() > 6) {
-				if(typed == false) {
-					Type = "Guitar";
-					for(int j = 0; j < pass.size(); j++) {
-						if (pass.get(j).toString().contains("x") && pass.get(j).toString().contains("o")) {
-							Type = "Drum";
-							break;
-						}
+				if(type) {
+					Type = this.getType(pass);
+					type = false;
 					}
-					typed = true;
-				}
 				if(pass.size() > 6) {
 					nodes.add(new TabNodes(pass));
 					pass = new ArrayList<Object>();
@@ -49,9 +43,17 @@ public class Tab {
 			}
 		}
 		nodes.add(new TabNodes(pass));
-		
-		
-		
 	}
-
+	private String getType(ArrayList<Object> lines) {
+		String type = "Guitar";
+		boolean x = false;
+		boolean o = false;
+		for(int i = 0; i < lines.size(); i++) {
+			System.out.println(lines.get(i));
+			if(lines.toString().contains("x")) {x = true;}
+			if(lines.toString().contains("o")) {o = true;}
+		}
+		if(x && o) {type = "Drum";}
+		return type;
+	}
 }

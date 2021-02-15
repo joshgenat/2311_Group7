@@ -18,6 +18,7 @@ public class optionListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
        if(e.getActionCommand() == "Convert") {
     	   String [] parse = a.getText().split("\n");
+    	   String text = "";
 			ArrayList<Object> lines = new ArrayList<Object>();
 			for(int i = 0; i < parse.length; i++) {
 				lines.add(parse[i]);
@@ -25,30 +26,34 @@ public class optionListener implements ActionListener {
 			
 			Tab b = new Tab(lines);
 			
-			System.out.println(b.Type);
+			text += b.Type + "\n";
 			for(int i = 0; i < b.nodes.size();i++) {
 				for(int j = 0; j < b.nodes.get(i).nodes.length; j++) {
 					for(int k = 0; k < b.nodes.get(i).nodes[j].length; k++) {
-						System.out.print(b.nodes.get(i).nodes[j][k]);
+						text += b.nodes.get(i).nodes[j][k];
 					}
-					System.out.println();
+					text += "\n";
 				}
-				System.out.println();
+				text += "\n";
 			}
+			a.setText(text);
 		}
        if(e.getActionCommand() == "Select File") {
 			Parser parse = new Parser();
+			String text = "";
 			Tab b = new Tab(parse.getLines());
-			System.out.println(b.Type);
+			
+			text += b.Type + "\n";
 			for(int i = 0; i < b.nodes.size();i++) {
 				for(int j = 0; j < b.nodes.get(i).nodes.length; j++) {
 					for(int k = 0; k < b.nodes.get(i).nodes[j].length; k++) {
-						System.out.print(b.nodes.get(i).nodes[j][k]);
+						text += b.nodes.get(i).nodes[j][k];
 					}
-					System.out.println();
+					text += "\n";
 				}
-				System.out.println();
+				text += "\n";
 			}
+			a.setText(text);
 		}
     }
 

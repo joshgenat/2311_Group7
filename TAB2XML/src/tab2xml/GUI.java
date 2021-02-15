@@ -109,5 +109,9 @@ public class GUI {
 	public String getText() {
 		return this.viewerText.getText();
 	}
+	
+	public void setText(String text) {
+		this.viewerText.setText(text);
+	}
 }
 
