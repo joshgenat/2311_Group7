@@ -43,13 +43,25 @@ public class DrumXML {
 						scorePart.appendChild(partName);               
 	    
 				
-				Element scoreInstrument = doc.createElement("score-instrument"); 
-				scoreInstrument.setAttribute("id", "P1-I36");
-				rootElement.appendChild(scoreInstrument); 
+				ScoreInstrument.scoreInstrument(doc, rootElement, "P1-I36");      
+						
+				Element partId = doc.createElement("part"); 
+				partId.setAttribute("id", "P1");
+				rootElement.appendChild(partId); 
 				
-					Element instrumentName = doc.createElement("instrument-name"); 
-					instrumentName.appendChild(doc.createTextNode("Bass Drum") ); 
-					scoreInstrument.appendChild(instrumentName);      
+					Element measureNumber = doc.createElement("measure"); 
+					measureNumber.setAttribute("number", "1");
+					partId.appendChild(measureNumber); 
+					
+						Element attributes = doc.createElement("attributes");   
+						measureNumber.appendChild(attributes);
+						
+						Divisions.divisions(doc, attributes, 4);
+						Key.key(doc, attributes, 0);
+						Time.time(doc, attributes, 4, 4);
+						Clef.clef(doc, attributes, 1, "percussion");
+						DrumNote.note(doc, attributes, 4);
+						
 						
 			// write content into XML file
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
