@@ -27,4 +27,22 @@ public class Staff {
 				staffTuning.appendChild(tuningOctave); 
 			}
 	}
+	
+	static String staff(int val, int lines) {
+		
+		String staff = "<staff-details>" +
+                "<staff-lines>" + lines + "</staff-lines>";
+		
+		for (int i = 1; i < val; i++) {
+			staff += "<staff-tuning line=" + val + ">" +
+						"<tuning-step>E</tuning-step>" + 
+                    	"<tuning-octave>" + val + "</tuning-octave>" +
+                    "</staff-tuning>";
+          
+		}
+		staff +=  "</staff-details>";
+		
+		return staff;
+		
+	}
 }
