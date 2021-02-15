@@ -12,13 +12,10 @@ import org.w3c.dom.*;
 public class GuitarXML {
 	
 	public static void main(String[] args) {
-		char[][] test = {
-				{'a', 'b'}, {'c', 'd'}
-				};
-		GuitarXML();
+		new GuitarXML();
 	}
 	
-	private static void GuitarXML() {
+	private GuitarXML() {
 
 		try {
 		DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
@@ -57,11 +54,14 @@ public class GuitarXML {
 					Element attributes = doc.createElement("attributes");   
 					measureNumber.appendChild(attributes);   
 					
-					Divisions.divisions(doc, attributes, 1);
-					Time.time(doc, attributes);
-					Clef.clef(doc, attributes);
+					Divisions.divisions(doc, attributes, 1, 5);
+					Time.time(doc, attributes, 1, 5);
+					Clef.clef(doc, attributes, 3);
 					Staff.staff(doc, attributes, 4);
-
+					
+					Note.note(doc, measureNumber);
+					
+					Barline.barline(doc, measureNumber);
 			
 	
 		// write content into XML file
