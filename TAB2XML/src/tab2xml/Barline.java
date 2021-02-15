@@ -5,13 +5,17 @@ import org.w3c.dom.Element;
 
 public class Barline {
 
-	static void barline(Document doc, Element measureNumber) {
+	static void barline(Document doc, Element measureNumber, String i) {
 		Element barline = doc.createElement("barline");
 		barline.setAttribute("location", "right");
 		measureNumber.appendChild(barline); 
 		
-			Element barstyle = doc.createElement("staff-lines");        
-			barstyle.appendChild(doc.createTextNode("light-heavy") ); 
-			barline.appendChild(barstyle); 
+			barStyle(doc, barline, i); 
+	}
+	
+	static void barStyle(Document doc, Element barline, String i) {
+		Element barstyle = doc.createElement("staff-lines");        
+		barstyle.appendChild(doc.createTextNode("" + i) ); 
+		barline.appendChild(barstyle); 
 	}
 }
