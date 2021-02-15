@@ -2,8 +2,6 @@ package tab2xml;
 
 import java.util.ArrayList;
 
-import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
-
 public class DrumConverter {
 
 	private static char[][] testers;
