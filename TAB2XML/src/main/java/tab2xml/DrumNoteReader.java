@@ -10,16 +10,16 @@ public class DrumNoteReader {
 	
 	void Reader(char [][] drumTab, int [] rowSymbols)
 	{
-		for (int i = 0; i < drumTab.length; i++)
+		for (int col = 0; col < drumTab[col].length; col++)
         {
 			
-            for (int j = 0; j < drumTab[i].length; j++)
+            for (int row = 0; row < drumTab.length; row++)
             {
             	//if (rowSymbols[row] == 8) means voice two
-            	while ((drumTab[i][j] == 'x') && (rowSymbols[i] == 8))
+            	while ((drumTab[row][col] == 'x') && (rowSymbols[row] == 8))
             	{
-            		rowCoordinates[counter] = i;
-            		colCoordinates[counter] = j;
+            		rowCoordinates[counter] = row;
+            		colCoordinates[counter] = col;
             		counter++;
             	}
             }
@@ -27,12 +27,14 @@ public class DrumNoteReader {
         }
 		 // run the loop a second time, now to find the notes in voice 2 
 		
-		for (int k = 0; k < drumTab.length; k++)
+		for (int col2 = 0; col2 < drumTab[col2].length; col2++)
         {
 			
-            for (int z = 0; z < drumTab[k].length; z++)
+            for (int row2 = 0; row2 < drumTab.length; row2++)
             {
-            	if(rowSymbols[k] == 8 && mutipleVoices == false)
+            	
+            	
+            	if(rowSymbols[row2] == 8 && mutipleVoices == false)
             	{
             		mutipleVoices = true;
             		rowCoordinates[counter] = 0;
@@ -41,10 +43,10 @@ public class DrumNoteReader {
             		
             	}
             	
-            	while (rowSymbols[k] == 8)
+            	while (rowSymbols[row2] == 8)
             	{
-            		rowCoordinates[counter] = k;
-            		colCoordinates[counter] = z;
+            		rowCoordinates[counter] = row2;
+            		colCoordinates[counter] = col2;
             		counter++;
             	}
             
