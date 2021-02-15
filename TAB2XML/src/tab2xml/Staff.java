@@ -13,36 +13,27 @@ public class Staff {
 			staffLines.appendChild(doc.createTextNode("" + lines) ); 
 			staffDetails.appendChild(staffLines); 
 					
-			for (int i = 1 ; i < lines; i++) {
+			for (int i = 1 ; i <= lines; i++) {
 			Element staffTuning= doc.createElement("staff-tuning");        
 			staffTuning.setAttribute("line", "" + i);
 			staffDetails.appendChild(staffTuning);	
 			
-				Element tuningStep = doc.createElement("tuning-step");        
-				tuningStep.appendChild(doc.createTextNode("E") ); 
-				staffTuning.appendChild(tuningStep); 
+				tuningStep(doc, staffTuning, "A");
 		
-				Element tuningOctave = doc.createElement("tuning-octave");        
-				tuningOctave.appendChild(doc.createTextNode("" + i) ); 
-				staffTuning.appendChild(tuningOctave); 
+				tuningOctave(doc, staffTuning, i);
 			}
 	}
 	
-	static String staff(int val, int lines) {
-		
-		String staff = "<staff-details>" +
-                "<staff-lines>" + lines + "</staff-lines>";
-		
-		for (int i = 1; i < val; i++) {
-			staff += "<staff-tuning line=" + val + ">" +
-						"<tuning-step>E</tuning-step>" + 
-                    	"<tuning-octave>" + val + "</tuning-octave>" +
-                    "</staff-tuning>";
-          
-		}
-		staff +=  "</staff-details>";
-		
-		return staff;
-		
+	
+	static void tuningStep(Document doc, Element staffTuning, String string) {
+		Element tuningStep = doc.createElement("tuning-step");        
+		tuningStep.appendChild(doc.createTextNode("" + string) ); 
+		staffTuning.appendChild(tuningStep); 
+	}
+	
+	static void tuningOctave(Document doc, Element staffTuning, int j) {
+		Element tuningOctave = doc.createElement("tuning-octave");        
+		tuningOctave.appendChild(doc.createTextNode("" + j) ); 
+		staffTuning.appendChild(tuningOctave); 
 	}
 }

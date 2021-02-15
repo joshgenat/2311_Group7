@@ -55,13 +55,14 @@ public class GuitarXML {
 					measureNumber.appendChild(attributes);   
 					
 					Divisions.divisions(doc, attributes, 1);
-					Time.time(doc, attributes);
-					Clef.clef(doc, attributes);
+					Key.key(doc, attributes, 1);
+					Time.time(doc, attributes, 1, 5);
+					Clef.clef(doc, attributes, 3, "TAB");
 					Staff.staff(doc, attributes, 4);
 					
-					Note.note(doc, measureNumber);
+					GuitarNote.note(doc, measureNumber, 5);
 					
-					Barline.barline(doc, measureNumber);
+					Barline.barline(doc, measureNumber, "light-heavy");
 			
 	
 		// write content into XML file
