@@ -1,6 +1,6 @@
 package tab2xml;
 
-public class DrumNoteReader {
+public class DrumNoteRow {
 
 
 	int [] rowCoordinates;
@@ -8,7 +8,7 @@ public class DrumNoteReader {
 	int counter = 0;
 	boolean mutipleVoices = false;
 	
-	void Reader(char [][] drumTab, int [] rowSymbols)
+	int [] RowReader(char [][] drumTab, int [] rowSymbols)
 	{
 		for (int col = 0; col < drumTab[col].length; col++)
         {
@@ -37,8 +37,8 @@ public class DrumNoteReader {
             	if(rowSymbols[row2] == 8 && mutipleVoices == false)
             	{
             		mutipleVoices = true;
-            		rowCoordinates[counter] = 0;
-            		colCoordinates[counter] = 0;
+            		rowCoordinates[counter] = 100;
+            		colCoordinates[counter] = 100;
             		counter++;
             		
             	}
@@ -53,6 +53,7 @@ public class DrumNoteReader {
             }
             
         }
+		return rowCoordinates;
 		
 		
 		
