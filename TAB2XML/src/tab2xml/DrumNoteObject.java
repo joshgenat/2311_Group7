@@ -56,7 +56,7 @@ public class DrumNoteObject {
 	int row = noteRowValues[counter];
 	int col = noteColValues[counter];
 	int nextCol = noteColValues[counter +1];
-	int nextNextCol = noteColValues[counter +2];
+	int nextNextCol = noteColValues[counter +2]; 
 	
 	
 	
