@@ -10,10 +10,10 @@ public class DrumNoteCol {
 	
 	int [] ColReader(char [][] drumTab, int [] rowSymbols)
 	{
-		rowCoordinates = new int[drumTab.length];
-		colCoordinates = new int[drumTab.length];
+		rowCoordinates = new int[100];
+		colCoordinates = new int[100];
 		
-		for (int col = 0; col < drumTab[col].length; col++)
+		for (int col = 0; col < drumTab[0].length; col++)
         {
 			
             for (int row = 0; row < drumTab.length; row++)
@@ -31,7 +31,7 @@ public class DrumNoteCol {
 		 
 		// run the loop a second time, now to find the notes in voice 2 
 		
-		for (int col2 = 0; col2 < drumTab[col2].length; col2++)
+		for (int col2 = 0; col2 < drumTab[0].length; col2++)
         {
 			
             for (int row2 = 0; row2 < drumTab.length; row2++)
