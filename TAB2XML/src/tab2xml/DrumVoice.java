@@ -10,6 +10,10 @@ public class DrumVoice {
 		{
 			voiceValue = 2;
 		}
+		else if (row == 100)
+		{
+			voiceValue = 0;
+		}
 		else
 		{
 			voiceValue = 1;
