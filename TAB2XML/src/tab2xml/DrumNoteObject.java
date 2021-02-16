@@ -1,5 +1,7 @@
 package tab2xml;
 
+import java.util.ArrayList;
+
 public class DrumNoteObject {
 	
 	
@@ -11,17 +13,9 @@ public class DrumNoteObject {
 	 */
 	
 	
-	char [][] drumTab;
+	Tab tab;
 	int voice;
-
-	
-	
-	// the following values are only needed once for the MusicXML Code
-	String clef = "percussion";
-	int divisions = 4;
-	int fifths = 0;
-	int beats = 4;
-	int beatsType = 4;
+	ArrayList<DrumNotes> notes = new ArrayList<DrumNotes>();
 	
 	
 	
@@ -37,41 +31,60 @@ public class DrumNoteObject {
 	DrumID idFinder = new DrumID();
 	DrumVoice voiceValue = new DrumVoice();
 	DrumStem stemValue = new DrumStem();
-
-	
-	/**
-	 * the following three arrays only need to be ran one time 
-	 * rowSymbols will keep track of which Instrument is played for which row 
-	 * noteRowValues and noteColValues are parallel arrays which store the coordinates of the notes being played
-	 *  arrays are programmed in a way where, voice one notes go first, then followed by voice 2 notes
-	 *  When noteRowValue[counter] and noteColValues[counter] = 100, this means switching from voice one to voice two, temporally voice will be equal to 0
-	 *  this will signal the back up funtion of the MusicXML code
-	 */
-	int [] rowSymbols = note.rowSymbolsSorter(drumTab);	 
-	int[] noteRowValues = rowValue.RowReader(drumTab,rowSymbols);
-	int[] noteColValues = colValue.ColReader(drumTab,rowSymbols);
-	
-	
-	int counter = 0;
-	int row = noteRowValues[counter];
-	int col = noteColValues[counter];
-	int nextCol = noteColValues[counter +1];
-	int nextNextCol = noteColValues[counter +2];
-	
-	
-	
-	/**
-	 * the following pieces of information are the ones which need to be put into an array for the MusicXML Code
-	 */
-	String displayStep = step.StepOrganizer(row, col);;
-	int voiceNumber = voiceValue.FindVoiceValue(row, rowSymbols);
-	int displayOctave = octave.DrumOctaves(drumTab,voiceNumber);
-	int duration = noteduration.NoteDurationLength(col,nextCol,nextNextCol);
-	String idNumber = idFinder.InstrumentID(row, rowSymbols);
-	String stem = stemValue.FindStemValue(voiceNumber);
 		
 	
-	
+	public DrumNoteObject(Tab tab) {
+		// the following values are only needed once for the MusicXML Code
+		this.tab = tab;
+		String clef = "percussion";
+		int divisions = 4;
+		int fifths = 0;
+		int beats = 4;
+		int beatsType = 4;
+		
+		for(int i = 0; i < tab.nodes.size(); i++) {
+			
+		/**
+		 * the following three arrays only need to be ran one time 
+		 * rowSymbols will keep track of which Instrument is played for which row 
+		 * noteRowValues and noteColValues are parallel arrays which store the coordinates of the notes being played
+		 *  arrays are programmed in a way where, voice one notes go first, then followed by voice 2 notes
+		 *  When noteRowValue[counter] and noteColValues[counter] = 100, this means switching from voice one to voice two, temporally voice will be equal to 0
+		 *  this will signal the back up funtion of the MusicXML code
+		 */
+
+		int [] rowSymbols = note.rowSymbolsSorter(tab.nodes.get(i).nodes);	 
+		int[] noteRowValues = rowValue.RowReader(tab.nodes.get(i).nodes,rowSymbols);
+		int[] noteColValues = colValue.ColReader(tab.nodes.get(i).nodes,rowSymbols);
+		
+		
+		for(int j = 0; j < noteRowValues.length; j++) {
+		int row = noteRowValues[j];
+		int col = noteColValues[j];
+		int nextCol = 0;
+		int nextNextCol = 0;
+		if(j+1 < noteRowValues.length) {nextCol = noteColValues[j+1];} 
+		if(j+2 < noteRowValues.length) {nextNextCol = noteColValues[j+2];} 
+		
+		
+		
+		/**
+		 * the following pieces of information are the ones which need to be put into an array for the MusicXML Code
+		 */
+		DrumNotes note1 = new DrumNotes();
+		note1.displayStep = step.StepOrganizer(row, col);;
+		note1.voiceNumber = voiceValue.FindVoiceValue(row, rowSymbols);
+		note1.displayOctave = octave.DrumOctaves(tab.nodes.get(i).nodes,note1.voiceNumber);
+		note1.duration = noteduration.NoteDurationLength(col,nextCol,nextNextCol);
+		note1.idNumber = idFinder.InstrumentID(row, rowSymbols);
+		note1.stem = stemValue.FindStemValue(note1.voiceNumber);
+		
+		notes.add(note1);
+		
+		}
+		}
+		
+	}
 	
 	
 	

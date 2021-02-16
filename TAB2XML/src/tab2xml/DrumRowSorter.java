@@ -6,10 +6,11 @@ public class DrumRowSorter {
 	
 	public int [] rowSymbolsSorter(char [][] tab)
 	{
+		rowSymbols = new int[tab.length];
 		//i checks rowSymbols and j checks col 
 		for (int i = 0; i < tab.length; i++)
         {
-			
+	
             for (int j = 0; j < tab[i].length; j++)
             {
             	if (tab[i][j] == 'C' && tab[i][j+1] == 'C')

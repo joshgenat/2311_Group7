@@ -10,6 +10,7 @@ public class DrumNoteRow {
 	
 	int [] RowReader(char [][] drumTab, int [] rowSymbols)
 	{
+		
 		for (int col = 0; col < drumTab[col].length; col++)
         {
 			
