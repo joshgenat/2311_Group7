@@ -72,6 +72,10 @@ public class GUI {
 		fileBtn.addActionListener(new optionListener(this));
 		optionPanel.add(fileBtn);
 		
+		JButton dlBtn = new JButton("Download");
+		dlBtn.setBounds(43, 362, 128, 25);
+		optionPanel.add(dlBtn);
+		
 		Checkbox checkbox = new Checkbox("New check box");
 		checkbox.setBounds(10, 106, 92, 21);
 		optionPanel.add(checkbox);
