@@ -3,40 +3,43 @@ package tab2xml;
 public class DrumDisplaySteps {
 
 	static int i;
-	char displayStep;
+	static String displayStep;
 	
-	public char StepOrganizer(int row, int col)
+	String StepOrganizer(int row, int col)
 	{
 		if (row == 0)
 		{
-			displayStep = 'A';
+			displayStep = "A";
 		}
 		
 		else if (row == 1)
 		{
-			displayStep = 'G';
+			displayStep = "G";
 		}
 		
 		else if (row == 2)
 		{
-			displayStep = 'C';
+			displayStep = "C";
 		}
 		
 		else if (row == 3)
 		{
-			displayStep = 'E';
+			displayStep = "E";
 		}
 		
 		else if (row == 4)
 		{
-			displayStep = 'D';
+			displayStep = "D";
 		}
 		
 		else if (row == 5)
 		{
-			displayStep = 'F';
+			displayStep = "F";
 		}
-		
+		else 
+		{
+			displayStep = "inValid Entry";
+		}
 		
 		return displayStep;
 	

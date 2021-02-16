@@ -1,6 +1,6 @@
 package tab2xml;
 
-public class DrumID {
+public class DrumID extends DrumPartsList {
 
 	String iDNumber;
 	DrumPartsList Object = new DrumPartsList();

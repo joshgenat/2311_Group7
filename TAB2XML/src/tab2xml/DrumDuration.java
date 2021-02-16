@@ -5,7 +5,7 @@ public class DrumDuration {
 	int durationcount;
 
 	
-	public int duration(int row, int col, int nextRow, int nextCol, int nextNextRow, int nextNextCol)
+	public int NoteDurationLength(int col,  int nextCol, int nextNextCol)
 	{
 		if (col != nextCol)
 		{

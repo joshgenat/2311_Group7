@@ -4,17 +4,6 @@ public class DrumDisplayOctave {
 
 	static int numOfOctaves;
 	
-
-	public int DrumOctaves(char [][] tabsize)
-	{
-		            	
-		int i = 0;
-		
-        	numOfOctaves = (tabsize[i].length) - 1;
-             
-		return numOfOctaves; 	
-     }
-		
 	
 	public int DrumOctaves(char [][] tabsize, int voice)
 	{
@@ -26,7 +15,10 @@ public class DrumDisplayOctave {
         {
         	numOfOctaves = (tabsize[i].length) - 2;
         }
-        
+		else if(voice ==1)
+		{
+			numOfOctaves = (tabsize[i].length) - 1;
+		}
 		else 
 		{
 		// throw an exception saying voice value is not valid 	
