@@ -45,7 +45,7 @@ public class DrumNoteObject {
 	 * noteRowValues and noteColValues are parallel arrays which store the coordinates of the notes being played
 	 *  arrays are programmed in a way where, voice one notes go first, then followed by voice 2 notes
 	 *  When noteRowValue[counter] and noteColValues[counter] = 100, this means switching from voice one to voice two, temporally voice will be equal to 0
-	 *  this will signal the back up funtion of the MusicXML code 
+	 *  this will signal the back up funtion of the MusicXML code
 	 */
 	int [] rowSymbols = note.rowSymbolsSorter(drumTab);	 
 	int[] noteRowValues = rowValue.RowReader(drumTab,rowSymbols);
