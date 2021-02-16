@@ -16,21 +16,28 @@ public class optionListener implements ActionListener {
 	
     @Override
     public void actionPerformed(ActionEvent e) {
-       if(e.getActionCommand() == "Convert") {
-    	   String [] parse = a.getText().split("\n");
-    	   String text = "";
-			ArrayList<Object> lines = new ArrayList<Object>();
-			for(int i = 0; i < parse.length; i++) {
-				lines.add(parse[i]);
-			}
-			
-			Tab b = new Tab(lines);
-			DrumNoteObject c = new DrumNoteObject(b);
-			
-			for(int i = 0; i < c.notes.size(); i++) {
-				System.out.println(c.notes.get(i).toString());
-			}
-		}
+    	if(e.getActionCommand() == "Convert") {
+     	   String [] parse = a.getText().split("\n");
+     	   String text = "";
+ 			ArrayList<Object> lines = new ArrayList<Object>();
+ 			for(int i = 0; i < parse.length; i++) {
+ 				lines.add(parse[i]);
+ 			}
+ 			
+ 			Tab b = new Tab(lines);
+ 			
+ 			text += b.Type + "\n";
+ 			for(int i = 0; i < b.nodes.size();i++) {
+ 				for(int j = 0; j < b.nodes.get(i).nodes.length; j++) {
+ 					for(int k = 0; k < b.nodes.get(i).nodes[j].length; k++) {
+ 						text += b.nodes.get(i).nodes[j][k];
+ 					}
+ 					text += "\n";
+ 				}
+ 				text += "\n";
+ 			}
+ 			a.setText(text);
+ 		}
        if(e.getActionCommand() == "Select File") {
 			Parser parse = new Parser();
 			String text = "";

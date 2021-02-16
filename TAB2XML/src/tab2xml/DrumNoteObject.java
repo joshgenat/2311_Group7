@@ -52,7 +52,7 @@ public class DrumNoteObject {
 		 *  When noteRowValue[counter] and noteColValues[counter] = 100, this means switching from voice one to voice two, temporally voice will be equal to 0
 		 *  this will signal the back up funtion of the MusicXML code
 		 */
-
+		
 		int [] rowSymbols = note.rowSymbolsSorter(tab.nodes.get(i).nodes);	 
 		int[] noteRowValues = rowValue.RowReader(tab.nodes.get(i).nodes,rowSymbols);
 		int[] noteColValues = colValue.ColReader(tab.nodes.get(i).nodes,rowSymbols);

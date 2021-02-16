@@ -3,6 +3,9 @@ package tab2xml;
 public class DrumStem {
 	
 	String stem;
+	public DrumStem() {
+		
+	}
 	
 	String FindStemValue(int voice)
 	{
