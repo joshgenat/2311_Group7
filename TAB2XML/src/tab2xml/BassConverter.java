@@ -6,9 +6,12 @@ public class BassConverter {
 	
 	public static void main(String args[]) {
 		char[][] test4 = {
-				{'0', '0', '0', '0'},
+				{'|', '|', '|', '|'},
 				{'7', '7', '7', '7'},
-				{'8', '8', '8', '8'}
+				{'8', '8', '8', '8'},
+				{'|', '|', '|', '|'},
+				{'1', '1', '-', '-'},
+				{'-', '5', '4', '-'}
 		};
 		char[][] test5 = {
 				{'0', '0', '0', '0', '0'},
@@ -16,22 +19,16 @@ public class BassConverter {
 				{'-', '-', '8', '-', '5'}
 		};
 		
-		String[][] notes4 = Converter(test4);
-		String[][] notes5 = Converter(test5);
+		GuitarNotes[][] notes = converter(test4);
+		notes = removeNull(notes);
 		
-		for(int i = 0; i < notes4.length; i++) {
-			for(int j = 0; j < notes4[i].length; j++) {
-					System.out.print(notes4[i][j] + ", ");
+		for(int i = 0; i < notes.length; i++) {
+			for(int j = 0; j < notes[i].length; j++) {
+					System.out.print(notes[i][j] + ", ");
 				}
 			System.out.println();
 		}
 		
-		for(int i = 0; i < notes5.length; i++) {
-			for(int j = 0; j < notes5[i].length; j++) {
-					System.out.print(notes5[i][j] + ", ");
-				}
-			System.out.println();
-		}
 			
 		//System.out.println(test[0][1]);
 	}
@@ -50,22 +47,22 @@ public class BassConverter {
 	 * @param	in	2d char array parsed from tab format
 	 * @return	out	2d String array of notes at their corresponding positions on the tab
 	 */
-	public static String[][] Converter(char[][] in) { 
-		String[][] out;
-		String tmp; 
-		int i, j, j2;
-		out = new String[in.length][in[0].length];
+	public static GuitarNotes[][] converter(char[][] in) { 
+		GuitarNotes[][] out = new GuitarNotes[in.length][in[0].length]; 
+		int i, i2, j, j2;
+		i2 = 0;
 		for(i = 0; i < out.length; i++) {
-			tmp = "";
-			for(j = 0; j < out[i].length; j++) {
-				tmp = "";
-				for(j2 = 0; j2 < out[i].length; j2++) {
-					if(in[i][j] == '-') // j2 == j
-						out[i][j] = "-";	//tmp = tmp + in[i][j]; 
-					else
-						out[i][j] = IndexToNote(i, j, in[i][j]); //tmp = tmp + '-';
+			if(charToInt(in[i][0]) != -1 || in[i][0] == '-') {
+				for(j = 0; j < out[i].length; j++) {
+					for(j2 = 0; j2 < out[i].length; j2++) {
+						if(in[i][j] == '-') // j2 == j
+							out[i2][j] = new GuitarNotes(i);	//tmp = tmp + in[i][j]; 
+						else
+							out[i2][j] = indexToNote(i, j, in[i][j]); //tmp = tmp + '-';
+					}
+					//out[i][j] = StringToNote(tmp);
 				}
-				//out[i][j] = StringToNote(tmp);
+			i2++;
 			}
 		}
 		
@@ -78,14 +75,14 @@ public class BassConverter {
 	 * @return		Note string, corresponding to tab
 	 */
 	
-	public static String IndexToNote(int i, int j, char c) {
-		int k = CharToInt(c);
+	public static GuitarNotes indexToNote(int i, int j, char c) {
+		int k = charToInt(c);
 		int rem = (4 + k + 5 * j) % 12;
 		
-		return rem + IntToNote(rem) + ((16 + 5 * j + k) / 12);
+		return new GuitarNotes(intToNote(rem), ((16 + 5 * j + k) / 12), i, k);
 	}
 	
-	public static String IntToNote(int a) {
+	public static String intToNote(int a) {
 		switch(a) {
 			case 0:
 				return "C";
@@ -116,7 +113,8 @@ public class BassConverter {
 		}
 	}
 	
-	public static int CharToInt(char c) {
+	public static int charToInt(char c) {
+		
 		switch(c) {
 			case '0':
 				return 0;
@@ -161,8 +159,21 @@ public class BassConverter {
 			case '=':
 				return 21;
 			default:
-				return '\0';
+				return -1;
 		}
+	}
+	
+	public static GuitarNotes[][] removeNull(GuitarNotes[][] in){
+		int i, j;
+		for(i = 1; i <= in.length; i++){
+			if(in[i][0] == null) 
+				break;
+		}
+		GuitarNotes[][] out = new GuitarNotes[i][in[0].length];
+		for(j = 0; j < i; j++) {
+			out[j] = in[j];
+		}
+		return out;
 	}
 	
 	/*
