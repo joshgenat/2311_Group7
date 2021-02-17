@@ -3,6 +3,8 @@ package tab2xml;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.StringWriter;
 
 import javax.xml.parsers.*;
 import javax.xml.transform.*;
@@ -14,10 +16,10 @@ import org.w3c.dom.*;
 public class DrumXML {
 
 	public static void main(String[] args) {
-		new DrumXML();
+		new DrumXML(DrumNoteObject o);
 	}
 	
-	DrumXML() {
+	DrumXML(DrumNoteObject o) {
 		try {
 			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
@@ -43,8 +45,10 @@ public class DrumXML {
 						scorePart.appendChild(partName);               
 	    
 				
-				ScoreInstrument.scoreInstrument(doc, rootElement, "P1-I36");      
-						
+				for(int i = 0; i < o.instruments.size(); i++) {
+					ScoreInstrument.scoreInstrument(doc, rootElement, o, i);      
+				}
+				
 				Element partId = doc.createElement("part"); 
 				partId.setAttribute("id", "P1");
 				rootElement.appendChild(partId); 
@@ -56,12 +60,14 @@ public class DrumXML {
 						Element attributes = doc.createElement("attributes");   
 						measureNumber.appendChild(attributes);
 						
-						Divisions.divisions(doc, attributes, 4);
-						Key.key(doc, attributes, 0);
-						Time.time(doc, attributes, 4, 4);
-						Clef.clef(doc, attributes, 1, "percussion");
-						DrumNote.note(doc, attributes, 4);
+						Divisions.divisions(doc, attributes, o);
+						Key.key(doc, attributes, o);
+						Time.time(doc, attributes, o);
+						Clef.clef(doc, attributes, o);
 						
+						for(int j = 0; j < o.notes.size() ; j++) {
+							DrumNote.note(doc, attributes, o, j);
+						}
 						
 			// write content into XML file
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
@@ -71,11 +77,14 @@ public class DrumXML {
 			DOMSource source = new DOMSource(doc);
 						
 			// Print to console
-			StreamResult result = new StreamResult(System.out);
-			// StreamResult result = new StreamResult(new File());
+//			StreamResult result = new StreamResult(System.out);
+			
+			StringWriter outWriter = new StringWriter();
+			StreamResult result = new StreamResult( outWriter );
 						
-			transformer.transform(source, result);
-						
+			transformer.transform(source, result);		
+			StringBuffer sb = outWriter.getBuffer(); 
+			String finalstring = sb.toString();
 	}
 		catch (TransformerException e) {
 			e.printStackTrace();
