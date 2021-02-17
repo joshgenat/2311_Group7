@@ -19,7 +19,7 @@ public class BassConverter {
 				{'-', '-', '8', '-', '5'}
 		};
 		
-		GuitarNotes[][] notes = converter(test4);
+		GuitarNoteObject[][] notes = converter(test4);
 		notes = removeNull(notes);
 		
 		for(int i = 0; i < notes.length; i++) {
@@ -47,8 +47,8 @@ public class BassConverter {
 	 * @param	in	2d char array parsed from tab format
 	 * @return	out	2d String array of notes at their corresponding positions on the tab
 	 */
-	public static GuitarNotes[][] converter(char[][] in) { 
-		GuitarNotes[][] out = new GuitarNotes[in.length][in[0].length]; 
+	public static GuitarNoteObject[][] converter(char[][] in) { 
+		GuitarNoteObject[][] out = new GuitarNoteObject[in.length][in[0].length]; 
 		int i, i2, j, j2;
 		i2 = 0;
 		for(i = 0; i < out.length; i++) {
@@ -56,7 +56,7 @@ public class BassConverter {
 				for(j = 0; j < out[i].length; j++) {
 					for(j2 = 0; j2 < out[i].length; j2++) {
 						if(in[i][j] == '-') // j2 == j
-							out[i2][j] = new GuitarNotes(i);	//tmp = tmp + in[i][j]; 
+							out[i2][j] = new GuitarNoteObject(i);	//tmp = tmp + in[i][j]; 
 						else
 							out[i2][j] = indexToNote(i, j, in[i][j]); //tmp = tmp + '-';
 					}
@@ -75,11 +75,11 @@ public class BassConverter {
 	 * @return		Note string, corresponding to tab
 	 */
 	
-	public static GuitarNotes indexToNote(int i, int j, char c) {
+	public static GuitarNoteObject indexToNote(int i, int j, char c) {
 		int k = charToInt(c);
 		int rem = (4 + k + 5 * j) % 12;
 		
-		return new GuitarNotes(intToNote(rem), ((16 + 5 * j + k) / 12), i, k);
+		return new GuitarNoteObject(intToNote(rem), ((16 + 5 * j + k) / 12), i, k);
 	}
 	
 	public static String intToNote(int a) {
@@ -163,13 +163,13 @@ public class BassConverter {
 		}
 	}
 	
-	public static GuitarNotes[][] removeNull(GuitarNotes[][] in){
+	public static GuitarNoteObject[][] removeNull(GuitarNoteObject[][] in){
 		int i, j;
 		for(i = 1; i <= in.length; i++){
 			if(in[i][0] == null) 
 				break;
 		}
-		GuitarNotes[][] out = new GuitarNotes[i][in[0].length];
+		GuitarNoteObject[][] out = new GuitarNoteObject[i][in[0].length];
 		for(j = 0; j < i; j++) {
 			out[j] = in[j];
 		}
