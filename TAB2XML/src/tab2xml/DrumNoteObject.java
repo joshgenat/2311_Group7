@@ -16,6 +16,7 @@ public class DrumNoteObject {
 	Tab tab;
 	int voice;
 	ArrayList<DrumNotes> notes = new ArrayList<DrumNotes>();
+	ArrayList<DrumPartsList> instruments = new ArrayList<>();
 	
 	
 	
@@ -28,7 +29,7 @@ public class DrumNoteObject {
 	DrumDisplaySteps step = new DrumDisplaySteps();
 	DrumDisplayOctave octave = new DrumDisplayOctave();
 	DrumDuration noteduration = new DrumDuration();
-	DrumID idFinder = new DrumID();
+	DrumID instrumentFinder = new DrumID();
 	DrumVoice voiceValue = new DrumVoice();
 	DrumStem stemValue = new DrumStem();
 		
@@ -41,6 +42,7 @@ public class DrumNoteObject {
 		int fifths = 0;
 		int beats = 4;
 		int beatsType = 4;
+		
 		
 		for(int i = 0; i < tab.nodes.size(); i++) {
 			
@@ -57,6 +59,9 @@ public class DrumNoteObject {
 		int[] noteRowValues = rowValue.RowReader(tab.nodes.get(i).nodes,rowSymbols);
 		int[] noteColValues = colValue.ColReader(tab.nodes.get(i).nodes,rowSymbols);
 		
+		for(int r = 0; r < tab.nodes.get(i).nodes.length; r++) {
+			instruments.add(instrumentFinder.Instrument(r, rowSymbols));
+		}
 		
 		for(int j = 0; j < noteRowValues.length; j++) {
 		int row = noteRowValues[j];
@@ -76,8 +81,8 @@ public class DrumNoteObject {
 		note1.voiceNumber = voiceValue.FindVoiceValue(row, rowSymbols);
 		note1.displayOctave = octave.DrumOctaves(tab.nodes.get(i).nodes,note1.voiceNumber);
 		note1.duration = noteduration.NoteDurationLength(col,nextCol,nextNextCol);
-		note1.idNumber = idFinder.InstrumentID(row, rowSymbols);
 		note1.stem = stemValue.FindStemValue(note1.voiceNumber);
+		
 		
 		notes.add(note1);
 		

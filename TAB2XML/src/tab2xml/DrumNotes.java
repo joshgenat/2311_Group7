@@ -5,7 +5,6 @@ public class DrumNotes {
 	int voiceNumber;
 	int displayOctave;
 	int duration;
-	String idNumber;
 	String stem;
 	
 	public DrumNotes(){
@@ -13,6 +12,6 @@ public class DrumNotes {
 	}
 	
 	public String toString() {
-		return this.displayStep + " " + this.voiceNumber + " " + this.displayOctave + " " + this.duration + " " + this.idNumber + " " + this.stem + " ";
+		return this.displayStep + " " + this.voiceNumber + " " + this.displayOctave + " " + this.duration +  " " + this.stem + " ";
 	}
 }

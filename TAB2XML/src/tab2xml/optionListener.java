@@ -37,6 +37,7 @@ public class optionListener implements ActionListener {
  				text += "\n";
  			}
  			a.setText(text);
+ 			
  		}
        if(e.getActionCommand() == "Select File") {
 			Parser parse = new Parser();

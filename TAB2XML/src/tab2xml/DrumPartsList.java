@@ -2,150 +2,154 @@ package tab2xml;
 
 public class DrumPartsList {
 
-	static String partID;
-	static String partName;
+	String partID;
+	String partName;
 	
-	String BassDrum1()
+	public DrumPartsList() {
+		
+	}
+	
+	public void BassDrum1()
 	{
 		partID = "P1-I36";
-		return partID;	
+		partName = "Bass Drum 1";
 	}
 
-	String BassDrum2()
+	public void BassDrum2()
 	{
 		partID = "P1-I37";
-		return partID;	
+		partName = "Bass Drum 2";
 	}
 	
-	String SideStick()
+	public void SideStick()
 	{
 		partID = "P1-I38";
-		return partID;	
+		partName = "Side Stick";
 	}
 	
-	 String Snare()
+	public void Snare()
 	{
 		partID = "P1-I39";
-		return partID;	
+		partName = "Snare";
 	}
 	
-	 String LowFloorTom()
+    public void LowFloorTom()
 	{
 		partID = "P1-I42";
-		return partID;	
+		partName = "Low Floor Tom";
 	}
 	
-	String ClosedHiHat()
+	public void ClosedHiHat()
 	{
 		partID = "P1-I43";
-		return partID;	
+		partName = "Closed Hi Hat";	
 	}
 	
-	String HighFloorTom()
+	public void HighFloorTom()
 	{
 		partID = "P1-I44";
-		return partID;	
+		partName = "High Floor Tom";
 	}
 	
-	String PedalHiHat()
+	public void PedalHiHat()
 	{
 		partID = "P1-I45";
-		return partID;	
+		partName = "Pedal Hi Hat";	
 	}
 	
-	String LowTom()
+	public void LowTom()
 	{
 		partID = "P1-I46";
-		return partID;	
+		partName = "Low Tom";	
 	}
 	
-	String OpenHiHat()
+	public void OpenHiHat()
 	{
 		partID = "P1-I47";
-		return partID;	
+		partName = "Open Hi Hat";	
 	}
 	
-	String LowMidTom()
+	public void LowMidTom()
 	{
 		partID = "P1-I48";
-		return partID;	
+		partName = "Low Mid Tom";	
 	}
 	
-	String HiMidTom()
+	public void HiMidTom()
 	{
 		partID = "P1-I49";
-		return partID;	
+		partName = "Hi Mid Tom";
 	}
 	
-	String CrashCymbal()
+	public void CrashCymbal()
 	{
 		partID = "P1-I50";
-		return partID;	
+		partName = "Crash Cymbal";
 	}
 	
-	String HighTom()
+	public void HighTom()
 	{
 		partID = "P1-I51";
-		return partID;	
+		partName = "High Tom";
 	}
 	
-	String RideCymbal()
+	public void RideCymbal()
 	{
 		partID = "P1-I52";
-		return partID;	
+		partName = "Ride Cymbal";
 	}
 	
-	String ChineseCymbal()
+	public void ChineseCymbal()
 	{
 		partID = "P1-I53";
-		return partID;	
+		partName = "Chinese Cymbal";
 	}
 	
-	String RideBell()
+	public void RideBell()
 	{
 		partID = "P1-I54";
-		return partID;	
+		partName = "Ride Bell";
 	}
 	
-	String Tambourine()
+	public void Tambourine()
 	{
 		partID = "P1-I55";
-		return partID;	
+		partName = "Tambourine";
 	}
 	
-	String SlaphCymbal()
+	public void SlaphCymbal()
 	{
 		partID = "P1-I56";
-		return partID;	
+		partName = "Slaph Cymbal";
 	}
 	
-	String CowBell()
+	public void CowBell()
 	{
 		partID = "P1-I57";
-		return partID;	
+		partName = "Slaph Cymbal";
 	}
 	
-	String CrashCymbal2()
+	public void CrashCymbal2()
 	{
 		partID = "P1-I58";
-		return partID;	
+		partName = "Crash Cymbal 2";
 	}
 	
-	String RideCymbal2()
+	public void RideCymbal2()
 	{
 		partID = "P1-I60";
-		return partID;	
+		partName = "Ride Cymbal 2";
 	}
 	
-	String OpenHiConga()
+	public void OpenHiConga()
 	{
 		partID = "P1-I64";
-		return partID;	
+		partName = "Open Hi Conga";
 	}
 	
-	String LowConga()
+	public void LowConga()
 	{
 		partID = "P1-I65";
-		return partID;	
+		partName = "Low Conga";	
 	}
 }

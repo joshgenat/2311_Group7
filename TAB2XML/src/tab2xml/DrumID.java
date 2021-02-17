@@ -2,58 +2,58 @@ package tab2xml;
 
 public class DrumID extends DrumPartsList {
 
-	String iDNumber;
-	DrumPartsList Object = new DrumPartsList();
 	
-	String InstrumentID(int row, int [] rowSymbols)
+	
+	DrumPartsList Instrument(int row, int [] rowSymbols)
 	{
+		DrumPartsList instrument = new DrumPartsList();
 		if (rowSymbols[row] == 1)
 		{
-			iDNumber = Object.CrashCymbal();
+			instrument.CrashCymbal();
 		}
 		
 		else if (rowSymbols[row] == 2)
 		{
-			iDNumber = Object.ClosedHiHat();
+			instrument.ClosedHiHat();
 		}
 		
 		else if (rowSymbols[row] == 3)
 		{
-			iDNumber = Object.RideCymbal();
+			instrument.RideCymbal();
 		}
 		
 		else if (rowSymbols[row] == 4)
 		{
-			iDNumber = Object.Snare();
+			instrument.Snare();
 		}
 		
 		else if (rowSymbols[row] == 5)
 		{
-			iDNumber = Object.HighTom();
+			instrument.HighTom();
 		}
 		
 		else if (rowSymbols[row] == 6)
 		{
-			iDNumber = Object.LowTom();
+			instrument.LowTom();
 		}
 		
 		else if (rowSymbols[row] == 7)
 		{
-			iDNumber = Object.LowFloorTom();
+			instrument.LowFloorTom();
 		}
 		
 		else if (rowSymbols[row] == 8)
 		{
-			iDNumber = Object.BassDrum1();
+			instrument.BassDrum1();
 		}
 		
 		else if (rowSymbols[row] == 9)
 		{
-			iDNumber = Object.PedalHiHat();
+			instrument.PedalHiHat();
 		}
 		
 		
-		return iDNumber;
+		return instrument;
 		
 	}
 }
