@@ -7,7 +7,7 @@ public class BassConverter {
 	public static void main(String args[]) {
 		char[][] test4 = {
 				{'|', '|', '|', '|'},
-				{'7', '7', '7', '7'},
+				{'0', '0', '0', '0'},
 				{'8', '8', '8', '8'},
 				{'|', '|', '|', '|'},
 				{'1', '1', '-', '-'},
@@ -18,9 +18,19 @@ public class BassConverter {
 				{'1', '1', '1', '1', '1'},
 				{'-', '-', '8', '-', '5'}
 		};
+		char[][] test6 = {
+				{'0', '0', '0', '0', '0', '0'},
+				{'1', '1', '1', '1', '1', '1'},
+				{'-', '-', '8', '-', '5', '-'}
+		};
+		char[][] test7 = {
+				{'0', '0', '0', '0', '0', '0', '0'},
+				{'1', '1', '1', '1', '1', '1', '1'},
+				{'-', '-', '8', '-', '5', '-', '3'}
+		};
 		
 		GuitarNoteObject[][] notes = converter(test4);
-		notes = removeNull(notes);
+		//notes = removeNull(notes);
 		
 		for(int i = 0; i < notes.length; i++) {
 			for(int j = 0; j < notes[i].length; j++) {
@@ -58,7 +68,7 @@ public class BassConverter {
 						if(in[i][j] == '-') // j2 == j
 							out[i2][j] = new GuitarNoteObject(i);	//tmp = tmp + in[i][j]; 
 						else
-							out[i2][j] = indexToNote(i, j, in[i][j]); //tmp = tmp + '-';
+							out[i2][j] = indexToNote(i, j, in[i][j], in[0].length); //tmp = tmp + '-';
 					}
 					//out[i][j] = StringToNote(tmp);
 				}
@@ -75,11 +85,20 @@ public class BassConverter {
 	 * @return		Note string, corresponding to tab
 	 */
 	
-	public static GuitarNoteObject indexToNote(int i, int j, char c) {
+	public static GuitarNoteObject indexToNote(int i, int j, char c, int strings) {
 		int k = charToInt(c);
-		int rem = (4 + k + 5 * j) % 12;
+		int rem = 0; //= (4 + k + 5 * j) % 12;
+		int octave = 0;
+		if(strings <= 5) {
+			rem = (7 + k + 7 * j) % 12;
+			octave = (5 - j) / 2 + k / 12;
+		}
+		else {
+			rem = (7 + 5 * (strings - 5) + k + 7 * j) % 12;
+			octave = (5 - j) / 2 + k / 12;
+		}
 		
-		return new GuitarNoteObject(intToNote(rem), ((16 + 5 * j + k) / 12), i, k);
+		return new GuitarNoteObject(intToNote(rem), octave, i, k);
 	}
 	
 	public static String intToNote(int a) {

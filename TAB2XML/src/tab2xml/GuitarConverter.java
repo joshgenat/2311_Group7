@@ -187,7 +187,7 @@ public class GuitarConverter {
 	
 	public static GuitarNoteObject[][] removeNull(GuitarNoteObject[][] in){
 		int i, j;
-		for(i = 1; i <= in.length; i++){
+		for(i = 0; i <= in.length; i++){
 			if(in[i][0] == null) 
 				break;
 		}
