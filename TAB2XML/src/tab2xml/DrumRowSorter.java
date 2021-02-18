@@ -10,7 +10,7 @@ public class DrumRowSorter {
 		//i checks rowSymbols and j checks col 
 		for (int i = 0; i < tab.length; i++)
         {
-            	if (tab[i][0] == 'C' && tab[i][1] == 'C')
+            	if ((tab[i][0] == 'C' && tab[i][1] == 'C') || (tab[i][0] == 'C' && tab[i][0] == ' '))
             	{
             		rowSymbols[i] = 1;
             				
@@ -22,20 +22,20 @@ public class DrumRowSorter {
             		
             	}
             		
-            	else if (tab[i][0] == 'R' && tab[i][1] == 'D')
+            	else if ((tab[i][0] == 'R' && tab[i][1] == 'D') || (tab[i][0] == 'R' && tab[i][0] == ' ') || (tab[i][0] == 'R' && tab[i][1] == 'C'))
             	{
             		rowSymbols[i] = 3;
             		
             	}
             	
-            	else if (tab[i][0] == 'S' && tab[i][1] == 'N')
+            	else if ((tab[i][0] == 'S' && tab[i][1] == 'N') || (tab[i][0] == 'S' && tab[i][1] == 'D'))
             	{
             		rowSymbols[i] = 4;
             	
           		
             	}
             	
-            	else if (tab[i][0] == 'T' && tab[i][1] == '1')
+            	else if ((tab[i][0] == 'T' && tab[i][1] == '1') || (tab[i][0] == 'T' && tab[i][1] == ' '))
             	{
             		rowSymbols[i] = 5;
             		
@@ -56,7 +56,7 @@ public class DrumRowSorter {
             		
             	}
             	
-            	else if (tab[i][0] == 'B' && tab[i][1] == 'D')
+            	else if ((tab[i][0] == 'B' && tab[i][1] == 'D') || (tab[i][0] == 'B' && tab[i][1] == ' '))
             	{
             		rowSymbols[i] = 8;
             		
