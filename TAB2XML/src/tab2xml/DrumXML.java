@@ -44,9 +44,10 @@ public class DrumXML {
 						partName.appendChild(doc.createTextNode("Drumset") ); 
 						scorePart.appendChild(partName);               
 	    
-				
-				for(int i = 0; i < o.instruments.size(); i++) {
-					ScoreInstrument.scoreInstrument(doc, rootElement, o, i);      
+				if (o.instruments.get(i).partID != null && o.instruments.get(i).partName != null) {
+					for(int i = 0; i < o.instruments.size(); i++) {
+						ScoreInstrument.scoreInstrument(doc, rootElement, o, i);      
+					}
 				}
 				
 				Element partId = doc.createElement("part"); 
@@ -60,9 +61,16 @@ public class DrumXML {
 						Element attributes = doc.createElement("attributes");   
 						measureNumber.appendChild(attributes);
 						
+						if (o.divisions != null) 
 						Divisions.divisions(doc, attributes, o);
+						
+						if (o.fifths != null)
 						Key.key(doc, attributes, o);
+						
+						if (o.time != null)
 						Time.time(doc, attributes, o);
+						
+						if (o.clef != null)
 						Clef.clef(doc, attributes, o);
 						
 						for(int j = 0; j < o.notes.size() ; j++) {
@@ -85,6 +93,8 @@ public class DrumXML {
 			transformer.transform(source, result);		
 			StringBuffer sb = outWriter.getBuffer(); 
 			String finalstring = sb.toString();
+			
+			System.out.println(finalstring);
 	}
 		catch (TransformerException e) {
 			e.printStackTrace();

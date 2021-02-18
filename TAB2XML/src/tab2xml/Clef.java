@@ -9,22 +9,22 @@ public class Clef {
 	Element clef = doc.createElement("clef");    
 	attributes.appendChild(clef); 
 		
-	if (o != null)
+	if (o.sign != null)
 	sign(doc, clef, o);
 	
-	if (o != null)
+	if (o.line != null)
 	line(doc, clef, o);
 	}
 	
 	static void sign(Document doc, Element clef, DrumNoteObject o) {
 		Element sign = doc.createElement("sign");        
-		sign.appendChild(doc.createTextNode("" + o) ); 
+		sign.appendChild(doc.createTextNode("" + o.sign) ); 
 		clef.appendChild(sign); 
 	}
 	
 	static void line(Document doc, Element clef, DrumNoteObject o) {
 		Element line= doc.createElement("line");        
-		line.appendChild(doc.createTextNode("" + o) ); 
+		line.appendChild(doc.createTextNode("" + o.line) ); 
 		clef.appendChild(line);
 	}
 }
