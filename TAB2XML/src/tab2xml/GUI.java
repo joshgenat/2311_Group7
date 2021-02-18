@@ -47,6 +47,9 @@ public class GUI {
 		frmMusicTabTo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMusicTabTo.getContentPane().setLayout(null);
 		
+		ImageIcon img = new ImageIcon("logo.png");
+		frmMusicTabTo.setIconImage(img.getImage());
+		
 		JTabbedPane tabPane = new JTabbedPane(JTabbedPane.TOP);
 		tabPane.setBounds(10, 32, 1053, 34);
 		frmMusicTabTo.getContentPane().add(tabPane);
