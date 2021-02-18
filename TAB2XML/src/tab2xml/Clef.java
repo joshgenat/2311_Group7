@@ -5,26 +5,26 @@ import org.w3c.dom.Element;
 
 public class Clef {
 	
-	public static void clef(Document doc, Element attributes, int i, String j) {
+	public static void clef(Document doc, Element attributes, DrumNoteObject o) {
 	Element clef = doc.createElement("clef");    
 	attributes.appendChild(clef); 
 		
-	if (i != 0)
-	sign(doc, clef, j);
+	if (o.sign != null)
+	sign(doc, clef, o);
 	
-	if (i != 0)
-	line(doc, clef, i);
+	if (o.line != null)
+	line(doc, clef, o);
 	}
 	
-	static void sign(Document doc, Element clef, String i) {
+	static void sign(Document doc, Element clef, DrumNoteObject o) {
 		Element sign = doc.createElement("sign");        
-		sign.appendChild(doc.createTextNode("" + i) ); 
+		sign.appendChild(doc.createTextNode("" + o.sign) ); 
 		clef.appendChild(sign); 
 	}
 	
-	static void line(Document doc, Element clef, int i) {
+	static void line(Document doc, Element clef, DrumNoteObject o) {
 		Element line= doc.createElement("line");        
-		line.appendChild(doc.createTextNode("" + i) ); 
+		line.appendChild(doc.createTextNode("" + o.line) ); 
 		clef.appendChild(line);
 	}
 }

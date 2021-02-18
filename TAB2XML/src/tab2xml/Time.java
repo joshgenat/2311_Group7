@@ -4,26 +4,26 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 public class Time {
-	public static void time(Document doc, Element attributes, int i, int j) {
+	public static void time(Document doc, Element attributes, DrumNoteObject o) {
 		Element time = doc.createElement("time");    
 		attributes.appendChild(time); 
 		
-		if (i != 0)
-		beats(doc, time, i);
+		if (o != null)
+		beats(doc, time, o);
 			
-		if (j != 0)
-		beatType(doc, time, j);
+		if (o != null)
+		beatType(doc, time,o);
 	}
 	
-	static void beats(Document doc, Element time, int i) {
+	static void beats(Document doc, Element time, DrumNoteObject o) {
 		Element beats = doc.createElement("beats");        
-		beats.appendChild(doc.createTextNode("" + i) ); 
+		beats.appendChild(doc.createTextNode("" + o.beats) ); 
 		time.appendChild(beats); 
 	}
 	
-	static void beatType(Document doc, Element time, int j) {
+	static void beatType(Document doc, Element time, DrumNoteObject o) {
 		Element beatType= doc.createElement("beat-type");        
-		beatType.appendChild(doc.createTextNode("" + j) ); 
+		beatType.appendChild(doc.createTextNode("" + o.beatsType) ); 
 		time.appendChild(beatType);
 	}
 }

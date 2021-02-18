@@ -10,13 +10,19 @@ public class DrumNoteCol {
 	
 	int [] ColReader(char [][] drumTab, int [] rowSymbols)
 	{
-		for (int col = 0; col < drumTab[col].length; col++)
+		
+		counter = 0;
+		mutipleVoices = false;
+		rowCoordinates = new int[100];
+		colCoordinates = new int[100];
+		
+		for (int col = 0; col < drumTab[0].length; col++)
         {
 			
             for (int row = 0; row < drumTab.length; row++)
             {
-            	//if (rowSymbols[row] == 8) means voice two
-            	while ((drumTab[row][col] == 'x') && (rowSymbols[row] != 8))
+            	
+            	 if ((drumTab[row][col] == 'x'  || drumTab[row][col] == 'o')  && (rowSymbols[row]!= 8))
             	{
             		rowCoordinates[counter] = row;
             		colCoordinates[counter] = col;
@@ -25,16 +31,17 @@ public class DrumNoteCol {
             }
             
         }
-		 // run the loop a second time, now to find the notes in voice 2 
+		 
+		// run the loop a second time, now to find the notes in voice 2 
 		
-		for (int col2 = 0; col2 < drumTab[col2].length; col2++)
+		for (int col2 = 0; col2 < drumTab[0].length; col2++)
         {
 			
             for (int row2 = 0; row2 < drumTab.length; row2++)
             {
             	
             	
-            	if(rowSymbols[row2] == 8 && mutipleVoices == false)
+            	if(((drumTab[row2][col2] == 'x'  || drumTab[row2][col2] == 'o')  && (rowSymbols[row2]== 8)) && mutipleVoices == false)
             	{
             		mutipleVoices = true;
             		rowCoordinates[counter] = 100;
@@ -43,7 +50,7 @@ public class DrumNoteCol {
             		
             	}
             	
-            	while (rowSymbols[row2] == 8)
+            	 if ((drumTab[row2][col2] == 'x' || drumTab[row2][col2] == 'o') && (rowSymbols[row2]== 8))
             	{
             		rowCoordinates[counter] = row2;
             		colCoordinates[counter] = col2;

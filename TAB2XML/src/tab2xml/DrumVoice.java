@@ -6,13 +6,14 @@ public class DrumVoice {
 	
 	int FindVoiceValue (int row, int [] rowSymbols)
 	{
-		if (rowSymbols[row] == 8)
-		{
-			voiceValue = 2;
-		}
-		else if (row == 100)
+		
+		if (row == 100)
 		{
 			voiceValue = 0;
+		}
+		else if (rowSymbols[row] == 8)
+		{
+			voiceValue = 2;
 		}
 		else
 		{

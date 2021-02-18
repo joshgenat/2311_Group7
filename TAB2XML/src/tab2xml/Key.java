@@ -4,12 +4,12 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 public class Key {
-	static void key(Document doc, Element attributes, int i) {
+	static void key(Document doc, Element attributes, DrumNoteObject o) {
 		Element key = doc.createElement("key");    
 		attributes.appendChild(key); 
 		
 			Element fifths = doc.createElement("fifths");        
-			fifths.appendChild(doc.createTextNode("" + i) ); 
+			fifths.appendChild(doc.createTextNode("" + o.fifths) ); 
 			key.appendChild(fifths);
 	}
 }
