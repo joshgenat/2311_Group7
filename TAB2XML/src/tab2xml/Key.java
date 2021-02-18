@@ -9,7 +9,7 @@ public class Key {
 		attributes.appendChild(key); 
 		
 			Element fifths = doc.createElement("fifths");        
-			fifths.appendChild(doc.createTextNode("" + o.key) ); 
+			fifths.appendChild(doc.createTextNode("" + o.fifths) ); 
 			key.appendChild(fifths);
 	}
 }

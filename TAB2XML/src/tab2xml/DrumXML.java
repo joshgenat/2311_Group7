@@ -16,7 +16,7 @@ import org.w3c.dom.*;
 public class DrumXML {
 
 	public static void main(String[] args) {
-		new DrumXML(DrumNoteObject o);
+		
 	}
 	
 	DrumXML(DrumNoteObject o) {
