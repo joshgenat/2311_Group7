@@ -10,7 +10,7 @@ public class DrumRowSorter {
 		//i checks rowSymbols and j checks col 
 		for (int i = 0; i < tab.length; i++)
         {
-<<<<<<< HEAD
+
             	if ((tab[i][0] == 'C' && tab[i][1] == 'C') || (tab[i][0] == 'C' && tab[i][0] == ' '))
             	{
             		rowSymbols[i] = 1;
@@ -128,10 +128,9 @@ public class DrumRowSorter {
         	else if ((tab[i][0] == 'H' && tab[i][1] == 'f') || (tab[i][0] == 'F' && tab[i][1] == 'H'))
         	{
         		rowSymbols[i] = 9;
-        		
-        		
+
         	}
->>>>>>> refs/remotes/origin/develop
+
         }
             	
 		return rowSymbols;		
