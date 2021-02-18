@@ -35,14 +35,15 @@ public class DrumRowSorter {
       		
         	}
         	
-        	else if ((tab[i][0] == 'T' && tab[i][1] == '1') || (tab[i][0] == 'T' && tab[i][1] == ' '))
+        	else if ((tab[i][0] == 'T' && tab[i][1] == '1') || (tab[i][0] == 'T' && tab[i][1] == ' ') || (tab[i][0] == 'H' && tab[i][1] == 'T'))
         	{
+     
         		rowSymbols[i] = 5;
         		
         		
         	}
         	
-        	else if (tab[i][0] == 'T' && tab[i][1] == '2')
+        	else if ((tab[i][0] == 'T' && tab[i][1] == '2') || (tab[i][0] == 'M' && tab[i][1] == 'T'))
         	{
         		rowSymbols[i] = 6;
         		
