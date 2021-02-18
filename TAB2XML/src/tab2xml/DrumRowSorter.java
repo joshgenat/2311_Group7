@@ -10,6 +10,7 @@ public class DrumRowSorter {
 		//i checks rowSymbols and j checks col 
 		for (int i = 0; i < tab.length; i++)
         {
+<<<<<<< HEAD
             	if ((tab[i][0] == 'C' && tab[i][1] == 'C') || (tab[i][0] == 'C' && tab[i][0] == ' '))
             	{
             		rowSymbols[i] = 1;
@@ -69,6 +70,68 @@ public class DrumRowSorter {
             		
             		
             	}
+
+			if ((tab[i][0] == 'C' && tab[i][1] == 'C') || (tab[i][0] == 'C' && tab[i][0] == ' '))
+        	{
+        		rowSymbols[i] = 1;
+        				
+        	}
+        	
+        	else if (tab[i][0] == 'H' && tab[i][1] == 'H')
+        	{
+        		rowSymbols[i] = 2;
+        		
+        	}
+        		
+        	else if ((tab[i][0] == 'R' && tab[i][1] == 'D') || (tab[i][0] == 'R' && tab[i][0] == ' ') || (tab[i][0] == 'R' && tab[i][1] == 'C'))
+        	{
+        		rowSymbols[i] = 3;
+        		
+        	}
+        	
+        	else if ((tab[i][0] == 'S' && tab[i][1] == 'N') || (tab[i][0] == 'S' && tab[i][1] == 'D'))
+        	{
+        		rowSymbols[i] = 4;
+        	
+      		
+        	}
+        	
+        	else if ((tab[i][0] == 'T' && tab[i][1] == '1') || (tab[i][0] == 'T' && tab[i][1] == ' ') || (tab[i][0] == 'H' && tab[i][1] == 'T'))
+        	{
+     
+        		rowSymbols[i] = 5;
+        		
+        		
+        	}
+        	
+        	else if ((tab[i][0] == 'T' && tab[i][1] == '2') || (tab[i][0] == 'M' && tab[i][1] == 'T'))
+        	{
+        		rowSymbols[i] = 6;
+        		
+        		
+        	}
+        	
+        	else if (tab[i][0] == 'F' && tab[i][1] == 'T')
+        	{
+        		rowSymbols[i] = 7;
+        		
+        		
+        	}
+        	
+        	else if ((tab[i][0] == 'B' && tab[i][1] == 'D') || (tab[i][0] == 'B' && tab[i][1] == ' '))
+        	{
+        		rowSymbols[i] = 8;
+        		
+        		
+        	}
+        	
+        	else if ((tab[i][0] == 'H' && tab[i][1] == 'f') || (tab[i][0] == 'F' && tab[i][1] == 'H'))
+        	{
+        		rowSymbols[i] = 9;
+        		
+        		
+        	}
+>>>>>>> refs/remotes/origin/develop
         }
             	
 		return rowSymbols;		

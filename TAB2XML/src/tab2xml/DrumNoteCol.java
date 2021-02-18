@@ -22,7 +22,11 @@ public class DrumNoteCol {
             for (int row = 0; row < drumTab.length; row++)
             {
             	
+<<<<<<< HEAD
             	 if ((drumTab[row][col] == 'x'|| drumTab[row][col] == 'o') && (rowSymbols[row]!= 8))
+=======
+            	 if ((drumTab[row][col] == 'x'  || drumTab[row][col] == 'o')  && (rowSymbols[row]!= 8))
+>>>>>>> refs/remotes/origin/develop
             	{
             		rowCoordinates[counter] = row;
             		colCoordinates[counter] = col;
@@ -41,7 +45,11 @@ public class DrumNoteCol {
             {
             	
             	
+<<<<<<< HEAD
             	if(((drumTab[row2][col2] == 'x'|| drumTab[row2][col2] == 'o') && (rowSymbols[row2]== 8)) && mutipleVoices == false)
+=======
+            	if(((drumTab[row2][col2] == 'x'  || drumTab[row2][col2] == 'o')  && (rowSymbols[row2]== 8)) && mutipleVoices == false)
+>>>>>>> refs/remotes/origin/develop
             	{
             		mutipleVoices = true;
             		rowCoordinates[counter] = 100;
