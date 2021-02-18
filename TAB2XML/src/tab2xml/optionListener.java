@@ -25,27 +25,28 @@ public class optionListener implements ActionListener {
  			}
  			
  			Tab b = new Tab(lines);
- 			DrumNoteObject c = new DrumNoteObject(b);
- 			DrumXML d = new DrumXML(c);
- 			a.setText(d.text);
+ 			if(b.Type.equals("Drum")) {
+ 				DrumNoteObject c = new DrumNoteObject(b);
+ 	 			DrumXML d = new DrumXML(c);
+ 				a.setText(d.text);
+ 				}
+ 				else {
+ 					a.setText("Currently not Supported");
+ 				}
  			
  		}
        if(e.getActionCommand() == "Select File") {
 			Parser parse = new Parser();
-			String text = "";
 			Tab b = new Tab(parse.getLines());
 			
-			text += b.Type + "\n";
-			for(int i = 0; i < b.nodes.size();i++) {
-				for(int j = 0; j < b.nodes.get(i).nodes.length; j++) {
-					for(int k = 0; k < b.nodes.get(i).nodes[j].length; k++) {
-						text += b.nodes.get(i).nodes[j][k];
-					}
-					text += "\n";
-				}
-				text += "\n";
+			if(b.Type.equals("Drum")) {
+			DrumNoteObject c = new DrumNoteObject(b);
+ 			DrumXML d = new DrumXML(c);
+			a.setText(d.text);
 			}
-			a.setText(text);
+			else {
+				a.setText("Currently not Supported");
+			}
 		}
     }
 
