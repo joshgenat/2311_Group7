@@ -23,7 +23,7 @@ public class Time {
 	
 	static void beatType(Document doc, Element time, DrumNoteObject o) {
 		Element beatType= doc.createElement("beat-type");        
-		beatType.appendChild(doc.createTextNode("" + o.beatType) ); 
+		beatType.appendChild(doc.createTextNode("" + o.beatsType) ); 
 		time.appendChild(beatType);
 	}
 }

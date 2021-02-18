@@ -15,9 +15,7 @@ import org.w3c.dom.*;
 
 public class DrumXML {
 
-	public static void main(String[] args) {
-		
-	}
+	String text;
 	
 	DrumXML(DrumNoteObject o) {
 		try {
@@ -44,11 +42,12 @@ public class DrumXML {
 						partName.appendChild(doc.createTextNode("Drumset") ); 
 						scorePart.appendChild(partName);               
 	    
-				if (o.instruments.get(i).partID != null && o.instruments.get(i).partName != null) {
+				
 					for(int i = 0; i < o.instruments.size(); i++) {
+						if (o.instruments.get(i).partID != null && o.instruments.get(i).partName != null) {
 						ScoreInstrument.scoreInstrument(doc, rootElement, o, i);      
+						}
 					}
-				}
 				
 				Element partId = doc.createElement("part"); 
 				partId.setAttribute("id", "P1");
@@ -61,13 +60,13 @@ public class DrumXML {
 						Element attributes = doc.createElement("attributes");   
 						measureNumber.appendChild(attributes);
 						
-						if (o.divisions != null) 
+						if (o.divisions != 0) 
 						Divisions.divisions(doc, attributes, o);
 						
-						if (o.fifths != null)
+						if (o.fifths != 0)
 						Key.key(doc, attributes, o);
 						
-						if (o.time != null)
+						if (o != null)
 						Time.time(doc, attributes, o);
 						
 						if (o.clef != null)
@@ -94,7 +93,7 @@ public class DrumXML {
 			StringBuffer sb = outWriter.getBuffer(); 
 			String finalstring = sb.toString();
 			
-			System.out.println(finalstring);
+			text = finalstring;
 	}
 		catch (TransformerException e) {
 			e.printStackTrace();

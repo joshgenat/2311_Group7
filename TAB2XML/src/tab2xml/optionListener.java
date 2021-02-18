@@ -25,18 +25,9 @@ public class optionListener implements ActionListener {
  			}
  			
  			Tab b = new Tab(lines);
- 			
- 			text += b.Type + "\n";
- 			for(int i = 0; i < b.nodes.size();i++) {
- 				for(int j = 0; j < b.nodes.get(i).nodes.length; j++) {
- 					for(int k = 0; k < b.nodes.get(i).nodes[j].length; k++) {
- 						text += b.nodes.get(i).nodes[j][k];
- 					}
- 					text += "\n";
- 				}
- 				text += "\n";
- 			}
- 			a.setText(text);
+ 			DrumNoteObject c = new DrumNoteObject(b);
+ 			DrumXML d = new DrumXML(c);
+ 			a.setText(d.text);
  			
  		}
        if(e.getActionCommand() == "Select File") {
