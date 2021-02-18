@@ -22,11 +22,11 @@ public class DrumNoteCol {
             for (int row = 0; row < drumTab.length; row++)
             {
             	
-<<<<<<< HEAD
+
             	 if ((drumTab[row][col] == 'x'|| drumTab[row][col] == 'o') && (rowSymbols[row]!= 8))
-=======
+
             	 if ((drumTab[row][col] == 'x'  || drumTab[row][col] == 'o')  && (rowSymbols[row]!= 8))
->>>>>>> refs/remotes/origin/develop
+
             	{
             		rowCoordinates[counter] = row;
             		colCoordinates[counter] = col;
