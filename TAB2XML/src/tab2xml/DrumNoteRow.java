@@ -19,7 +19,7 @@ public class DrumNoteRow {
             for (int row = 0; row < drumTab.length; row++)
             {
             	//if (rowSymbols[row] == 8) means voice two
-            	if ((drumTab[row][col] == 'x') && (rowSymbols[row] != 8))
+            	if ((drumTab[row][col] == 'x' || drumTab[row][col] == 'o') && (rowSymbols[row] != 8))
             	{
             		rowCoordinates[counter] = row;
             		colCoordinates[counter] = col;
@@ -37,7 +37,7 @@ public class DrumNoteRow {
             {
             	
             	
-            	if(((drumTab[row2][col2] == 'x') && (rowSymbols[row2]== 8)) && mutipleVoices == false)
+            	if(((drumTab[row2][col2] == 'x' || drumTab[row2][col2] == 'o') && (rowSymbols[row2]== 8)) && mutipleVoices == false)
             	{
             		mutipleVoices = true;
             		rowCoordinates[counter] = 100;
@@ -46,7 +46,7 @@ public class DrumNoteRow {
             		
             	}
             	
-            	 if ((drumTab[row2][col2] == 'x') && (rowSymbols[row2]== 8))
+            	 if ((drumTab[row2][col2] == 'x'|| drumTab[row2][col2] == 'o') && (rowSymbols[row2]== 8))
             	{
             		rowCoordinates[counter] = row2;
             		colCoordinates[counter] = col2;
