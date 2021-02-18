@@ -44,12 +44,8 @@ public class DrumNoteCol {
             for (int row2 = 0; row2 < drumTab.length; row2++)
             {
             	
-            	
-<<<<<<< HEAD
-            	if(((drumTab[row2][col2] == 'x'|| drumTab[row2][col2] == 'o') && (rowSymbols[row2]== 8)) && mutipleVoices == false)
-=======
             	if(((drumTab[row2][col2] == 'x'  || drumTab[row2][col2] == 'o')  && (rowSymbols[row2]== 8)) && mutipleVoices == false)
->>>>>>> refs/remotes/origin/develop
+
             	{
             		mutipleVoices = true;
             		rowCoordinates[counter] = 100;
