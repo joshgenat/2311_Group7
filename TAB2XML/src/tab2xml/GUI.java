@@ -7,6 +7,7 @@ import javax.swing.JScrollPane;
 import java.awt.GridLayout;
 import java.awt.BorderLayout;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JTabbedPane;
@@ -43,6 +44,9 @@ public class GUI {
 		frmMusicTabTo.setBounds(0, 0, 1080, 708);
 		frmMusicTabTo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMusicTabTo.getContentPane().setLayout(null);
+		
+		ImageIcon img = new ImageIcon("logo.png");
+		frmMusicTabTo.setIconImage(img.getImage());
 		
 		JTabbedPane tabPane = new JTabbedPane(JTabbedPane.TOP);
 		tabPane.setBounds(10, 32, 1053, 34);
