@@ -17,6 +17,11 @@ public class DrumNoteObject {
 	int voice;
 	ArrayList<DrumNotes> notes = new ArrayList<DrumNotes>();
 	ArrayList<DrumPartsList> instruments = new ArrayList<>();
+	String clef;
+	int divisions;
+	int fifths;
+	int beats;
+	int beatsType;
 	
 	
 	
