@@ -16,6 +16,8 @@ public class optionListener implements ActionListener {
 	
     @Override
     public void actionPerformed(ActionEvent e) {
+
+    	
     	if(e.getActionCommand() == "Convert") {
      	   String [] parse = a.getText().split("\n");
      	   String text = "";
@@ -48,6 +50,11 @@ public class optionListener implements ActionListener {
 				a.setText("Currently not Supported");
 			}
 		}
+       
+   	if(e.getActionCommand() == "Clear") {
+  	   a.setText("");
+     }
+       
     }
 
 }
