@@ -61,7 +61,7 @@ public class DrumNote {
 	
 	static void type(Document doc, Element note, DrumNoteObject o, int j) {
 		Element type = doc.createElement("type");   
-		type.appendChild(doc.createTextNode("" + o.notes.get(j).type) ); 
+		//type.appendChild(doc.createTextNode("" + o.notes.get(j).type) ); 
 		note.appendChild(type);	
 	}
 	
@@ -73,14 +73,14 @@ public class DrumNote {
 	
 	static void noteHead(Document doc, Element note, DrumNoteObject o, int j) {
 		Element noteHead = doc.createElement("notehead");   
-		noteHead.appendChild(doc.createTextNode("" + o.notes.get(j).noteHead) ); 
+		//noteHead.appendChild(doc.createTextNode("" + o.notes.get(j).noteHead) ); 
 		note.appendChild(noteHead);	
 	}
 	
 	static void beamNumber(Document doc, Element note, DrumNoteObject o, int j) {
 		Element beamNumber = doc.createElement("beam");   
 		beamNumber.setAttribute("number", "1");
-		beamNumber.appendChild(doc.createTextNode("" + o.notes.get(j).beamNumber) );
+		//beamNumber.appendChild(doc.createTextNode("" + o.notes.get(j).beamNumber) );
 		note.appendChild(beamNumber);	
 	}
 }
