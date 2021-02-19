@@ -29,7 +29,7 @@ public class BassConverter {
 				{'-', '-', '8', '-', '5', '-', '3'}
 		};
 		
-		GuitarNoteObject[][] notes = converter(test4);
+		GuitarNoteObject[][] notes = converter(test6);
 		//notes = removeNull(notes);
 		
 		for(int i = 0; i < notes.length; i++) {

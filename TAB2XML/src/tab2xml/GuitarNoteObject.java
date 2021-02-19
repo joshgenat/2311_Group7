@@ -1,25 +1,24 @@
 package tab2xml;
 
 public class GuitarNoteObject {
-	String name;
-	char note;
+	String note;
 	int octave;
 	int string;
 	int fret;
 	int duration;
 	int division = 1;
+	char step;
 	
-	public GuitarNoteObject(String name, int octave, int string, int fret){
-		this.name = name;
-		this.note = name.charAt(0);
+	public GuitarNoteObject(String note, int octave, int string, int fret){
+		this.note = note;
+		this.step = note.charAt(0);
 		this.octave = octave;
 		this.string = string;;
 		this.fret = fret;
 	}
 	
 	public GuitarNoteObject(int string){
-		this.name = "-";
-		this.note = '\0';
+		this.note = "-";
 		this.octave = -1;
 		this.string = string;
 		this.fret = 0;
@@ -27,8 +26,8 @@ public class GuitarNoteObject {
 	
 	public String toString() {
 		if(octave != -1)
-			return name + octave;
+			return note + octave;
 		else
-			return name;
+			return note;
 	}
 }
