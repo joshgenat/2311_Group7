@@ -3,10 +3,13 @@ package tab2xml;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.BorderLayout;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JTabbedPane;
@@ -44,6 +47,9 @@ public class GUI {
 		frmMusicTabTo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMusicTabTo.getContentPane().setLayout(null);
 		
+		ImageIcon img = new ImageIcon("logo.png");
+		frmMusicTabTo.setIconImage(img.getImage());
+		
 		JTabbedPane tabPane = new JTabbedPane(JTabbedPane.TOP);
 		tabPane.setBounds(10, 32, 1053, 34);
 		frmMusicTabTo.getContentPane().add(tabPane);
@@ -72,6 +78,11 @@ public class GUI {
 		fileBtn.addActionListener(new optionListener(this));
 		optionPanel.add(fileBtn);
 		
+		JButton clearBtn = new JButton("Clear");
+		clearBtn.setBounds(43, 320, 128, 25);
+		clearBtn.addActionListener(new optionListener(this));
+		optionPanel.add(clearBtn);
+		
 		JButton dlBtn = new JButton("Download");
 		dlBtn.setBounds(43, 362, 128, 25);
 		optionPanel.add(dlBtn);
@@ -99,6 +110,15 @@ public class GUI {
 		Checkbox checkbox_5 = new Checkbox("New check box");
 		checkbox_5.setBounds(108, 161, 92, 21);
 		optionPanel.add(checkbox_5);
+		
+		ImageIcon watermark = new ImageIcon ("group7.png");
+		Image img1 = watermark.getImage() ;    
+		Image newimg1 = img1.getScaledInstance(150, 100, java.awt.Image.SCALE_SMOOTH ) ; 
+		ImageIcon watermarkpic = new ImageIcon( newimg1 );
+		JLabel wpic = new JLabel(watermarkpic);
+		wpic.setVisible(true);
+		wpic.setBounds(0, 450, 150, 100);
+		optionPanel.add(wpic);
 		
 		viewerText = new JTextArea(30,30);
 		viewerText.setFont(new Font("Courier New", Font.PLAIN, 12));
