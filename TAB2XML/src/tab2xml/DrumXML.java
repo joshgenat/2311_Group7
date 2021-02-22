@@ -25,6 +25,9 @@ public class DrumXML {
 
 			// The root elements
 			Document doc = docBuilder.newDocument();
+			DOMImplementation domImpl = doc.getImplementation();
+			DocumentType doctype = domImpl.createDocumentType("score-partwise", "-//Recordare//DTD MusicXML 3.1 Partwise//EN", "http://www.musicxml.org/dtds/partwise.dtd");
+			doc.appendChild(doctype);
 			
 			Element rootElement = doc.createElement("score-partwise");
 			rootElement.setAttribute("version", "3.1");
@@ -46,7 +49,7 @@ public class DrumXML {
 				
 					for(int i = 0; i < o.instruments.size(); i++) {
 						if (o.instruments.get(i).partID != null && o.instruments.get(i).partName != null) {
-						ScoreInstrument.scoreInstrument(doc, rootElement, o, i);      
+						ScoreInstrument.scoreInstrument(doc, scorePart, o, i);      
 						}
 					}
 				
@@ -74,7 +77,7 @@ public class DrumXML {
 						Clef.clef(doc, attributes, o);
 						
 						for(int j = 0; j < o.notes.size() ; j++) {
-							DrumNote.note(doc, attributes, o, j);
+						DrumNote.note(doc, measureNumber, o, j);
 						}
 						
 			// write content into XML file
@@ -83,9 +86,6 @@ public class DrumXML {
 			transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
 			transformer.setOutputProperty(OutputKeys.INDENT, "yes");
 			DOMSource source = new DOMSource(doc);
-						
-			// Print to console
-//			StreamResult result = new StreamResult(System.out);
 			
 			StringWriter outWriter = new StringWriter();
 			StreamResult result = new StreamResult( outWriter );

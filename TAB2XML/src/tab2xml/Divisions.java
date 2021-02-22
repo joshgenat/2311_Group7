@@ -5,6 +5,7 @@ import org.w3c.dom.Element;
 
 public class Divisions {
 	
+	// For Drums
 	static void divisions(Document doc, Element attributes, DrumNoteObject o) {
 		Element divisions = doc.createElement("divisions");        
 		divisions.appendChild(doc.createTextNode("" + o.divisions) ); 
@@ -12,7 +13,13 @@ public class Divisions {
 		
 	}
 	
-
+	// For Guitars
+	static void divisions(Document doc, Element attributes, GuitarNoteObject g) {
+		Element divisions = doc.createElement("divisions");        
+		divisions.appendChild(doc.createTextNode("" + g.divisions) ); 
+		attributes.appendChild(divisions); 
+		
+	}
 	
 	
 }
