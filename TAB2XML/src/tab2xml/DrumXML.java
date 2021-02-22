@@ -80,6 +80,7 @@ public class DrumXML {
 						DrumNote.note(doc, measureNumber, o, j);
 						}
 						
+						
 			// write content into XML file
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
