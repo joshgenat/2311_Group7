@@ -5,10 +5,10 @@ import org.w3c.dom.Element;
 
 public class ScoreInstrument {
 
-	public static void scoreInstrument(Document doc, Element rootElement, DrumNoteObject o, int i) {
+	public static void scoreInstrument(Document doc, Element scorePart, DrumNoteObject o, int i) {
 		Element scoreInstrument = doc.createElement("score-instrument"); 
 		scoreInstrument.setAttribute("id", "" + o.instruments.get(i).partID);
-		rootElement.appendChild(scoreInstrument); 
+		scorePart.appendChild(scoreInstrument); 
 		
 		instrumentName(doc, scoreInstrument, o, i);
 			 
