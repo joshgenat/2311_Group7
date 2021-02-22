@@ -17,9 +17,6 @@ public class TabNodes {
 			if(lines.get(i).toString().length() > maxsize) {
 				maxsize = lines.get(i).toString().length();
 			}
-			lines.set(i, lines.get(i).toString().replaceAll("10", "!-"));
-			lines.set(i, lines.get(i).toString().replaceAll("11", "@-"));
-			lines.set(i, lines.get(i).toString().replaceAll("12", "#-"));
 		}
 		
 		nodes = new char[lines.size()][maxsize];
