@@ -11,11 +11,7 @@ import org.w3c.dom.*;
 
 public class GuitarXML {
 	
-	public static void main(String[] args) {
-		new GuitarXML();
-	}
-	
-	private GuitarXML() {
+	private GuitarXML(GuitarNoteObject g) {
 
 		try {
 		DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
@@ -54,15 +50,15 @@ public class GuitarXML {
 					Element attributes = doc.createElement("attributes");   
 					measureNumber.appendChild(attributes);   
 					
-					Divisions.divisions(doc, attributes, 1);
-					Key.key(doc, attributes, 1);
-					Time.time(doc, attributes, 1, 5);
-					Clef.clef(doc, attributes, 3, "TAB");
-					Staff.staff(doc, attributes, 4);
+					Divisions.divisions(doc, attributes, g);
+					Key.key(doc, attributes, g);
+					Time.time(doc, attributes, g);
+					Clef.clef(doc, attributes, g);
+					Staff.staff(doc, attributes, g);
 					
-					GuitarNote.note(doc, measureNumber, 5);
+					GuitarNote.note(doc, measureNumber, g);
 					
-					Barline.barline(doc, measureNumber, "light-heavy");
+					Barline.barline(doc, measureNumber, g);
 			
 	
 		// write content into XML file

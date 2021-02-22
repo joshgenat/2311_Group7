@@ -15,7 +15,7 @@ public class DrumNote {
 		voice(doc, note, o, j);
 		//type(doc, note, o, j);
 		stem(doc, note, o, j);
-		//noteHead(doc, note, o, j);
+//		noteHead(doc, note, o, j);
 		//beamNumber(doc, note, o, j);
 		
 	}
@@ -59,11 +59,11 @@ public class DrumNote {
 		note.appendChild(voice);	
 	}
 	
-	static void type(Document doc, Element note, DrumNoteObject o, int j) {
-		Element type = doc.createElement("type");   
-		type.appendChild(doc.createTextNode("" + o.notes.get(j).type) ); 
-		note.appendChild(type);	
-	}
+//	static void type(Document doc, Element note, DrumNoteObject o, int j) {
+//		Element type = doc.createElement("type");   
+//		type.appendChild(doc.createTextNode("" + o.notes.get(j).type) ); 
+//		note.appendChild(type);	
+//	}
 	
 	static void stem(Document doc, Element note, DrumNoteObject o, int j) {
 		Element stem = doc.createElement("stem");   
@@ -71,16 +71,16 @@ public class DrumNote {
 		note.appendChild(stem);	
 	}
 	
-	static void noteHead(Document doc, Element note, DrumNoteObject o, int j) {
-		Element noteHead = doc.createElement("notehead");   
-		noteHead.appendChild(doc.createTextNode("" + o.notes.get(j).noteHead) ); 
-		note.appendChild(noteHead);	
-	}
+//	static void noteHead(Document doc, Element note, DrumNoteObject o, int j) {
+//		Element noteHead = doc.createElement("notehead");   
+//		noteHead.appendChild(doc.createTextNode("" + o.notes.get(j).noteHead) ); 
+//		note.appendChild(noteHead);	
+//	}
 	
-	static void beamNumber(Document doc, Element note, DrumNoteObject o, int j) {
-		Element beamNumber = doc.createElement("beam");   
-		beamNumber.setAttribute("number", "1");
-		beamNumber.appendChild(doc.createTextNode("" + o.notes.get(j).beamNumber) );
-		note.appendChild(beamNumber);	
-	}
+//	static void beamNumber(Document doc, Element note, DrumNoteObject o, int j) {
+//		Element beamNumber = doc.createElement("beam");   
+//		beamNumber.setAttribute("number", "1");
+//		beamNumber.appendChild(doc.createTextNode("" + o.notes.get(j).beamNumber) );
+//		note.appendChild(beamNumber);	
+//	}
 }
