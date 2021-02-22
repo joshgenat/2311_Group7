@@ -5,7 +5,8 @@ public class GuitarNoteObject {
 	int octave;
 	int string;
 	int fret;
-	int duration;
+	int col;
+	int duration = 0;
 	int division = 1;
 	char step;
 	

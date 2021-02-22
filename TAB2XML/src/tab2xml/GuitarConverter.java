@@ -6,12 +6,12 @@ public class GuitarConverter {
 	
 	public static void main(String args[]) {
 		char[][] test1 = {
-				{'e', '|', '-', '0', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '|'},
-				{'B', '|', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '3', '-', '|'},
-				{'G', '|', '-', '-', '-', '5', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '|'},
-				{'D', '|', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '1', '-', '-', '-', '|'},
-				{'A', '|', '-', '-', '-', '-', '-', '1', '0', '-', '-', '2', '0', '-', '-', '-', '-', '|'},
-				{'E', '|', '-', '-', '-', '-', '-', '-', '-', '1', '5', '-', '-', '-', '-', '-', '-', '|'}
+				{'e', '|', '-', '0', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '|'},
+				{'B', '|', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '2', '-', '4', '-', '|'},
+				{'G', '|', '-', '-', '-', '5', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '3', '-', '|'},
+				{'D', '|', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '1', '-', '-', '-', '-', '-', '-', '-', '-', '-', '|'},
+				{'A', '|', '-', '-', '-', '-', '-', '1', '0', '-', '-', '2', '0', '-', '-', '-', '-', '-', '-', '-', '-', '2', '1', '|'},
+				{'E', '|', '-', '-', '-', '-', '-', '-', '-', '1', '5', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '1', '2', '|'}
 		};
 		char[][] test2 = {
 				{'|', '0', '0', '0', '0', '0', '0', '0', '0'},
@@ -45,8 +45,17 @@ public class GuitarConverter {
 		
 		for(int i = 0; i < notes.length; i++) {
 			for(int j = 0; j < notes[0].length; j++) {
-					System.out.print(notes[i][j] + " ");
+				if(notes[i][j] != null)
+					System.out.print(notes[i][j] + "*" + notes[i][j].duration + "* ");
 				}
+			System.out.println();
+		}
+		
+		System.out.println("\n result \n");
+		for(int i = 0; i < notes.length; i++) {
+			for(int j = 0; j < notes[0].length; j++) {
+				System.out.print(notes[i][j] + " ");
+			}
 			System.out.println();
 		}
 		char fret = '9';
@@ -75,66 +84,61 @@ public class GuitarConverter {
 	
 	public static GuitarNoteObject[][] converter(char[][] in) { 
 		GuitarNoteObject[][] out = new GuitarNoteObject[in.length][in[0].length];
+		GuitarChord chords[] = new GuitarChord[in[0].length];
 		int fret;
-		for(int i = 0; i < in.length; i++) {
-			for(int j = 0; j < in[0].length - 1; j++) {
-				if(isTab(in[i][j])) {
-					if(in[i][j] == '-')
-						out[i][j] = new GuitarNoteObject(i);
+		int lastChord = 0;
+		int dur = 1;
+		boolean hasNotes = false;
+
+
+		for(int i = 0; i < in[0].length - 2; i++) {
+			GuitarChord chord = new GuitarChord(in.length);
+			if(isTab(in[0][i])) {
+				hasNotes = false;
+				i++;
+				for(int j = 0; j < in.length; j++) {
+					if(in[j][i] == '-') {
+						out[j][i] = new GuitarNoteObject(j);
+						chord.put(out[j][i]);
+					}	
 					else {
-						if(in[i][j+1] == '-') {
-							fret = ((int)in[i][j] - 48);
-							out[i][j] = indexToNote(i, j, fret);
+						if(in[j][i+1] == '-') {
+							fret = ((int)in[j][i] - 48);
+							out[j][i] = indexToNote(j, i, fret);
+							chord.put(out[j][i]);
 						}
 						else {
-							fret = 10*((int)in[i][j] - 48) + ((int)in[i][j+1] - 48);
-							out[i][j] = indexToNote(i, j, fret);
-							out[i][j+1] = new GuitarNoteObject(i);
-							j++;
+							fret = 10*((int)in[j][i] - 48) + ((int)in[j][i+1] - 48);
+							out[j][i] = indexToNote(j, i, fret);
+							chord.put(out[j][i]);
+							
 						}
+						hasNotes = true;
+					}
+					for(int i2 = 0; i2 < in.length; i2++) {
+						out[i2][i+1] = new GuitarNoteObject(i);
 					}
 				}
+				
 			}
-		}
+			chords[i] = chord;
+			if(hasNotes) {
+				chords[lastChord].setDuration(dur);
+				dur = 1;
+				lastChord = i;
+
+				System.out.println(chord);
+			}
+			else if(!hasNotes) {
+				dur++;
+			}
+			if(i == in[0].length - 3)
+				chords[lastChord].setDuration(dur);
+		}	
 		
 		return out;
 	}
 	
-	/* OLD
-	 * public static GuitarNoteObject[][] converter(char[][] in) { 
-		GuitarNoteObject[][] out = new GuitarNoteObject[in.length][in[0].length];;
-		GuitarNoteObject[] col;
-		boolean hasNotes = false;
-		int i, i2, j, j2, fret;
-		i2 = 0;
-		for(i = 0; i < out.length; i++) {
-			if(isTab(in[i][0])) {
-				col = new GuitarNoteObject[in[0].length];
-				for(j = 0; j < out[i].length; j++) {
-					if(in[i][j] == '-')
-						col[j] = new GuitarNoteObject(i);
-					else {
-						if(in[i][j] == '-')
-							fret = (int)in[i][j];
-						else
-							fret = 10*(int)in[i][j] + (int)in[i+1][j];
-						col[j] = indexToNote(i, j, fret);
-						hasNotes = true;
-					}
-					
-				}
-				if(hasNotes) {
-					hasNotes = false;
-					out[i2] = col;
-					i2++;
-					i++;
-				}
-			}
-		}
-		
-		return out;
-	}
-	*/
 
 	public static GuitarNoteObject indexToNote(int i, int j, int fret) {
 		System.out.println("indexToNote fret: " + fret);
