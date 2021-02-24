@@ -1,22 +1,38 @@
-
 plugins {
-    id 'java-library'
-    id 'application'
+  id 'application'
+  id 'org.openjfx.javafxplugin' version '0.0.8'
 }
 
 repositories {
-    jcenter()
+    mavenCentral()
 }
 
 dependencies {
-    // This dependency is exported to consumers, that is to say found on their compile classpath.
-    api 'org.apache.commons:commons-math3:3.6.1'
-
-    // This dependency is used internally, and not exposed to consumers on their own compile classpath.
-    implementation 'com.google.guava:guava:28.0-jre'
-
     // Use JUnit test framework
-    testImplementation 'junit:junit:4.12'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+
+    //Xembly for xml
+    implementation 'com.jcabi.incubator:xembly:0.25.0'
+}
+
+test {
+  useJUnitPlatform()
+  testLogging {
+    events 'passed', 'skipped', 'failed'
+  }
+}
+
+javafx {
+    version = "15"
+    modules = [ 'javafx.controls', 'javafx.fxml' ]
+}
+
+run {
+    if (javafx.platform.classifier == 'win') {
+        // Temporal fix for Eclipse with JDK 1.8 and Windows 
+        systemProperty "java.library.path", "C:\tmp"
+    }
 }
 
 mainClassName = 'tab2xml.Main'
