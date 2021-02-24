@@ -12,14 +12,14 @@ public class Divisions {
 		attributes.appendChild(divisions); 
 		
 	}
-	
-	// For Guitars
-	static void divisions(Document doc, Element attributes, GuitarNoteObject g) {
-		Element divisions = doc.createElement("divisions");        
-		divisions.appendChild(doc.createTextNode("" + g.divisions) ); 
-		attributes.appendChild(divisions); 
-		
-	}
+//	
+//	// For Guitars
+//	static void divisions(Document doc, Element attributes, GuitarNoteObject g) {
+//		Element divisions = doc.createElement("divisions");        
+//		divisions.appendChild(doc.createTextNode("" + g.divisions) ); 
+//		attributes.appendChild(divisions); 
+//		
+//	}
 	
 	
 }
