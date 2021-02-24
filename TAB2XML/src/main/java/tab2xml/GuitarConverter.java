@@ -2,85 +2,83 @@ package tab2xml;
 
 public class GuitarConverter {
 	
-	//Main
-	
-	public static void main(String args[]) {
-		char[][] test1 = {
-				{'0', '0', '0', '0', '0', '0'},
-				{'7', '7', '7', '7', '7', '7'},
-				{'8', '8', '8', '8', '8', '8'}
-		};
-		char[][] test2 = {
-				{'0', '0', '0', '0', '0', '0', '0'},
-				{'7', '7', '7', '7', '7', '7', '7'},
-				{'8', '8', '8', '8', '8', '8', '8'}
-		};
-		String[][] notes = Converter(test2);
-		
-		for(int i = 0; i < notes.length; i++) {
-			for(int j = 0; j < notes[i].length; j++) {
-					System.out.print(notes[i][j] + ", ");
+
+	public static GuitarChord[] converter(char[][] in) { 
+		GuitarNoteObject[][] out = new GuitarNoteObject[in.length][in[0].length];
+		GuitarChord chords[] = new GuitarChord[in[0].length];
+		int fret;
+		int lastChord = 0;
+		int dur = 1;
+		boolean hasNotes = false;
+		int i2 = 0;
+
+
+		for(int i = 0; i < in[0].length - 2; i++) {
+			GuitarChord chord = new GuitarChord(in.length);
+			hasNotes = false;
+			if(isTab(in[0][i]) && isTab(in[0][i+1])) {
+				i++;
+				for(int j = 0; j < in.length; j++) {
+					if(in[j][i] == '-') {
+						out[j][i] = new GuitarNoteObject(j+1);
+						chord.put(out[j][i]);
+					}	
+					else {
+						if(in[j][i+1] == '-') {
+							fret = ((int)in[j][i] - 48);
+							out[j][i] = indexToNote(j, i, fret);
+							chord.put(out[j][i]);
+						}
+						else {
+							fret = 10*((int)in[j][i] - 48) + ((int)in[j][i+1] - 48);
+							out[j][i] = indexToNote(j, i, fret);
+							chord.put(out[j][i]);
+							
+						}
+						hasNotes = true;
+					}
+					for(int i3 = 0; i3 < in.length; i3++) {
+						out[i3][i+1] = new GuitarNoteObject(i3+1);
+					}
 				}
-			System.out.println();
-		}
-			
-		//System.out.println(test[0][1]);
-	}
-	
-	
-	
-	/*
-	 * Returns 2D array of notes, stored as strings
-	 * argument is a 2D array that has been parsed from a tab
-	 * e.g 
-	 * 1---------	Stored as a 2d array of chars representing
-	 * -----0----	the characters and numbers, char[rows][columns]
-	 * -2---0----	example, first column {'1', '-', '-', '-', '5', '-'}
-	 * -----0----
-	 * 5--3------
-	 * -------9-- 
-	 * 
-	 * @param	in	2d char array parsed from tab format
-	 * @return	out	2d String array of notes at their corresponding positions on the tab
-	 */
-	
-	
-	public static String[][] Converter(char[][] in) { 
-		String[][] out;
-		String tmp; 
-		int i, j, j2;
-		out = new String[in.length][in[0].length];
-		for(i = 0; i < out.length; i++) {
-			tmp = "";
-			for(j = 0; j < out[i].length; j++) {
-				tmp = "";
-				for(j2 = 0; j2 < out[i].length; j2++) {
-					if(in[i][j] == '-') // j2 == j
-						out[i][j] = "-";	//tmp = tmp + in[i][j]; 
-					else
-						out[i][j] = IndexToNote(i, j, in[i][j]); //tmp = tmp + '-';
-				}
-				//out[i][j] = StringToNote(tmp);
+				
 			}
+			chords[i2] = chord;
+			if(hasNotes) {
+				chords[lastChord].setDurations(dur);
+				dur = 1;
+				lastChord = i2;
+				System.out.println(chord);
+				i2++;
+			}
+			else if(!hasNotes) {
+				dur++;
+			}
+			if(i == in[0].length - 3)
+				chords[lastChord].setDurations(dur);
+		}	
+		
+		return chords;
+	}
+	
+
+	public static GuitarNoteObject indexToNote(int i, int j, int fret) {
+		System.out.println("indexToNote fret: " + fret);
+		int rem;
+		int octave;
+		if(i < 2) {
+			rem = (4 + fret + 7 * i) % 12;
+			octave = (4 - i) + (fret + 4 + 7 * i) / 12;
+		}
+		else {
+			rem = (5 + fret + 7 * i) % 12;
+			octave = ((53 - 5*i)  + fret) / 12;
 		}
 		
-		return out;
+		return new GuitarNoteObject(intToNote(rem), octave, i+1 , fret);
 	}
 	
-	/*
-	 * Returns a note string that corresponds to the tab column
-	 * @param	in	String representing a column of characters from a tab e.g "-1-4--"
-	 * @return		Note string, corresponding to tab
-	 */
-	
-	public static String IndexToNote(int i, int j, char c) {
-		int k = CharToInt(c);
-		int rem = (4 + k + 5 * j) % 12;
-		
-		return rem + IntToNote(rem) + ((28 + 5 * j + k) / 12);
-	}
-	
-	public static String IntToNote(int a) {
+	public static String intToNote(int a) {
 		switch(a) {
 			case 0:
 				return "C";
@@ -111,56 +109,49 @@ public class GuitarConverter {
 		}
 	}
 	
-	public static int CharToInt(char c) {
+	public static boolean isTab(char c) {
 		switch(c) {
 			case '0':
-				return 0;
+				return true;
 			case '1':
-				return 1;
+				return true;
 			case '2':
-				return 2;
+				return true;
 			case '3':
-				return 3;
+				return true;
 			case '4':
-				return 4;
+				return true;
 			case '5':
-				return 5;
+				return true;
 			case '6':
-				return 6;
+				return true;
 			case '7':
-				return 7;
+				return true;
 			case '8':
-				return 8;
+				return true;
 			case '9':
-				return 9;
-			case '!':
-				return 10;
-			case '@':
-				return 11;
-			case '#':
-				return 12;
-			case '$':
-				return 13;
-			case '%':
-				return 14;
-			case '^':
-				return 15;
-			case '&':
-				return 16;
-			case '*':
-				return 17;
-			case '(':
-				return 19;
-			case ')':
-				return 20;
-			case '=':
-				return 21;
+				return true;
+			case '-':
+				return true;
 			default:
-				return '\0';
+				return false;
 		}
 	}
 	
-	public String StringToNote(String in) {
+	public static GuitarNoteObject[][] removeNull(GuitarNoteObject[][] in){
+		int i, j;
+		for(i = 0; i <= in.length; i++){
+			if(in[i][0] == null) 
+				break;
+		}
+		GuitarNoteObject[][] out = new GuitarNoteObject[i][in[0].length];
+		for(j = 0; j < i; j++) {
+			out[j] = in[j];
+		}
+		return out;
+	}
+	
+	public String stringToNote(String in) {
 		switch(in) {
 			case "0-----":
 				return "E4";
