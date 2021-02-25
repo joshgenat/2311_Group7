@@ -8,7 +8,7 @@ public class GuitarNoteObject {
 	int string;
 	int fret;
 	int duration = 0;
-	int division = 1;
+	int divisions = 1;
 	int voice = 1;
 	char step;
 	

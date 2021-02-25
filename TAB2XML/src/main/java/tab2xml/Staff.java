@@ -1,10 +1,10 @@
-package tab2xml;
-
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-
-public class Staff {
-
+//package tab2xml;
+//
+//import org.w3c.dom.Document;
+//import org.w3c.dom.Element;
+//
+//public class Staff {
+//
 //	static void staff(Document doc, Element attributes, GuitarNoteObject g) {
 //		Element staffDetails = doc.createElement("staff-details");    
 //		attributes.appendChild(staffDetails); 
@@ -36,4 +36,4 @@ public class Staff {
 //		tuningOctave.appendChild(doc.createTextNode("" + g.tuningOctave) ); 
 //		staffTuning.appendChild(tuningOctave); 
 //	}
-}
+//}

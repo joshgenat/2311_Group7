@@ -73,9 +73,9 @@ public class DrumXML {
 						if (o != null)
 						Time.time(doc, attributes, o);
 						
-						if (o.clef != null)
-						Clef.clef(doc, attributes, o);
-						
+//						if (o.clef != null)
+//						Clef.clef(doc, attributes, o);
+//						
 						for(int j = 0; j < o.notes.size() ; j++) {
 						DrumNote.note(doc, measureNumber, o, j);
 						}

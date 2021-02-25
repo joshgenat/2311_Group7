@@ -6,7 +6,7 @@ import org.w3c.dom.Element;
 public class Clef {
 	
 	// For Drums
-	public static void clef(Document doc, Element attributes, DrumNoteObject o) {
+//	public static void clef(Document doc, Element attributes, DrumNoteObject o) {
 //	Element clef = doc.createElement("clef");    
 //	attributes.appendChild(clef); 
 //		
@@ -28,9 +28,9 @@ public class Clef {
 //			line.appendChild(doc.createTextNode("" + o.line) ); 
 //			clef.appendChild(line);
 //		}
-//		
-//		
-//	//For Guitars
+		
+		
+	//For Guitars
 //	public static void clef(Document doc, Element attributes, GuitarNoteObject g) {
 //		Element clef = doc.createElement("clef");    
 //		attributes.appendChild(clef); 
@@ -52,5 +52,5 @@ public class Clef {
 //				Element line= doc.createElement("line");        
 //				line.appendChild(doc.createTextNode("" + g.line) ); 
 //				clef.appendChild(line);
-          }
+//          }
 }
