@@ -15,7 +15,7 @@ public class Key {
 	}
 	
 	// For Guitars
-	static void key(Document doc, Element attributes, GuitarNoteObject g) {
+	static void key(Document doc, Element attributes, GuitarNotes g) {
 		Element key = doc.createElement("key");    
 		attributes.appendChild(key); 
 		

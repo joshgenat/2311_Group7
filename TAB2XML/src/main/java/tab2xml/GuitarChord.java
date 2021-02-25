@@ -1,26 +1,26 @@
 package tab2xml;
 
 public class GuitarChord {
-	GuitarNoteObject[] notes;
+	GuitarNotes[] notes;
 	int pos;
 	private int addAt;
 	private int size;
 	private int duration;
 	
-	public GuitarChord(GuitarNoteObject[] notes, int i) {
+	public GuitarChord(GuitarNotes[] notes, int i) {
 		this.notes = notes;
 		pos = i;
 	}
 	
 	public GuitarChord(int size) {
-		notes = new GuitarNoteObject[size];
+		notes = new GuitarNotes[size];
 		for(int i = 0; i < size; i++)
 			notes[i] = null;
 		addAt = 0;
 		size = 0;
 	}
 	
-	public void put(GuitarNoteObject a) {
+	public void put(GuitarNotes a) {
 		if(addAt < notes.length) {
 			notes[addAt] = a;
 			addAt++;
@@ -28,7 +28,7 @@ public class GuitarChord {
 		}
 	}
 	
-	public GuitarNoteObject get(int i) {
+	public GuitarNotes get(int i) {
 		return notes[i];
 	}
 	

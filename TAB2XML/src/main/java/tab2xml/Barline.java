@@ -5,7 +5,7 @@ import org.w3c.dom.Element;
 
 public class Barline {
 
-	static void barline(Document doc, Element measureNumber, GuitarNoteObject g) {
+	static void barline(Document doc, Element measureNumber, GuitarNotes g) {
 //		Element barline = doc.createElement("barline");
 //		barline.setAttribute("location", "right");
 //		measureNumber.appendChild(barline); 

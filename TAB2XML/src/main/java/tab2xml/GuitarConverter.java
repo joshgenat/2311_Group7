@@ -4,7 +4,7 @@ public class GuitarConverter {
 	
 
 	public static GuitarChord[] converter(char[][] in) { 
-		GuitarNoteObject[][] out = new GuitarNoteObject[in.length][in[0].length];
+		GuitarNotes[][] out = new GuitarNotes[in.length][in[0].length];
 		GuitarChord chords[] = new GuitarChord[in[0].length];
 		int fret;
 		int lastChord = 0;
@@ -20,7 +20,7 @@ public class GuitarConverter {
 				i++;
 				for(int j = 0; j < in.length; j++) {
 					if(in[j][i] == '-') {
-						out[j][i] = new GuitarNoteObject(j+1);
+						out[j][i] = new GuitarNotes(j+1);
 						chord.put(out[j][i]);
 					}	
 					else {
@@ -38,7 +38,7 @@ public class GuitarConverter {
 						hasNotes = true;
 					}
 					for(int i3 = 0; i3 < in.length; i3++) {
-						out[i3][i+1] = new GuitarNoteObject(i3+1);
+						out[i3][i+1] = new GuitarNotes(i3+1);
 					}
 				}
 				
@@ -62,7 +62,7 @@ public class GuitarConverter {
 	}
 	
 
-	public static GuitarNoteObject indexToNote(int i, int j, int fret) {
+	public static GuitarNotes indexToNote(int i, int j, int fret) {
 		System.out.println("indexToNote fret: " + fret);
 		int rem;
 		int octave;
@@ -75,7 +75,7 @@ public class GuitarConverter {
 			octave = ((53 - 5*i)  + fret) / 12;
 		}
 		
-		return new GuitarNoteObject(intToNote(rem), octave, i+1 , fret);
+		return new GuitarNotes(intToNote(rem), octave, i+1 , fret);
 	}
 	
 	public static String intToNote(int a) {
@@ -138,13 +138,13 @@ public class GuitarConverter {
 		}
 	}
 	
-	public static GuitarNoteObject[][] removeNull(GuitarNoteObject[][] in){
+	public static GuitarNotes[][] removeNull(GuitarNotes[][] in){
 		int i, j;
 		for(i = 0; i <= in.length; i++){
 			if(in[i][0] == null) 
 				break;
 		}
-		GuitarNoteObject[][] out = new GuitarNoteObject[i][in[0].length];
+		GuitarNotes[][] out = new GuitarNotes[i][in[0].length];
 		for(j = 0; j < i; j++) {
 			out[j] = in[j];
 		}

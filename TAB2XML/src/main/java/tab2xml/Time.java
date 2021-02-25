@@ -27,7 +27,7 @@ public class Time {
 			time.appendChild(beatType);
 		}
 		
-	public static void time(Document doc, Element attributes, GuitarNoteObject g) {
+	public static void time(Document doc, Element attributes, GuitarNotes g) {
 //		Element time = doc.createElement("time");    
 //		attributes.appendChild(time); 
 //			

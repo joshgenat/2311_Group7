@@ -1,6 +1,7 @@
 package tab2xml;
 
-public class GuitarNoteObject {
+public class GuitarNotes {
+	
 	String note;
 	String type = "";
 	int alter;
@@ -12,7 +13,7 @@ public class GuitarNoteObject {
 	int voice = 1;
 	char step;
 	
-	public GuitarNoteObject(String note, int octave, int string, int fret){
+	public GuitarNotes(String note, int octave, int string, int fret){
 		this.note = note;
 		this.step = note.charAt(0);
 		this.octave = octave;
@@ -23,7 +24,7 @@ public class GuitarNoteObject {
 			alter = 1;
 	}
 	
-	public GuitarNoteObject(int string){
+	public GuitarNotes(int string){
 		this.note = "-";
 		this.octave = -1;
 		this.string = string;

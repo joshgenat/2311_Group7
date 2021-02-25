@@ -11,7 +11,7 @@ import org.w3c.dom.*;
 
 public class GuitarXML {
 	
-	private GuitarXML(GuitarNoteObject g) {
+	private GuitarXML(GuitarNotes g) {
 
 		try {
 		DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();

@@ -76,7 +76,7 @@ public class ConverterTester {
 		}
 		*/
 		char fret = '9';
-		GuitarNoteObject testNote = guitar.indexToNote(0, 5, (int)fret - 48);
+		GuitarNotes testNote = guitar.indexToNote(0, 5, (int)fret - 48);
 		System.out.println(testNote);
 			
 		//System.out.println(test[0][1]);
