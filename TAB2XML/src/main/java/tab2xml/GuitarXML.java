@@ -56,7 +56,9 @@ public class GuitarXML {
 //					Clef.clef(doc, attributes, g);
 //					Staff.staff(doc, attributes, g);
 					
-					GuitarNote.note(doc, measureNumber, g);
+					for(int j = 0; j < g.notes.size() ; j++) {
+					GuitarNote.note(doc, measureNumber, g, j);
+					}
 					
 					Barline.barline(doc, measureNumber, g);
 			
