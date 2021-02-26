@@ -14,9 +14,9 @@ public class Divisions {
 	}
 	
 	// For Guitars
-	static void divisions(Document doc, Element attributes, GuitarNotes g) {
+	static void divisions(Document doc, Element attributes, GuitarNoteObject g) {
 		Element divisions = doc.createElement("divisions");        
-	//	divisions.appendChild(doc.createTextNode("" + g.divisions) ); 
+		divisions.appendChild(doc.createTextNode("" + g.divisions) ); 
 		attributes.appendChild(divisions); 
 		
 	}
