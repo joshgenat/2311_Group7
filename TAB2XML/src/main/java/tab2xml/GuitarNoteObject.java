@@ -28,7 +28,8 @@ public class GuitarNoteObject {
 			for(int j = 0; j < chords.length; j++) {
 				if(chords[j] == null) break;
 				for(int k = 0; k < chords[j].notes.length; k++) {
-					notes.add(chords[j].notes[k]);
+					if(chords[j].notes[k].octave != -1)
+						notes.add(chords[j].notes[k]);
 				}
 			}
 		}
