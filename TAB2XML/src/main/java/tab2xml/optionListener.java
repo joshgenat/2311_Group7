@@ -34,8 +34,8 @@ public class optionListener implements ActionListener {
  				}
  				else {
  					GuitarNoteObject c = new GuitarNoteObject(b);
- 					
- 					a.setText("Currently not Supported");
+ 					GuitarXML d = new GuitarXML(c);
+ 					a.setText(d.text);
  				}
  			
  		}
@@ -49,7 +49,9 @@ public class optionListener implements ActionListener {
 			a.setText(d.text);
 			}
 			else {
-				a.setText("Currently not Supported");
+				GuitarNoteObject c = new GuitarNoteObject(b);
+					GuitarXML d = new GuitarXML(c);
+					a.setText(d.text);
 			}
 		}
        

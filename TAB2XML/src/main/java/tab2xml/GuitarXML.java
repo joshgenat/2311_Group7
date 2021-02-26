@@ -1,6 +1,7 @@
 package tab2xml;
 
 import java.io.File;
+import java.io.StringWriter;
 
 import javax.xml.parsers.*;
 import javax.xml.transform.*;
@@ -11,7 +12,8 @@ import org.w3c.dom.*;
 
 public class GuitarXML {
 	
-	private GuitarXML(GuitarNoteObject g) {
+	String text;
+	public GuitarXML(GuitarNoteObject g) {
 
 		try {
 		DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
@@ -71,10 +73,14 @@ public class GuitarXML {
 		DOMSource source = new DOMSource(doc);
 		
 		// Print to console
-		StreamResult result = new StreamResult(System.out);
-		// StreamResult result = new StreamResult(new File());
+		StringWriter outWriter = new StringWriter();
+		StreamResult result = new StreamResult( outWriter );
+					
+		transformer.transform(source, result);		
+		StringBuffer sb = outWriter.getBuffer(); 
+		String finalstring = sb.toString();
 		
-		transformer.transform(source, result);
+		text = finalstring;
 		
 		}
 		
