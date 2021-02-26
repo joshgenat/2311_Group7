@@ -33,6 +33,8 @@ public class optionListener implements ActionListener {
  				a.setText(d.text);
  				}
  				else {
+ 					GuitarNoteObject c = new GuitarNoteObject(b);
+ 					
  					a.setText("Currently not Supported");
  				}
  			
