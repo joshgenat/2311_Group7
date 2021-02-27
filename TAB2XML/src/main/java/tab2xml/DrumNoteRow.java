@@ -2,11 +2,13 @@ package tab2xml;
 
 public class DrumNoteRow {
 
-
 	int [] rowCoordinates;
 	int [] colCoordinates;
 	int counter = 0;
 	boolean mutipleVoices = false;
+	boolean checker = false; 
+	int oldDivider = 0;
+	int currentDivider = 0;
 	
 	int [] RowReader(char [][] drumTab, int [] rowSymbols)
 	{
@@ -14,17 +16,51 @@ public class DrumNoteRow {
 		mutipleVoices = false;
 		rowCoordinates = new int[100];
 		colCoordinates = new int[100];
+		checker = false; 
+		oldDivider = 0;
+		currentDivider = 0;
 		
-		for (int col = 0; col < drumTab[0].length; col++)
+		
+		
+		
+		for (int col = 0; col<drumTab[0].length; col++)
+		{
+		     for (int row = drumTab.length - 1; row >= 0 ; row--)
+		     {
+		    	 
+		    	 if (currentDivider == col)
+		    	 {
+		    		checker = true;
+		    		break; 
+		    	 }		    	 
+		    	
+		    	 else if (drumTab[row][col] == '|')
+		    		{
+		    		 oldDivider = currentDivider;
+		    		 currentDivider = col;
+		    		 checker = false;
+		    		}
+		
+		
+
+		 		if (checker == false)
+		 	{
+		
+		
+		
+		
+		
+		
+		for (int col1 = oldDivider; col1 < currentDivider; col1++)
         {
 			
-            for (int row = 0; row < drumTab.length; row++)
+            for (int row1 = drumTab.length - 1; row1 >=0; row1--)
             {
             	//if (rowSymbols[row] == 8) means voice two
-            	if ((drumTab[row][col] == 'x' || drumTab[row][col] == 'o')  && (rowSymbols[row] != 8))
+            	if ((drumTab[row1][col1] == 'x' || drumTab[row1][col1] == 'o')  && (rowSymbols[row1] != 8))
             	{
-            		rowCoordinates[counter] = row;
-            		colCoordinates[counter] = col;
+            		rowCoordinates[counter] = row1;
+            		colCoordinates[counter] = col1;
             		counter++;
             	}
             }
@@ -32,10 +68,10 @@ public class DrumNoteRow {
         }
 		 // run the loop a second time, now to find the notes in voice 2 
 		
-		for (int col2 = 0; col2 < drumTab[0].length; col2++)
+		for (int col2 = oldDivider; col2 < currentDivider; col2++)
         {
 			
-            for (int row2 = 0; row2 < drumTab.length; row2++)
+            for (int row2 = drumTab.length - 1;row2>=0; row2--)
             {
             	
             	
@@ -58,6 +94,9 @@ public class DrumNoteRow {
             }
             
         }
+		 	}
+		     }
+		}
 		return rowCoordinates;
 		
 		
