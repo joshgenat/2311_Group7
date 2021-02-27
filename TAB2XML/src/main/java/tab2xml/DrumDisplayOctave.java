@@ -1,7 +1,8 @@
 package tab2xml;
 
 public class DrumDisplayOctave {
-
+	
+	
 	static int numOfOctaves;
 	
 	
@@ -13,11 +14,11 @@ public class DrumDisplayOctave {
 		
 		if  (voice == 2)
         {
-        	numOfOctaves = (tabsize[i].length) - 2;
+        	numOfOctaves = (tabsize.length) - 2;
         }
 		else if(voice ==1)
 		{
-			numOfOctaves = (tabsize[i].length) - 1;
+			numOfOctaves = (tabsize.length) - 1;
 		}
 		else 
 		{
