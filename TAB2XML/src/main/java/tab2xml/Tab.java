@@ -21,20 +21,16 @@ public class Tab {
 			if(read && lines.get(i).toString().contains("-") && lines.get(i).toString().lastIndexOf('|') - lines.get(i).toString().indexOf('|') > 0) {
 				pass.add(lines.get(i));
 			}
-			else if(read || pass.size() > 6) {
+			else if(read) {
 				if(type) {
 					Type = this.getType(pass);
 					type = false;
 					}
-				if(pass.size() > 6) {
-					nodes.add(new TabNodes(pass));
-					pass = new ArrayList<Object>();
-				}
-				else {
+				int repeat = getR(pass);
+				for(int r = 0; r < repeat; r++)
 				nodes.add(new TabNodes(pass));
 				pass = new ArrayList<Object>();
 				read = false;
-				}
 
 			}
 			else if(lines.get(i).toString().contains("-") && lines.get(i).toString().lastIndexOf('|') - lines.get(i).toString().indexOf('|') > 0) { 
@@ -42,6 +38,8 @@ public class Tab {
 				read = true; 	
 			}
 		}
+		int repeat = getR(pass);
+		for(int r = 0; r < repeat; r++)
 		nodes.add(new TabNodes(pass));
 		if(type) {
 			Type = this.getType(pass);
@@ -58,5 +56,26 @@ public class Tab {
 		}
 		if(x && o) {type = "Drum";}
 		return type;
+	}
+	
+	private int getR(ArrayList<Object> n) {
+		int r = 1;
+		String hold="";
+		for(int i = 0; i < n.size(); i++) {
+			hold = "";
+			if(n.get(i).toString().lastIndexOf("|") != n.get(i).toString().length()-1) {
+				hold = n.get(i).toString().substring(n.get(i).toString().length()-1-n.get(i).toString().lastIndexOf("|") ,n.get(i).toString().length());
+				hold = hold.replaceAll("[^0-9]", "");
+				if(hold == "") {
+					r = 1;
+					n.set(i, n.get(i).toString().substring(0,n.get(i).toString().lastIndexOf("|")+1));
+				}
+				else {
+					r = Integer.parseInt(hold);
+					n.set(i, n.get(i).toString().substring(0,n.get(i).toString().lastIndexOf("|")+1));
+				}
+			}
+		}
+		return r;
 	}
 }
