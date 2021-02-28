@@ -9,7 +9,7 @@ public class GuitarNote {
 		Element note = doc.createElement("note");     
 		measureNumber.appendChild(note); 
 		
-			if (g.notes.get(j).isChord == true)
+			if (g.notes.get(j).isChord == true) 
 			chord(doc, note);
 			
 			pitch(doc, note, g, j);	
