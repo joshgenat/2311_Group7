@@ -44,10 +44,11 @@ public class DrumNoteObject {
 		// the following values are only needed once for the MusicXML Code
 		this.tab = tab;
 		String clef = "percussion";
-		int divisions = 4;
-		int fifths = 0;
-		int beats = 4;
-		int beatsType = 4;
+		divisions = 4;
+		fifths = 0;
+		beats = 4;
+		beatsType = 4;
+		
 		//Adds PartList At Top
 		for(int r = 0; r <= 9; r++) {
 			instruments.add(instrumentFinder.InstrumentAll(r));

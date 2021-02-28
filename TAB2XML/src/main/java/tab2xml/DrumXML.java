@@ -64,13 +64,9 @@ public class DrumXML {
 						Element attributes = doc.createElement("attributes");   
 						measureNumber.appendChild(attributes);
 						
-						if (o.divisions != 0) 
+						
 						Divisions.divisions(doc, attributes, o);
-						
-						if (o.fifths != 0)
-						Key.key(doc, attributes, o);
-						
-						if (o != null)
+						Key.key(doc, attributes, o);				
 						Time.time(doc, attributes, o);
 						
 //						if (o.clef != null)
