@@ -13,14 +13,14 @@ public class Staff {
 			staffLines.appendChild(doc.createTextNode("" + g.staffLines) ); 
 			staffDetails.appendChild(staffLines); 
 					
-			for (int i = 0 ; i < g.tStep.size(); i++) {
+			for (int i = 1 ; i <= g.tStep.size(); i++) {
 			Element staffTuning= doc.createElement("staff-tuning");        
 			staffTuning.setAttribute("line", "" + i);
 			staffDetails.appendChild(staffTuning);	
 			
-				tuningStep(doc, staffTuning, g, i);
+				tuningStep(doc, staffTuning, g, i-1);
 		
-				tuningOctave(doc, staffTuning, g, i);
+				tuningOctave(doc, staffTuning, g, i-1);
 			}
 	}
 	
