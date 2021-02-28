@@ -1,6 +1,10 @@
-package tab2xml;
+package testing;
 
-//import static org.junit.jupiter.api.Assertions.*;
+import tab2xml.GuitarChord;
+import tab2xml.GuitarConverter;
+import tab2xml.GuitarNotes;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ConverterTester {
 
@@ -51,11 +55,11 @@ public class ConverterTester {
 		//System.out.print(notes[4].get(4));
 		System.out.println("\n result \n");
 		
-		for(int i = 0; i < notes.length; i++) {
+		for(int i = 0; i < notes[0].notes.length; i++) {
 			for(int j = 0; j < notes.length; j++) {
 				if(notes[j] == null)
 					break;
-				System.out.print(notes[j].notes[i] + "[" + notes[j].notes[i].isChord + "]\t");
+				System.out.print(notes[j].notes[i] + "[" + notes[j].notes[i].duration + "]\t");
 			}
 			System.out.println();
 		}

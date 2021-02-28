@@ -1,7 +1,7 @@
 package tab2xml;
 
 public class GuitarChord {
-	GuitarNotes[] notes;
+	public GuitarNotes[] notes;
 	int pos;
 	private int addAt;
 	private int size;
