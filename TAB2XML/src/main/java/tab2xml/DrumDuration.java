@@ -21,11 +21,13 @@ public class DrumDuration {
 		{
 			for (int i = 0; i < dividers.length; i++) 
 			{
+				if(i+1 < dividers.length) {
 				if ((dividers[i] < col) && (nextCol > dividers[i+1]) && (col< dividers[i+1]))
 				{
 					durationcount = dividers[i+1] - col; 
 					breaksDivider  = true;
 					
+				}
 				}
 				
 				
@@ -46,11 +48,13 @@ public class DrumDuration {
 			
 			for (int i = 0; i < dividers.length; i++) 
 			{
+				if(i+1 < dividers.length) {
 				if ((dividers[i] < col) && (nextNextCol > dividers[i+1]) && (col< dividers[i+1]))
 				{
 					durationcount = dividers[i+1] - col; 
 					breaksDivider  = true;
 					
+				}
 				}
 				
 				if (breaksDivider == false)

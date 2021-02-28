@@ -19,12 +19,7 @@ public class TabNodes {
 		
 		for(int i = 0; i < nodes.length; i++) {
 			for(int j = 0; j < nodes[i].length; j++) {
-				if(j >= lines.get(i).toString().length()) {
-					nodes[i][j] = ' ';
-				}
-				else {
 				nodes[i][j] = lines.get(i).toString().charAt(j);
-				}
 			}
 		}
 		

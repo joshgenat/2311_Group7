@@ -6,6 +6,7 @@ public class DrumNotes {
 	int displayOctave;
 	int duration;
 	String stem;
+	String type;
 	
 	public DrumNotes(){
 		

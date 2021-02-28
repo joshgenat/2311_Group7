@@ -12,11 +12,11 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="550.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tab2xml.Controller">
+<AnchorPane prefHeight="550.0" prefWidth="900.0" style="-fx-background-color: #339966;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tab2xml.Controller">
    <children>
       <AnchorPane layoutY="67.0" prefHeight="475.0" prefWidth="151.0" AnchorPane.bottomAnchor="7.666666666666686" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="67.0">
          <children>
-            <ListView fx:id="fileView" prefHeight="475.0" prefWidth="163.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <ListView fx:id="fileView" layoutX="5.0" prefHeight="475.0" prefWidth="153.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="0.0" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="750.0" layoutY="67.0" prefHeight="475.0" prefWidth="135.0" AnchorPane.bottomAnchor="7.666666666666686" AnchorPane.rightAnchor="14.666666666666657" AnchorPane.topAnchor="66.99999999999994">

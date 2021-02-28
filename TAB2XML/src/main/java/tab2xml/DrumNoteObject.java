@@ -37,6 +37,8 @@ public class DrumNoteObject {
 	DrumID instrumentFinder = new DrumID();
 	DrumVoice voiceValue = new DrumVoice();
 	DrumStem stemValue = new DrumStem();
+	DrumNoteType noteType = new DrumNoteType();
+	DrumDividers dividers = new DrumDividers();
 		
 	
 	public DrumNoteObject(Tab tab) {
@@ -86,8 +88,9 @@ public class DrumNoteObject {
 		note1.voiceNumber = voiceValue.FindVoiceValue(row, rowSymbols);
 		note1.displayOctave = octave.DrumOctaves(tab.nodes.get(i).nodes,note1.voiceNumber);
 		note1.duration = 0;
-		//note1.duration = noteduration.NoteDurationLength(col,nextCol,nextNextCol);
+		note1.duration = noteduration.NoteDurationLength(col, nextCol, nextNextCol, dividers.TabDividers(tab.nodes.get(i).nodes));
 		note1.stem = stemValue.FindStemValue(note1.voiceNumber);
+		note1.type = noteType.DrumNoteLength(note1.duration);
 		
 		
 		notes.add(note1);
