@@ -1,5 +1,7 @@
 package tab2xml;
 
+import java.util.ArrayList;
+
 public class DrumDuration {
 	
 	
@@ -14,17 +16,18 @@ public class DrumDuration {
 	 int durationcount;
 	 boolean breaksDivider = false;
 	
-	public int NoteDurationLength(int col,  int nextCol, int nextNextCol, int [] dividers)
+	public int NoteDurationLength(int col,  int nextCol, int nextNextCol, ArrayList<Integer> barLineCols)
 	{
 		
 		if (col != nextCol)
 		{
-			for (int i = 0; i < dividers.length; i++) 
+			for (int i = 0; i < barLineCols.size(); i++) 
 			{
-				if(i+1 < dividers.length) {
-				if ((dividers[i] < col) && (nextCol > dividers[i+1]) && (col< dividers[i+1]))
+				if(i+1 < barLineCols.size()) 
 				{
-					durationcount = dividers[i+1] - col; 
+				if ((barLineCols.get(i) < col) && (nextCol > barLineCols.get(i+1)) && (col< barLineCols.get(i+1)))
+				{
+					durationcount = barLineCols.get(i+1) - col; 
 					breaksDivider  = true;
 					
 				}
@@ -46,12 +49,13 @@ public class DrumDuration {
 		if (col == nextCol)
 		{
 			
-			for (int i = 0; i < dividers.length; i++) 
+			for (int i = 0; i < barLineCols.size(); i++) 
 			{
-				if(i+1 < dividers.length) {
-				if ((dividers[i] < col) && (nextNextCol > dividers[i+1]) && (col< dividers[i+1]))
+				if(i+1 < barLineCols.size()) 
 				{
-					durationcount = dividers[i+1] - col; 
+				if ((barLineCols.get(i) < col) && (nextNextCol > barLineCols.get(i+1)) && (col< barLineCols.get(i+1)))
+				{
+					durationcount = barLineCols.get(i+1) - col; 
 					breaksDivider  = true;
 					
 				}

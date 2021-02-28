@@ -1,5 +1,7 @@
 package tab2xml;
 
+import java.util.ArrayList;
+
 public class DrumDividers {
 
 	/**
@@ -10,23 +12,20 @@ public class DrumDividers {
 	 */
 
 	
-	int [] dividers;
+	ArrayList<Integer> barLineCols; 
 
-	int [] TabDividers(char [][] drumTab)
+	ArrayList<Integer> DrumBarLines(char [][] drumTab)
 	{
-		dividers = new int [100];
+		barLineCols = new ArrayList<Integer>();
 	
 	for (int col = 0; col<drumTab[0].length; col++)
 	{
 	    	 
 	    	 if (drumTab[0][col] == '|')
 	    		{
-	    		 int i = 0;
-	    		 dividers[i] = col;
-	    		 i++;
-	
+	    		 barLineCols.add(col);
 	    		}
 	    	}
-	return dividers;
+	return barLineCols;
 }
 }

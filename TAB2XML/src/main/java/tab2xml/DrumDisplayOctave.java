@@ -9,8 +9,7 @@ public class DrumDisplayOctave {
 	public int DrumOctaves(char [][] tabsize, int voice)
 	{
 		            	
-		int i = 0;
-        
+
 		
 		if  (voice == 2)
         {
