@@ -5,9 +5,9 @@ import java.util.ArrayList;
 
 public class Tab {
 
-	ArrayList<TabNodes> nodes; // ArrayList of the lines of the tab
-	String Type; // Type of Instrument Tab it is 
-	ArrayList<Object> pass; // used to make individual nodes
+	public ArrayList<TabNodes> nodes; // ArrayList of the lines of the tab
+	public String Type; // Type of Instrument Tab it is 
+	public ArrayList<Object> pass; // used to make individual nodes
 	
 	public Tab(ArrayList<Object> lines) {
 		boolean read = false;
