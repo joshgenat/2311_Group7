@@ -25,7 +25,7 @@ public class GuitarNote {
 	
 	static void chord(Document doc, Element note) {
 		Element chord = doc.createElement("chord");
-		note.appendChild(chord);
+		note.appendChild(chord); 
 	}
 	
 	static void pitch(Document doc, Element note, GuitarNoteObject g, int j) {
