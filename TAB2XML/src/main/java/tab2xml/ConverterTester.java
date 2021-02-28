@@ -1,5 +1,7 @@
 package tab2xml;
 
+//import static org.junit.jupiter.api.Assertions.*;
+
 public class ConverterTester {
 
 	public static void main(String[] args) {
@@ -53,7 +55,7 @@ public class ConverterTester {
 			for(int j = 0; j < notes.length; j++) {
 				if(notes[j] == null)
 					break;
-				System.out.print(notes[j].notes[i] + "[" + notes[j].notes[i].duration + "]\t");
+				System.out.print(notes[j].notes[i] + "[" + notes[j].notes[i].isChord + "]\t");
 			}
 			System.out.println();
 		}
