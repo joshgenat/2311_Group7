@@ -43,6 +43,9 @@ public class GuitarConverter {
 				}
 				
 			}
+			else {
+				dur = 0;
+			}
 			chords[i2] = chord;
 			if(hasNotes) {
 				chords[lastChord].setDurations(dur);
@@ -54,6 +57,7 @@ public class GuitarConverter {
 			else if(!hasNotes) {
 				dur++;
 			}
+			
 			if(i == in[0].length - 3)
 				chords[lastChord].setDurations(dur);
 		}	

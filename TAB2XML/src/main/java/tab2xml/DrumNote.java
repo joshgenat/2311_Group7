@@ -11,11 +11,11 @@ public class DrumNote {
 		
 		unpitched(doc, note, o, j);
 		duration(doc, note, o, j);
-		//instrumentId(doc, note, o, j);
+		instrumentId(doc, note, o, j);
 		voice(doc, note, o, j);
 		type(doc, note, o, j);
 		stem(doc, note, o, j);
-//		noteHead(doc, note, o, j);
+        //noteHead(doc, note, o, j);
 		//beamNumber(doc, note, o, j);
 		
 	}
@@ -49,7 +49,7 @@ public class DrumNote {
 	
 	static void instrumentId(Document doc, Element note, DrumNoteObject o, int j) {
 		Element instrumentId = doc.createElement("instrument");   
-		instrumentId.setAttribute("id", "" + o.instruments.get(j).partID);
+		instrumentId.setAttribute("id", "" + o.notes.get(j).instrumentID);
 		note.appendChild(instrumentId);	
 	}
 	
@@ -61,7 +61,7 @@ public class DrumNote {
 	
 	static void type(Document doc, Element note, DrumNoteObject o, int j) {
 		Element type = doc.createElement("type");   
-		type.appendChild(doc.createTextNode("eighth") ); 
+		type.appendChild(doc.createTextNode(o.notes.get(j).type)); 
 		note.appendChild(type);	
 	}
 	

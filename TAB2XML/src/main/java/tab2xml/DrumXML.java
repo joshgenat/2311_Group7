@@ -64,24 +64,21 @@ public class DrumXML {
 						Element attributes = doc.createElement("attributes");   
 						measureNumber.appendChild(attributes);
 						
-						if (o.divisions != 0) 
+						
 						Divisions.divisions(doc, attributes, o);
-						
-						if (o.fifths != 0)
-						Key.key(doc, attributes, o);
-						
-						if (o != null)
+						Key.key(doc, attributes, o);				
 						Time.time(doc, attributes, o);
 						
-//						if (o.clef != null)
-//						Clef.clef(doc, attributes, o);
-//						
+						
+						Clef.clef(doc, attributes, o);
+						
 						for(int j = 0; j < o.notes.size() ; j++) {
-							if (o.voice == 0) {
+							if (o.notes.get(j).voiceNumber == 0) {
 								Backup.backup(doc, measureNumber, o, j);
 							}
-							
-						DrumNote.note(doc, measureNumber, o, j);
+							else {
+						       DrumNote.note(doc, measureNumber, o, j);
+							}
 						}
 						
 						

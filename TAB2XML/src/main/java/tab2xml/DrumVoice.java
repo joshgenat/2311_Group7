@@ -7,7 +7,7 @@ public class DrumVoice {
 	int FindVoiceValue (int row, int [] rowSymbols)
 	{
 		
-		if (row == 100)
+		if (row == 1000)
 		{
 			voiceValue = 0;
 		}

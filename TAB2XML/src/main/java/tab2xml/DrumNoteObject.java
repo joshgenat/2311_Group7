@@ -14,10 +14,10 @@ public class DrumNoteObject {
 	
 	
 	Tab tab;
-	int voice;
 	ArrayList<DrumNotes> notes = new ArrayList<DrumNotes>();
 	ArrayList<DrumPartsList> instruments = new ArrayList<>();
-	String clef;
+	String sign;
+	int line;
 	int divisions;
 	int fifths;
 	int beats;
@@ -38,17 +38,19 @@ public class DrumNoteObject {
 	DrumVoice voiceValue = new DrumVoice();
 	DrumStem stemValue = new DrumStem();
 	DrumNoteType noteType = new DrumNoteType();
-	DrumDividers dividers = new DrumDividers();
+	DrumDividers barLineCols = new DrumDividers();
 		
 	
 	public DrumNoteObject(Tab tab) {
 		// the following values are only needed once for the MusicXML Code
 		this.tab = tab;
-		String clef = "percussion";
-		int divisions = 4;
-		int fifths = 0;
-		int beats = 4;
-		int beatsType = 4;
+		sign = "percussion";
+		line = 2;
+		divisions = 4;
+		fifths = 0;
+		beats = 4;
+		beatsType = 4;
+		
 		//Adds PartList At Top
 		for(int r = 0; r <= 9; r++) {
 			instruments.add(instrumentFinder.InstrumentAll(r));
@@ -66,17 +68,19 @@ public class DrumNoteObject {
 		 */
 		
 		int [] rowSymbols = note.rowSymbolsSorter(tab.nodes.get(i).nodes);	 
-		int[] noteRowValues = rowValue.RowReader(tab.nodes.get(i).nodes,rowSymbols);
-		int[] noteColValues = colValue.ColReader(tab.nodes.get(i).nodes,rowSymbols);
+		
+		
+		ArrayList<Integer> rowCoordinate = rowValue.RowReader(tab.nodes.get(i).nodes,rowSymbols);
+		ArrayList<Integer> colCoordinate = colValue.ColReader(tab.nodes.get(i).nodes,rowSymbols);
 	
 		
-		for(int j = 0; j < noteRowValues.length; j++) {
-		int row = noteRowValues[j];
-		int col = noteColValues[j];
+		for(int j = 0; j < rowCoordinate.size(); j++) {
+		int row = rowCoordinate.get(j);
+		int col = colCoordinate.get(j);
 		int nextCol = 0;
 		int nextNextCol = 0;
-		if(j+1 < noteRowValues.length) {nextCol = noteColValues[j+1];} 
-		if(j+2 < noteRowValues.length) {nextNextCol = noteColValues[j+2];} 
+		if(j+1 < rowCoordinate.size()) {nextCol = colCoordinate.get(j+1);} 
+		if(j+2 < rowCoordinate.size()) {nextNextCol = colCoordinate.get(j+2);} 
 		
 		
 		
@@ -84,11 +88,11 @@ public class DrumNoteObject {
 		 * the following pieces of information are the ones which need to be put into an array for the MusicXML Code
 		 */
 		DrumNotes note1 = new DrumNotes();
-		note1.displayStep = step.StepOrganizer(row, col);;
+		note1.displayStep = step.StepOrganizer(row, col);
 		note1.voiceNumber = voiceValue.FindVoiceValue(row, rowSymbols);
+		note1.instrumentID = instrumentFinder.Instrument(row, rowSymbols).partID;
 		note1.displayOctave = octave.DrumOctaves(tab.nodes.get(i).nodes,note1.voiceNumber);
-		note1.duration = 0;
-		note1.duration = noteduration.NoteDurationLength(col, nextCol, nextNextCol, dividers.TabDividers(tab.nodes.get(i).nodes));
+		note1.duration = noteduration.NoteDurationLength(col, nextCol, nextNextCol, barLineCols.DrumBarLines(tab.nodes.get(i).nodes));
 		note1.stem = stemValue.FindStemValue(note1.voiceNumber);
 		note1.type = noteType.DrumNoteLength(note1.duration);
 		

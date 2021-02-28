@@ -2,16 +2,16 @@ package tab2xml;
 
 public class GuitarNotes {
 	
-	String note;
-	String type = "";
-	int alter;
-	int octave;
-	int string;
-	int fret;
-	int duration = 0;
-	int voice = 1;
-	char step;
-	boolean isChord = false;
+	public String note;
+	public String type = "";
+	public int alter;
+	public int octave;
+	public int string;
+	public int fret;
+	public int duration = 0;
+	public int voice = 1;
+	public char step;
+	public boolean isChord;
 	
 	public GuitarNotes(String note, int octave, int string, int fret){
 		this.note = note;
@@ -19,6 +19,7 @@ public class GuitarNotes {
 		this.octave = octave;
 		this.string = string;;
 		this.fret = fret;
+		isChord = false;
 		
 		if(note.length() == 2)
 			alter = 1;
@@ -46,6 +47,9 @@ public class GuitarNotes {
 				break;
 			case(1):
 				type = "eighth";
+				break;
+			default:
+				type = "sixteenth";
 		}
 	}
 	

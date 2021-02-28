@@ -1,4 +1,10 @@
-package tab2xml;
+package testing;
+
+import tab2xml.GuitarChord;
+import tab2xml.GuitarConverter;
+import tab2xml.GuitarNotes;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ConverterTester {
 
@@ -15,7 +21,7 @@ public class ConverterTester {
 		};
 		char[][] test2 = {
 				{'|', '-', '0', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '|'},
-				{'|', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '2', '-', '4', '-', '|'},
+				{'|', '-', '1', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '2', '-', '4', '-', '|'},
 				{'|', '-', '-', '-', '5', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '3', '-', '|'},
 				{'|', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '1', '-', '-', '-', '-', '-', '-', '-', '-', '-', '|'},
 				{'|', '-', '-', '-', '-', '-', '1', '0', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '2', '1', '|'},
@@ -49,7 +55,7 @@ public class ConverterTester {
 		//System.out.print(notes[4].get(4));
 		System.out.println("\n result \n");
 		
-		for(int i = 0; i < notes.length; i++) {
+		for(int i = 0; i < notes[0].notes.length; i++) {
 			for(int j = 0; j < notes.length; j++) {
 				if(notes[j] == null)
 					break;

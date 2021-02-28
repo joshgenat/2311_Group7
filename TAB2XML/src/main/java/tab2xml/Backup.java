@@ -10,7 +10,7 @@ public class Backup {
 		measureNumber.appendChild(backup); 
 		
 			Element duration = doc.createElement("duration");   
-			duration.appendChild(doc.createTextNode("" + o.notes.get(j).duration)); 
+			duration.appendChild(doc.createTextNode("" + 16)); 
 			backup.appendChild(duration);	
 	}
 }

@@ -10,9 +10,11 @@ import java.util.Scanner;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextArea;
+import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 
@@ -46,8 +48,12 @@ public class Controller {
 	@FXML
 	private TabPane tabView;
 	
+	@FXML
+	private Label errorLabel;
+	
 	
 	public void convert(ActionEvent event) throws IOException {
+		try {
   	   String [] parse = tabText.getText().split("\n");
 			ArrayList<Object> lines = new ArrayList<Object>();
 			
@@ -76,6 +82,13 @@ public class Controller {
 					xmlText.setText(d.text);
 				}
 			tabView.getSelectionModel().select(1);
+			errorLabel.setTextFill(Color.BLUE);
+			errorLabel.setText("Conversion Complete");
+		}
+		catch(Exception e) {
+			errorLabel.setTextFill(Color.RED);
+			errorLabel.setText("Error converting,\nmake sure your tab is\ncorrect and Try Again!");
+		}
 		
 	}
 	
@@ -114,9 +127,11 @@ public class Controller {
 	public void clear(ActionEvent event) {
 		if(tabView.getSelectionModel().isSelected(0)) {
 			tabText.setText("");
+			errorLabel.setText("");
 		}
 		else {
 			xmlText.setText("");
+			errorLabel.setText("");
 		}
 	}
 	

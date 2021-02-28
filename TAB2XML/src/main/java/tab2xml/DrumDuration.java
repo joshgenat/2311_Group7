@@ -31,7 +31,7 @@ public class DrumDuration {
 					breaksDivider  = true;
 					
 				}
-				}
+				
 				
 				
 				if (breaksDivider == false)
@@ -40,7 +40,7 @@ public class DrumDuration {
 					breaksDivider = true;
 					
 				}
-				
+				}
 			}
 				
 			
@@ -59,13 +59,14 @@ public class DrumDuration {
 					breaksDivider  = true;
 					
 				}
-				}
+				
 				
 				if (breaksDivider == false)
 				{
 					durationcount = nextNextCol - col;
 					breaksDivider = true;
 					
+				}
 				}
 			}
 			
