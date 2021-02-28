@@ -19,7 +19,7 @@ To run this application, import the java files and load the file into Eclipse.
 
 ## Documentation
 
-- Required Documents (PDF)
+- Required Documents [PDF](chrome-extension://oemmndcbldboiebfnladdacbdfmadadm/file:///C:/Users/JoshuaG11/Downloads/Requirements%20Document,%20EECS%202311.pdf)
 - User Manual (PDF)
 - Testing Document (PDF)
 
