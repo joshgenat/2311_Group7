@@ -85,7 +85,8 @@ public class DrumNoteObject {
 		note1.displayStep = step.StepOrganizer(row, col);;
 		note1.voiceNumber = voiceValue.FindVoiceValue(row, rowSymbols);
 		note1.displayOctave = octave.DrumOctaves(tab.nodes.get(i).nodes,note1.voiceNumber);
-		note1.duration = noteduration.NoteDurationLength(col,nextCol,nextNextCol);
+		note1.duration = 0;
+		//note1.duration = noteduration.NoteDurationLength(col,nextCol,nextNextCol);
 		note1.stem = stemValue.FindStemValue(note1.voiceNumber);
 		
 		
