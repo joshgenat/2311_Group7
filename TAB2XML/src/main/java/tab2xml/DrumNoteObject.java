@@ -86,10 +86,10 @@ public class DrumNoteObject {
 		 * the following pieces of information are the ones which need to be put into an array for the MusicXML Code
 		 */
 		DrumNotes note1 = new DrumNotes();
-		note1.displayStep = step.StepOrganizer(row, col);;
+		note1.displayStep = step.StepOrganizer(row, col);
 		note1.voiceNumber = voiceValue.FindVoiceValue(row, rowSymbols);
+		note1.instrumentID = instrumentFinder.Instrument(row, rowSymbols).partID;
 		note1.displayOctave = octave.DrumOctaves(tab.nodes.get(i).nodes,note1.voiceNumber);
-		note1.duration = 0;
 		note1.duration = noteduration.NoteDurationLength(col, nextCol, nextNextCol, barLineCols.DrumBarLines(tab.nodes.get(i).nodes));
 		note1.stem = stemValue.FindStemValue(note1.voiceNumber);
 		note1.type = noteType.DrumNoteLength(note1.duration);

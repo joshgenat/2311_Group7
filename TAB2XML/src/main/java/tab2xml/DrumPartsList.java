@@ -9,6 +9,11 @@ public class DrumPartsList {
 		
 	}
 	
+	public void Nothing() {
+		partID = "";
+		partName = "";
+	}
+	
 	public void BassDrum1()
 	{
 		partID = "P1-I36";

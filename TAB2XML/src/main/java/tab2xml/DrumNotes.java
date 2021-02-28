@@ -7,6 +7,7 @@ public class DrumNotes {
 	int duration;
 	String stem;
 	String type;
+	String instrumentID;
 	
 	public DrumNotes(){
 		

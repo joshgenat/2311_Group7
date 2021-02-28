@@ -11,7 +11,7 @@ public class DrumNote {
 		
 		unpitched(doc, note, o, j);
 		duration(doc, note, o, j);
-		//instrumentId(doc, note, o, j);
+		instrumentId(doc, note, o, j);
 		voice(doc, note, o, j);
 		type(doc, note, o, j);
 		stem(doc, note, o, j);
@@ -49,7 +49,7 @@ public class DrumNote {
 	
 	static void instrumentId(Document doc, Element note, DrumNoteObject o, int j) {
 		Element instrumentId = doc.createElement("instrument");   
-		instrumentId.setAttribute("id", "" + o.instruments.get(j).partID);
+		instrumentId.setAttribute("id", "" + o.notes.get(j).instrumentID);
 		note.appendChild(instrumentId);	
 	}
 	
