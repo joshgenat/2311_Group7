@@ -49,7 +49,10 @@ public class DrumNoteObject {
 		int fifths = 0;
 		int beats = 4;
 		int beatsType = 4;
-		
+		//Adds PartList At Top
+		for(int r = 0; r <= 9; r++) {
+			instruments.add(instrumentFinder.InstrumentAll(r));
+		}
 		
 		for(int i = 0; i < tab.nodes.size(); i++) {
 			
@@ -65,10 +68,7 @@ public class DrumNoteObject {
 		int [] rowSymbols = note.rowSymbolsSorter(tab.nodes.get(i).nodes);	 
 		int[] noteRowValues = rowValue.RowReader(tab.nodes.get(i).nodes,rowSymbols);
 		int[] noteColValues = colValue.ColReader(tab.nodes.get(i).nodes,rowSymbols);
-		
-		for(int r = 0; r < tab.nodes.get(i).nodes.length; r++) {
-			instruments.add(instrumentFinder.Instrument(r, rowSymbols));
-		}
+	
 		
 		for(int j = 0; j < noteRowValues.length; j++) {
 		int row = noteRowValues[j];
