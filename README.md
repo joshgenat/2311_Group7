@@ -1,5 +1,3 @@
-# 2311_Group 7
-
 ## About the Project 
 
 Tab2XML is an application that allows users to take a tablature and convert into a more flexible file, MusicXML. This will allow users to then adjust the piece of music to their liking, and will also allow for better transferability. 
@@ -14,12 +12,12 @@ Here's why:
 
 ## Getting Started 
 
-To run this application, import the java files and load the file into Eclipse. The system should be able to run through Gradle.
+To run this application, import the java files and load the file into Eclipse. The system should be able to run through Gradle. Refer to User Manual for further instructions.
 
 
 ## Documentation
 
-- Required Documents <a href="Requirements Document, EECS 2311.pdf">(PDF)</a>
+- Required Documents <a href="Requirements Document.pdf">(PDF)</a>
 - User Manual (PDF)
 - Testing Document (PDF)
 
@@ -31,4 +29,3 @@ To run this application, import the java files and load the file into Eclipse. T
 - [Uthithmenon Ravitharan](https://github.com/Uthith18)
 - [Nicolae Semionov](https://github.com/Nicolae-Semionov)
 
-[Go to Top](#About_the_Project)<a name="About_the_Project"></a>
