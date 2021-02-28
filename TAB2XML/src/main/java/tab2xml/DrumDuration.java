@@ -40,6 +40,11 @@ public class DrumDuration {
 					breaksDivider = true;
 					
 				}
+				
+				if (nextCol == 0)
+				{
+					durationcount = barLineCols.get(barLineCols.size()-1) - col;
+				}
 				}
 			}
 				
@@ -67,11 +72,21 @@ public class DrumDuration {
 					breaksDivider = true;
 					
 				}
+				
+				if (nextNextCol == 0)
+				{
+					durationcount = barLineCols.get(barLineCols.size()-1) - col;
+				}
+				
 				}
 			}
 			
 		}
 		
+		if (col == 1000)
+		{
+			durationcount = 7;
+		}
 		
 	
 	return durationcount;

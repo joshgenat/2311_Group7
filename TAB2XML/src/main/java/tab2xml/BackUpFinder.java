@@ -2,22 +2,25 @@ package tab2xml;
 
 import java.util.ArrayList;
 
-public class DrumNoteCol {
+public class BackUpFinder {
 
-
-	
 	ArrayList<Integer> rowCoordinate;
 	ArrayList<Integer> colCoordinate;
-	boolean mutipleVoices;
-	boolean checker; 
-	int oldDivider;
-	int currentDivider;
+	ArrayList<Boolean> backUpFinder;
+
+	int counter = 0;
+	boolean mutipleVoices = false;
+	boolean checker = false; 
+	int oldDivider = 0;
+	int currentDivider = 0;
 	
-	ArrayList <Integer> ColReader(char [][] drumTab, int [] rowSymbols)
+	ArrayList <Boolean> BackUpList(char [][] drumTab, int [] rowSymbols)
 	{
+		counter = 0;
 		mutipleVoices = false;
 		rowCoordinate = new ArrayList<Integer>();
 		colCoordinate = new ArrayList<Integer>();
+		backUpFinder = new ArrayList<Boolean>();
 		checker = false; 
 		oldDivider = 0;
 		currentDivider = 0;
@@ -62,6 +65,8 @@ public class DrumNoteCol {
             	{
             		rowCoordinate.add(row1);
             		colCoordinate.add(col1);
+            		backUpFinder.add(false);
+            		
 
             	}
             }
@@ -85,6 +90,7 @@ public class DrumNoteCol {
             		rowCoordinate.add(1000);
             		colCoordinate.add(1000);
             		
+            		
             	}
             	
             	 if ((drumTab[row2][col2] == 'x' || drumTab[row2][col2] == 'o')  && (rowSymbols[row2]== 8))
@@ -99,7 +105,7 @@ public class DrumNoteCol {
 		 	}
 		     }
 		}
-		return colCoordinate;
+		return backUpFinder;
 		
 		
 		
