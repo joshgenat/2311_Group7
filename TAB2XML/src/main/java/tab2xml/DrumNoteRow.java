@@ -14,8 +14,8 @@ public class DrumNoteRow {
 	{
 		counter = 0;
 		mutipleVoices = false;
-		rowCoordinates = new int[100];
-		colCoordinates = new int[100];
+		rowCoordinates = new int[200];
+		colCoordinates = new int[200];
 		checker = false; 
 		oldDivider = 0;
 		currentDivider = 0;

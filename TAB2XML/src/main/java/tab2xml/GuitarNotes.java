@@ -32,6 +32,7 @@ public class GuitarNotes {
 	
 	public void setDuration (int dur) {
 		duration = dur;
+		type = "whole";
 		switch(dur) {
 			case(8):
 				type = "whole";

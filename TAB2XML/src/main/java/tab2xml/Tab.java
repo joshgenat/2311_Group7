@@ -38,6 +38,7 @@ public class Tab {
 				read = true; 	
 			}
 		}
+		if(pass.size() > 0) {
 		int repeat = getR(pass);
 		for(int r = 0; r < repeat; r++)
 		nodes.add(new TabNodes(pass));
@@ -45,6 +46,7 @@ public class Tab {
 			Type = this.getType(pass);
 			type = false;
 			}
+		}
 	}
 	private String getType(ArrayList<Object> lines) {
 		String type = "Guitar";

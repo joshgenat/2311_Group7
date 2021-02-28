@@ -14,7 +14,6 @@ public class TabNodes {
 		//Get The size of 2D string array and initialize
 		repeat(lines);
 		int maxsize = lines.get(0).toString().length();
-		
 		nodes = new char[lines.size()][maxsize];
 		
 		for(int i = 0; i < nodes.length; i++) {
