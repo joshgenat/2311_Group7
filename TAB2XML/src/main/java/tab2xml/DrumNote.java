@@ -15,7 +15,7 @@ public class DrumNote {
 		voice(doc, note, o, j);
 		type(doc, note, o, j);
 		stem(doc, note, o, j);
-//		noteHead(doc, note, o, j);
+        //noteHead(doc, note, o, j);
 		//beamNumber(doc, note, o, j);
 		
 	}

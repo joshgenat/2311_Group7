@@ -54,9 +54,9 @@ public class GuitarXML {
 					
 					Divisions.divisions(doc, attributes, g);
 					Key.key(doc, attributes, g);
-//					Time.time(doc, attributes, g);
-//					Clef.clef(doc, attributes, g);
-//					Staff.staff(doc, attributes, g);
+					Time.time(doc, attributes, g);
+					Clef.clef(doc, attributes, g);
+					Staff.staff(doc, attributes, g);
 					
 					for(int j = 0; j < g.notes.size() ; j++) {
 					GuitarNote.note(doc, measureNumber, g, j);

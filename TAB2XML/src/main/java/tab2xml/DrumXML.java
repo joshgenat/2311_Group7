@@ -69,9 +69,9 @@ public class DrumXML {
 						Key.key(doc, attributes, o);				
 						Time.time(doc, attributes, o);
 						
-//						if (o.clef != null)
-//						Clef.clef(doc, attributes, o);
-//						
+						
+						Clef.clef(doc, attributes, o);
+						
 						for(int j = 0; j < o.notes.size() ; j++) {
 							if (o.notes.get(j).voiceNumber == 0) {
 								Backup.backup(doc, measureNumber, o, j);

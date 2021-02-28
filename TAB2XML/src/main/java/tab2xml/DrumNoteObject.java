@@ -16,7 +16,8 @@ public class DrumNoteObject {
 	Tab tab;
 	ArrayList<DrumNotes> notes = new ArrayList<DrumNotes>();
 	ArrayList<DrumPartsList> instruments = new ArrayList<>();
-	String clef;
+	String sign;
+	int line;
 	int divisions;
 	int fifths;
 	int beats;
@@ -43,7 +44,8 @@ public class DrumNoteObject {
 	public DrumNoteObject(Tab tab) {
 		// the following values are only needed once for the MusicXML Code
 		this.tab = tab;
-		String clef = "percussion";
+		sign = "percussion";
+		line = 2;
 		divisions = 4;
 		fifths = 0;
 		beats = 4;

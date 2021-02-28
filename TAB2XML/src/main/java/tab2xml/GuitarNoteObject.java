@@ -9,19 +9,38 @@ public class GuitarNoteObject {
 	int fifths;
 	int beats;
 	int beatsType;
-	String clef;
+	String sign;
+	int line;
+	int staffLines;
 	ArrayList<GuitarNotes> notes = new ArrayList<GuitarNotes>();
+	ArrayList<Character> tStep = new ArrayList<>();
+	ArrayList<Integer> tOctave = new ArrayList<>();
 	GuitarChord chords[];
 	
 	GuitarConverter convert = new GuitarConverter();
 	
 	public GuitarNoteObject(Tab tab) {
+		//Intilization for now
+		tStep.add('E');
+		tStep.add('A');
+		tStep.add('D');
+		tStep.add('G');
+		tStep.add('B');
+		tStep.add('E');
+		tOctave.add(2);
+		tOctave.add(2);
+		tOctave.add(3);
+		tOctave.add(3);
+		tOctave.add(3);
+		tOctave.add(4);
+		staffLines = 6;
 		this.tab = tab;
-		String clef = "Guitar";
-		int divisions = 4;
-		int fifths = 0;
-		int beats = 4;
-		int beatsType = 4;
+		sign = "TAB";
+		line = 5;
+		divisions = 4;
+		fifths = 0;
+		beats = 4;
+		beatsType = 4;
 
 		for(int i = 0; i < tab.nodes.size(); i++) {
 			chords = convert.converter(tab.nodes.get(i).nodes);
