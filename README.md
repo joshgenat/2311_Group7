@@ -14,12 +14,12 @@ Here's why:
 
 ## Getting Started 
 
-To run this application, import the java files and load the file into Eclipse.
+To run this application, import the java files and load the file into Eclipse. The system should be able to run through Gradle.
 
 
 ## Documentation
 
-- Required Documents [PDF](chrome-extension://oemmndcbldboiebfnladdacbdfmadadm/file:///C:/Users/JoshuaG11/Downloads/Requirements%20Document,%20EECS%202311.pdf)
+- Required Documents <a href="Requirements Document, EECS 2311.pdf">(PDF)</a>
 - User Manual (PDF)
 - Testing Document (PDF)
 
