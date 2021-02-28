@@ -9,6 +9,9 @@ public class GuitarNote {
 		Element note = doc.createElement("note");     
 		measureNumber.appendChild(note); 
 		
+			if (g.notes.get(j).isChord == true)
+			chord(doc, note);
+			
 			pitch(doc, note, g, j);	
 				
 			duration(doc, note, g, j); 
@@ -18,6 +21,11 @@ public class GuitarNote {
 			type(doc, note, g, j);
 			
 			notations(doc, note, g, j);
+	}
+	
+	static void chord(Document doc, Element note) {
+		Element chord = doc.createElement("chord");
+		note.appendChild(chord); 
 	}
 	
 	static void pitch(Document doc, Element note, GuitarNoteObject g, int j) {
