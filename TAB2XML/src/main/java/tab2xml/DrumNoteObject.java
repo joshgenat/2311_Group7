@@ -38,7 +38,7 @@ public class DrumNoteObject {
 	DrumVoice voiceValue = new DrumVoice();
 	DrumStem stemValue = new DrumStem();
 	DrumNoteType noteType = new DrumNoteType();
-	DrumDividers dividers = new DrumDividers();
+	DrumDividers barLineCols = new DrumDividers();
 		
 	
 	public DrumNoteObject(Tab tab) {
@@ -66,17 +66,19 @@ public class DrumNoteObject {
 		 */
 		
 		int [] rowSymbols = note.rowSymbolsSorter(tab.nodes.get(i).nodes);	 
-		int[] noteRowValues = rowValue.RowReader(tab.nodes.get(i).nodes,rowSymbols);
-		int[] noteColValues = colValue.ColReader(tab.nodes.get(i).nodes,rowSymbols);
+		
+		
+		ArrayList<Integer> rowCoordinate = rowValue.RowReader(tab.nodes.get(i).nodes,rowSymbols);
+		ArrayList<Integer> colCoordinate = colValue.ColReader(tab.nodes.get(i).nodes,rowSymbols);
 	
 		
-		for(int j = 0; j < noteRowValues.length; j++) {
-		int row = noteRowValues[j];
-		int col = noteColValues[j];
+		for(int j = 0; j < rowCoordinate.size(); j++) {
+		int row = rowCoordinate.get(j);
+		int col = colCoordinate.get(j);
 		int nextCol = 0;
 		int nextNextCol = 0;
-		if(j+1 < noteRowValues.length) {nextCol = noteColValues[j+1];} 
-		if(j+2 < noteRowValues.length) {nextNextCol = noteColValues[j+2];} 
+		if(j+1 < rowCoordinate.size()) {nextCol = colCoordinate.get(j+1);} 
+		if(j+2 < rowCoordinate.size()) {nextNextCol = colCoordinate.get(j+2);} 
 		
 		
 		
@@ -88,7 +90,7 @@ public class DrumNoteObject {
 		note1.voiceNumber = voiceValue.FindVoiceValue(row, rowSymbols);
 		note1.displayOctave = octave.DrumOctaves(tab.nodes.get(i).nodes,note1.voiceNumber);
 		note1.duration = 0;
-		note1.duration = noteduration.NoteDurationLength(col, nextCol, nextNextCol, dividers.TabDividers(tab.nodes.get(i).nodes));
+		note1.duration = noteduration.NoteDurationLength(col, nextCol, nextNextCol, barLineCols.DrumBarLines(tab.nodes.get(i).nodes));
 		note1.stem = stemValue.FindStemValue(note1.voiceNumber);
 		note1.type = noteType.DrumNoteLength(note1.duration);
 		
