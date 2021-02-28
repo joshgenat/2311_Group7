@@ -45,7 +45,7 @@ public class ConverterTester {
 			System.out.println();
 		}
 		
-		System.out.print(notes[2].get(5));
+		System.out.print(notes[2].notes[5]);
 		//System.out.print(notes[4].get(4));
 		System.out.println("\n result \n");
 		
