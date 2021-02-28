@@ -14,7 +14,6 @@ public class DrumNoteObject {
 	
 	
 	Tab tab;
-	int voice;
 	ArrayList<DrumNotes> notes = new ArrayList<DrumNotes>();
 	ArrayList<DrumPartsList> instruments = new ArrayList<>();
 	String clef;

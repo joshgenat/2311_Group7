@@ -77,11 +77,12 @@ public class DrumXML {
 //						Clef.clef(doc, attributes, o);
 //						
 						for(int j = 0; j < o.notes.size() ; j++) {
-							if (o.voice == 0) {
+							if (o.notes.get(j).voiceNumber == 0) {
 								Backup.backup(doc, measureNumber, o, j);
 							}
-							
-						DrumNote.note(doc, measureNumber, o, j);
+							else {
+						       DrumNote.note(doc, measureNumber, o, j);
+							}
 						}
 						
 						
