@@ -11,6 +11,7 @@ public class GuitarNotes {
 	int duration = 0;
 	int voice = 1;
 	char step;
+	boolean isChord = false;
 	
 	public GuitarNotes(String note, int octave, int string, int fret){
 		this.note = note;
