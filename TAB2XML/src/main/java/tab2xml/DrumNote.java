@@ -61,7 +61,7 @@ public class DrumNote {
 	
 	static void type(Document doc, Element note, DrumNoteObject o, int j) {
 		Element type = doc.createElement("type");   
-		type.appendChild(doc.createTextNode("eighth") ); 
+		type.appendChild(doc.createTextNode(o.notes.get(j).type)); 
 		note.appendChild(type);	
 	}
 	
