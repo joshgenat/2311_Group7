@@ -30,7 +30,7 @@ public class DrumNoteType {
 		}
 		else
 		{
-			noteType = "Incorrect Value";
+			noteType = "Incorrect  Value";
 		}
 		
 	return noteType;	
