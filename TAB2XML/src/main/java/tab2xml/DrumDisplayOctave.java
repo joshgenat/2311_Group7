@@ -15,7 +15,7 @@ public class DrumDisplayOctave {
         {
         	numOfOctaves = (tabsize.length) - 2;
         }
-		else if(voice ==1)
+		else if(voice == 1)
 		{
 			numOfOctaves = (tabsize.length) - 1;
 		}
