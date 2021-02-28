@@ -14,7 +14,7 @@ public class DrumNoteType {
 		}
 		else if (duration == 2)
 		{
-			noteType = "16th";
+			noteType = "eighth";
 		}
 		else if (duration == 4)
 		{
@@ -30,7 +30,7 @@ public class DrumNoteType {
 		}
 		else
 		{
-			noteType = "Incorrect Value";
+			noteType = "Incorrect  Value";
 		}
 		
 	return noteType;	

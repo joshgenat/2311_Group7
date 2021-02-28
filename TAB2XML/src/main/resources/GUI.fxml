@@ -47,7 +47,7 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TextArea prefHeight="475.0" prefWidth="582.0" style="-fx-font-family: &quot;Courier New&quot;; -fx-background-size: 11;" fx:id="xmlText" />
+                        <TextArea prefHeight="475.0" prefWidth="582.0" style="-fx-font-family: &quot;Courier New&quot;; -fx-background-size: 11;" AnchorPane.bottomAnchor="-0.6666666666666288" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" fx:id="xmlText" />
                      </children>
                   </AnchorPane>
             </content>
