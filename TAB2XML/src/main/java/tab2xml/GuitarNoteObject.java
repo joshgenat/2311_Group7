@@ -15,6 +15,7 @@ public class GuitarNoteObject {
 	ArrayList<GuitarNotes> notes = new ArrayList<GuitarNotes>();
 	ArrayList<Character> tStep = new ArrayList<>();
 	ArrayList<Integer> tOctave = new ArrayList<>();
+	int maxMeasure;
 	GuitarChord chords[];
 	
 	GuitarConverter convert = new GuitarConverter();
@@ -52,5 +53,6 @@ public class GuitarNoteObject {
 				}
 			}
 		}
+		maxMeasure = notes.get(notes.size()-1).measure;
 	}
 }

@@ -43,27 +43,43 @@ public class GuitarXML {
 			Element partId = doc.createElement("part"); 
 			partId.setAttribute("id", "P1");
 			rootElement.appendChild(partId); 
-			
+				
+				// Run first measure
+				
 				Element measureNumber = doc.createElement("measure"); 
 				measureNumber.setAttribute("number", "1");
-				partId.appendChild(measureNumber);    
-			
+				partId.appendChild(measureNumber);   
 				
 					Element attributes = doc.createElement("attributes");   
 					measureNumber.appendChild(attributes);   
 					
-					Divisions.divisions(doc, attributes, g);
-					Key.key(doc, attributes, g);
-					Time.time(doc, attributes, g);
-					Clef.clef(doc, attributes, g);
-					Staff.staff(doc, attributes, g);
-					
+						Divisions.divisions(doc, attributes, g);
+						Key.key(doc, attributes, g);
+						Time.time(doc, attributes, g);
+						Clef.clef(doc, attributes, g);
+						Staff.staff(doc, attributes, g);
+						int count = 2;
+						Element m = measureNumber;
 					for(int j = 0; j < g.notes.size() ; j++) {
-					GuitarNote.note(doc, measureNumber, g, j);
+
+					
+					if (g.notes.get(j).nextMeasure != true) {
+						GuitarNote.note(doc, m, g, j);
+					}
+					else { 
+						Element measureNumber2 = doc.createElement("measure"); 
+						measureNumber2.setAttribute("number", "" + count);
+						partId.appendChild(measureNumber2);
+						GuitarNote.note(doc, m, g, j);
+						m = measureNumber2;
+						count++;	
+						}
 					}
 					
+					
 					Barline.barline(doc, measureNumber, g);
-			
+				
+				
 	
 		// write content into XML file
 		TransformerFactory transformerFactory = TransformerFactory.newInstance();
