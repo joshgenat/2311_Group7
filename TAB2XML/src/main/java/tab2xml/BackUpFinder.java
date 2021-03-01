@@ -29,7 +29,7 @@ public class BackUpFinder {
 		
 		/*
 		 * This for loop which goes through the tab, and finds the column values for the barlines 
-		 * The first two if statement find the column barline value and put the value in currentDivider, since a tab has more than one barline
+		 * The first two if statement find the column barline value and put the value in currentDivider, since a tab has more than one  barline 
 		 * we put the old barline column value inside oldDivider. 
 		 */
 		for (int col = 0; col<drumTab[0].length; col++)
