@@ -153,7 +153,7 @@ public class Controller {
 		}
 		ArrayList<Object> b = readFile(a);
 		
-		for(int i = 0; i < b.size()-1; i++) {
+		for(int i = 0; i < b.size(); i++) {
 			text+=b.get(i).toString() + "\n";
 		}
 		tabText.setText(text);
@@ -165,6 +165,11 @@ public class Controller {
 	public void getHelp() {
 		Main m = new Main();
 		m.openWeb("https://github.com/joshgenat/2311_Group7/blob/master/User%20Manual.pdf");
+	}
+	
+	public void openC() {
+		Main m = new Main();
+		m.openWeb("https://opensheetmusicdisplay.github.io/demo/");
 	}
 	
 	//Helper Method
