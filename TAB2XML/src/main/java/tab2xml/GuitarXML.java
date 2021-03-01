@@ -58,19 +58,20 @@ public class GuitarXML {
 						Time.time(doc, attributes, g);
 						Clef.clef(doc, attributes, g);
 						Staff.staff(doc, attributes, g);
-						
+						int count = 2;
+						Element m = measureNumber;
 					for(int j = 0; j < g.notes.size() ; j++) {
-						
+
+					
 					if (g.notes.get(j).nextMeasure != true) {
-						GuitarNote.note(doc, measureNumber, g, j);
+						GuitarNote.note(doc, m, g, j);
 					}
 					else { 
-						int count = 2;
 						Element measureNumber2 = doc.createElement("measure"); 
 						measureNumber2.setAttribute("number", "" + count);
 						partId.appendChild(measureNumber2);
-						GuitarNote.note(doc, measureNumber2, g, j);
-						
+						GuitarNote.note(doc, m, g, j);
+						m = measureNumber2;
 						count++;	
 						}
 					}
