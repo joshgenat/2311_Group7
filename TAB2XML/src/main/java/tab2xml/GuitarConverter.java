@@ -6,6 +6,7 @@ public class GuitarConverter {
 	public static GuitarChord[] converter(char[][] in) { 
 		GuitarNotes[][] out = new GuitarNotes[in.length][in[0].length];
 		GuitarChord chords[] = new GuitarChord[in[0].length];
+		int[] skip = new int[in.length];
 		int threshold = 3;
 		int fret;
 		int lastChord = 0;
@@ -18,30 +19,43 @@ public class GuitarConverter {
 			GuitarChord chord = new GuitarChord(in.length);
 			hasNotes = false;
 			if(isTab(in[0][i]) && isTab(in[0][i+1])) {
-				i++;
+				//i++;
 				for(int j = 0; j < in.length; j++) {
 					if(in[j][i] == '-') {
 						out[j][i] = new GuitarNotes(j+1);
 						chord.put(out[j][i]);
+						skip[j] = 0;
 					}	
 					else {
-						if(in[j][i+1] == '-') {
-							fret = ((int)in[j][i] - 48);
-							out[j][i] = indexToNote(j, i, fret);
-							chord.put(out[j][i]);
+						if(skip[j] == 0) {
+							if(in[j][i+1] == '-') {
+								fret = ((int)in[j][i] - 48);
+								out[j][i] = indexToNote(j, i, fret);
+								chord.put(out[j][i]);
+								skip[j] = 0;
+								
+							}
+							else {
+								fret = 10*((int)in[j][i] - 48) + ((int)in[j][i+1] - 48);
+								out[j][i] = indexToNote(j, i, fret);
+								chord.put(out[j][i]);
+								skip[j] = 1;
+							}
+							hasNotes = true;
 						}
 						else {
-							fret = 10*((int)in[j][i] - 48) + ((int)in[j][i+1] - 48);
-							out[j][i] = indexToNote(j, i, fret);
+							skip[j] = 0;
+							out[j][i] = new GuitarNotes(j+1);
 							chord.put(out[j][i]);
-							
 						}
-						hasNotes = true;
 					}
-					for(int i3 = 0; i3 < in.length; i3++) {
-						out[i3][i+1] = new GuitarNotes(i3+1);
-					}
+						
 				}
+				
+					/*
+					 * for(int i3 = 0; i3 < in.length; i3++) { out[i3][i+1] = new GuitarNotes(i3+1);
+					 * }
+					 */
 				
 			}
 			else {
@@ -52,7 +66,7 @@ public class GuitarConverter {
 			
 			chords[i2] = chord;
 			if(hasNotes) {
-				chords[lastChord].setDurations(dur);
+				chords[lastChord].setDurations((dur+1)/2);
 				dur = 1;
 				lastChord = i2;
 				//System.out.println(chord);
@@ -63,7 +77,7 @@ public class GuitarConverter {
 			}
 			
 			if(i == in[0].length - 3)
-				chords[lastChord].setDurations(dur);
+				chords[lastChord].setDurations((dur+1)/2);
 		}	
 		
 		return chords;
