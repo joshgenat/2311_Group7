@@ -72,6 +72,7 @@
                     </items>
                   </Menu>
                   <MenuItem fx:id="getHelp" mnemonicParsing="false" onAction="#getHelp" text="More Help" />
+                  <MenuItem mnemonicParsing="false" onAction="#openC" text="Conversion" />
             </items>
           </Menu>
         </menus>

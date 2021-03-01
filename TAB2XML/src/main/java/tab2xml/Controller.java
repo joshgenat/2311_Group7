@@ -167,6 +167,11 @@ public class Controller {
 		m.openWeb("https://github.com/joshgenat/2311_Group7/blob/master/User%20Manual.pdf");
 	}
 	
+	public void openC() {
+		Main m = new Main();
+		m.openWeb("https://opensheetmusicdisplay.github.io/demo/");
+	}
+	
 	//Helper Method
 	private ArrayList<Object> readFile(File file){
 		ArrayList<Object> lines = new ArrayList<>();
