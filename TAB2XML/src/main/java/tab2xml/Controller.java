@@ -153,7 +153,7 @@ public class Controller {
 		}
 		ArrayList<Object> b = readFile(a);
 		
-		for(int i = 0; i < b.size()-1; i++) {
+		for(int i = 0; i < b.size(); i++) {
 			text+=b.get(i).toString() + "\n";
 		}
 		tabText.setText(text);
