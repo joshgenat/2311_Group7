@@ -10,16 +10,18 @@ public class GuitarNotes {
 	public int fret;
 	public int duration = 0;
 	public int voice = 1;
+	public int measure;
 	public char step;
 	public boolean isChord;
 	public boolean nextMeasure;
 	
-	public GuitarNotes(String note, int octave, int string, int fret){
+	public GuitarNotes(String note, int octave, int string, int fret, int measure){
 		this.note = note;
 		this.step = note.charAt(0);
 		this.octave = octave;
 		this.string = string;
 		this.fret = fret;
+		this.measure = measure;
 		isChord = false;
 		type = "sixteenth";
 		
@@ -34,6 +36,7 @@ public class GuitarNotes {
 		this.fret = -1;
 		type = "sixteenth";
 		this.step = '-';
+		measure = -1;
 	}
 	
 	public void setDuration (int dur) {
