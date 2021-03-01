@@ -24,6 +24,7 @@ public class Main extends Application {
 			primaryStage.setTitle("Tab2XML");
 			primaryStage.setScene(new Scene(root, 900, 550));
 			primaryStage.show();
+			
 		 
 	}
 	
@@ -32,6 +33,9 @@ public class Main extends Application {
 		stage.getScene().setRoot(pane);
 	}
 	
+	public void openWeb(String text) {
+		getHostServices().showDocument(text);
+	}
 	public static void main(String[] args) {
 		launch(args);
 	}

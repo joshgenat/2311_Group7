@@ -71,6 +71,7 @@
                         <MenuItem fx:id="guitarSample" mnemonicParsing="false" onAction="#sample" text="Guitar" />
                     </items>
                   </Menu>
+                  <MenuItem fx:id="getHelp" mnemonicParsing="false" onAction="#getHelp" text="More Help" />
             </items>
           </Menu>
         </menus>

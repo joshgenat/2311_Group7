@@ -16,6 +16,7 @@ public class DrumNoteObject {
 	Tab tab;
 	ArrayList<DrumNotes> notes = new ArrayList<DrumNotes>();
 	ArrayList<DrumPartsList> instruments = new ArrayList<>();
+	ArrayList<Boolean> backUpFinder;
 	String sign;
 	int line;
 	int divisions;
@@ -44,6 +45,7 @@ public class DrumNoteObject {
 	public DrumNoteObject(Tab tab) {
 		// the following values are only needed once for the MusicXML Code
 		this.tab = tab;
+		
 		sign = "percussion";
 		line = 2;
 		divisions = 4;
@@ -72,7 +74,7 @@ public class DrumNoteObject {
 		
 		ArrayList<Integer> rowCoordinate = rowValue.RowReader(tab.nodes.get(i).nodes,rowSymbols);
 		ArrayList<Integer> colCoordinate = colValue.ColReader(tab.nodes.get(i).nodes,rowSymbols);
-		ArrayList<Boolean> backUpFinder = backUpLocator.BackUpList(tab.nodes.get(i).nodes,rowSymbols);
+		backUpFinder = backUpLocator.BackUpList(tab.nodes.get(i).nodes,rowSymbols);
 		
 		for(int j = 0; j < rowCoordinate.size(); j++) {
 		int row = rowCoordinate.get(j);
