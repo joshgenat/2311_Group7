@@ -58,6 +58,9 @@ public class Controller {
 	@FXML
 	private MenuItem guitarSample;
 	
+	@FXML
+	private MenuItem getHelp;
+	
 	
 	public void convert(ActionEvent event) throws IOException {
 		try {
@@ -81,7 +84,7 @@ public class Controller {
 				}
 			tabView.getSelectionModel().select(1);
 			errorLabel.setTextFill(Color.BLUE);
-			errorLabel.setText("Conversion Complete");
+			errorLabel.setText(b.Type + "\n" + "Conversion Complete");
 		}
 		catch(Exception e) {
 			e.printStackTrace();
@@ -157,6 +160,11 @@ public class Controller {
 		tabView.getSelectionModel().select(0);
 		
 		
+	}
+	
+	public void getHelp() {
+		Main m = new Main();
+		m.openWeb("https://github.com/joshgenat/2311_Group7/blob/master/Requirements%20Document.pdf");
 	}
 	
 	//Helper Method
