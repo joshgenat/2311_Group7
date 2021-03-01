@@ -79,7 +79,7 @@ if (checker == false)
 	 
 	
 	
-	// run the loop a second time, now to find the notes in voice 2 
+	// run the loop a second time now to find the notes in voice 2 
 	mutipleVoices = false;
 	for (int col2 = oldDivider; col2 < currentDivider; col2++)
     {
