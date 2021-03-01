@@ -39,7 +39,7 @@ public class DrumNoteObject {
 	DrumStem stemValue = new DrumStem();
 	DrumNoteType noteType = new DrumNoteType();
 	DrumDividers barLineCols = new DrumDividers();
-		
+	BackUpFinder backUpLocator = new BackUpFinder();	
 	
 	public DrumNoteObject(Tab tab) {
 		// the following values are only needed once for the MusicXML Code
@@ -72,7 +72,7 @@ public class DrumNoteObject {
 		
 		ArrayList<Integer> rowCoordinate = rowValue.RowReader(tab.nodes.get(i).nodes,rowSymbols);
 		ArrayList<Integer> colCoordinate = colValue.ColReader(tab.nodes.get(i).nodes,rowSymbols);
-	
+		ArrayList<Boolean> backUpFinder = backUpLocator.BackUpList(tab.nodes.get(i).nodes,rowSymbols);
 		
 		for(int j = 0; j < rowCoordinate.size(); j++) {
 		int row = rowCoordinate.get(j);
