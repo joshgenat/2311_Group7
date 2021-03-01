@@ -56,16 +56,21 @@
           </Tab>
         </tabs>
       </TabPane>
-      <MenuBar layoutY="1.0" prefHeight="25.0" prefWidth="900.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="1.0">
+      <MenuBar layoutY="1.0" prefHeight="25.0" prefWidth="900.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-              <MenuItem mnemonicParsing="false" text="Open File" />
+              <MenuItem mnemonicParsing="false" onAction="#selectFile" text="Open File" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
             <items>
-              <MenuItem mnemonicParsing="false" text="About" />
+                  <Menu mnemonicParsing="false" text="Samples">
+                    <items>
+                      <MenuItem fx:id="drumSample" mnemonicParsing="false" onAction="#sample" text="Drum" />
+                        <MenuItem fx:id="guitarSample" mnemonicParsing="false" onAction="#sample" text="Guitar" />
+                    </items>
+                  </Menu>
             </items>
           </Menu>
         </menus>

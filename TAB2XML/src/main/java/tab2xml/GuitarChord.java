@@ -47,9 +47,16 @@ public class GuitarChord {
 	}
 	
 	private void setChordBoolTrue() {
-		for(int i = 0; i < notes.length; i++) {
+		for(int i = 1; i < notes.length; i++) {
 			if(notes[i] != null)
 				notes[i].isChord = true;
+		}
+	}
+	
+	public void setMeasures() {
+		for(int i = 0; i < notes.length; i++) {
+			if(notes[i] != null)
+				notes[i].nextMeasure = true;
 		}
 	}
 	

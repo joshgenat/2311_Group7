@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.paint.Color;
@@ -51,10 +52,16 @@ public class Controller {
 	@FXML
 	private Label errorLabel;
 	
+	@FXML
+	private MenuItem drumSample;
+	
+	@FXML
+	private MenuItem guitarSample;
+	
 	
 	public void convert(ActionEvent event) throws IOException {
 		try {
-  	   String [] parse = tabText.getText().split("\n");
+  	        String [] parse = tabText.getText().split("\n");
 			ArrayList<Object> lines = new ArrayList<Object>();
 			
 			for(int i = 0; i < parse.length; i++) {
@@ -87,7 +94,7 @@ public class Controller {
 		}
 		catch(Exception e) {
 			errorLabel.setTextFill(Color.RED);
-			errorLabel.setText("Error converting,\nmake sure your tab is\ncorrect and Try Again!");
+			errorLabel.setText("Error converting,\nmake sure your tab is\ncorrect and Try Again!\nError Number: #001");
 		}
 		
 	}
@@ -106,6 +113,61 @@ public class Controller {
 		tabView.getSelectionModel().select(0);
 		
 	}
+	
+	public void clear(ActionEvent event) {
+		if(tabView.getSelectionModel().isSelected(0)) {
+			tabText.setText("");
+			errorLabel.setText("");
+		}
+		else {
+			xmlText.setText("");
+			errorLabel.setText("");
+		}
+	}
+	
+	public void download(ActionEvent event) {
+		tabView.getSelectionModel().select(1);
+		if(xmlText.getText().equals("")) {
+			errorLabel.setText("XML textarea empty...\nError Number: #002");
+			errorLabel.setTextFill(Color.RED);	
+		}
+		else {
+		FileChooser fc = new FileChooser();
+		fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("musicXML (*.musicXML)", "*.musicXML"));
+		File file = fc.showSaveDialog(null);
+		if(file != null) {
+	        try {
+	            FileWriter fileWriter;
+	            fileWriter = new FileWriter(file);
+	            fileWriter.write(xmlText.getText());
+	            fileWriter.close();
+	        } catch (IOException ex) {
+	        }
+		}
+		}	
+	}
+	
+	public void sample(ActionEvent event) {
+		File a = null;
+		String text = "";
+		if(event.getSource() == drumSample) {
+			a = new File("src/main/resources/drumSample");
+		}
+		else if(event.getSource() == guitarSample) {
+			a = new File("src/main/resources/guitarSample");
+		}
+		ArrayList<Object> b = readFile(a);
+		
+		for(int i = 0; i < b.size()-1; i++) {
+			text+=b.get(i).toString() + "\n";
+		}
+		tabText.setText(text);
+		tabView.getSelectionModel().select(0);
+		
+		
+	}
+	
+	//Helper Method
 	private ArrayList<Object> readFile(File file){
 		ArrayList<Object> lines = new ArrayList<>();
 		Scanner sc = null; 
@@ -122,34 +184,6 @@ public class Controller {
 			sc.close();
 		}
 		return lines;
-	}
-	
-	public void clear(ActionEvent event) {
-		if(tabView.getSelectionModel().isSelected(0)) {
-			tabText.setText("");
-			errorLabel.setText("");
-		}
-		else {
-			xmlText.setText("");
-			errorLabel.setText("");
-		}
-	}
-	
-	public void download(ActionEvent event) {
-		tabView.getSelectionModel().select(1);
-		FileChooser fc = new FileChooser();
-		fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("musicXML (*.musicXML)", "*.musicXML"));
-		File file = fc.showSaveDialog(null);
-		if(file != null) {
-	        try {
-	            FileWriter fileWriter;
-	            fileWriter = new FileWriter(file);
-	            fileWriter.write(xmlText.getText());
-	            fileWriter.close();
-	        } catch (IOException ex) {
-	        }
-		}
-		
 	}
 	
 }
