@@ -87,9 +87,10 @@ public class BackUpFinder {
             	if(((drumTab[row2][col2] == 'x' || drumTab[row2][col2] == 'o') && (rowSymbols[row2]== 8)) && mutipleVoices == false)
             	{
             		mutipleVoices = true;
-            		backUpFinder.add(true);
-            		
-            		
+             		backUpFinder.add(true);
+             		rowCoordinate.add(row2);
+             		colCoordinate.add(col2);
+             		break;            		
             	}
             	
             	 if ((drumTab[row2][col2] == 'x' || drumTab[row2][col2] == 'o')  && (rowSymbols[row2]== 8))
