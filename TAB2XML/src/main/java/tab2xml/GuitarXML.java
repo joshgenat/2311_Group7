@@ -64,7 +64,7 @@ public class GuitarXML {
 					if (g.notes.get(j).nextMeasure != true) {
 						GuitarNote.note(doc, measureNumber, g, j);
 					}
-					else {
+					else { 
 						int count = 2;
 						Element measureNumber2 = doc.createElement("measure"); 
 						measureNumber2.setAttribute("number", "" + count);
