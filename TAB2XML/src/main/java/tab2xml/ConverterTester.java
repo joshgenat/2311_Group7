@@ -46,7 +46,7 @@ public class ConverterTester {
 				if(notes[j] == null) break;
 				//System.out.print("\'" + notes[j].notes[i].step + "\', ");
 				//System.out.print(notes[j].notes[i].nextMeasure + ", ");
-				System.out.print(notes[j].notes[i] + "[" + notes[j].notes[i].duration + "]\t");
+				System.out.print(notes[j].notes[i] + "[" + notes[j].notes[i].measure + "]\t");
 			}	
 			System.out.print("},\n"); 
 		} 
