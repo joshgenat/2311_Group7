@@ -164,7 +164,7 @@ public class Controller {
 	
 	public void getHelp() {
 		Main m = new Main();
-		m.openWeb("https://github.com/joshgenat/2311_Group7/blob/master/Requirements%20Document.pdf");
+		m.openWeb("https://github.com/joshgenat/2311_Group7/blob/master/User%20Manual.pdf");
 	}
 	
 	//Helper Method

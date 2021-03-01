@@ -76,9 +76,7 @@ public class DrumXML {
 							if (o.backUpFinder.get(j)) {
 								Backup.backup(doc, measureNumber, o, j);
 							}
-							else {
 						       DrumNote.note(doc, measureNumber, o, j);
-							}
 						}
 						
 						
