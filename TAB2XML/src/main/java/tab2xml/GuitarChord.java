@@ -8,6 +8,7 @@ public class GuitarChord {
 	private int duration;
 	private int numNotes;
 	private boolean isChord;
+	private boolean skipped;
 	
 	public GuitarChord(GuitarNotes[] notes, int i) {
 		this.notes = notes;
@@ -47,9 +48,14 @@ public class GuitarChord {
 	}
 	
 	private void setChordBoolTrue() {
-		for(int i = 1; i < notes.length; i++) {
-			if(notes[i] != null)
-				notes[i].isChord = true;
+		skipped = false;
+		for(int i = 0; i < notes.length; i++) {
+			if(notes[i] != null && notes[i].step != '-') {
+				if(skipped) {
+					notes[i].isChord = true;
+				}else
+					skipped = true;
+			}
 		}
 	}
 	
