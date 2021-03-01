@@ -84,6 +84,7 @@ public class Controller {
 			errorLabel.setText("Conversion Complete");
 		}
 		catch(Exception e) {
+			e.printStackTrace();
 			errorLabel.setTextFill(Color.RED);
 			errorLabel.setText("Error converting,\nmake sure your tab is\ncorrect and Try Again!\nError Number: #001");
 		}
