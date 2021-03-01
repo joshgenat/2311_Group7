@@ -65,13 +65,13 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
             <items>
-                  <MenuItem fx:id="getHelp" mnemonicParsing="false" onAction="#getHelp" text="More Help" />
                   <Menu mnemonicParsing="false" text="Samples">
                     <items>
                       <MenuItem fx:id="drumSample" mnemonicParsing="false" onAction="#sample" text="Drum" />
                         <MenuItem fx:id="guitarSample" mnemonicParsing="false" onAction="#sample" text="Guitar" />
                     </items>
                   </Menu>
+                  <MenuItem fx:id="getHelp" mnemonicParsing="false" onAction="#getHelp" text="More Help" />
             </items>
           </Menu>
         </menus>
