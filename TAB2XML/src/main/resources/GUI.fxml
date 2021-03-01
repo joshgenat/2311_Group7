@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="550.0" prefWidth="900.0" style="-fx-background-color: #339966;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tab2xml.Controller">
+   <children>
+      <AnchorPane layoutY="67.0" prefHeight="475.0" prefWidth="151.0" AnchorPane.bottomAnchor="7.666666666666686" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="67.0">
+         <children>
+            <ListView fx:id="fileView" layoutX="5.0" prefHeight="475.0" prefWidth="153.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="0.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="750.0" layoutY="67.0" prefHeight="475.0" prefWidth="135.0" AnchorPane.bottomAnchor="7.666666666666686" AnchorPane.rightAnchor="14.666666666666657" AnchorPane.topAnchor="66.99999999999994">
+         <children>
+            <Button fx:id="convert" layoutX="30.0" layoutY="15.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#convert" prefHeight="25.0" prefWidth="75.0" text="Convert" />
+            <Button fx:id="selectFile" layoutX="30.0" layoutY="55.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#selectFile" prefHeight="25.0" prefWidth="75.0" text="Select File" />
+            <Button fx:id="clear" layoutX="30.0" layoutY="95.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#clear" prefHeight="25.0" prefWidth="75.0" text="Clear" />
+            <Button fx:id="download" layoutX="30.0" layoutY="135.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#download" prefHeight="25.0" prefWidth="75.0" text="Download" />
+            <ImageView fitHeight="45.0" fitWidth="117.0" layoutX="9.0" layoutY="418.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="14.840081532796262" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="9.333333333333343">
+               <image>
+                  <Image url="@group7.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="errorLabel" layoutX="9.0" layoutY="238.0" prefHeight="76.0" prefWidth="117.0" />
+         </children>
+      </AnchorPane>
+      <TabPane fx:id="tabView" layoutX="163.0" layoutY="39.0" prefHeight="504.0" prefWidth="582.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="163.0" AnchorPane.rightAnchor="155.0" AnchorPane.topAnchor="39.0">
+        <tabs>
+          <Tab text="Tab">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="336.0" prefWidth="264.0">
+                     <children>
+                        <TextArea fx:id="tabText" prefHeight="482.0" prefWidth="582.0" style="-fx-font-family: &quot;Courier New&quot;; -fx-font-size: 11;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="XML">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextArea prefHeight="475.0" prefWidth="582.0" style="-fx-font-family: &quot;Courier New&quot;; -fx-background-size: 11;" AnchorPane.bottomAnchor="-0.6666666666666288" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" fx:id="xmlText" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+      <MenuBar layoutY="1.0" prefHeight="25.0" prefWidth="900.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#selectFile" text="Open File" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+                  <Menu mnemonicParsing="false" text="Samples">
+                    <items>
+                      <MenuItem fx:id="drumSample" mnemonicParsing="false" onAction="#sample" text="Drum" />
+                        <MenuItem fx:id="guitarSample" mnemonicParsing="false" onAction="#sample" text="Guitar" />
+                    </items>
+                  </Menu>
+                  <MenuItem fx:id="getHelp" mnemonicParsing="false" onAction="#getHelp" text="More Help" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </children>
+</AnchorPane>
