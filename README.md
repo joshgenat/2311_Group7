@@ -18,8 +18,8 @@ To run this application, import the java files and load the file into Eclipse. T
 ## Documentation
 
 - Required Documents <a href="Requirements Document.pdf">(PDF)</a>
-- User Manual (PDF)
-- Testing Document (PDF)
+- User Manual <a href="User Manual.pdf">(PDF)</a>
+- Testing Document <a href="Testing Document.pdf">(PDF)</a>
 
 
 ## Team
