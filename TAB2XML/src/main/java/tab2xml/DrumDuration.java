@@ -14,7 +14,7 @@ public class DrumDuration {
 	 */
 	
 	 int durationcount;
-	 boolean breaksDivider = false;
+	 boolean breaksDivider = false; 
 	
 	public int NoteDurationLength(int col,  int nextCol, int nextNextCol, ArrayList<Integer> barLineCols)
 	{
@@ -25,13 +25,13 @@ public class DrumDuration {
 			{
 				if(i+1 < barLineCols.size()) 
 				{
-				if ((barLineCols.get(i) < col) && (nextCol > barLineCols.get(i+1)) && (col< barLineCols.get(i+1)))
-				{
+					if ((barLineCols.get(i) < col) && (nextCol > barLineCols.get(i+1)) && (col< barLineCols.get(i+1)))
+					{
 					durationcount = barLineCols.get(i+1) - col; 
 					breaksDivider  = true;
 					
+					}
 				}
-				
 				
 				
 				if (breaksDivider == false)
@@ -45,6 +45,11 @@ public class DrumDuration {
 				{
 					durationcount = barLineCols.get(barLineCols.size()-1) - col;
 				}
+				
+				if((nextCol<col) && (barLineCols.get(i)>col))
+				{
+					 durationcount = barLineCols.get(i) - col;
+					 break;
 				}
 			}
 				
@@ -58,11 +63,12 @@ public class DrumDuration {
 			{
 				if(i+1 < barLineCols.size()) 
 				{
-				if ((barLineCols.get(i) < col) && (nextNextCol > barLineCols.get(i+1)) && (col< barLineCols.get(i+1)))
-				{
-					durationcount = barLineCols.get(i+1) - col; 
-					breaksDivider  = true;
+					if ((barLineCols.get(i) < col) && (nextNextCol > barLineCols.get(i+1)) && (col< barLineCols.get(i+1)))
+						{
+						durationcount = barLineCols.get(i+1) - col; 
+						breaksDivider  = true;
 					
+						}
 				}
 				
 				
@@ -78,14 +84,13 @@ public class DrumDuration {
 					durationcount = barLineCols.get(barLineCols.size()-1) - col;
 				}
 				
+				if((nextNextCol<col) && (barLineCols.get(i)>col))
+				{
+					 durationcount = barLineCols.get(i) - col;
+					 break;
 				}
 			}
 			
-		}
-		
-		if (col == 1000)
-		{
-			durationcount = 7;
 		}
 		
 	

@@ -8,7 +8,7 @@ public class BackUpFinder {
 	ArrayList<Integer> colCoordinate;
 	ArrayList<Boolean> backUpFinder;
 
-	int counter = 0;
+	int counter = 0; 
 	boolean mutipleVoices = false;
 	boolean checker = false; 
 	int oldDivider = 0;
@@ -87,8 +87,7 @@ public class BackUpFinder {
             	if(((drumTab[row2][col2] == 'x' || drumTab[row2][col2] == 'o') && (rowSymbols[row2]== 8)) && mutipleVoices == false)
             	{
             		mutipleVoices = true;
-            		rowCoordinate.add(1000);
-            		colCoordinate.add(1000);
+            		backUpFinder.add(true);
             		
             		
             	}
@@ -97,6 +96,7 @@ public class BackUpFinder {
             	{
             		rowCoordinate.add(row2);
              		colCoordinate.add(col2);
+             		backUpFinder.add(false);
             	}
             
             }
