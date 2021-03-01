@@ -66,9 +66,9 @@ public class Tab {
 		for(int i = 0; i < n.size(); i++) {
 			hold = "";
 			if(n.get(i).toString().lastIndexOf("|") != n.get(i).toString().length()-1) {
-				hold = n.get(i).toString().substring(n.get(i).toString().length()-1-n.get(i).toString().lastIndexOf("|") ,n.get(i).toString().length());
+				hold = n.get(i).toString().substring(n.get(i).toString().lastIndexOf("|")+1,n.get(i).toString().length());
 				hold = hold.replaceAll("[^0-9]", "");
-				if(hold == "") {
+				if(hold == "" || hold.isBlank()) {
 					r = 1;
 					n.set(i, n.get(i).toString().substring(0,n.get(i).toString().lastIndexOf("|")+1));
 				}

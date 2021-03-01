@@ -69,15 +69,6 @@ public class Controller {
 			}
 			
 			Tab b = new Tab(lines);
-			for(int i = 0; i < b.nodes.size(); i++) {
-				for(int j = 0; j < b.nodes.get(i).nodes.length; j++) {
-					for(int k = 0; k < b.nodes.get(i).nodes[j].length; k++) {
-						System.out.print(k);
-					}
-					System.out.println();
-				}
-				System.out.println();
-			}
 			if(b.Type.equals("Drum")) {
 				DrumNoteObject c = new DrumNoteObject(b);
 	 			DrumXML d = new DrumXML(c);
@@ -93,6 +84,7 @@ public class Controller {
 			errorLabel.setText("Conversion Complete");
 		}
 		catch(Exception e) {
+			e.printStackTrace();
 			errorLabel.setTextFill(Color.RED);
 			errorLabel.setText("Error converting,\nmake sure your tab is\ncorrect and Try Again!\nError Number: #001");
 		}
