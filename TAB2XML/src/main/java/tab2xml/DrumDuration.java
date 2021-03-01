@@ -92,6 +92,7 @@ public class DrumDuration {
 			}
 			
 		}
+		breaksDivider = false;
 		
 	
 	return durationcount;
