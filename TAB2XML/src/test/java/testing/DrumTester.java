@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test;
 import tab2xml.Tab;
 
 
-public class DrumTester {
+public class DrumTester { 
 	
 	
 	@Test
