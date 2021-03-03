@@ -5,6 +5,11 @@
   --color-headings: #1b0760;
   --color-body: #918ca4;
 }
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
 
 /* Typography */
 html {
@@ -59,32 +64,57 @@ p {
   }
 }
 
-/* Links */
+/* Buttons */
 a {
   text-decoration: none;
 }
-.link-button {
+.btn {
   background-color: var(--color-accent);
   color: white;
   border: none;
   border-radius: 5rem;
-  padding: 1rem 2rem;
+  padding: 2rem 3rem;
   text-transform: uppercase;
-  font-size: 2rem;
-  font-weight: bold;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin: 1rem 0;
   cursor: pointer;
+  white-space: nowrap;
+  text-align: center;
 }
 
-.link-button:hover {
-  background-color: #bd2803;
+.btn--primary {
+  background: var(--color-primary);
+  color: white;
+}
+.btn--primary:hover {
+  background: #1f70da;
+}
+
+.btn--secondary {
+  background: var(--color-secondary);
+  color: white;
+}
+.btn--secondary:hover {
+  background: #01bcdd;
+}
+.btn--accent {
+  background: var(--color-accent);
+  color: white;
+}
+.btn--accent:hover {
+  background: #c02600;
+}
+.btn--block {
+  width: 100%;
+  display: inline-block;
 }
 
 @media screen and (min-width: 1024px) {
-  .link-button {
+  .btn {
     font-size: 1.5rem;
   }
 }
-
 /* Lists */
 
 .list {
