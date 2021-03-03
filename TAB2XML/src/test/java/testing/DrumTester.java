@@ -218,7 +218,7 @@ public class DrumTester {
 			act = "incorrect value";
 		}
 		
-		exp = "up";
+		exp = "down";
 		// change this to "DOWN to get the correct junit test 
 		assertEquals(exp, act);
 		
