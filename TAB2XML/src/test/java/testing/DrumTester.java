@@ -190,7 +190,7 @@ public class DrumTester {
 		
 				}    
 		
-		Integer[] expectedValues = {3, 4, 5, 5, 6, 7, 8, 8, 4, 8, 10, 10, 13, 14, 14, 15, 16, 10, 12};
+		Integer[] expectedValues = {3, 4, 5, 5, 6, 7, 8, 8, 4, 8, 10, 10, 13, 14, 1, 15, 16, 10, 12};
 		 exp = new ArrayList<>(Arrays.asList(expectedValues));
 		 assertEquals(exp, act);
 		 
