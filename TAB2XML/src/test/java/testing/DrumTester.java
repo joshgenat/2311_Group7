@@ -219,7 +219,7 @@ public class DrumTester {
 		}
 		
 		exp = "down";
-		// change this to "DOWN to get the correct junit test 
+		// change this to "DOWN to get the correct junit test lab 
 		assertEquals(exp, act);
 		
 	}
