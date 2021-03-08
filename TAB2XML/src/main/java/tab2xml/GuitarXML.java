@@ -60,6 +60,7 @@ public class GuitarXML {
 						Staff.staff(doc, attributes, g);
 						int count = 2;
 						Element m = measureNumber;
+						
 					for(int j = 0; j < g.notes.size() ; j++) {
 
 					

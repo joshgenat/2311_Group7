@@ -71,11 +71,14 @@ public class DrumNote {
 		note.appendChild(stem);	
 	}
 	
-//	static void noteHead(Document doc, Element note, DrumNoteObject o, int j) {
-//		Element noteHead = doc.createElement("notehead");   
-//		noteHead.appendChild(doc.createTextNode("" + o.notes.get(j).noteHead) ); 
-//		note.appendChild(noteHead);	
-//	}
+	static void noteHead(Document doc, Element note, DrumNoteObject o, int j) {
+		// Check if noteHead is an 'x' or an 'o'
+		if (o.notes.get(j).noteHeadType == "x") {
+		Element noteHead = doc.createElement("notehead"); 
+		noteHead.appendChild(doc.createTextNode("x") ); 
+		note.appendChild(noteHead);
+		}
+	}
 	
 //	static void beamNumber(Document doc, Element note, DrumNoteObject o, int j) {
 //		Element beamNumber = doc.createElement("beam");   
