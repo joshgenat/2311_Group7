@@ -77,9 +77,10 @@ public class DrumNoteObject {
 		ArrayList<Integer> rowCoordinate = rowValue.RowReader(tab.nodes.get(i).nodes,rowSymbols);
 		ArrayList<Integer> colCoordinate = colValue.ColReader(tab.nodes.get(i).nodes,rowSymbols);
 		ArrayList<Boolean> backUpFinders = backUpLocator.BackUpList(tab.nodes.get(i).nodes,rowSymbols);
-		noteHeadType = noteHead.NoteHeadReader(tab.nodes.get(i).nodes,rowSymbols);		
+		ArrayList<Character> noteHeadTypes = noteHead.NoteHeadReader(tab.nodes.get(i).nodes,rowSymbols);		
 		
 		backUpFinder.addAll(backUpFinders);
+		noteHeadType.addAll(noteHeadTypes);
 		
 		for(int j = 0; j < rowCoordinate.size(); j++) {
 		int row = rowCoordinate.get(j);
