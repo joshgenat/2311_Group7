@@ -36,13 +36,13 @@ public class ConverterTester {
 		
 		
 		
-		GuitarChord[] notes = guitar.converter(test3);
+		GuitarChord[] notes = guitar.converter(test2);
 		
 		//System.out.println("\n test \n");
 		
-		for(int i = 0; i < test3.length; i++) {
-			for(int j = 0; j < test3[0].length; j++) {
-					System.out.print(test3[i][j]);
+		for(int i = 0; i < test2.length; i++) {
+			for(int j = 0; j < test2[0].length; j++) {
+					System.out.print(test2[i][j]);
 				}
 			System.out.println();
 		}
@@ -57,7 +57,7 @@ public class ConverterTester {
 				if(notes[j] == null) break;
 				//System.out.print("\'" + notes[j].notes[i].step + "\', ");
 				//System.out.print(notes[j].notes[i].nextMeasure + ", ");
-				System.out.print("\t" + notes[j].notes[i] + "[" + notes[j].notes[i].isChord + "]\t");
+				System.out.print("\t" + notes[j].notes[i] + "[" + notes[j].notes[i].nextMeasure + "]\t");
 			}	
 			System.out.print("},\n"); 
 		} 
