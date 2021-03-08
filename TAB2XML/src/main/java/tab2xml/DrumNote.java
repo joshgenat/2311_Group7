@@ -15,7 +15,7 @@ public class DrumNote {
 		voice(doc, note, o, j);
 		type(doc, note, o, j);
 		stem(doc, note, o, j);
-        //noteHead(doc, note, o, j);
+        noteHead(doc, note, o, j);
 		//beamNumber(doc, note, o, j);
 		
 	}
@@ -73,7 +73,7 @@ public class DrumNote {
 	
 	static void noteHead(Document doc, Element note, DrumNoteObject o, int j) {
 		// Check if noteHead is an 'x' or an 'o'
-		if (o.noteHeadType == "x") {
+		if (o.noteHeadType.get(j).equals('x')) {
 		Element noteHead = doc.createElement("notehead"); 
 		noteHead.appendChild(doc.createTextNode("x") ); 
 		note.appendChild(noteHead);

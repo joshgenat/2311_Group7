@@ -17,6 +17,7 @@ public class DrumNoteObject {
 	ArrayList<DrumNotes> notes = new ArrayList<DrumNotes>();
 	ArrayList<DrumPartsList> instruments = new ArrayList<>();
 	ArrayList<Boolean> backUpFinder = new ArrayList<>();
+	ArrayList<Character> noteHeadType = new ArrayList<>();
 	String sign;
 	int line;
 	int divisions;
@@ -75,8 +76,8 @@ public class DrumNoteObject {
 		
 		ArrayList<Integer> rowCoordinate = rowValue.RowReader(tab.nodes.get(i).nodes,rowSymbols);
 		ArrayList<Integer> colCoordinate = colValue.ColReader(tab.nodes.get(i).nodes,rowSymbols);
-		ArrayList<Boolean>backUpFinders = backUpLocator.BackUpList(tab.nodes.get(i).nodes,rowSymbols);
-		ArrayList<Character> noteHeadType = noteHead.NoteHeadReader(tab.nodes.get(i).nodes,rowSymbols);		
+		ArrayList<Boolean> backUpFinders = backUpLocator.BackUpList(tab.nodes.get(i).nodes,rowSymbols);
+		noteHeadType = noteHead.NoteHeadReader(tab.nodes.get(i).nodes,rowSymbols);		
 		
 		backUpFinder.addAll(backUpFinders);
 		
