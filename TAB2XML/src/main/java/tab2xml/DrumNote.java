@@ -73,7 +73,7 @@ public class DrumNote {
 	
 	static void noteHead(Document doc, Element note, DrumNoteObject o, int j) {
 		// Check if noteHead is an 'x' or an 'o'
-		if (o.notes.get(j).noteHeadType == "x") {
+		if (o.noteHeadType == "x") {
 		Element noteHead = doc.createElement("notehead"); 
 		noteHead.appendChild(doc.createTextNode("x") ); 
 		note.appendChild(noteHead);
