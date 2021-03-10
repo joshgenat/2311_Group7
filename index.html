@@ -4,8 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A free Text Tab to MusicXML Converter" />
+    <meta property="og:title" content="TAB2XML... " />
+    <meta property="og:description" content="TAB2XML... " />
+    <meta property="og:type" content="website... " />
+    <meta property="og:image" content="http://" />
 
-    <title>TAB2XML</title>
+    <title>TAB2XML - Text to MusicXML Converter</title>
 
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
@@ -15,17 +20,175 @@
 
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   </head>
   <body>
+    <header>
+      <nav class="nav collapsible">
+        <a class="nav__logo" href="/"
+          ><img class="hero__image" src="images/group7.png" alt=""
+        /></a>
+        <svg class="icon icon--white nav__toggler">
+          <use xlink:href="images/sprite.svg#menu"></use>
+        </svg>
+        <ul class="list nav__list collapsible__content">
+          <li class="nav__item"><a href="#">About</a></li>
+          <li class="nav__item"><a href="#">Help</a></li>
+          <li class="nav__item"><a href="#">About</a></li>
+        </ul>
+      </nav>
+    </header>
+    <section class="block block--dark block--skewed-left hero">
+      <div class="container grid grid--1x2">
+        <header class="block__header hero__content">
+          <h1 data-aos="fade-right" class="block__heading aos-init aos-animate">
+            Tab to MusicXML Converter
+          </h1>
+          <p class="hero__tagline">free converter</p>
+          <a href="" class="btn btn--accent btn--stretched"></a>
+        </header>
+        <picture
+          ><img class="hero__image" src="images/banner.png" alt=""
+        /></picture>
+      </div>
+    </section>
+    <section class="block container block-domain">
+      <header class="block__header">
+        <h2>Starting at $9 per Month</h2>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, qui.
+        </p>
+      </header>
+      <div class="input-group">
+        <input type="text" class="input" placeholder="Enter text" />
+        <button class="btn btn--accent">
+          <svg class="icon icon--white">
+            <use xlink:href="images/sprite.svg#search"></use>
+          </svg>
+          Search
+        </button>
+      </div>
+      <ul class="list block-domain__prices">
+        <li><span class="badge badge--secondary">.com</span></li>
+        <li>.sg</li>
+        <li>.space</li>
+        <li>.info</li>
+        <li>.net</li>
+        <li>.xyz</li>
+      </ul>
+    </section>
+    <section class="block block--dark block--skewed-right">
+      <header class="block__header">
+        <h2>User-Friendly control panel</h2>
+      </header>
+      <div class="container grid grid--1x2">
+        <picture class="block-showcase__image">
+          <img src="images/ipad.png" alt=""
+        /></picture>
+        <ul class="list">
+          <li>
+            <div class="media">
+              <div class="media__image">
+                <svg class="icon icon--primary">
+                  <use xlink:href="images/sprite.svg#snap"></use>
+                </svg>
+              </div>
+              <div class="media__body">
+                <h3 class="media__title">Easy start</h3>
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Accusamus inventore delectus nam alias sunt optio quasi autem,
+                  animi eum quibusdam.
+                </p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="media">
+              <div class="media__image">
+                <svg class="icon icon--primary">
+                  <use xlink:href="images/sprite.svg#snap"></use>
+                </svg>
+              </div>
+              <div class="media__body">
+                <h3 class="media__title">Easy start</h3>
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Accusamus inventore delectus nam alias sunt optio quasi autem,
+                  animi eum quibusdam.
+                </p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="media">
+              <div class="media__image">
+                <svg class="icon icon--primary">
+                  <use xlink:href="images/sprite.svg#snap"></use>
+                </svg>
+              </div>
+              <div class="media__body">
+                <h3 class="media__title">Easy start</h3>
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Accusamus inventore delectus nam alias sunt optio quasi autem,
+                  animi eum quibusdam.
+                </p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <section class="block container">
+      <header class="block__header">
+        <h2>About MusicXML</h2>
+        <p>Why use MusicXML?</p>
+      </header>
+      <article class="grid grid--1x2 feature">
+        <div class="feature__content" data-aos="fade-up">
+          <span class="icon-container">
+            <svg class="icon icon--primary">
+              <use xlink:href="images/sprite.svg#easy"></use>
+            </svg>
+          </span>
+          <h3 class="feature__heading">Super Easy to Use</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+            Temporibus, nulla.
+          </p>
+        </div>
+        <picture data-aos="zoom-in-left">
+          <img class="feature__image" src="images/easy.jpg" alt=""
+        /></picture>
+      </article>
+      <article class="grid grid--1x2 feature">
+        <div class="feature__content">
+          <span class="icon-container">
+            <svg class="icon icon--primary">
+              <use xlink:href="images/sprite.svg#easy"></use>
+            </svg>
+          </span>
+          <h3 class="feature__heading">Super Easy to Use</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+            Temporibus, nulla.
+          </p>
+        </div>
+        <picture>
+          <img class="feature__image" src="images/easy.jpg" alt=""
+        /></picture>
+      </article>
+    </section>
     <footer class="block block--dark footer">
       <div class="container grid footer__sections">
-        <section class="collapsible collapsible--expanded footer__section">
-          <header class="collapsible__header">
+        <section class="collapsible footer__section">
+          <div class="collapsible__header">
             <h2 class="collapsible__heading footer__heading">Item 1</h2>
             <svg class="icon icon--white collapsible__chevron">
               <use xlink:href="images/sprite.svg#chevron"></use>
             </svg>
-          </header>
+          </div>
 
           <div class="collapsible__content">
             <ul class="list">
@@ -36,12 +199,12 @@
           </div>
         </section>
         <section class="collapsible footer__section">
-          <header class="collapsible__header">
+          <div class="collapsible__header">
             <h2 class="collapsible__heading footer__heading">Item 2</h2>
             <svg class="icon icon--white collapsible__chevron">
               <use xlink:href="images/sprite.svg#chevron"></use>
             </svg>
-          </header>
+          </div>
 
           <div class="collapsible__content">
             <ul class="list">
@@ -51,28 +214,17 @@
             </ul>
           </div>
         </section>
-        <section class="collapsible footer__section">
-          <header class="collapsible__header">
-            <h2 class="collapsible__heading footer__heading">Item 3</h2>
-            <svg class="icon icon--white collapsible__chevron">
-              <use xlink:href="images/sprite.svg#chevron"></use>
-            </svg>
-          </header>
 
-          <div class="collapsible__content">
-            <ul class="list">
-              <li><a href="#">Website Hosting</a></li>
-              <li><a href="#">Website Hosting</a></li>
-              <li><a href="#">Website Hosting</a></li>
-            </ul>
-          </div>
-        </section>
-        <section class="footer__brand">
+        <div class="footer__brand">
           <img class="hero__image" src="images/group7.png" alt="" />
           <p class="footer__copyright">Copyright 2021 Group 7</p>
-        </section>
+        </div>
       </div>
     </footer>
     <script src="js/main.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
   </body>
 </html>
