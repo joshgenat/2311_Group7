@@ -5,7 +5,7 @@
         fill: #2584ff;
         stroke: #2584ff;
       }
-
+ 
       .cls-1, .cls-2 {
         stroke-linecap: round;
         stroke-linejoin: round;
