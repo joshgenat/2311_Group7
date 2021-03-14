@@ -1,8 +1,8 @@
 :root {
-  --color-primary: #2584ff;
-  --color-secondary: #00d9ff;
-  --color-accent: #ff3400;
-  --color-headings: #1b0760;
+  --color-primary: #477a62;
+  --color-secondary: #33ab74;
+  --color-accent: #a9e884;
+  --color-headings: #292930;
   --color-body: #918ca4;
   --color-body-darker: #5c5577;
   --color-border: #ccc;
@@ -245,11 +245,11 @@ a {
 
 .btn--accent {
   background: var(--color-accent);
-  color: #fff;
+  color: #292930;
 }
 
 .btn--accent:hover {
-  background: #ec3000;
+  background: #85b867;
 }
 
 .btn--outline {
@@ -492,6 +492,7 @@ a {
 /* Grids */
 .grid {
   display: grid;
+  height: 50%;
 }
 
 @media screen and (min-width: 768px) {
@@ -730,6 +731,11 @@ a {
   margin: 2rem 0 5rem;
 }
 
+.hero__image {
+  width: 10rem;
+  height: 4rem;
+}
+
 @media screen and (min-width: 768px) {
   .hero__content {
     text-align: left;
@@ -782,7 +788,8 @@ a {
 /* Features */
 .feature {
   gap: 4rem 2rem;
-  margin: 12rem 0;
+  margin: 0 0;
+  margin-bottom: 0;
 }
 
 .feature:first-of-type {

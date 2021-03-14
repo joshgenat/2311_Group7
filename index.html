@@ -26,7 +26,7 @@
     <header>
       <nav class="nav collapsible">
         <a class="nav__logo" href="/"
-          ><img class="hero__image" src="images/logo.svg" alt=""
+          ><img class="hero__image" src="images/2311logo.png" alt=""
         /></a>
         <svg class="icon icon--white nav__toggler">
           <use href="images/sprite.svg#menu"></use>
@@ -34,7 +34,6 @@
         <ul class="list nav__list collapsible__content">
           <li class="nav__item"><a href="#">About</a></li>
           <li class="nav__item"><a href="#">Help</a></li>
-          <li class="nav__item"><a href="#">About</a></li>
         </ul>
       </nav>
     </header>
@@ -42,44 +41,70 @@
       <div class="container grid grid--1x2">
         <header class="block__header hero__content">
           <h1 data-aos="fade-right" class="block__heading aos-init aos-animate">
-            Tab to MusicXML Converter
+            Text Tab to MusicXML Converter
           </h1>
-          <p class="hero__tagline">free converter</p>
-          <a href="" class="btn btn--accent btn--stretched"></a>
+          <p class="hero__tagline">A Downloadable Java Project</p>
+          <a href="" class="btn btn--accent btn--stretched">Download</a>
         </header>
-        <picture
-          ><img class="hero__image" src="images/banner.png" alt=""
-        /></picture>
+        <picture><img src="images/banner.png" alt="" /></picture>
       </div>
     </section>
-    <section class="block container block-domain">
+    <section class="block container">
       <header class="block__header">
-        <h2>Starting at $9 per Month</h2>
+        <h2>About MusicXML</h2>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, qui.
+          MusicXML can be used to precisely denote a piece of music. This format
+          is supported by many music software and can display the song in an
+          easy to read fashion, edit on the go, play the song, and many more
+          features! Tab2XML is an application that allows users to take a
+          tablature and convert it into a more flexible file, MusicXML—allowing
+          users to adjust the piece of music to their liking and allow for
+          better transferability.
         </p>
       </header>
-      <div class="input-group">
-        <input type="text" class="input" placeholder="Enter text" />
-        <button class="btn btn--accent">
-          <svg class="icon icon--white">
-            <use href="images/sprite.svg#search"></use>
-          </svg>
-          Search
-        </button>
-      </div>
-      <ul class="list block-domain__prices">
-        <li><span class="badge badge--secondary">.com</span></li>
-        <li>.sg</li>
-        <li>.space</li>
-        <li>.info</li>
-        <li>.net</li>
-        <li>.xyz</li>
-      </ul>
+      <article class="grid grid--1x2 feature">
+        <div class="feature__content" data-aos="fade-up">
+          <span class="icon-container">
+            <svg class="icon icon--primary">
+              <use href="images/sprite.svg#clock"></use>
+            </svg>
+          </span>
+          <h3 class="feature__heading">Why MusicXML?</h3>
+          <p>
+            Our objective is to develop a software system that allows the user
+            to input a tablature of their choice and receive the MusicXML file
+            for that particular text tab. This project will convert a text tab
+            containing guitar or drum tablature into a MusicXML file. The system
+            is designed to ease file conversion and allow a convenient
+            application for music enthusiasts looking to utilize the efficiency
+            of MusicXML.
+          </p>
+        </div>
+        <picture data-aos="zoom-in-left">
+          <img class="feature__image" src="images/musicxml.jpg" alt=""
+        /></picture>
+      </article>
+      <article class="grid grid--1x2 feature">
+        <div class="feature__content" data-aos="fade-up">
+          <span class="icon-container">
+            <svg class="icon icon--primary">
+              <use href="images/sprite.svg#tick"></use>
+            </svg>
+          </span>
+          <h3 class="feature__heading">Getting Started</h3>
+          <p>
+            To begin using the Converter, please download the Java zip file and
+            open the file in Eclipse. The software will be run through Gradle.
+          </p>
+        </div>
+        <picture data-aos="zoom-in-left">
+          <img class="feature__image" src="images/easy.jpg" alt=""
+        /></picture>
+      </article>
     </section>
-    <section class="block block--dark block--skewed-right">
+    <section class="block block--dark">
       <header class="block__header">
-        <h2>User-Friendly control panel</h2>
+        <h2>User-Friendly Interface</h2>
       </header>
       <div class="container grid grid--1x2">
         <picture class="block-showcase__image">
@@ -140,51 +165,11 @@
         </ul>
       </div>
     </section>
-    <section class="block container">
-      <header class="block__header">
-        <h2>About MusicXML</h2>
-        <p>Why use MusicXML?</p>
-      </header>
-      <article class="grid grid--1x2 feature">
-        <div class="feature__content" data-aos="fade-up">
-          <span class="icon-container">
-            <svg class="icon icon--primary">
-              <use href="images/sprite.svg#easy"></use>
-            </svg>
-          </span>
-          <h3 class="feature__heading">Super Easy to Use</h3>
-          <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-            Temporibus, nulla.
-          </p>
-        </div>
-        <picture data-aos="zoom-in-left">
-          <img class="feature__image" src="images/easy.jpg" alt=""
-        /></picture>
-      </article>
-      <article class="grid grid--1x2 feature">
-        <div class="feature__content">
-          <span class="icon-container">
-            <svg class="icon icon--primary">
-              <use href="images/sprite.svg#easy"></use>
-            </svg>
-          </span>
-          <h3 class="feature__heading">Super Easy to Use</h3>
-          <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-            Temporibus, nulla.
-          </p>
-        </div>
-        <picture>
-          <img class="feature__image" src="images/easy.jpg" alt=""
-        /></picture>
-      </article>
-    </section>
     <footer class="block block--dark footer">
       <div class="container grid footer__sections">
         <section class="collapsible footer__section">
           <div class="collapsible__header">
-            <h2 class="collapsible__heading footer__heading">Item 1</h2>
+            <h2 class="collapsible__heading footer__heading">Team</h2>
             <svg class="icon icon--white collapsible__chevron">
               <use href="images/sprite.svg#chevron"></use>
             </svg>
@@ -192,15 +177,16 @@
 
           <div class="collapsible__content">
             <ul class="list">
-              <li><a href="#">Website Hosting</a></li>
-              <li><a href="#">Website Hosting</a></li>
-              <li><a href="#">Website Hosting</a></li>
+              <li><a href="#">Joshua Genat</a></li>
+              <li><a href="#">Andy Lin</a></li>
+              <li><a href="#">Uthithmenon Ravitharan</a></li>
+              <li><a href="#">Nicolae Semionov</a></li>
             </ul>
           </div>
         </section>
         <section class="collapsible footer__section">
           <div class="collapsible__header">
-            <h2 class="collapsible__heading footer__heading">Item 2</h2>
+            <h2 class="collapsible__heading footer__heading">Documents</h2>
             <svg class="icon icon--white collapsible__chevron">
               <use href="images/sprite.svg#chevron"></use>
             </svg>
@@ -208,15 +194,15 @@
 
           <div class="collapsible__content">
             <ul class="list">
-              <li><a href="#">Website Hosting</a></li>
-              <li><a href="#">Website Hosting</a></li>
-              <li><a href="#">Website Hosting</a></li>
+              <li><a href="#">Required Documents</a></li>
+              <li><a href="#">User Manual</a></li>
+              <li><a href="#">Testing Documents</a></li>
             </ul>
           </div>
         </section>
 
         <div class="footer__brand">
-          <img class="hero__image" src="images/logo.svg" alt="" />
+          <img class="hero__image" src="images/2311logo.png" alt="" />
           <p class="footer__copyright">Copyright 2021 Group 7</p>
         </div>
       </div>
