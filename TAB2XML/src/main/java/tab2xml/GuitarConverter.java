@@ -84,6 +84,7 @@ public class GuitarConverter {
 				chords[lastChord].setDurations((dur+1)/2);
 		}	
 //		chords[lastChord].setMeasures();
+		//chords[lastChord].setMeasures();
 		return chords;
 	}
 	
