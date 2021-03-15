@@ -32,9 +32,18 @@ public class ConverterTester {
 				"E|-0-----------------------|-------------------|-0-----------------------|"
 		};
 		
+		String[] testS2 = {
+				"{--------------------------------------------------------}",
+				"{--------------------------------------------------------}",
+				"{----9--9--12--9--7--5--4---9--9--12--9--7--5--7--5--4--2}",
+				"{----9--9--12--9--7--5--4---9--9--12--9--7--5--7--5--4--2}",
+				"{--------------------------------------------------------}",
+				"{--------------------------------------------------------}"
+		};
 		
 		
-		char[][] test3 = stringToCharArray(testS);
+		
+		char[][] test3 = stringToCharArray(testS2);
 		
 		
 		
@@ -59,7 +68,7 @@ public class ConverterTester {
 				if(notes[j] == null) break;
 				//System.out.print("\'" + notes[j].notes[i].step + "\', ");
 				//System.out.print(notes[j].notes[i].nextMeasure + ", ");
-				System.out.print("\t" + notes[j].notes[i] + "[" + notes[j].notes[i].measure + "]\t");
+				System.out.print("\t" + notes[j].notes[i] + "[" + notes[j].notes[i].duration + "]\t");
 			}	
 			System.out.print("},\n"); 
 		} 

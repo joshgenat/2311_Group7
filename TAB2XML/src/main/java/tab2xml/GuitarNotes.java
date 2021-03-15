@@ -56,7 +56,7 @@ public class GuitarNotes {
 				type = "eighth";
 				break;
 			default:
-				type = "sixteenth";
+				type = "16th";
 		}
 	}
 	
