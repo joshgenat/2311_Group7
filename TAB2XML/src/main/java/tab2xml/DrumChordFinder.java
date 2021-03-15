@@ -26,7 +26,6 @@ public class DrumChordFinder {
 					durationcount = barLineCols.get(i+1) - col; 
 					breaksDivider  = true;
 					DrumChordFinder.add(false);
-					drumChordsFinder = false;
 					
 					}
 				}
@@ -37,7 +36,6 @@ public class DrumChordFinder {
 					durationcount = nextCol - col; 
 					breaksDivider = true;
 					DrumChordFinder.add(false);
-					drumChordsFinder = false;
 					
 				}
 				
