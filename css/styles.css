@@ -792,6 +792,10 @@ a {
   margin-bottom: 0;
 }
 
+.block-showcase__image {
+  margin-right: 5rem;
+}
+
 .feature:first-of-type {
   margin-top: 6rem;
 }

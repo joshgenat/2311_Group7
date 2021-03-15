@@ -32,8 +32,8 @@
           <use href="images/sprite.svg#menu"></use>
         </svg>
         <ul class="list nav__list collapsible__content">
-          <li class="nav__item"><a href="#">About</a></li>
-          <li class="nav__item"><a href="#">Help</a></li>
+          <li class="nav__item"><a href="#About">About</a></li>
+          <li class="nav__item"><a href="#Help">Help</a></li>
         </ul>
       </nav>
     </header>
@@ -51,7 +51,7 @@
     </section>
     <section class="block container">
       <header class="block__header">
-        <h2>About MusicXML</h2>
+        <h2 id="About">About MusicXML</h2>
         <p>
           MusicXML can be used to precisely denote a piece of music. This format
           is supported by many music software and can display the song in an
@@ -84,7 +84,7 @@
           <img class="feature__image" src="images/musicxml.jpg" alt=""
         /></picture>
       </article>
-      <article class="grid grid--1x2 feature">
+      <article class="grid grid--1x2 feature" id="Help">
         <div class="feature__content" data-aos="fade-up">
           <span class="icon-container">
             <svg class="icon icon--primary">
@@ -95,10 +95,16 @@
           <p>
             To begin using the Converter, please download the Java zip file and
             open the file in Eclipse. The software will be run through Gradle.
+            <br />
+            <br />
+            <a href="">Download</a>
+            <br />
+            <br />
+            For further details, please refer to the <a href="">User Manual</a>
           </p>
         </div>
         <picture data-aos="zoom-in-left">
-          <img class="feature__image" src="images/easy.jpg" alt=""
+          <img class="feature__image" src="images/gradle.jpg" alt=""
         /></picture>
       </article>
     </section>
@@ -115,15 +121,14 @@
             <div class="media">
               <div class="media__image">
                 <svg class="icon icon--primary">
-                  <use href="images/sprite.svg#snap"></use>
+                  <use href="images/sprites.svg#document"></use>
                 </svg>
               </div>
               <div class="media__body">
-                <h3 class="media__title">Easy start</h3>
+                <h3 class="media__title">Paste or Choose File</h3>
                 <p>
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Accusamus inventore delectus nam alias sunt optio quasi autem,
-                  animi eum quibusdam.
+                  Paste your tablature or Select A File and edit any changes in
+                  the text field
                 </p>
               </div>
             </div>
@@ -132,16 +137,12 @@
             <div class="media">
               <div class="media__image">
                 <svg class="icon icon--primary">
-                  <use href="images/sprite.svg#snap"></use>
+                  <use href="images/sprites.svg#clock"></use>
                 </svg>
               </div>
               <div class="media__body">
-                <h3 class="media__title">Easy start</h3>
-                <p>
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Accusamus inventore delectus nam alias sunt optio quasi autem,
-                  animi eum quibusdam.
-                </p>
+                <h3 class="media__title">Fast Conversions</h3>
+                <p>Simply click the "Convert" button to view the XML output</p>
               </div>
             </div>
           </li>
@@ -149,15 +150,14 @@
             <div class="media">
               <div class="media__image">
                 <svg class="icon icon--primary">
-                  <use href="images/sprite.svg#snap"></use>
+                  <use href="images/sprites.svg#download"></use>
                 </svg>
               </div>
               <div class="media__body">
-                <h3 class="media__title">Easy start</h3>
+                <h3 class="media__title">Download XML</h3>
                 <p>
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Accusamus inventore delectus nam alias sunt optio quasi autem,
-                  animi eum quibusdam.
+                  Click the Download button to open up your folder where you
+                  would like to save the ".MusicXML" file
                 </p>
               </div>
             </div>
@@ -177,10 +177,10 @@
 
           <div class="collapsible__content">
             <ul class="list">
-              <li><a href="#">Joshua Genat</a></li>
-              <li><a href="#">Andy Lin</a></li>
-              <li><a href="#">Uthithmenon Ravitharan</a></li>
-              <li><a href="#">Nicolae Semionov</a></li>
+              <li>Joshua Genat</li>
+              <li>Andy Lin</li>
+              <li>Uthithmenon Ravitharan</li>
+              <li>Nicolae Semionov</li>
             </ul>
           </div>
         </section>
