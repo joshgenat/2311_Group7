@@ -15,6 +15,8 @@ public class DrumChordFinder {
 	{
 		DrumChordFinder = new ArrayList<Boolean>();
 		
+		breaksDivider = false;  
+		
 		if (col != nextCol)
 		{
 			for (int i = 0; i < barLineCols.size(); i++) 
