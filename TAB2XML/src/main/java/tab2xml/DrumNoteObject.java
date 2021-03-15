@@ -43,6 +43,7 @@ public class DrumNoteObject {
 	DrumDividers barLineCols = new DrumDividers();
 	BackUpFinder backUpLocator = new BackUpFinder();
 	DrumNoteHead noteHead = new DrumNoteHead();
+	DrumChordFinder drumChord = new DrumChordFinder();
 	
 	public DrumNoteObject(Tab tab) {
 		// the following values are only needed once for the MusicXML Code
@@ -103,7 +104,7 @@ public class DrumNoteObject {
 		note1.duration = noteduration.NoteDurationLength(col, nextCol, nextNextCol, barLineCols.DrumBarLines(tab.nodes.get(i).nodes));
 		note1.stem = stemValue.FindStemValue(note1.voiceNumber);
 		note1.type = noteType.DrumNoteLength(note1.duration);
-		
+		note1.chord = drumChord.ChordFinder(col, nextCol, nextNextCol, barLineCols.DrumBarLines(tab.nodes.get(i).nodes));
 		
 		notes.add(note1);
 		
