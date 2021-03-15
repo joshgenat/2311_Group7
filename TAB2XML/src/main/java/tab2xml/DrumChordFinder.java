@@ -8,7 +8,7 @@ public class DrumChordFinder {
 	
 	 int durationcount;
 	 boolean breaksDivider = false; 
-	 boolean drumChordsFinder = false; 
+	 boolean drumChordsFinder; 
 	 ArrayList<Boolean> DrumChordFinder;
 	
 	public boolean ChordFinder (int col,  int nextCol, int nextNextCol, ArrayList<Integer> barLineCols)
