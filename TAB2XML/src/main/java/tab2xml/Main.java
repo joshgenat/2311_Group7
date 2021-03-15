@@ -36,6 +36,7 @@ public class Main extends Application {
 	public void openWeb(String text) {
 		getHostServices().showDocument(text);
 	}
+	
 	public static void main(String[] args) {
 		launch(args);
 	}
