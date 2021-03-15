@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class DrumNoteHead {
 
-	 
+
 	
 	ArrayList<Integer> rowCoordinate;
 	ArrayList<Integer> colCoordinate;
@@ -16,7 +16,7 @@ public class DrumNoteHead {
 	int oldDivider = 0;
 	int currentDivider = 0;
 	
-	ArrayList <Integer> RowReader(char [][] drumTab, int [] rowSymbols)
+	ArrayList <Character> NoteHeadReader(char [][] drumTab, int [] rowSymbols)
 	{
 		counter = 0;
 		mutipleVoices = false;
@@ -121,7 +121,7 @@ public class DrumNoteHead {
 		 	}
 		     }
 		}
-		return rowCoordinate;
+		return noteHead;
 		
 		
 		
@@ -129,4 +129,3 @@ public class DrumNoteHead {
 	
 }
 	
-
