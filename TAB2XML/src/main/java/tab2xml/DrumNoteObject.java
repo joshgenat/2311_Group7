@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class DrumNoteObject {
 	
-	
 	/**
 	 *  drumtab will be the 2d char array obtained from praser 
 	 *  row and col are the coordinates of the current note in question 

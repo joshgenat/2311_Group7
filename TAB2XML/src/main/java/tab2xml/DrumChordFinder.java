@@ -15,7 +15,7 @@ public class DrumChordFinder {
 	{
 		DrumChordFinder = new ArrayList<Boolean>();
 		
-		breaksDivider = false;  
+		drumChordsFinder = false;  
 		
 		if (col != nextCol)
 		{
