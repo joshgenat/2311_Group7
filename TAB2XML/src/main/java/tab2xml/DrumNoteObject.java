@@ -108,10 +108,7 @@ public class DrumNoteObject {
 		note1.chord = drumChord.ChordFinder(col, nextCol, nextNextCol,preCol, barLineCols.DrumBarLines(tab.nodes.get(i).nodes));
 		
 		notes.add(note1);
-		
-		
-		System.out.println(col+ "     " + nextCol + "     " + nextNextCol);
-		System.out.println(note1.chord);
+
 		
 		}
 		}
