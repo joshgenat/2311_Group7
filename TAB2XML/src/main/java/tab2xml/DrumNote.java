@@ -9,6 +9,9 @@ public class DrumNote {
 		Element note = doc.createElement("note");     
 		measureNumber.appendChild(note); 
 		
+		if (o.notes.get(j).chord == true) 
+			chord(doc, note);
+		
 		unpitched(doc, note, o, j);
 		duration(doc, note, o, j);
 		instrumentId(doc, note, o, j);
@@ -18,6 +21,11 @@ public class DrumNote {
         noteHead(doc, note, o, j);
 		//beamNumber(doc, note, o, j);
 		
+	}
+	
+	static void chord(Document doc, Element note) {
+		Element chord = doc.createElement("chord");
+		note.appendChild(chord); 
 	}
 	
 	static void unpitched(Document doc, Element note, DrumNoteObject o, int j) {

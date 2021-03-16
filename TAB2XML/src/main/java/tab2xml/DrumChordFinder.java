@@ -10,8 +10,9 @@ public class DrumChordFinder {
 	 boolean breaksDivider = false; 
 	 boolean drumChordsFinder = false; 
 	
-	public boolean ChordFinder (int col,  int nextCol, int nextNextCol, ArrayList<Integer> barLineCols)
-	{
+	
+	public boolean ChordFinder (int col,  int nextCol, int nextNextCol, int preCol, ArrayList<Integer> barLineCols)
+	{ 
 		
 		if (col != nextCol)
 		{
@@ -23,6 +24,7 @@ public class DrumChordFinder {
 					{
 					durationcount = barLineCols.get(i+1) - col; 
 					breaksDivider  = true;
+					drumChordsFinder = false;
 					
 					}
 				}
@@ -32,6 +34,8 @@ public class DrumChordFinder {
 				{
 					durationcount = nextCol - col; 
 					breaksDivider = true;
+					drumChordsFinder = false;
+			
 					
 				}
 				
@@ -44,6 +48,11 @@ public class DrumChordFinder {
 				{
 					 durationcount = barLineCols.get(i) - col;
 					 break;
+				}
+				
+				if(preCol == col)
+				{
+					drumChordsFinder = true;
 				}
 			}
 				
@@ -60,8 +69,9 @@ public class DrumChordFinder {
 					if ((barLineCols.get(i) < col) && (nextNextCol > barLineCols.get(i+1)) && (col< barLineCols.get(i+1)))
 						{
 						durationcount = barLineCols.get(i+1) - col; 
-						drumChordsFinder = true;
+						drumChordsFinder = false;
 						breaksDivider  = true;
+	
 					
 						}
 				}
@@ -70,21 +80,20 @@ public class DrumChordFinder {
 				if (breaksDivider == false)
 				{
 					durationcount = nextNextCol - col;
-					drumChordsFinder = true;
+					drumChordsFinder = false;
 					breaksDivider = true;
+				
 					
 				}
 				
 				if (nextNextCol == 0)
 				{
 					durationcount = barLineCols.get(barLineCols.size()-1) - col;
-					drumChordsFinder = true;
 				}
 				
 				if((nextNextCol<col) && (barLineCols.get(i)>col))
 				{
 					 durationcount = barLineCols.get(i) - col;
-					 drumChordsFinder = true;
 					 break;
 				}
 			}

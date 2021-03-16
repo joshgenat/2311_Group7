@@ -83,7 +83,8 @@ public class GuitarConverter {
 			if(i == in[0].length - 3)
 				chords[lastChord].setDurations((dur+1)/2);
 		}	
-		chords[lastChord].setMeasures();
+//		chords[lastChord].setMeasures();
+		//chords[lastChord].setMeasures();
 		return chords;
 	}
 	

@@ -36,7 +36,7 @@ public class GuitarXML {
 				partList.appendChild(scorePart); 
 
 					Element partName = doc.createElement("part-name");   
-					partName.appendChild(doc.createTextNode("Guitar") ); 
+					partName.appendChild(doc.createTextNode("Guitar")); 
 					scorePart.appendChild(partName);               
     
 			
@@ -62,11 +62,11 @@ public class GuitarXML {
 						Element m = measureNumber;
 						
 					for(int j = 0; j < g.notes.size() ; j++) {
-
-					
+						
 					if (g.notes.get(j).nextMeasure != true) {
 						GuitarNote.note(doc, m, g, j);
 					}
+					
 					else { 
 						Element measureNumber2 = doc.createElement("measure"); 
 						measureNumber2.setAttribute("number", "" + count);

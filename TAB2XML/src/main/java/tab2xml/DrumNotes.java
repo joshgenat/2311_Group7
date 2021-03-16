@@ -8,6 +8,7 @@ public class DrumNotes {
 	String stem;
 	String type;
 	String instrumentID;
+	boolean chord;
 	
 	public DrumNotes(){
 		

@@ -9,6 +9,7 @@ public class GuitarChord {
 	private int numNotes;
 	private boolean isChord;
 	private boolean skipped;
+	private int lastNote;
 	
 	public GuitarChord(GuitarNotes[] notes, int i) {
 		this.notes = notes;
@@ -22,6 +23,7 @@ public class GuitarChord {
 		addAt = 0;
 		size = 0;
 		numNotes = 0;
+		lastNote = 0;
 		isChord = false;
 	}
 	
@@ -30,8 +32,10 @@ public class GuitarChord {
 			notes[addAt] = a;
 			addAt++;
 			size++;
-			if(!a.note.equals("-"))
+			if(!a.note.equals("-")) {
 				numNotes++;
+				lastNote = addAt - 1;
+			}
 		}
 		
 		if(numNotes > 1) {
@@ -60,10 +64,14 @@ public class GuitarChord {
 	}
 	
 	public void setMeasures() {
+		notes[lastNote].nextMeasure = true;
+		
+		/*
 		for(int i = 0; i < notes.length; i++) {
 			if(notes[i] != null)
 				notes[i].nextMeasure = true;
 		}
+		*/
 	}
 	
 
