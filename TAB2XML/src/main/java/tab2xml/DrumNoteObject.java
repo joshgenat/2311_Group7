@@ -107,6 +107,10 @@ public class DrumNoteObject {
 		
 		notes.add(note1);
 		
+		
+		System.out.println(col+ "     " + nextCol + "     " + nextNextCol);
+		System.out.println(note1.chord);
+		
 		}
 		}
 		
