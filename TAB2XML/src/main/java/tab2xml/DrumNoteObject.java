@@ -47,7 +47,6 @@ public class DrumNoteObject {
 	public DrumNoteObject(Tab tab) {
 		// the following values are only needed once for the MusicXML Code
 		this.tab = tab;
-		
 		sign = "percussion";
 		line = 2;
 		divisions = 4;
