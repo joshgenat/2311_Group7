@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Test.*;
 import org.junit.jupiter.api.Test;
 
-class GuitarConverterTester { 
+class GuitarConverterTester {
 	
 	Random random = new Random();
 	
@@ -103,12 +103,12 @@ class GuitarConverterTester {
 		};
 		
 		boolean[][] expectedMeasure = {
-				{false, false, false, false, false, false, false, true, true, false},
-				{false, false, false, false, false, false, false, true, true, false},
-				{false, false, false, false, false, false, false, true, true, false},
-				{false, false, false, false, false, false, false, true, true, false},
-				{false, false, false, false, false, false, false, true, true, false},
-				{false, false, false, false, false, false, false, true, true, false}
+				{false, false, false, false, false, false, false, false, false, false},
+				{false, false, false, false, false, false, false, false, false, false},
+				{false, false, false, false, false, false, false, true, false, false},
+				{false, false, false, false, false, false, false, false, false, false},
+				{false, false, false, false, false, false, false, false, false, false},
+				{false, false, false, false, false, false, false, false, true, false}
 		};
 	
 	GuitarChord[] result = guitar.converter(test);
