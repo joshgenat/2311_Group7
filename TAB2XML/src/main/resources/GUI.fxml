@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
@@ -11,24 +12,13 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 
 <AnchorPane prefHeight="550.0" prefWidth="900.0" style="-fx-background-color: #339966;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tab2xml.Controller">
    <children>
-      <AnchorPane layoutX="750.0" layoutY="67.0" prefHeight="475.0" prefWidth="231.0" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="67.0">
-         <children>
-            <Button fx:id="convert" layoutX="136.0" layoutY="146.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#convert" prefHeight="25.0" prefWidth="75.0" text="Convert" />
-            <Button fx:id="selectFile" layoutX="136.0" layoutY="26.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#selectFile" prefHeight="25.0" prefWidth="75.0" text="Select File" />
-            <Button fx:id="clear" layoutX="136.0" layoutY="66.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#clear" prefHeight="25.0" prefWidth="75.0" text="Clear" />
-            <Button fx:id="download" layoutX="136.0" layoutY="107.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#download" prefHeight="25.0" prefWidth="75.0" text="Download" />
-            <ImageView fitHeight="45.0" fitWidth="117.0" layoutX="100.0" layoutY="418.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="14.50674819946289" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="14.333333333333343">
-               <image>
-                  <Image url="@group7.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="errorLabel" layoutX="57.0" layoutY="335.0" prefHeight="76.0" prefWidth="117.0" />
-         </children>
-      </AnchorPane>
-      <TabPane fx:id="tabView" layoutX="163.0" layoutY="39.0" prefHeight="504.0" prefWidth="582.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="255.0" AnchorPane.topAnchor="39.0">
+      <TabPane fx:id="tabView" layoutX="163.0" layoutY="39.0" prefHeight="504.0" prefWidth="589.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="306.0" AnchorPane.topAnchor="39.0">
         <tabs>
           <Tab text="Tab">
             <content>
@@ -71,5 +61,39 @@
           </Menu>
         </menus>
       </MenuBar>
+      <AnchorPane layoutX="750.0" layoutY="67.0" prefHeight="475.0" prefWidth="278.0" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="67.0">
+         <children>
+            <Button fx:id="convert" layoutX="101.0" layoutY="353.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#convert" prefHeight="25.0" prefWidth="75.0" text="Convert" />
+            <Button fx:id="selectFile" layoutX="188.0" layoutY="21.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#selectFile" prefHeight="25.0" prefWidth="75.0" text="Select File" />
+            <Button fx:id="clear" layoutX="188.0" layoutY="59.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#clear" prefHeight="25.0" prefWidth="75.0" text="Clear" />
+            <Button fx:id="download" layoutX="188.0" layoutY="100.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#download" prefHeight="25.0" prefWidth="75.0" text="Download" />
+            <ImageView fitHeight="45.0" fitWidth="117.0" layoutX="147.0" layoutY="418.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="14.50674819946289" AnchorPane.leftAnchor="147.0" AnchorPane.rightAnchor="14.0">
+               <image>
+                  <Image url="@group7.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="errorLabel" layoutX="14.0" layoutY="385.0" prefHeight="76.0" prefWidth="117.0" />
+            <ComboBox fx:id="clefSignBox" layoutX="14.0" layoutY="33.0" prefHeight="25.0" prefWidth="126.0" />
+            <Label layoutX="14.0" layoutY="12.0" text="Clef:">
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+            <Label layoutX="14.0" layoutY="72.0" text="Time:" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
