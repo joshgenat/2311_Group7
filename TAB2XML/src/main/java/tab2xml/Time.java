@@ -71,7 +71,7 @@ public class Time {
 					sb.append("\n</time>");
 					System.out.println(sb.toString());
 					return sb.toString();
-				}
+				} 
 				
 					static void beats(int[] o, StringBuilder sb) {
 						sb.append("\n\t<beats>" + o[0] + "</beats>");
