@@ -1,6 +1,7 @@
 plugins {
   id 'application'
   id 'org.openjfx.javafxplugin' version '0.0.8'
+  id 'jacoco'
 }
 
 repositories {
@@ -20,6 +21,8 @@ test {
   useJUnitPlatform()
   testLogging {
     events 'passed', 'skipped', 'failed'
+
+    finalizedBy jacocoTestReport // report is always generated after tests runS
   }
 }
 
@@ -33,6 +36,17 @@ run {
         // Temporal fix for Eclipse with JDK 1.8 and Windows 
         systemProperty "java.library.path", "C:\tmp" 
     }
+}
+
+
+
+jacoco {
+    toolVersion = "0.8.6"
+    reportsDirectory = file("$buildDir/customJacocoReportDir")
+}
+
+jacocoTestReport {
+    dependsOn test // tests are required to run before generating the report
 }
 
 mainClassName = 'tab2xml.Main'

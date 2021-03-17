@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class DrumNoteObject {
 	
-	
 	/**
 	 *  drumtab will be the 2d char array obtained from praser 
 	 *  row and col are the coordinates of the current note in question 
@@ -48,7 +47,6 @@ public class DrumNoteObject {
 	public DrumNoteObject(Tab tab) {
 		// the following values are only needed once for the MusicXML Code
 		this.tab = tab;
-		
 		sign = "percussion";
 		line = 2;
 		divisions = 4;
@@ -88,8 +86,10 @@ public class DrumNoteObject {
 		int col = colCoordinate.get(j);
 		int nextCol = 0;
 		int nextNextCol = 0;
+		int preCol = 0;
 		if(j+1 < rowCoordinate.size()) {nextCol = colCoordinate.get(j+1);} 
 		if(j+2 < rowCoordinate.size()) {nextNextCol = colCoordinate.get(j+2);} 
+		if(j>0) {preCol = colCoordinate.get(j-1);}
 		
 		
 		
@@ -104,9 +104,10 @@ public class DrumNoteObject {
 		note1.duration = noteduration.NoteDurationLength(col, nextCol, nextNextCol, barLineCols.DrumBarLines(tab.nodes.get(i).nodes));
 		note1.stem = stemValue.FindStemValue(note1.voiceNumber);
 		note1.type = noteType.DrumNoteLength(note1.duration);
-		note1.chord = drumChord.ChordFinder(col, nextCol, nextNextCol, barLineCols.DrumBarLines(tab.nodes.get(i).nodes));
+		note1.chord = drumChord.ChordFinder(col, nextCol, nextNextCol,preCol, barLineCols.DrumBarLines(tab.nodes.get(i).nodes));
 		
 		notes.add(note1);
+
 		
 		}
 		}

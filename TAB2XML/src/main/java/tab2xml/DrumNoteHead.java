@@ -3,6 +3,8 @@ package tab2xml;
 import java.util.ArrayList;
 
 public class DrumNoteHead {
+
+
 	
 	ArrayList<Integer> rowCoordinate;
 	ArrayList<Integer> colCoordinate;
@@ -127,5 +129,3 @@ public class DrumNoteHead {
 	
 }
 	
-
-
