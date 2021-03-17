@@ -34,6 +34,9 @@ public class GuitarNote {
 		
 		step(doc, pitch, g, j);
 		
+		if (g.notes.get(j).alter != 0)
+		alter(doc, pitch, g, j);
+		
 		octave(doc, pitch, g, j);
 	}
 	
@@ -41,6 +44,12 @@ public class GuitarNote {
 			Element step = doc.createElement("step");        
 			step.appendChild(doc.createTextNode("" + g.notes.get(j).step) ); 
 			pitch.appendChild(step);
+		}
+		
+		static void alter(Document doc, Element pitch, GuitarNoteObject g, int j) {
+			Element alter = doc.createElement("alter");        
+			alter.appendChild(doc.createTextNode("" + g.notes.get(j).alter) ); 
+			pitch.appendChild(alter);
 		}
 	
 		static void octave(Document doc, Element pitch, GuitarNoteObject g, int j) {
@@ -81,6 +90,12 @@ public class GuitarNote {
 			string(doc, technical, g, j);
 			fret(doc, technical, g, j);
 		}
+		
+//			static void pulloff(Document doc, Element technical, GuitarNoteObject g, int j) {
+//				Element pulloff = doc.createElement("pull-off");        
+//				pulloff.appendChild(doc.createTextNode("" + g.notes.get(j).pulloff) ); 
+//				technical.appendChild(pulloff);
+//			}
 	
 			static void string(Document doc, Element technical, GuitarNoteObject g, int j) {
 				Element string = doc.createElement("string");        
