@@ -18,6 +18,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
@@ -67,6 +68,13 @@ public class Controller {
 	@FXML
 	private ComboBox clefSignBox;
 	
+	@FXML
+	private TextField beatsField;
+	
+	@FXML
+	private TextField beatTypeField;
+	
+	
 	public void initialize() {
 		ObservableList<String> signClefList = FXCollections.observableArrayList("Treble","Bass", "Tenor", "Percussion", "Tab");
 		clefSignBox.setItems(signClefList);
@@ -85,6 +93,14 @@ public class Controller {
 			Tab b = new Tab(lines);
 			if(b.Type.equals("Drum")) {
 				DrumNoteObject c = new DrumNoteObject(b);
+				try {
+					c.beats = Integer.parseInt(beatsField.getText());
+					c.beatsType = Integer.parseInt(beatTypeField.getText());
+				}
+				catch(Exception e) {
+					errorLabel.setTextFill(Color.RED);
+					errorLabel.setText("Error converting,\nInvalid Beats Input\nError Number: #003");
+				}
 	 			DrumXML d = new DrumXML(c);
 	 			xmlText.setText(d.text);
 	 			clefSignBox.getSelectionModel().select(3);
@@ -96,6 +112,7 @@ public class Controller {
 					}
 					else {sign = clefSignBox.getSelectionModel().getSelectedItem().toString();}
 					GuitarNoteObject c = new GuitarNoteObject(b,sign);
+					
 					GuitarXML d = new GuitarXML(c);
 					xmlText.setText(d.text);
 				}
