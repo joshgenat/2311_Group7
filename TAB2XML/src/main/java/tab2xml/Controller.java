@@ -147,10 +147,14 @@ public class Controller {
 		if(tabView.getSelectionModel().isSelected(0)) {
 			tabText.setText("");
 			errorLabel.setText("");
+			beatsField.setText("");
+			beatTypeField.setText("");
 		}
 		else {
 			xmlText.setText("");
 			errorLabel.setText("");
+			beatsField.setText("");
+			beatTypeField.setText("");
 		}
 	}
 	

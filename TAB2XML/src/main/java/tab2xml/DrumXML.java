@@ -74,6 +74,9 @@ public class DrumXML {
 							int count = 2;
 							
 						for(int j = 0; j < o.notes.size() ; j++) {
+							if(o.backUpFinder.get(j) == true) {
+								Backup.backup(doc, m, o, j);
+							}
 							DrumNote.note(doc, m, o, j);
 //							if (o.notes.get(j).nextMeasure != true) {
 //								DrumNote.note(doc, m, o, j);
