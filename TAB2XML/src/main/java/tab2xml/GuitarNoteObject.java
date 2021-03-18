@@ -20,7 +20,7 @@ public class GuitarNoteObject {
 	
 	GuitarConverter convert = new GuitarConverter();
 	
-	public GuitarNoteObject(Tab tab) {
+	public GuitarNoteObject(Tab tab, String sign) {
 		//Intilization for now
 		tStep.add('E');
 		tStep.add('A');
@@ -35,13 +35,12 @@ public class GuitarNoteObject {
 		tOctave.add(3);
 		tOctave.add(4);
 		staffLines = 6;
-		this.tab = tab;
-		sign = "TAB";
+		this.setSign(sign);
 		line = 5;
 		divisions = 4;
 		fifths = 0;
-		beats = 4;
-		beatsType = 4;
+		beats = 6;
+		beatsType = 8;
 
 		for(int i = 0; i < tab.nodes.size(); i++) {
 			chords = convert.converter(tab.nodes.get(i).nodes);
@@ -54,5 +53,29 @@ public class GuitarNoteObject {
 			}
 		}
 		maxMeasure = notes.get(notes.size()-1).measure;
+	}
+	
+	public void setSign(String sign) {
+		switch(sign) {
+		case "Treble":
+			this.sign = "G";
+			this.line = 2;
+			break;
+		case "Bass":
+			this.line = 4;
+			this.sign = "F";
+			break;
+		case "Tenor":
+			this.line = 3;
+			this.sign = "C";
+			break;
+		case "Tab":
+			this.sign = "TAB";
+			this.line = 6;
+			break;
+		default: 
+			this.sign = "G";
+			this.line = 2;
+		}
 	}
 }

@@ -103,12 +103,12 @@ class GuitarConverterTester {
 		};
 		
 		boolean[][] expectedMeasure = {
+				{false, false, false, false, false, false, false, false, false, false},
+				{false, false, false, false, false, false, false, false, false, false},
 				{false, false, false, false, false, false, false, true, false, false},
-				{false, false, false, false, false, false, false, true, false, false},
-				{false, false, false, false, false, false, false, true, false, false},
-				{false, false, false, false, false, false, false, true, false, false},
-				{false, false, false, false, false, false, false, true, false, false},
-				{false, false, false, false, false, false, false, true, false, false}
+				{false, false, false, false, false, false, false, false, false, false},
+				{false, false, false, false, false, false, false, false, false, false},
+				{false, false, false, false, false, false, false, false, true, false}
 		};
 	
 	GuitarChord[] result = guitar.converter(test);

@@ -7,7 +7,7 @@ public class DrumStem {
 		
 	}
 	
-	String FindStemValue(int voice)
+	public String FindStemValue(int voice)
 	{
 		if (voice == 1)
 		{

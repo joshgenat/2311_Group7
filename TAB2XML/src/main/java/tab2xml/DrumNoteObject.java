@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class DrumNoteObject {
 	
-	
 	/**
 	 *  drumtab will be the 2d char array obtained from praser 
 	 *  row and col are the coordinates of the current note in question 
@@ -17,6 +16,7 @@ public class DrumNoteObject {
 	ArrayList<DrumNotes> notes = new ArrayList<DrumNotes>();
 	ArrayList<DrumPartsList> instruments = new ArrayList<>();
 	ArrayList<Boolean> backUpFinder = new ArrayList<>();
+	ArrayList<Character> noteHeadType = new ArrayList<>();
 	String sign;
 	int line;
 	int divisions;
@@ -40,12 +40,13 @@ public class DrumNoteObject {
 	DrumStem stemValue = new DrumStem();
 	DrumNoteType noteType = new DrumNoteType();
 	DrumDividers barLineCols = new DrumDividers();
-	BackUpFinder backUpLocator = new BackUpFinder();	
+	BackUpFinder backUpLocator = new BackUpFinder();
+	DrumNoteHead noteHead = new DrumNoteHead();
+	DrumChordFinder drumChord = new DrumChordFinder();
 	
 	public DrumNoteObject(Tab tab) {
 		// the following values are only needed once for the MusicXML Code
 		this.tab = tab;
-		
 		sign = "percussion";
 		line = 2;
 		divisions = 4;
@@ -66,7 +67,7 @@ public class DrumNoteObject {
 		 * noteRowValues and noteColValues are parallel arrays which store the coordinates of the notes being played
 		 *  arrays are programmed in a way where, voice one notes go first, then followed by voice 2 notes
 		 *  When noteRowValue[counter] and noteColValues[counter] = 100, this means switching from voice one to voice two, temporally voice will be equal to 0
-		 *  this will signal the back up funtion of the MusicXML codes
+		 *  this will signal the back up funtion of the MusicXML codesd
 		 */
 		
 		int [] rowSymbols = note.rowSymbolsSorter(tab.nodes.get(i).nodes);	 
@@ -74,16 +75,21 @@ public class DrumNoteObject {
 		
 		ArrayList<Integer> rowCoordinate = rowValue.RowReader(tab.nodes.get(i).nodes,rowSymbols);
 		ArrayList<Integer> colCoordinate = colValue.ColReader(tab.nodes.get(i).nodes,rowSymbols);
-		ArrayList<Boolean>backUpFinders = backUpLocator.BackUpList(tab.nodes.get(i).nodes,rowSymbols);
+		ArrayList<Boolean> backUpFinders = backUpLocator.BackUpList(tab.nodes.get(i).nodes,rowSymbols);
+		ArrayList<Character> noteHeadTypes = noteHead.NoteHeadReader(tab.nodes.get(i).nodes,rowSymbols);		
+		
 		backUpFinder.addAll(backUpFinders);
+		noteHeadType.addAll(noteHeadTypes);
 		
 		for(int j = 0; j < rowCoordinate.size(); j++) {
 		int row = rowCoordinate.get(j);
 		int col = colCoordinate.get(j);
 		int nextCol = 0;
 		int nextNextCol = 0;
+		int preCol = 0;
 		if(j+1 < rowCoordinate.size()) {nextCol = colCoordinate.get(j+1);} 
 		if(j+2 < rowCoordinate.size()) {nextNextCol = colCoordinate.get(j+2);} 
+		if(j>0) {preCol = colCoordinate.get(j-1);}
 		
 		
 		
@@ -98,9 +104,10 @@ public class DrumNoteObject {
 		note1.duration = noteduration.NoteDurationLength(col, nextCol, nextNextCol, barLineCols.DrumBarLines(tab.nodes.get(i).nodes));
 		note1.stem = stemValue.FindStemValue(note1.voiceNumber);
 		note1.type = noteType.DrumNoteLength(note1.duration);
-		
+		note1.chord = drumChord.ChordFinder(col, nextCol, nextNextCol,preCol, barLineCols.DrumBarLines(tab.nodes.get(i).nodes));
 		
 		notes.add(note1);
+
 		
 		}
 		}

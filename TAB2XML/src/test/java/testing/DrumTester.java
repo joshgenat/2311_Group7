@@ -10,19 +10,24 @@ import java.util.Scanner;
 
 import org.junit.jupiter.api.Test;
 
-import tab2xml.Tab;
+import tab2xml.DrumNoteRow;
+import tab2xml.DrumNoteType;
+import tab2xml.DrumStem;
 
 
-public class DrumTester {
+public class DrumTester { 
 	
 	
 	@Test
 	
 	/* 
-	 * should be able to find the row values of all the points in the tab in the correct order 
+	 * should be able to find the row values of all the points in the test1 in the correct order 
 	 */
+	
 	public void RowArrayListTest()
 	{
+	 
+		
 	char[][] test1 = 
 		{
 				{'C', ' ', '|', '-', '-', 'x', '-', '-', '-','|', ' ', '-', '-', '-', 'x', '-', '-', '|'},
@@ -32,6 +37,7 @@ public class DrumTester {
 				{'S', 'D', '|', '-', '-', '-', '-', 'x', '-','|', 'x', '-', '-', '-', '-', 'x', '-', '|'},
 				{'B', ' ', '|', '-', 'x', '-', '-', '-', 'o','|', 'o', '-', 'o', '-', '-', '-', '-', '|'} 
 		};
+	
 	boolean checker = false; 
 	int oldDivider = 0; 
 	int currentDivider = 0;
@@ -54,66 +60,58 @@ public class DrumTester {
 	    		 oldDivider = currentDivider;
 	    		 currentDivider = col;
 	    		 checker = false;
+	    		
 	    		}
 	
 	
 
-if (checker == false)
-{
-
-	for (int col1 = oldDivider; col1 < currentDivider; col1++)
-    {
-		
-        for (int row1 = test1.length - 1; row1 >=0; row1--)
-        {
-        	//if (rowSymbols[row] == 8) means voice two
-        	if ((test1[row1][col1] == 'x' || test1[row1][col1] == 'o')  && (row1 != 5))
-        	{
-        		act.add(row1);
-
-        	}
-        }
-        
-    }
-	 
+						if (checker == false)
+						{
+						
+							for (int col1 = oldDivider; col1 < currentDivider; col1++)
+						    {
+								
+						        for (int row1 = test1.length - 1; row1 >=0; row1--)
+						        {
+						        	//if (rowSymbols[row] == 8) means voice two
+						        	if ((test1[row1][col1] == 'x' || test1[row1][col1] == 'o')  && (row1 != 5))
+						        	{
+						        		act.add(row1);
+						
+						        	}
+						        }
+						        
+						    }
+							 
+							
+							
+							// run the loop a second time now to find the notes in voice 2 
+						
+							for (int col2 = oldDivider; col2 < currentDivider; col2++)
+						    {
+								
+						        for (int row2 = test1.length - 1;row2>=0; row2--)
+						        {
+						        	
+						        	 if ((test1[row2][col2] == 'x' || test1[row2][col2] == 'o')  && (row2== 5))
+						        	{
+						        		act.add(row2);
+						        	}
+						        
+						        }
+						        
+						    }
+							
+						}
+	     		}
 	
-	
-	// run the loop a second time now to find the notes in voice 2 
-
-	for (int col2 = oldDivider; col2 < currentDivider; col2++)
-    {
-		
-        for (int row2 = test1.length - 1;row2>=0; row2--)
-        {
-        	
-        	 if ((test1[row2][col2] == 'x' || test1[row2][col2] == 'o')  && (row2== 5))
-        	{
-        		act.add(row2);
-        	}
-        
-        }
-        
-    }
-	
-}
-	
-	
-	
-	
-	}
-	
-	
-	
-
-	}    
+			}    
 	
 	Integer[] expectedValues = {3, 1, 1, 0, 2, 4, 3, 2, 5, 5, 4, 1, 3, 3, 0, 4, 1, 5, 5};
 	 exp = new ArrayList<>(Arrays.asList(expectedValues));
 	 assertEquals(exp, act);
-	 
-	
-	
 	}
+	
 	
 	
 	@Test
@@ -152,61 +150,93 @@ if (checker == false)
 		    		 checker = false;
 		    		}
 		
+								
+						
+							if (checker == false)
+							{
+						
+								for (int col1 = oldDivider; col1 < currentDivider; col1++)
+							    {
+									
+							        for (int row1 = test1.length - 1; row1 >=0; row1--)
+							        {
+							        	//if (rowSymbols[row] == 8) means voice two
+							        	if ((test1[row1][col1] == 'x' || test1[row1][col1] == 'o')  && (row1 != 5))
+							        	{
+							        		act.add(col1);
+						
+							        	}
+							        }
+							        
+							    }
+								 
+								
+								
+								// run the loop a second time now to find the notes in voice 2 
+								for (int col2 = oldDivider; col2 < currentDivider; col2++)
+							    {
+									
+							        for (int row2 = test1.length - 1;row2>=0; row2--)
+							        {
+							        	
+							        	 if ((test1[row2][col2] == 'x' || test1[row2][col2] == 'o')  && (row2== 5))
+							        	{
+							        		act.add(col2);
+							        	}
+							        
+							        }
+							        
+							    }
+								
+							}
+								
+		     			}
 		
-
-	if (checker == false)
-	{
-
-		for (int col1 = oldDivider; col1 < currentDivider; col1++)
-	    {
-			
-	        for (int row1 = test1.length - 1; row1 >=0; row1--)
-	        {
-	        	//if (rowSymbols[row] == 8) means voice two
-	        	if ((test1[row1][col1] == 'x' || test1[row1][col1] == 'o')  && (row1 != 5))
-	        	{
-	        		act.add(col1);
-
-	        	}
-	        }
-	        
-	    }
-		 
-		
-		
-		// run the loop a second time now to find the notes in voice 2 
-		for (int col2 = oldDivider; col2 < currentDivider; col2++)
-	    {
-			
-	        for (int row2 = test1.length - 1;row2>=0; row2--)
-	        {
-	        	
-	        	 if ((test1[row2][col2] == 'x' || test1[row2][col2] == 'o')  && (row2== 5))
-	        	{
-	        		act.add(col2);
-	        	}
-	        
-	        }
-	        
-	    }
-		
-	}
-		
-		
-		
-		
-		}
-		
-		
-		
-
-		}    
+				}    
 		
 		Integer[] expectedValues = {3, 4, 5, 5, 6, 7, 8, 8, 4, 8, 10, 10, 13, 14, 14, 15, 16, 10, 12};
 		 exp = new ArrayList<>(Arrays.asList(expectedValues));
 		 assertEquals(exp, act);
 		 
-		
-		
 		}
+	
+	
+	
+	@Test
+	public void StepDirection()
+	{
+		DrumStem direction = new DrumStem();
+		
+		int voice = 2;
+		
+		String exp;
+		String act = direction.FindStemValue(voice);
+		
+		
+		exp = "down";
+		// change this to "DOWN to get the correct junit test lab 
+		assertEquals(exp, act);
+		
+	}
+	
+	@Test
+	public void noteType()
+	{
+		DrumNoteType note = new DrumNoteType();
+		
+		int duration = 1;
+		
+		String exp;
+		String act = note.DrumNoteLength (duration);
+		
+		
+		exp = "16th";
+		// change this to "DOWN to get the correct junit test lab 
+		assertEquals(exp, act);
+		
+	}
+	
+	
+	
+	
 }

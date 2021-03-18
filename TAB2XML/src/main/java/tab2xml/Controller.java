@@ -7,14 +7,18 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
@@ -61,6 +65,21 @@ public class Controller {
 	@FXML
 	private MenuItem getHelp;
 	
+	@FXML
+	private ComboBox clefSignBox;
+	
+	@FXML
+	private TextField beatsField;
+	
+	@FXML
+	private TextField beatTypeField;
+	
+	
+	public void initialize() {
+		ObservableList<String> signClefList = FXCollections.observableArrayList("Treble","Bass", "Tenor", "Percussion", "Tab");
+		clefSignBox.setItems(signClefList);
+		clefSignBox.getSelectionModel().select(0);
+	}
 	
 	public void convert(ActionEvent event) throws IOException {
 		try {
@@ -74,11 +93,26 @@ public class Controller {
 			Tab b = new Tab(lines);
 			if(b.Type.equals("Drum")) {
 				DrumNoteObject c = new DrumNoteObject(b);
+				try {
+					c.beats = Integer.parseInt(beatsField.getText());
+					c.beatsType = Integer.parseInt(beatTypeField.getText());
+				}
+				catch(Exception e) {
+					errorLabel.setTextFill(Color.RED);
+					errorLabel.setText("Error converting,\nInvalid Beats Input\nError Number: #003");
+				}
 	 			DrumXML d = new DrumXML(c);
 	 			xmlText.setText(d.text);
+	 			clefSignBox.getSelectionModel().select(3);
 				}
 				else {
-					GuitarNoteObject c = new GuitarNoteObject(b);
+					String sign = "Treble";
+					if(clefSignBox.getSelectionModel().getSelectedIndex()==3) {
+						clefSignBox.getSelectionModel().select(0);
+					}
+					else {sign = clefSignBox.getSelectionModel().getSelectedItem().toString();}
+					GuitarNoteObject c = new GuitarNoteObject(b,sign);
+					
 					GuitarXML d = new GuitarXML(c);
 					xmlText.setText(d.text);
 				}
@@ -113,10 +147,14 @@ public class Controller {
 		if(tabView.getSelectionModel().isSelected(0)) {
 			tabText.setText("");
 			errorLabel.setText("");
+			beatsField.setText("");
+			beatTypeField.setText("");
 		}
 		else {
 			xmlText.setText("");
 			errorLabel.setText("");
+			beatsField.setText("");
+			beatTypeField.setText("");
 		}
 	}
 	

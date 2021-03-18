@@ -65,19 +65,33 @@ public class DrumXML {
 						measureNumber.appendChild(attributes);
 						
 						
-						Divisions.divisions(doc, attributes, o);
-						Key.key(doc, attributes, o);				
-						Time.time(doc, attributes, o);
+							Divisions.divisions(doc, attributes, o);
+							Key.key(doc, attributes, o);				
+							Time.time(doc, attributes, o);
+							Clef.clef(doc, attributes, o);
 						
-						
-						Clef.clef(doc, attributes, o);
-						
+							Element m = measureNumber;
+							int count = 2;
+							
 						for(int j = 0; j < o.notes.size() ; j++) {
-							if (o.backUpFinder.get(j)) {
-								Backup.backup(doc, measureNumber, o, j);
+							if(o.backUpFinder.get(j) == true) {
+								Backup.backup(doc, m, o, j);
 							}
-						       DrumNote.note(doc, measureNumber, o, j);
-						}
+							DrumNote.note(doc, m, o, j);
+//							if (o.notes.get(j).nextMeasure != true) {
+//								DrumNote.note(doc, m, o, j);
+//							}
+//							else { 
+//								Element measureNumber2 = doc.createElement("measure"); 
+//								measureNumber2.setAttribute("number", "" + count);
+//								partId.appendChild(measureNumber2);
+//								DrumNote.note(doc, m, o, j);
+//								m = measureNumber2;
+//								count++;	
+//								}
+							}
+						
+						
 						
 						
 			// write content into XML file
