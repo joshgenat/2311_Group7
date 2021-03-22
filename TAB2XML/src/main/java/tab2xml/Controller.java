@@ -163,12 +163,14 @@ public class Controller {
 			errorLabel.setText("");
 			timeField.setText("");
 			songNameField.setText("");
+			saveNew.setVisible(false);
 		}
 		else {
 			xmlText.setText("");
 			errorLabel.setText("");
 			timeField.setText("");
 			songNameField.setText("");
+			saveNew.setVisible(false);
 		}
 	}
 	
