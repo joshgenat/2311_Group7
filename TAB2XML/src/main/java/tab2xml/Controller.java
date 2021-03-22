@@ -125,17 +125,18 @@ public class Controller {
 					xmlText.setText(d.text);
 				}
 			tabView.getSelectionModel().select(1);
-			errorLabel.setTextFill(Color.BLUE);
+			
+			errorLabel.setTextFill(Color.WHITE);
 			errorLabel.setText(b.Type + "\n" + "Conversion Complete");
 		}
 		catch(NumberFormatException e) {
 			e.printStackTrace();
-			errorLabel.setTextFill(Color.RED);
+			errorLabel.setTextFill(Color.PINK);
 			errorLabel.setText("Error converting,\nInvalid Time Input\nError Number: #003");
 		}
 		catch(Exception e) {
 			e.printStackTrace();
-			errorLabel.setTextFill(Color.RED);
+			errorLabel.setTextFill(Color.PINK);
 			errorLabel.setText("Error converting,\nmake sure your tab is\ncorrect and Try Again!\nError Number: #001");
 		}
 		
@@ -178,7 +179,7 @@ public class Controller {
 		tabView.getSelectionModel().select(1);
 		if(xmlText.getText().equals("")) {
 			errorLabel.setText("XML textarea empty...\nError Number: #002");
-			errorLabel.setTextFill(Color.RED);	
+			errorLabel.setTextFill(Color.PINK);
 		}
 		else {
 		FileChooser fc = new FileChooser();
