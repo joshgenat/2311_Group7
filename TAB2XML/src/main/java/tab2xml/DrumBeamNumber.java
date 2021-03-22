@@ -23,7 +23,7 @@ public class DrumBeamNumber {
 		//[3, 4, 5, 5, 6, 7, 8, 8, 4, 8, 10, 10, 13, 14, 14, 15, 16, 10, 12]
 		//[x, o, x, x, x, x, x, x, x, o, x, x, o, x, x, x, x, o, o
 		// if (duration equals 2 or 1 there's a chance of beam number being activated )
-		// if notehead of next part is same, then beam number continues or starts, else it ends)
+		// if notehead of next part is same, then beam number continues or begins, else it ends)
 		// need to get duration and then based off that and notehead we can get everything else 
 		// if col if same, the second number is skipped;
 		
@@ -241,11 +241,11 @@ public class DrumBeamNumber {
 										if (((nextDuration == 2) || (nextDuration == 1)) && (nextHead == currentHead) && (currentVoice == nextVoice) || (isNextchord = true))
 										{
 											
-											//lets us know there's a chance of a beam, could be cpntinue or start 
+											//lets us know there's a chance of a beam, could be cpntinue or begin 
 											
 													if ((j == 0) || (preDuration == 2) || (preDuration == 1))
 													{
-														//this tells us its either start or continue 
+														//this tells us its either begin or continue 
 														
 														
 																	if ((NumofNotes !=4) && (counter < 9) && (currentVoice == nextVoice))
@@ -257,15 +257,15 @@ public class DrumBeamNumber {
 																										{
 																											hasBeamNum.add(true);
 																											secondBeamNum.add(false);
-																											beamStatus.add("start");
+																											beamStatus.add("begin");
 																											secondBeamStatus.add("null");
 																										}
 																										else 
 																										{
 																											hasBeamNum.add(true);
 																											secondBeamNum.add(true);
-																											beamStatus.add("start");
-																											secondBeamStatus.add("start");
+																											beamStatus.add("begin");
+																											secondBeamStatus.add("begin");
 																										}
 																							}
 																	
@@ -275,15 +275,15 @@ public class DrumBeamNumber {
 																										{
 																											hasBeamNum.add(true);
 																											secondBeamNum.add(false);
-																											beamStatus.add("start");
+																											beamStatus.add("begin");
 																											secondBeamStatus.add("null");
 																										}
 																										else 
 																										{
 																											hasBeamNum.add(true);
 																											secondBeamNum.add(true);
-																											beamStatus.add("start");
-																											secondBeamStatus.add("start");
+																											beamStatus.add("begin");
+																											secondBeamStatus.add("begin");
 																										}
 																	
 																							}
@@ -368,9 +368,9 @@ public class DrumBeamNumber {
 																											hasBeamNum.add(true);
 																											secondBeamNum.add(true);
 																											beamStatus.add("continue");
-																											secondBeamStatus.add("start");
+																											secondBeamStatus.add("begin");
 																											// example 2,1,1
-																											// measure 2 = start
+																											// measure 2 = begin
 																											//measure 1 = continue	
 																										}
 																							
@@ -396,7 +396,7 @@ public class DrumBeamNumber {
 																											secondBeamStatus.add("continue");
 																										
 																											// example 2,1,2
-																											// measure 2 = start
+																											// measure 2 = begin
 																											//measure 1 = continue	
 																										}
 																							
@@ -409,8 +409,8 @@ public class DrumBeamNumber {
 																											hasBeamNum.add(true);
 																											secondBeamNum.add(true);
 																											beamStatus.add("continue");
-																											secondBeamStatus.add("start");
-																											//measure 2 = start		
+																											secondBeamStatus.add("begin");
+																											//measure 2 = begin		
 																											//measure 1 = continue
 																											
 																										}
@@ -462,31 +462,31 @@ public class DrumBeamNumber {
 																	{
 																		hasBeamNum.add(true);
 																		secondBeamNum.add(true);
-																		beamStatus.add("start");
-																		secondBeamStatus.add("start");
+																		beamStatus.add("begin");
+																		secondBeamStatus.add("begin");
 																		//example 3,2,1
-																		//measure 1 start
-																		// measure 2 start
+																		//measure 1 begin
+																		// measure 2 begin
 																		
 																	}
 																	else if ((currentDuration == 2) && (nextDuration == 2))
 																	{
 																		hasBeamNum.add(true);
 																		secondBeamNum.add(false);
-																		beamStatus.add("start");
+																		beamStatus.add("begin");
 																		secondBeamStatus.add("null");
 																		//example 3,2,2
-																		// measure 1 start
+																		// measure 1 begin
 																		
 																	}
 																	else if ((currentDuration == 1) && (nextDuration == 2))
 																	{
 																		hasBeamNum.add(true);
 																		secondBeamNum.add(false);
-																		beamStatus.add("start");
+																		beamStatus.add("begin");
 																		secondBeamStatus.add("null");
 																		//example 3,1,2
-																		// measure 1 start
+																		// measure 1 begin
 																		
 																		
 																	}
@@ -494,11 +494,11 @@ public class DrumBeamNumber {
 																	{
 																		hasBeamNum.add(true);
 																		secondBeamNum.add(true);
-																		beamStatus.add("start");
-																		secondBeamStatus.add("start");
+																		beamStatus.add("begin");
+																		secondBeamStatus.add("begin");
 																		//example 3,1,1
-																		//measure 1 start
-																		// measure 2 start
+																		//measure 1 begin
+																		// measure 2 begin
 																		
 																	}
 													}
@@ -621,7 +621,7 @@ public class DrumBeamNumber {
 		//[3, 4, 5, 5, 6, 7, 8, 8, 4, 8, 10, 10, 13, 14, 14, 15, 16, 10, 12]
 		//[x, o, x, x, x, x, x, x, x, o, x, x, o, x, x, x, x, o, o
 		// if (duration equals 2 or 1 there's a chance of beam number being activated )
-		// if notehead of next part is same, then beam number continues or starts, else it ends)
+		// if notehead of next part is same, then beam number continues or begins, else it ends)
 		// need to get duration and then based off that and notehead we can get everything else 
 		// if col if same, the second number is skipped;
 		
@@ -839,11 +839,11 @@ public class DrumBeamNumber {
 										if (((nextDuration == 2) || (nextDuration == 1)) && (nextHead == currentHead) && (currentVoice == nextVoice) || (isNextchord = true))
 										{
 											
-											//lets us know there's a chance of a beam, could be cpntinue or start 
+											//lets us know there's a chance of a beam, could be cpntinue or begin 
 											
 													if ((j == 0) || (preDuration == 2) || (preDuration == 1))
 													{
-														//this tells us its either start or continue 
+														//this tells us its either begin or continue 
 														
 														
 																	if ((NumofNotes !=4) && (counter < 9) && (currentVoice == nextVoice))
@@ -855,15 +855,15 @@ public class DrumBeamNumber {
 																										{
 																											hasBeamNum.add(true);
 																											secondBeamNum.add(false);
-																											beamStatus.add("start");
+																											beamStatus.add("begin");
 																											secondBeamStatus.add("null");
 																										}
 																										else 
 																										{
 																											hasBeamNum.add(true);
 																											secondBeamNum.add(true);
-																											beamStatus.add("start");
-																											secondBeamStatus.add("start");
+																											beamStatus.add("begin");
+																											secondBeamStatus.add("begin");
 																										}
 																							}
 																	
@@ -873,15 +873,15 @@ public class DrumBeamNumber {
 																										{
 																											hasBeamNum.add(true);
 																											secondBeamNum.add(false);
-																											beamStatus.add("start");
+																											beamStatus.add("begin");
 																											secondBeamStatus.add("null");
 																										}
 																										else 
 																										{
 																											hasBeamNum.add(true);
 																											secondBeamNum.add(true);
-																											beamStatus.add("start");
-																											secondBeamStatus.add("start");
+																											beamStatus.add("begin");
+																											secondBeamStatus.add("begin");
 																										}
 																	
 																							}
@@ -966,9 +966,9 @@ public class DrumBeamNumber {
 																											hasBeamNum.add(true);
 																											secondBeamNum.add(true);
 																											beamStatus.add("continue");
-																											secondBeamStatus.add("start");
+																											secondBeamStatus.add("begin");
 																											// example 2,1,1
-																											// measure 2 = start
+																											// measure 2 = begin
 																											//measure 1 = continue	
 																										}
 																							
@@ -994,7 +994,7 @@ public class DrumBeamNumber {
 																											secondBeamStatus.add("continue");
 																										
 																											// example 2,1,2
-																											// measure 2 = start
+																											// measure 2 = begin
 																											//measure 1 = continue	
 																										}
 																							
@@ -1007,8 +1007,8 @@ public class DrumBeamNumber {
 																											hasBeamNum.add(true);
 																											secondBeamNum.add(true);
 																											beamStatus.add("continue");
-																											secondBeamStatus.add("start");
-																											//measure 2 = start		
+																											secondBeamStatus.add("begin");
+																											//measure 2 = begin		
 																											//measure 1 = continue
 																											
 																										}
@@ -1060,31 +1060,31 @@ public class DrumBeamNumber {
 																	{
 																		hasBeamNum.add(true);
 																		secondBeamNum.add(true);
-																		beamStatus.add("start");
-																		secondBeamStatus.add("start");
+																		beamStatus.add("begin");
+																		secondBeamStatus.add("begin");
 																		//example 3,2,1
-																		//measure 1 start
-																		// measure 2 start
+																		//measure 1 begin
+																		// measure 2 begin
 																		
 																	}
 																	else if ((currentDuration == 2) && (nextDuration == 2))
 																	{
 																		hasBeamNum.add(true);
 																		secondBeamNum.add(false);
-																		beamStatus.add("start");
+																		beamStatus.add("begin");
 																		secondBeamStatus.add("null");
 																		//example 3,2,2
-																		// measure 1 start
+																		// measure 1 begin
 																		
 																	}
 																	else if ((currentDuration == 1) && (nextDuration == 2))
 																	{
 																		hasBeamNum.add(true);
 																		secondBeamNum.add(false);
-																		beamStatus.add("start");
+																		beamStatus.add("begin");
 																		secondBeamStatus.add("null");
 																		//example 3,1,2
-																		// measure 1 start
+																		// measure 1 begin
 																		
 																		
 																	}
@@ -1092,11 +1092,11 @@ public class DrumBeamNumber {
 																	{
 																		hasBeamNum.add(true);
 																		secondBeamNum.add(true);
-																		beamStatus.add("start");
-																		secondBeamStatus.add("start");
+																		beamStatus.add("begin");
+																		secondBeamStatus.add("begin");
 																		//example 3,1,1
-																		//measure 1 start
-																		// measure 2 start
+																		//measure 1 begin
+																		// measure 2 begin
 																		
 																	}
 													}
@@ -1220,7 +1220,7 @@ public class DrumBeamNumber {
 		//[3, 4, 5, 5, 6, 7, 8, 8, 4, 8, 10, 10, 13, 14, 14, 15, 16, 10, 12]
 		//[x, o, x, x, x, x, x, x, x, o, x, x, o, x, x, x, x, o, o
 		// if (duration equals 2 or 1 there's a chance of beam number being activated )
-		// if notehead of next part is same, then beam number continues or starts, else it ends)
+		// if notehead of next part is same, then beam number continues or begins, else it ends)
 		// need to get duration and then based off that and notehead we can get everything else 
 		// if col if same, the second number is skipped;
 		
@@ -1438,11 +1438,11 @@ public class DrumBeamNumber {
 										if (((nextDuration == 2) || (nextDuration == 1)) && (nextHead == currentHead) && (currentVoice == nextVoice) || (isNextchord = true))
 										{
 											
-											//lets us know there's a chance of a beam, could be cpntinue or start 
+											//lets us know there's a chance of a beam, could be cpntinue or begin 
 											
 													if ((j == 0) || (preDuration == 2) || (preDuration == 1))
 													{
-														//this tells us its either start or continue 
+														//this tells us its either begin or continue 
 														
 														
 																	if ((NumofNotes !=4) && (counter < 9) && (currentVoice == nextVoice))
@@ -1454,15 +1454,15 @@ public class DrumBeamNumber {
 																										{
 																											hasBeamNum.add(true);
 																											secondBeamNum.add(false);
-																											beamStatus.add("start");
+																											beamStatus.add("begin");
 																											secondBeamStatus.add("null");
 																										}
 																										else 
 																										{
 																											hasBeamNum.add(true);
 																											secondBeamNum.add(true);
-																											beamStatus.add("start");
-																											secondBeamStatus.add("start");
+																											beamStatus.add("");
+																											secondBeamStatus.add("begin");
 																										}
 																							}
 																	
@@ -1472,15 +1472,15 @@ public class DrumBeamNumber {
 																										{
 																											hasBeamNum.add(true);
 																											secondBeamNum.add(false);
-																											beamStatus.add("start");
+																											beamStatus.add("begin");
 																											secondBeamStatus.add("null");
 																										}
 																										else 
 																										{
 																											hasBeamNum.add(true);
 																											secondBeamNum.add(true);
-																											beamStatus.add("start");
-																											secondBeamStatus.add("start");
+																											beamStatus.add("begin");
+																											secondBeamStatus.add("begin");
 																										}
 																	
 																							}
@@ -1565,9 +1565,9 @@ public class DrumBeamNumber {
 																											hasBeamNum.add(true);
 																											secondBeamNum.add(true);
 																											beamStatus.add("continue");
-																											secondBeamStatus.add("start");
+																											secondBeamStatus.add("begin");
 																											// example 2,1,1
-																											// measure 2 = start
+																											// measure 2 = begin
 																											//measure 1 = continue	
 																										}
 																							
@@ -1593,7 +1593,7 @@ public class DrumBeamNumber {
 																											secondBeamStatus.add("continue");
 																										
 																											// example 2,1,2
-																											// measure 2 = start
+																											// measure 2 = begin
 																											//measure 1 = continue	
 																										}
 																							
@@ -1606,8 +1606,8 @@ public class DrumBeamNumber {
 																											hasBeamNum.add(true);
 																											secondBeamNum.add(true);
 																											beamStatus.add("continue");
-																											secondBeamStatus.add("start");
-																											//measure 2 = start		
+																											secondBeamStatus.add("begin");
+																											//measure 2 = begin		
 																											//measure 1 = continue
 																											
 																										}
@@ -1659,31 +1659,31 @@ public class DrumBeamNumber {
 																	{
 																		hasBeamNum.add(true);
 																		secondBeamNum.add(true);
-																		beamStatus.add("start");
-																		secondBeamStatus.add("start");
+																		beamStatus.add("begin");
+																		secondBeamStatus.add("begin");
 																		//example 3,2,1
-																		//measure 1 start
-																		// measure 2 start
+																		//measure 1 begin
+																		// measure 2 begin
 																		
 																	}
 																	else if ((currentDuration == 2) && (nextDuration == 2))
 																	{
 																		hasBeamNum.add(true);
 																		secondBeamNum.add(false);
-																		beamStatus.add("start");
+																		beamStatus.add("begin");
 																		secondBeamStatus.add("null");
 																		//example 3,2,2
-																		// measure 1 start
+																		// measure 1 begin
 																		
 																	}
 																	else if ((currentDuration == 1) && (nextDuration == 2))
 																	{
 																		hasBeamNum.add(true);
 																		secondBeamNum.add(false);
-																		beamStatus.add("start");
+																		beamStatus.add("begin");
 																		secondBeamStatus.add("null");
 																		//example 3,1,2
-																		// measure 1 start
+																		// measure 1 begin
 																		
 																		
 																	}
@@ -1691,11 +1691,11 @@ public class DrumBeamNumber {
 																	{
 																		hasBeamNum.add(true);
 																		secondBeamNum.add(true);
-																		beamStatus.add("start");
-																		secondBeamStatus.add("start");
+																		beamStatus.add("begin");
+																		secondBeamStatus.add("begin");
 																		//example 3,1,1
-																		//measure 1 start
-																		// measure 2 start
+																		//measure 1 begin
+																		// measure 2 begin
 																		
 																	}
 													}
@@ -1818,7 +1818,7 @@ public class DrumBeamNumber {
 		//[3, 4, 5, 5, 6, 7, 8, 8, 4, 8, 10, 10, 13, 14, 14, 15, 16, 10, 12]
 		//[x, o, x, x, x, x, x, x, x, o, x, x, o, x, x, x, x, o, o
 		// if (duration equals 2 or 1 there's a chance of beam number being activated )
-		// if notehead of next part is same, then beam number continues or starts, else it ends)
+		// if notehead of next part is same, then beam number continues or begins, else it ends)
 		// need to get duration and then based off that and notehead we can get everything else 
 		// if col if same, the second number is skipped;
 		
@@ -2036,11 +2036,11 @@ public class DrumBeamNumber {
 										if (((nextDuration == 2) || (nextDuration == 1)) && (nextHead == currentHead) && (currentVoice == nextVoice) || (isNextchord = true))
 										{
 											
-											//lets us know there's a chance of a beam, could be cpntinue or start 
+											//lets us know there's a chance of a beam, could be cpntinue or begin 
 											
 													if ((j == 0) || (preDuration == 2) || (preDuration == 1))
 													{
-														//this tells us its either start or continue 
+														//this tells us its either begin or continue 
 														
 														
 																	if ((NumofNotes !=4) && (counter < 9) && (currentVoice == nextVoice))
@@ -2052,15 +2052,15 @@ public class DrumBeamNumber {
 																										{
 																											hasBeamNum.add(true);
 																											secondBeamNum.add(false);
-																											beamStatus.add("start");
+																											beamStatus.add("begin");
 																											secondBeamStatus.add("null");
 																										}
 																										else 
 																										{
 																											hasBeamNum.add(true);
 																											secondBeamNum.add(true);
-																											beamStatus.add("start");
-																											secondBeamStatus.add("start");
+																											beamStatus.add("begin");
+																											secondBeamStatus.add("begin");
 																										}
 																							}
 																	
@@ -2070,15 +2070,15 @@ public class DrumBeamNumber {
 																										{
 																											hasBeamNum.add(true);
 																											secondBeamNum.add(false);
-																											beamStatus.add("start");
+																											beamStatus.add("begin");
 																											secondBeamStatus.add("null");
 																										}
 																										else 
 																										{
 																											hasBeamNum.add(true);
 																											secondBeamNum.add(true);
-																											beamStatus.add("start");
-																											secondBeamStatus.add("start");
+																											beamStatus.add("begin");
+																											secondBeamStatus.add("begin");
 																										}
 																	
 																							}
@@ -2163,9 +2163,9 @@ public class DrumBeamNumber {
 																											hasBeamNum.add(true);
 																											secondBeamNum.add(true);
 																											beamStatus.add("continue");
-																											secondBeamStatus.add("start");
+																											secondBeamStatus.add("begin");
 																											// example 2,1,1
-																											// measure 2 = start
+																											// measure 2 = begin
 																											//measure 1 = continue	
 																										}
 																							
@@ -2191,7 +2191,7 @@ public class DrumBeamNumber {
 																											secondBeamStatus.add("continue");
 																										
 																											// example 2,1,2
-																											// measure 2 = start
+																											// measure 2 = begin
 																											//measure 1 = continue	
 																										}
 																							
@@ -2204,8 +2204,8 @@ public class DrumBeamNumber {
 																											hasBeamNum.add(true);
 																											secondBeamNum.add(true);
 																											beamStatus.add("continue");
-																											secondBeamStatus.add("start");
-																											//measure 2 = start		
+																											secondBeamStatus.add("begin");
+																											//measure 2 = begin		
 																											//measure 1 = continue
 																											
 																										}
@@ -2257,31 +2257,31 @@ public class DrumBeamNumber {
 																	{
 																		hasBeamNum.add(true);
 																		secondBeamNum.add(true);
-																		beamStatus.add("start");
-																		secondBeamStatus.add("start");
+																		beamStatus.add("begin");
+																		secondBeamStatus.add("begin");
 																		//example 3,2,1
-																		//measure 1 start
-																		// measure 2 start
+																		//measure 1 begin
+																		// measure 2 begin
 																		
 																	}
 																	else if ((currentDuration == 2) && (nextDuration == 2))
 																	{
 																		hasBeamNum.add(true);
 																		secondBeamNum.add(false);
-																		beamStatus.add("start");
+																		beamStatus.add("begin");
 																		secondBeamStatus.add("null");
 																		//example 3,2,2
-																		// measure 1 start
+																		// measure 1 begin
 																		
 																	}
 																	else if ((currentDuration == 1) && (nextDuration == 2))
 																	{
 																		hasBeamNum.add(true);
 																		secondBeamNum.add(false);
-																		beamStatus.add("start");
+																		beamStatus.add("begin");
 																		secondBeamStatus.add("null");
 																		//example 3,1,2
-																		// measure 1 start
+																		// measure 1 begin
 																		
 																		
 																	}
@@ -2289,11 +2289,11 @@ public class DrumBeamNumber {
 																	{
 																		hasBeamNum.add(true);
 																		secondBeamNum.add(true);
-																		beamStatus.add("start");
-																		secondBeamStatus.add("start");
+																		beamStatus.add("begin");
+																		secondBeamStatus.add("begin");
 																		//example 3,1,1
-																		//measure 1 start
-																		// measure 2 start
+																		//measure 1 begin
+																		// measure 2 begin
 																		
 																	}
 													}
