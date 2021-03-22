@@ -35,6 +35,13 @@ public class DrumXML {
 				
 			
 			// The actual values
+				Element work = doc.createElement("work"); 
+				rootElement.appendChild(work); 
+				
+					Element workTitle = doc.createElement("work-title"); 
+					workTitle.appendChild(doc.createTextNode("Never Gonna Give You Up"));
+					work.appendChild(workTitle); 
+			
 				Element partList = doc.createElement("part-list"); 
 				rootElement.appendChild(partList); 
 				
