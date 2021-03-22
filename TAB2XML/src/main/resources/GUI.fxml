@@ -64,18 +64,18 @@
       </MenuBar>
       <AnchorPane layoutX="750.0" layoutY="67.0" prefHeight="475.0" prefWidth="278.0" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="67.0">
          <children>
-            <Button fx:id="convert" layoutX="101.0" layoutY="353.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#convert" prefHeight="25.0" prefWidth="75.0" text="Convert" />
-            <Button fx:id="selectFile" layoutX="188.0" layoutY="21.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#selectFile" prefHeight="25.0" prefWidth="75.0" text="Select File" />
-            <Button fx:id="clear" layoutX="188.0" layoutY="59.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#clear" prefHeight="25.0" prefWidth="75.0" text="Clear" />
-            <Button fx:id="download" layoutX="188.0" layoutY="100.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#download" prefHeight="25.0" prefWidth="75.0" text="Download" />
+            <Button fx:id="convert" layoutX="101.0" layoutY="288.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#convert" prefHeight="25.0" prefWidth="75.0" text="Convert" />
+            <Button fx:id="selectFile" layoutX="168.0" layoutY="31.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#selectFile" prefHeight="25.0" prefWidth="75.0" text="Select File" />
+            <Button fx:id="clear" layoutX="168.0" layoutY="78.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#clear" prefHeight="25.0" prefWidth="75.0" text="Clear" />
+            <Button fx:id="download" layoutX="101.0" layoutY="330.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#download" prefHeight="25.0" prefWidth="75.0" text="Download" />
             <ImageView fitHeight="45.0" fitWidth="117.0" layoutX="147.0" layoutY="418.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="14.50674819946289" AnchorPane.leftAnchor="147.0" AnchorPane.rightAnchor="14.0">
                <image>
                   <Image url="@group7.png" />
                </image>
             </ImageView>
-            <Label fx:id="errorLabel" layoutX="14.0" layoutY="385.0" prefHeight="76.0" prefWidth="117.0" />
-            <ComboBox fx:id="clefSignBox" layoutX="14.0" layoutY="33.0" prefHeight="25.0" prefWidth="126.0" />
-            <Label layoutX="14.0" layoutY="12.0" text="Clef:">
+            <Label fx:id="errorLabel" layoutX="14.0" layoutY="391.0" prefHeight="70.0" prefWidth="117.0" />
+            <ComboBox fx:id="clefSignBox" layoutX="14.0" layoutY="78.0" prefHeight="25.0" prefWidth="126.0" />
+            <Label layoutX="14.0" layoutY="61.0" text="Clef:">
                <textFill>
                   <LinearGradient endX="1.0" endY="1.0">
                      <stops>
@@ -93,11 +93,47 @@
                   </LinearGradient>
                </textFill>
             </Label>
-            <Label layoutX="11.0" layoutY="75.0" text="Time:" />
-            <TextField fx:id="beatsField" layoutX="65.0" layoutY="100.0" prefHeight="25.0" prefWidth="75.0" promptText="#" />
-            <TextField fx:id="beatTypeField" layoutX="65.0" layoutY="139.0" prefHeight="25.0" prefWidth="75.0" promptText="#" />
-            <Label layoutX="10.0" layoutY="104.0" text="Beats:" />
-            <Label layoutX="10.0" layoutY="143.0" text="Beat Type:" />
+            <Label layoutX="14.0" layoutY="108.0" text="Time Signature:" />
+            <TextField fx:id="timeField" layoutX="14.0" layoutY="125.0" prefHeight="25.0" prefWidth="126.0" promptText="Timing eg. 4/4" />
+            <Label layoutX="14.0" layoutY="14.0" text="Song Title:">
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+            <TextField fx:id="songNameField" layoutX="14.0" layoutY="31.0" prefHeight="25.0" prefWidth="126.0" promptText="Song Title" />
+            <Label layoutX="14.0" layoutY="170.0" text="Measure List:">
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+            <ComboBox fx:id="measureList" layoutX="14.0" layoutY="187.0" onAction="#selectLine" prefHeight="25.0" prefWidth="126.0" />
+            <Button fx:id="saveNew" layoutX="168.0" layoutY="187.0" mnemonicParsing="false" onAction="#saveNew" prefHeight="25.0" prefWidth="75.0" text="Save new" />
          </children>
       </AnchorPane>
    </children>
