@@ -17,7 +17,7 @@
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
 
-<AnchorPane prefHeight="550.0" prefWidth="900.0" style="-fx-background-color: #339966;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tab2xml.Controller">
+<AnchorPane prefHeight="550.0" prefWidth="900.0" style="-fx-background-color: #126e59;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tab2xml.Controller">
    <children>
       <TabPane fx:id="tabView" layoutX="163.0" layoutY="39.0" prefHeight="504.0" prefWidth="589.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="306.0" AnchorPane.topAnchor="39.0">
         <tabs>
@@ -70,7 +70,7 @@
             <Button fx:id="download" layoutX="101.0" layoutY="330.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#download" prefHeight="25.0" prefWidth="75.0" text="Download" />
             <ImageView fitHeight="45.0" fitWidth="117.0" layoutX="147.0" layoutY="418.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="14.50674819946289" AnchorPane.leftAnchor="147.0" AnchorPane.rightAnchor="14.0">
                <image>
-                  <Image url="@group7.png" />
+                  <Image url="@logo.png" />
                </image>
             </ImageView>
             <Label fx:id="errorLabel" layoutX="14.0" layoutY="391.0" prefHeight="70.0" prefWidth="117.0" />
