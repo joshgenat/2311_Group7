@@ -19,7 +19,11 @@ public class DrumNote {
 		type(doc, note, o, j);
 		stem(doc, note, o, j);
         noteHead(doc, note, o, j);
+        
+        if(o.notes.get(j))
 		//beamNumber(doc, note, o, j);
+        if(o.notes.get(j).)
+        //beamNumber2(doc, note, o, j);
 		
 	}
 	
@@ -88,10 +92,17 @@ public class DrumNote {
 		}
 	}
 	
-//	static void beamNumber(Document doc, Element note, DrumNoteObject o, int j) {
-//		Element beamNumber = doc.createElement("beam");   
-//		beamNumber.setAttribute("number", "1");
-//		beamNumber.appendChild(doc.createTextNode("" + o.notes.get(j).beamNumber) );
-//		note.appendChild(beamNumber);	
-//	}
+	static void beamNumber(Document doc, Element note, DrumNoteObject o, int j) {
+		Element beamNumber = doc.createElement("beam");   
+		beamNumber.setAttribute("number", "1");
+		beamNumber.appendChild(doc.createTextNode("" + o.notes.get(j).beamNumber) );
+		note.appendChild(beamNumber);	
+	}
+	
+	static void beamNumber2(Document doc, Element note, DrumNoteObject o, int j) {
+		Element beamNumber2 = doc.createElement("beam");   
+		beamNumber2.setAttribute("number", "2");
+		beamNumber2.appendChild(doc.createTextNode("" + o.notes.get(j).beamNumber2) );
+		note.appendChild(beamNumber2);	
+	}
 }
