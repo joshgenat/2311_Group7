@@ -80,7 +80,7 @@ public class Controller {
 	
 	@FXML
 	private TextField songNameField;
-	
+	//
 	private Tab b;
 	public void initialize() {
 		ObservableList<String> signClefList = FXCollections.observableArrayList("Treble","Bass", "Tenor", "Percussion", "Tab");
