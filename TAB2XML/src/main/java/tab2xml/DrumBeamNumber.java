@@ -582,10 +582,7 @@ public class DrumBeamNumber {
 					counter = 0;
 				}
 				
-				System.out.print(NumofNotes + "  ");
-				System.out.print(counter + "  ");
-				System.out.println();
-				
+
 				if (NumofNotes ==4)
 				{
 					NumofNotes = 0;
@@ -1180,9 +1177,6 @@ public class DrumBeamNumber {
 					counter = 0;
 				}
 				
-				System.out.print(NumofNotes + "  ");
-				System.out.print(counter + "  ");
-				System.out.println();
 				
 				if (NumofNotes ==4)
 				{
@@ -1779,9 +1773,7 @@ public class DrumBeamNumber {
 					counter = 0;
 				}
 				
-				System.out.print(NumofNotes + "  ");
-				System.out.print(counter + "  ");
-				System.out.println();
+
 				
 				if (NumofNotes ==4)
 				{
@@ -2352,7 +2344,7 @@ public class DrumBeamNumber {
 						
 						else 
 						{
-							// if current duration isnt 2 or 1 not par of a beam 
+							// if current duration isnt 2 or 1 not par of a beam [
 							hasBeamNum.add(false);
 							secondBeamNum.add(false);
 							beamStatus.add("null");
@@ -2377,9 +2369,6 @@ public class DrumBeamNumber {
 					counter = 0;
 				}
 				
-				System.out.print(NumofNotes + "  ");
-				System.out.print(counter + "  ");
-				System.out.println();
 				
 				if (NumofNotes ==4)
 				{
