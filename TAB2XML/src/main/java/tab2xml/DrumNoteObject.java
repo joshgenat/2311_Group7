@@ -115,7 +115,17 @@ public class DrumNoteObject {
 		
 	}
 	
-	
+	public void setBeats(String time) throws NumberFormatException {
+		if(time.isBlank()) {
+			this.beats = 4;
+			this.beatsType = 4;
+		}
+		else {
+			String[] split = time.split("/");
+			this.beats = Integer.parseInt(split[0]);
+			this.beatsType = Integer.parseInt(split[1]);
+		}
+	}
 	
 			
 }

@@ -49,4 +49,26 @@ public class Time {
 			beatType.appendChild(doc.createTextNode("" + g.beatsType) ); 
 			time.appendChild(beatType);
 		} 
-}
+		
+			public static String timeTest(int[] s) {
+				StringBuilder sb = new StringBuilder();
+				sb.append("<time>");  
+				
+				if (s[0] != 0)
+					beats(s, sb);
+						
+					if (s[1] != 0)
+					beatType(s, sb);
+				
+				sb.append("\n</time>");
+				return sb.toString();
+			}
+			static void beats(int[] o, StringBuilder sb) {
+				sb.append("\n\t<beats>" + o[0] + "</beats>");
+			}
+
+			static void beatType(int[] o, StringBuilder sb) {
+				sb.append("\n\t<beatType>" + o[1] + "</beatType>");
+			}
+		}
+

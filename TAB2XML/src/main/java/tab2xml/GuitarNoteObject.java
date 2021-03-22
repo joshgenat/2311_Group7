@@ -39,8 +39,8 @@ public class GuitarNoteObject {
 		line = 5;
 		divisions = 4;
 		fifths = 0;
-		beats = 6;
-		beatsType = 8;
+		beats = 4;
+		beatsType = 4;
 
 		for(int i = 0; i < tab.nodes.size(); i++) {
 			chords = convert.converter(tab.nodes.get(i).nodes);
@@ -78,4 +78,17 @@ public class GuitarNoteObject {
 			this.line = 2;
 		}
 	}
+	
+	public void setBeats(String time) throws NumberFormatException {
+		if(time.isBlank()) {
+			this.beats = 4;
+			this.beatsType = 4;
+		}
+		else {
+			String[] split = time.split("/");
+			this.beats = Integer.parseInt(split[0]);
+			this.beatsType = Integer.parseInt(split[1]);
+		}
+	}
 }
+
