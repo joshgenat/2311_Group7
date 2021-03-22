@@ -20,7 +20,7 @@ public class DrumNote {
 		stem(doc, note, o, j);
         noteHead(doc, note, o, j);
         
-        if(o.notes.get(j))
+        if(o.notes.get(j)) 
 		//beamNumber(doc, note, o, j);
         if(o.notes.get(j).)
         //beamNumber2(doc, note, o, j);
