@@ -73,6 +73,9 @@ public class GuitarXML {
 						
 					if (g.notes.get(j).nextMeasure != true) {
 						GuitarNote.note(doc, m, g, j);
+						
+						if (g.notes.get(j).hammerTo != null)
+							GuitarNoteHammer.note2(doc, m, g, j);
 					}
 					
 					else { 
