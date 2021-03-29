@@ -16,6 +16,8 @@ public class GuitarNotes {
 	public boolean nextMeasure;
 	public boolean isHammer;
 	public GuitarNotes hammerTo;
+	public boolean isPull;
+	public GuitarNotes pullTo;
 	
 	public GuitarNotes(String note, int octave, int string, int fret, int measure){
 		this.note = note;
@@ -67,6 +69,11 @@ public class GuitarNotes {
 	public void setHammer(GuitarNotes a) {
 		isHammer = true;
 		hammerTo = a;
+	}
+	
+	public void setPull(GuitarNotes a) {
+		isPull = true;
+		pullTo = a;
 	}
 	
 	public String toString() {
