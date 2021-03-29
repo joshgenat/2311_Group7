@@ -80,7 +80,7 @@ public class DrumXML {
 							Element m = measureNumber;
 							int count = 2;
 							
-						for(int j = 0; j < o.notes.size() ; j++) {
+						for(int j = 0; j < o.notes.size() - 1 ; j++) {
 							
 							if (o.measurefinder.get(j) != true) {
 								if(o.backUpFinder.get(j) == true) {
