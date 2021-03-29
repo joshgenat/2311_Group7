@@ -29,7 +29,12 @@ public class GuitarConverter {
 						out[j][i] = new GuitarNotes(j+1);
 						chord.put(out[j][i]);
 						skip[j] = 0;
-					}	
+					}
+					else if(in[j][i] == 'h') {
+						out[j][i] = new GuitarNotes(j+1);
+						chord.put(out[j][i]);
+						skip[j] = 1;
+					}
 					else {
 						if(skip[j] == 0) {
 							if(in[j][i+1] == '-') {
@@ -40,10 +45,19 @@ public class GuitarConverter {
 								
 							}
 							else {
-								fret = 10*((int)in[j][i] - 48) + ((int)in[j][i+1] - 48);
-								out[j][i] = indexToNote(j, i, fret, measure);
-								chord.put(out[j][i]);
-								skip[j] = 1;
+								if(in[j][i+1] == 'h') {
+									fret = ((int)in[j][i] - 48);
+									out[j][i] = indexToNote(j, i, fret, measure);
+									chord.put(out[j][i]);
+									skip[j] = 0;
+									out[j][i].setHammer(indexToNote(j, i+2, ((int)in[j][i+2] - 48), measure));
+								}
+								else {
+									fret = 10*((int)in[j][i] - 48) + ((int)in[j][i+1] - 48);
+									out[j][i] = indexToNote(j, i, fret, measure);
+									chord.put(out[j][i]);
+									skip[j] = 1;
+								}
 							}
 							hasNotes = true;
 						}
@@ -55,11 +69,6 @@ public class GuitarConverter {
 					}
 						
 				}
-				
-					/*
-					 * for(int i3 = 0; i3 < in.length; i3++) { out[i3][i+1] = new GuitarNotes(i3+1);
-					 * }
-					 */
 				
 			}
 			else {
