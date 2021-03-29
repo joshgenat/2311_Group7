@@ -39,7 +39,7 @@ public class DrumXML {
 				rootElement.appendChild(work); 
 				
 					Element workTitle = doc.createElement("work-title"); 
-					workTitle.appendChild(doc.createTextNode("Never Gonna Give You Up"));
+					workTitle.appendChild(doc.createTextNode("https://www.youtube.com/watch?v=dQw4w9WgXcQ"));
 					work.appendChild(workTitle); 
 			
 				Element partList = doc.createElement("part-list"); 
