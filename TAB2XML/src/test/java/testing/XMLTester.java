@@ -18,7 +18,7 @@ public class XMLTester {
 		String actual = Divisions.divisionsTest(t);
 		String expected = divisions(t);
 		
-		assertEquals(expected, actual);
+		assertEquals(expected, actual); 
 	}
 	
 	String divisions(int[] s) {
