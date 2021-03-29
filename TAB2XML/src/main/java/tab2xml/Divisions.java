@@ -21,5 +21,15 @@ public class Divisions {
 		
 	}
 	
+	// Divisions Tester
+	public static String divisionsTest(int[] s) {
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append("<divisions>");  
+		sb.append("\n" + s[0]); 
+		sb.append("\n</divisions>");
+		
+		return sb.toString();
+	}
 	
 }
