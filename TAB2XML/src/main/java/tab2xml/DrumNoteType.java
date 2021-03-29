@@ -4,6 +4,8 @@ public class DrumNoteType {
 	
 	String noteType;
 	
+	// need to leave duration 
+	
 	public String DrumNoteLength (int duration)
 	
 	{

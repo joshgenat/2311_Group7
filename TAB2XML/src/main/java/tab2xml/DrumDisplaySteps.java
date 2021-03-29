@@ -5,6 +5,8 @@ public class DrumDisplaySteps {
 	static int i;
 	static String displayStep;
 	
+	// need to change this based off the what insturment it is 
+	
 	String StepOrganizer(int row, int col)
 	{
 		if (row == 0)
