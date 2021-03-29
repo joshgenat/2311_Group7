@@ -80,6 +80,9 @@ public class GuitarNote {
 			
 			string(doc, technical, g, j);
 			fret(doc, technical, g, j);
+			
+			if (g.notes.get(j).isHammer == true)
+			hammer(doc, technical, g, j);
 		}
 	
 			static void string(Document doc, Element technical, GuitarNoteObject g, int j) {
@@ -92,5 +95,11 @@ public class GuitarNote {
 				Element fret = doc.createElement("fret");        
 				fret.appendChild(doc.createTextNode("" + g.notes.get(j).fret) ); 
 				technical.appendChild(fret);
+			}
+			
+			static void hammer(Document doc, Element technical, GuitarNoteObject g, int j) {
+				Element hammer = doc.createElement("hammer-on");        
+				hammer.appendChild(doc.createTextNode("H") ); 
+				technical.appendChild(hammer);
 			}
 }
