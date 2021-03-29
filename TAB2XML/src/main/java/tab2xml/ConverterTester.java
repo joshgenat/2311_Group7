@@ -59,9 +59,18 @@ public class ConverterTester {
 				"|-----------------|----------------|------------------|--------------------|"
 		};
 		
+		String[] testP = {
+				"|---------------0-|----------------|-------3----------|-------2------------|",
+				"|---------1-----1-|---------1----1-|-------3----------|-------3--------3---|",
+				"|---------0-------|---------0----0-|----------------0-|-------------2------|",
+				"|------2----------|------2---------|----0--------0----|----0---------------|",
+				"|-2p3--------3----|-2p3--------3---|-2--------2-------|-0--------0---------|",
+				"|-----------------|----------------|------------------|--------------------|"
+		};
 		
 		
-		char[][] test3 = stringToCharArray(testH);
+		
+		char[][] test3 = stringToCharArray(testP);
 		
 		
 		
@@ -86,8 +95,8 @@ public class ConverterTester {
 				if(notes[j] == null) break;
 				//System.out.print("\'" + notes[j].notes[i].step + "\', ");
 				//System.out.print(notes[j].notes[i].nextMeasure + ", ");
-				if(notes[j].notes[i].hammerTo != null)
-					System.out.print("\t" + notes[j].notes[i] + "[" + notes[j].notes[i].hammerTo.fret + "]\t");
+				if(notes[j].notes[i].pullTo != null)
+					System.out.print("\t" + notes[j].notes[i] + "[" + notes[j].notes[i].pullTo.fret + "]\t");
 				else
 					System.out.print("\t" + notes[j].notes[i] + "[]\t");
 			}	
