@@ -10,7 +10,9 @@ import java.util.Scanner;
 
 import org.junit.jupiter.api.Test;
 
-import tab2xml.Tab;
+import tab2xml.DrumNoteRow;
+import tab2xml.DrumNoteType;
+import tab2xml.DrumStem;
 
 
 public class DrumTester { 
@@ -19,11 +21,13 @@ public class DrumTester {
 	@Test
 	
 	/* 
-	 * should be able to find the row values of all the points in the tab in the correct order 
+	 * should be able to find the row values of all the points in the test1 in the correct order 
 	 */
 	
 	public void RowArrayListTest()
 	{
+	 
+		
 	char[][] test1 = 
 		{
 				{'C', ' ', '|', '-', '-', 'x', '-', '-', '-','|', ' ', '-', '-', '-', 'x', '-', '-', '|'},
@@ -201,24 +205,32 @@ public class DrumTester {
 	@Test
 	public void StepDirection()
 	{
-		String exp;
-		String act;
+		DrumStem direction = new DrumStem();
+		
 		int voice = 2;
 		
-		if (voice == 1)
-		{
-			act = "up";
-		}
-		else if (voice == 2)
-		{
-			act = "down";
-		}
-		else
-		{
-			act = "incorrect value";
-		}
+		String exp;
+		String act = direction.FindStemValue(voice);
+		
 		
 		exp = "down";
+		// change this to "DOWN to get the correct junit test lab 
+		assertEquals(exp, act);
+		
+	}
+	
+	@Test
+	public void noteType()
+	{
+		DrumNoteType note = new DrumNoteType();
+		
+		int duration = 1;
+		
+		String exp;
+		String act = note.DrumNoteLength (duration);
+		
+		
+		exp = "16th";
 		// change this to "DOWN to get the correct junit test lab 
 		assertEquals(exp, act);
 		

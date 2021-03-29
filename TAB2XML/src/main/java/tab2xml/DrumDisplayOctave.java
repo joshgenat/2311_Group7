@@ -9,7 +9,7 @@ public class DrumDisplayOctave {
 	public int DrumOctaves(char [][] tabsize, int voice)
 	{
 		            	
-
+// octave does not depend on voice, need to change this to based off the instrument that is played 
 		
 		if  (voice == 2)
         {

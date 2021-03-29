@@ -13,6 +13,8 @@ public class DrumDuration {
 	 * 
 	 */
 	
+	// remove barlines cols 
+	
 	 int durationcount;
 	 boolean breaksDivider = false; 
 	

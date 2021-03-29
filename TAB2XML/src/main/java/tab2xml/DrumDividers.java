@@ -4,6 +4,10 @@ import java.util.ArrayList;
 
 public class DrumDividers {
 
+	
+	// probably dont need this class 
+	
+	
 	/**
 	 * One issue we were having with calculating duration is sometimes the duration would be odd numbers, this is our system skipped the columns of  '|' characters
 	 * this columns is meant to symbolize the end of 16 beats, and therefore the duration count should end right here. I didn't want to include the '|' characters in my rowValue and colValue arrays

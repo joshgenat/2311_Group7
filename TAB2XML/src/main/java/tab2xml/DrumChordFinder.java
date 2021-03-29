@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class DrumChordFinder {
 
-	//
+	//make a few changes you probably don't need barlines anymore, if andy makes changes 
 	
 	 int durationcount;
 	 boolean breaksDivider = false; 

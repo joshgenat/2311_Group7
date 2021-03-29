@@ -2,7 +2,7 @@ package tab2xml;
 
 public class DrumID extends DrumPartsList {
 
-	
+	// need to change how id is calculated 
 	
 	DrumPartsList Instrument(int row, int [] rowSymbols)
 	{
