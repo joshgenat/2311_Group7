@@ -33,7 +33,7 @@ public class GuitarXML {
 			rootElement.appendChild(work); 
 		
 				Element workTitle = doc.createElement("work-title"); 
-				workTitle.appendChild(doc.createTextNode("Never Gonna Give You Up"));
+				workTitle.appendChild(doc.createTextNode("https://www.youtube.com/watch?v=dQw4w9WgXcQ"));
 				work.appendChild(workTitle); 
 			
 			Element partList = doc.createElement("part-list"); 
@@ -73,6 +73,9 @@ public class GuitarXML {
 						
 					if (g.notes.get(j).nextMeasure != true) {
 						GuitarNote.note(doc, m, g, j);
+						
+						if (g.notes.get(j).hammerTo != null)
+							GuitarNoteHammer.note2(doc, m, g, j);
 					}
 					
 					else { 

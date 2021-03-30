@@ -23,4 +23,19 @@ public class Key {
 			fifths.appendChild(doc.createTextNode("" + g.fifths) ); 
 			key.appendChild(fifths);
 	}
+	
+	// Key TESTER
+	public static String keyTest(int[] s) {
+		StringBuilder sb = new StringBuilder();
+		sb.append("<key>");  
+		
+		if (s[0] != 0)
+			fifths(s, sb);
+		
+		sb.append("\n</key>");
+		return sb.toString();
+	}
+	static void fifths(int[] o, StringBuilder sb) {
+		sb.append("\n\t<fifths>" + o[0] + "</fifths>");
+	}
 }

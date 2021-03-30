@@ -14,6 +14,10 @@ public class GuitarNotes {
 	public char step;
 	public boolean isChord;
 	public boolean nextMeasure;
+	public boolean isHammer;
+	public GuitarNotes hammerTo;
+	public boolean isPull;
+	public GuitarNotes pullTo;
 	
 	public GuitarNotes(String note, int octave, int string, int fret, int measure){
 		this.note = note;
@@ -23,6 +27,8 @@ public class GuitarNotes {
 		this.fret = fret;
 		this.measure = measure;
 		isChord = false;
+		isHammer = false;
+		hammerTo = null;
 		type = "sixteenth";
 		
 		if(note.length() == 2)
@@ -58,6 +64,16 @@ public class GuitarNotes {
 			default:
 				type = "16th";
 		}
+	}
+	
+	public void setHammer(GuitarNotes a) {
+		isHammer = true;
+		hammerTo = a;
+	}
+	
+	public void setPull(GuitarNotes a) {
+		isPull = true;
+		pullTo = a;
 	}
 	
 	public String toString() {
