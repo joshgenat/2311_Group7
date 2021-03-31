@@ -3,7 +3,7 @@ package tab2xml;
 public class GuitarConverter {
 	
 
-	public static GuitarChord[] converter(char[][] in) { 
+	public static GuitarChord[] converter(char[][] in, int m) { 
 		GuitarNotes[][] out = new GuitarNotes[in.length][in[0].length];
 		GuitarChord chords[] = new GuitarChord[in[0].length];
 		int[] skip = new int[in.length];
@@ -39,7 +39,7 @@ public class GuitarConverter {
 						if(skip[j] == 0) {
 							if(in[j][i+1] == '-') {
 								fret = ((int)in[j][i] - 48);
-								out[j][i] = indexToNote(j, i, fret, measure);
+								out[j][i] = indexToNote(j, i, fret, m);
 								chord.put(out[j][i]);
 								skip[j] = 0;
 								
@@ -47,21 +47,21 @@ public class GuitarConverter {
 							else {
 								if(in[j][i+1] == 'h') {
 									fret = ((int)in[j][i] - 48);
-									out[j][i] = indexToNote(j, i, fret, measure);
+									out[j][i] = indexToNote(j, i, fret, m);
 									chord.put(out[j][i]);
 									skip[j] = 0;
-									out[j][i].setHammer(indexToNote(j, i+2, ((int)in[j][i+2] - 48), measure));
+									out[j][i].setHammer(indexToNote(j, i+2, ((int)in[j][i+2] - 48), m));
 								}
 								else if(in[j][i+1] == 'p') {
 									fret = ((int)in[j][i] - 48);
-									out[j][i] = indexToNote(j, i, fret, measure);
+									out[j][i] = indexToNote(j, i, fret, m);
 									chord.put(out[j][i]);
 									skip[j] = 0;
-									out[j][i].setPull(indexToNote(j, i+2, ((int)in[j][i+2] - 48), measure));
+									out[j][i].setPull(indexToNote(j, i+2, ((int)in[j][i+2] - 48), m));
 								}
 								else {
 									fret = 10*((int)in[j][i] - 48) + ((int)in[j][i+1] - 48);
-									out[j][i] = indexToNote(j, i, fret, measure);
+									out[j][i] = indexToNote(j, i, fret, m);
 									chord.put(out[j][i]);
 									skip[j] = 1;
 								}
@@ -80,8 +80,8 @@ public class GuitarConverter {
 			}
 			else {
 				dur = 0;
-				if(i > threshold)
-					chords[lastChord].setMeasures();
+//				if(i > threshold)
+//					chords[lastChord].setMeasures();
 			};
 			
 			chords[i2] = chord;
@@ -99,6 +99,8 @@ public class GuitarConverter {
 			if(i == in[0].length - 3)
 				chords[lastChord].setDurations((dur+1)/2);
 		}	
+		
+		chords[lastChord].setMeasures();
 		return chords;
 	}
 	
