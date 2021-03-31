@@ -114,7 +114,7 @@ public class GuitarXML {
 		
 		text = finalstring;
 		
-		}
+		} 
 		
 		catch (TransformerException e) {
 			e.printStackTrace();
