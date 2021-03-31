@@ -119,6 +119,14 @@ public class GuitarConverter {
 		return new GuitarNotes(intToNote(rem), octave, i+1 , fret, measure);
 	}
 	
+	public static boolean isNum(char a) {
+		if(a < 48 || a > 57)
+			return false;
+		else
+			return true;
+					
+	};
+	
 	public static String intToNote(int a) {
 		switch(a) {
 			case 0:
@@ -173,6 +181,10 @@ public class GuitarConverter {
 			case '9':
 				return true;
 			case '-':
+				return true;
+			case 'h':
+				return true;
+			case 'p':
 				return true;
 			default:
 				return false;

@@ -70,7 +70,7 @@ public class ConverterTester {
 
 		System.out.println("\n result \n");
 
-		
+		//System.out.println(guitar.isNum('f'));
 		
 		for(int i = 0; i < notes[0].notes.length; i++) { 
 			System.out.print("{");
