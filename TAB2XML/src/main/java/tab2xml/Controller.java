@@ -43,7 +43,10 @@ public class Controller {
 	private Button download;
 	
 	@FXML
-	private Button saveNew;
+	private Button measureListSave;
+	
+	@FXML
+	private Button measureListEdit;
 	
 	@FXML 
 	private TextArea tabText;
@@ -59,6 +62,9 @@ public class Controller {
 	
 	@FXML
 	private Label errorLabel;
+	
+	@FXML
+	private Label measureListMax;
 	
 	@FXML
 	private MenuItem drumSample;
@@ -80,18 +86,38 @@ public class Controller {
 	
 	@FXML
 	private TextField songNameField;
+	
+	@FXML
+	private TextField measureListS;
+	
+	@FXML
+	private TextField measureListE;
 	//
 	private Tab b;
+	
 	public void initialize() {
 		ObservableList<String> signClefList = FXCollections.observableArrayList("Treble","Bass", "Tenor", "Percussion", "Tab");
 		clefSignBox.setItems(signClefList);
 		clefSignBox.getSelectionModel().select(0);
-		saveNew.setVisible(false);
+		measureListSave.setVisible(false);
+		measureListMax.setVisible(false);
 	}
+	
+//	public void initializeTab() {
+//		String [] parse = tabText.getText().split("\n");
+//		ArrayList<Object> lines = new ArrayList<Object>();
+//		
+//		for(int i = 0; i < parse.length; i++) {
+//			lines.add(parse[i]);
+//		}
+//		
+//		b = new Tab(lines);
+//		System.out.println("test");
+//	}
 	
 	public void convert(ActionEvent Event) throws IOException {
 		try {
-  	        String [] parse = tabText.getText().split("\n");
+			String [] parse = tabText.getText().split("\n");
 			ArrayList<Object> lines = new ArrayList<Object>();
 			
 			for(int i = 0; i < parse.length; i++) {
@@ -99,13 +125,7 @@ public class Controller {
 			}
 			
 			b = new Tab(lines);
-			ObservableList<String> lineNum = FXCollections.observableArrayList();
-			int measureN = 1;
-			for(int i = 0; i < b.nodes.size(); i++) {
-				lineNum.add("Measure " + measureN + " - " + (measureN + b.nodes.get(i).measureNumber - 1));
-				measureN += b.nodes.get(i).measureNumber;
-			}
-			measureList.setItems(lineNum);
+			
 			if(b.Type.equals("Drum")) {
 				DrumNoteObject c = new DrumNoteObject(b);
 				c.setBeats(timeField.getText());
@@ -139,8 +159,8 @@ public class Controller {
 			errorLabel.setTextFill(Color.PINK);
 			errorLabel.setText("Error converting,\nmake sure your tab is\ncorrect and Try Again!\nError Number: #001");
 		}
-		
-		
+		measureListMax.setText("Range\n 1-" + b.nodes.size());
+		measureListMax.setVisible(true);
 	}
 	
 	public void selectFile(ActionEvent event) {
@@ -161,18 +181,19 @@ public class Controller {
 	public void clear(ActionEvent event) {
 		if(tabView.getSelectionModel().isSelected(0)) {
 			tabText.setText("");
-			errorLabel.setText("");
-			timeField.setText("");
-			songNameField.setText("");
-			saveNew.setVisible(false);
-		}
-		else {
 			xmlText.setText("");
 			errorLabel.setText("");
 			timeField.setText("");
 			songNameField.setText("");
-			saveNew.setVisible(false);
+			
 		}
+//		else {
+//			
+//			errorLabel.setText("");
+//			timeField.setText("");
+//			songNameField.setText("");
+//			saveNew.setVisible(false);
+//		}
 	}
 	
 	public void download(ActionEvent event) {
@@ -217,44 +238,106 @@ public class Controller {
 		
 	}
 	
-	public void selectLine() {
-		String text = "";
-		for(int i = 0; i < b.nodes.get(measureList.getSelectionModel().getSelectedIndex()).nodes.length; i++) {
-			for(int j = 0; j < b.nodes.get(measureList.getSelectionModel().getSelectedIndex()).nodes[i].length; j++) {
-				text += b.nodes.get(measureList.getSelectionModel().getSelectedIndex()).nodes[i][j];
+	public void editMeasure() {
+		try {
+			int start = Integer.parseInt(measureListS.getText());
+			int end = Integer.parseInt(measureListE.getText());
+			measureListS.setEditable(false);
+			measureListE.setEditable(false);
+			String edit = "";
+			for(int i = start-1; i < end; i++) {
+				for(int j = 0; j < b.nodes.get(i).nodes.length; j++) {
+					for(int k = 0; k < b.nodes.get(i).nodes[j].length; k++) {
+						edit += b.nodes.get(i).nodes[j][k];
+					}
+					edit += "\n";
+				}
+				edit += "\n";
 			}
-			text += "\n";
+			tabText.setText(edit);
+			tabView.getSelectionModel().select(0);
+			measureListEdit.setVisible(false);
+			measureListSave.setVisible(true);
+			convert.setVisible(false);
+			download.setVisible(false);
 		}
-		tabText.setText(text);
-		tabView.getSelectionModel().select(0);
-		saveNew.setVisible(true);
+		catch(Exception e) {
+			errorLabel.setText("Invalid Measure\n Inputs");
+			errorLabel.setTextFill(Color.PINK);
+		}
 	}
 	
-	public void saveNew() {
+	public void saveMeasure() {
 		String text = tabText.getText();
-		String [] text1 = text.split("\n");
-		char [][] node = new char[text1.length][text1[0].length()];
-		for(int i = 0; i < text1.length; i++) {
-			for(int j = 0; j < text1[i].length(); j++) {
-				node[i][j] = text1[i].charAt(j);
+		String [] split = text.split("\n");
+		int index = 0;
+		int start = Integer.parseInt(measureListS.getText());
+		int end = Integer.parseInt(measureListE.getText());
+		
+		for(int i = start-1; i < end; i++) {
+			ArrayList<String> pass = new ArrayList<>();
+			while(true) {
+				if(index >= split.length) {
+					break;
+				}
+				if(split[index].isEmpty()) {
+					index++;
+					break;
+				}
+				pass.add(split[index]);
+				index++;
 			}
-		}
-		b.nodes.get(measureList.getSelectionModel().getSelectedIndex()).nodes = node;
-		text = "";
+			char [][] newNode = new char[pass.size()][pass.get(0).length()];
+			for(int j = 0; j < pass.size(); j++) {
+				for(int k = 0; k < pass.get(j).length(); k++) {
+					newNode[j][k] = pass.get(j).charAt(k);
+				}
+			}
+			b.nodes.get(i).nodes = newNode;
+		}	
+		measureListS.setEditable(true);
+		measureListE.setEditable(true);
+		measureListEdit.setVisible(true);
+		measureListSave.setVisible(false);
+		convert.setVisible(true);
+		download.setVisible(true);
+		convertNew();
+		String nText = "";
 		for(int i = 0; i < b.nodes.size(); i++) {
 			for(int j = 0; j < b.nodes.get(i).nodes.length; j++) {
 				for(int k = 0; k < b.nodes.get(i).nodes[j].length; k++) {
-					text += b.nodes.get(i).nodes[j][k];
+					nText += b.nodes.get(i).nodes[j][k];
 				}
-				text+="\n";
+				nText += "\n";
 			}
-			text+="\n";
+			nText += "\n";
 		}
-		tabText.setText(text);
-		tabView.getSelectionModel().select(0);
-		saveNew.setVisible(false);
+		tabText.setText(nText);
+	}
+	
+	public void convertNew() {
+		if(b.Type.equals("Drum")) {
+			DrumNoteObject c = new DrumNoteObject(b);
+			c.setBeats(timeField.getText());
+ 			DrumXML d = new DrumXML(c);
+ 			xmlText.setText(d.text);
+ 			clefSignBox.getSelectionModel().select(3);
+			}
+			else {
+				String sign = "Treble";
+				if(clefSignBox.getSelectionModel().getSelectedIndex()==3) {
+					clefSignBox.getSelectionModel().select(0);
+				}
+				else {sign = clefSignBox.getSelectionModel().getSelectedItem().toString();}
+				GuitarNoteObject c = new GuitarNoteObject(b,sign);
+		        c.setBeats(timeField.getText());
+				GuitarXML d = new GuitarXML(c);
+				xmlText.setText(d.text);
+			}
+		tabView.getSelectionModel().select(1);
 		
 	}
+	
 	public void getHelp() {
 		Main m = new Main();
 		m.openWeb("https://github.com/joshgenat/2311_Group7/blob/master/User%20Manual.pdf");

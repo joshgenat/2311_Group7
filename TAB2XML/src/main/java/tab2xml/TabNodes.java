@@ -5,9 +5,7 @@ import java.util.ArrayList;
 public class TabNodes {
 
 	public char [][] nodes;
-	int measureNumber =0;
-	int beats=4;
-	int beatsType=4;
+	String timeSignature = "4/4";
 	int repeat = 1;
 	
 	/**
@@ -16,7 +14,6 @@ public class TabNodes {
 	 */
 	public TabNodes(ArrayList<Object> lines) {
 		//Get The size of 2D string array and initialize
-//		repeat(lines);
 		int maxsize = lines.get(0).toString().length();
 		
 		nodes = new char[lines.size()][maxsize];
