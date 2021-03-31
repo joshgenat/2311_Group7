@@ -66,10 +66,11 @@ public class GuitarXML {
 						Time.time(doc, attributes, g);
 						Clef.clef(doc, attributes, g);
 						Staff.staff(doc, attributes, g);
+						
 						int count = 2;
 						Element m = measureNumber;
 						
-					for(int j = 0; j < g.notes.size() ; j++) {
+					for(int j = 0; j < g.notes.size() - 1 ; j++) {
 						
 					if (g.notes.get(j).nextMeasure != true) {
 						GuitarNote.note(doc, m, g, j);

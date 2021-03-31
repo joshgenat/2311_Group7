@@ -74,7 +74,7 @@ public class GuitarNoteHammer {
 		note.appendChild(notations);
 		
 		
-		if (g.notes.get(j).hammerTo.isHammer == true) 
+		if (g.notes.get(j).hammerTo.isHammer == false) 
 		slurNumber(doc, notations, g, j);
 		
 		technical(doc, notations, g, j);
@@ -95,7 +95,7 @@ public class GuitarNoteHammer {
 			string(doc, technical, g, j);
 			fret(doc, technical, g, j);
 			
-			if (g.notes.get(j).hammerTo.isHammer == true) 
+			if (g.notes.get(j).hammerTo.isHammer == false) 
 			hammer(doc, technical, g, j);
 		}
 	
