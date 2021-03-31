@@ -28,7 +28,9 @@ public class GuitarNotes {
 		this.measure = measure;
 		isChord = false;
 		isHammer = false;
+		isPull = false;
 		hammerTo = null;
+		pullTo = null;
 		type = "16th";
 		
 		if(note.length() == 2)
