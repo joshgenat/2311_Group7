@@ -105,7 +105,7 @@ public class GuitarConverter {
 	}
 	
 
-	public static GuitarNotes indexToNote(int i, int j, int fret, int measure) {
+	private static GuitarNotes indexToNote(int i, int j, int fret, int measure) {
 		//System.out.println("indexToNote fret: " + fret);
 		int rem;
 		int octave;
@@ -121,7 +121,7 @@ public class GuitarConverter {
 		return new GuitarNotes(intToNote(rem), octave, i+1 , fret, measure);
 	}
 	
-	public static boolean isNum(char a) {
+	private static boolean isNum(char a) {
 		if(a < 48 || a > 57)
 			return false;
 		else
@@ -129,7 +129,7 @@ public class GuitarConverter {
 					
 	};
 	
-	public static String intToNote(int a) {
+	private static String intToNote(int a) {
 		switch(a) {
 			case 0:
 				return "C";
@@ -160,7 +160,7 @@ public class GuitarConverter {
 		}
 	}
 	
-	public static boolean isTab(char c) {
+	private static boolean isTab(char c) {
 		switch(c) {
 			case '0':
 				return true;
