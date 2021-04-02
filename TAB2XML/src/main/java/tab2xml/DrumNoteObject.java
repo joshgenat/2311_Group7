@@ -26,6 +26,7 @@ public class DrumNoteObject {
 	int line;
 	int divisions;
 	int fifths;
+	
 	int beats;
 	int beatsType;
 	
@@ -58,8 +59,8 @@ public class DrumNoteObject {
 		line = 2;
 		divisions = 4;
 		fifths = 0;
-		beats = 4;
-		beatsType = 4;
+		beats = 6;
+		beatsType = 8;
 		
 		//Adds PartList At Top
 		for(int r = 0; r <= 9; r++) {

@@ -39,7 +39,7 @@ public class DrumXML {
 				rootElement.appendChild(work); 
 				
 					Element workTitle = doc.createElement("work-title"); 
-					workTitle.appendChild(doc.createTextNode("Never Gonna Give You Up"));
+					workTitle.appendChild(doc.createTextNode("https://www.youtube.com/watch?v=dQw4w9WgXcQ"));
 					work.appendChild(workTitle); 
 			
 				Element partList = doc.createElement("part-list"); 
@@ -80,7 +80,7 @@ public class DrumXML {
 							Element m = measureNumber;
 							int count = 2;
 							
-						for(int j = 0; j < o.notes.size() ; j++) {
+						for(int j = 0; j < o.notes.size() - 1 ; j++) {
 							
 							if (o.measurefinder.get(j) != true) {
 								if(o.backUpFinder.get(j) == true) {

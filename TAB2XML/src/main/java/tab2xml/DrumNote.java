@@ -13,11 +13,10 @@ public class DrumNote {
 			chord(doc, note);
 		
 		unpitched(doc, note, o, j);
-		duration(doc, note, o, j);
+		stem(doc, note, o, j);
 		instrumentId(doc, note, o, j);
 		voice(doc, note, o, j);
 		type(doc, note, o, j);
-		stem(doc, note, o, j);
         noteHead(doc, note, o, j);
         
         if(o.beam1finder.get(j) == true)  
@@ -53,10 +52,10 @@ public class DrumNote {
 			unpitched.appendChild(displayOctave);
 		}
 		
-	static void duration(Document doc, Element note, DrumNoteObject o, int j) {
-		Element duration = doc.createElement("duration");   
-		duration.appendChild(doc.createTextNode("" + o.notes.get(j).duration) ); 
-		note.appendChild(duration);	
+	static void stem(Document doc, Element note, DrumNoteObject o, int j) {
+		Element stem = doc.createElement("stem");   
+		stem.appendChild(doc.createTextNode("" + o.notes.get(j).stem) ); 
+		note.appendChild(stem);	
 	}
 	
 	static void instrumentId(Document doc, Element note, DrumNoteObject o, int j) {
@@ -75,12 +74,6 @@ public class DrumNote {
 		Element type = doc.createElement("type");   
 		type.appendChild(doc.createTextNode(o.notes.get(j).type)); 
 		note.appendChild(type);	
-	}
-	
-	static void stem(Document doc, Element note, DrumNoteObject o, int j) {
-		Element stem = doc.createElement("stem");   
-		stem.appendChild(doc.createTextNode("" + o.notes.get(j).stem) ); 
-		note.appendChild(stem);	
 	}
 	
 	static void noteHead(Document doc, Element note, DrumNoteObject o, int j) {
@@ -105,4 +98,62 @@ public class DrumNote {
 		beamNumber2.appendChild(doc.createTextNode("" + o.beam2Statusfinder.get(j)) );
 		note.appendChild(beamNumber2);	
 	}
+	
+	
+	
+	// Note Tester
+	
+	public static String noteTest(int[] s) {
+		StringBuilder sb = new StringBuilder();
+		sb.append("<note>");  
+		
+		if (s[0] != 0)
+			chord(s, sb);
+		
+		
+				
+		
+		sb.append("\n</note>");
+		return sb.toString();
+	}
+	static void chord(int[] s, StringBuilder sb) {
+		sb.append("\n\t<chord>" + s[0] + "</chord>");
+	}
+	
+	static void unpitched(int[] s, StringBuilder sb) {
+		sb.append("\n\t<unpitched>" + s[0] + "</unpitched>");
+		
+		displayStep(s, sb);
+		displayOctave(s, sb);
+	}
+	
+		static void displayStep(int[] s, StringBuilder sb) {
+			sb.append("\n\t<displayStep>" + s[0] + "</displayStep>");
+		}
+	
+		static void displayOctave(int[] s, StringBuilder sb) {
+			sb.append("\n\t<displayOctave>" + s[0] + "</displayOctave>");
+		}
+		
+	static void stem(int[] s, StringBuilder sb) {
+		sb.append("\n\t<stem>" + s[0] + "</stem>");
+	}
+	
+	static void instrumentID(int[] s, StringBuilder sb) {
+		sb.append("\n\t<instrumentID>" + s[0] + "</instrumentID>");
+	}
+	
+	static void voice(int[] s, StringBuilder sb) {
+		sb.append("\n\t<voice>" + s[0] + "</voice>");
+	}
+	
+	static void type(int[] s, StringBuilder sb) {
+		sb.append("\n\t<type>" + s[0] + "</type>");
+	}
+	
+	static void noteHead(int[] s, StringBuilder sb) {
+		sb.append("\n\t<noteHead>" + s[0] + "</noteHead>");
+	}
+	
+		
 }

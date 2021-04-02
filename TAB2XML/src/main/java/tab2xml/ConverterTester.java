@@ -57,7 +57,7 @@ public class ConverterTester {
 		
 		
 		
-		GuitarChord[] notes = guitar.converter(test3);
+		GuitarChord[] notes = guitar.converter(test3, 1);
 		
 		//System.out.println("\n test \n");
 		
@@ -70,7 +70,7 @@ public class ConverterTester {
 
 		System.out.println("\n result \n");
 
-		
+		//System.out.println(guitar.isNum('f'));
 		
 		for(int i = 0; i < notes[0].notes.length; i++) { 
 			System.out.print("{");

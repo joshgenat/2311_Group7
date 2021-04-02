@@ -43,7 +43,7 @@ public class GuitarNoteObject {
 		beatsType = 4;
 
 		for(int i = 0; i < tab.nodes.size(); i++) {
-			chords = convert.converter(tab.nodes.get(i).nodes);
+			chords = convert.converter(tab.nodes.get(i).nodes, i + 1);
 			for(int j = 0; j < chords.length; j++) {
 				if(chords[j] == null) break;
 				for(int k = 0; k < chords[j].notes.length; k++) {

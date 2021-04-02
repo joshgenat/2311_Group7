@@ -26,9 +26,8 @@ public class Tab {
 					Type = this.getType(pass);
 					type = false;
 					}
-				int repeat = getR(pass);
-				for(int r = 0; r < repeat; r++)
-				nodes.add(new TabNodes(pass));
+				linesToMeasure(pass);
+				nodes.addAll(linesToMeasure(pass));
 				pass = new ArrayList<Object>();
 				read = false;
 
@@ -38,10 +37,8 @@ public class Tab {
 				read = true; 	
 			}
 		}
-		if(pass.size() > 0) {
-		int repeat = getR(pass);
-		for(int r = 0; r < repeat; r++)
-		nodes.add(new TabNodes(pass));
+		if(pass.size() > 0) {	
+		nodes.addAll(linesToMeasure(pass));
 		if(type) {
 			Type = this.getType(pass);
 			type = false;
@@ -79,5 +76,72 @@ public class Tab {
 			}
 		}
 		return r;
+	}
+	
+	private int getR2() {
+		return 0;
+	}
+	
+	private ArrayList<TabNodes> linesToMeasure(ArrayList<Object> lines){
+		int repeat = getR(lines);
+		ArrayList<TabNodes> measures = new ArrayList<>();
+		ArrayList<Object> upperRepeats = new ArrayList<>();
+		
+		while(lines.get(0).toString().toLowerCase().contains("repeat")) {
+			upperRepeats.add(lines.get(0));
+			lines.remove(0);
+		}
+		
+		int measureN = 0;
+		for(int i = 0; i < lines.get(0).toString().length(); i++) {
+			if(lines.get(0).toString().charAt(i) == '|') {measureN++;}
+		}
+		measureN--;
+		
+		//Get Tunings + measures
+		for(int i = 0; i < measureN; i++) {
+			ArrayList<Object> pass = new ArrayList<>();
+			for(int j = 0; j < lines.size(); j++) {
+				String add = "|";
+				String [] split = lines.get(j).toString().split("\\|");
+				if(lines.get(j).toString().charAt(0) != '|') {
+					add = split[0] + "|";
+				}
+				add = add + split[i+1] + "|";
+				pass.add(add);
+			}
+			measures.add(new TabNodes(pass));
+		}
+		
+		//Get Overall Repeats
+		for(int i = 0; i < measureN; i++) {
+			measures.get(i).repeat = repeat;
+		}
+		//Get Upper repeats
+		for(int i = 0; i < upperRepeats.size(); i++ ) {
+			String hold = upperRepeats.get(i).toString().replaceAll("[^0-9]", "");
+			int repeatN = Integer.parseInt(hold);
+			int startIndex = upperRepeats.get(i).toString().indexOf("|");
+			int endIndex = upperRepeats.get(i).toString().lastIndexOf("|")+1;
+			int length = 0;
+			for(int k = 0; k < measures.get(0).nodes[0].length; k++ ) {
+				if(measures.get(0).nodes[0][k] == '|') {break;}
+				length++;
+			}
+			for(int j = 0; j < measureN; j++) {
+				boolean finder = false;
+				String line = "";
+				for(int k = 0; k < measures.get(j).nodes[0].length; k++ ) {
+					if(measures.get(j).nodes[0][k] == '|') {finder = true;}
+					if(finder) { line += measures.get(j).nodes[0][k];}
+				}
+				if(length > endIndex) { break; }
+				if(length <= endIndex && length >= startIndex) {
+					measures.get(j).repeat *= repeatN;
+				}
+				length += line.length();
+			}
+		}
+		return measures;
 	}
 }

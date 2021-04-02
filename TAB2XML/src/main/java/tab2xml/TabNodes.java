@@ -5,7 +5,8 @@ import java.util.ArrayList;
 public class TabNodes {
 
 	public char [][] nodes;
-	int measureNumber;
+	String timeSignature = "4/4";
+	int repeat = 1;
 	
 	/**
 	 * Constructor for the individual nodes (lines of Tabs)
@@ -13,14 +14,8 @@ public class TabNodes {
 	 */
 	public TabNodes(ArrayList<Object> lines) {
 		//Get The size of 2D string array and initialize
-		repeat(lines);
 		int maxsize = lines.get(0).toString().length();
-		for(int i = 0; i < lines.get(0).toString().length();i++) {
-			if(lines.get(0).toString().charAt(i)=='|') {
-				measureNumber++;
-			}
-		}
-		measureNumber--;
+		
 		nodes = new char[lines.size()][maxsize];
 		
 		for(int i = 0; i < nodes.length; i++) {

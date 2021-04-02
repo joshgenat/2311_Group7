@@ -29,8 +29,10 @@ public class GuitarNotes {
 		this.measure = measure;
 		isChord = false;
 		isHammer = false;
+		isPull = false;
 		hammerTo = null;
-		type = "sixteenth";
+		pullTo = null;
+		type = "16th";
 		
 		if(note.length() == 2)
 			alter = 1;
@@ -41,13 +43,19 @@ public class GuitarNotes {
 		this.octave = -1;
 		this.string = string;
 		this.fret = -1;
-		type = "sixteenth";
+		type = "16th";
 		this.step = '-';
 		measure = -1;
 	}
 	
 	public void setDuration (int dur) {
 		duration = dur;
+		if(hammerTo != null) {
+			hammerTo.duration = dur;
+		}
+		if(pullTo != null) {
+			pullTo.duration = dur;
+		}
 		type = "whole";
 		switch(dur) {
 			case(8):
