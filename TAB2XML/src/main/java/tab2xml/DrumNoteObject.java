@@ -88,8 +88,8 @@ public class DrumNoteObject {
 		ArrayList<Integer> barlinecol = barLineCols.DrumBarLines(tab.nodes.get(i).nodes);
 		ArrayList<Boolean> beam1finders = drumBeam.BeamNumberOne(rowCoordinate, colCoordinate, noteHeadTypes, barlinecol);
 		ArrayList<Boolean> beam2finders = drumBeam.BeamNumberTwo(rowCoordinate, colCoordinate, noteHeadTypes, barlinecol);
-		ArrayList<String> beam1Statusfinders = drumBeam.BeamOneStatus(rowCoordinate, colCoordinate, noteHeadTypes, barlinecol);
-		ArrayList<String> beam2Statusfinders = drumBeam.BeamTwoStatus(rowCoordinate, colCoordinate, noteHeadTypes, barlinecol);
+		ArrayList<String> beam1Statusfinders = drumBeam.BeamOneStatus(rowCoordinate, colCoordinate, noteHeadTypes, barlinecol,rowSymbols);
+		ArrayList<String> beam2Statusfinders = drumBeam.BeamTwoStatus(rowCoordinate, colCoordinate, noteHeadTypes, barlinecol,rowSymbols);
 		ArrayList<Boolean> measurefinders = drumMeasure.FindMeasure(tab.nodes.get(i).nodes, rowSymbols);
 		
 		measurefinder.addAll(measurefinders);
@@ -127,12 +127,12 @@ public class DrumNoteObject {
 		
 		notes.add(note1);
 
-		
+		System.out.println(colCoordinate);
 		}
-		
 		}
 		
 	}
+	
 	
 	public void setBeats(String time) throws NumberFormatException {
 		if(time.isBlank()) {
