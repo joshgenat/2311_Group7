@@ -18,7 +18,8 @@ public class DrumNote {
 		voice(doc, note, o, j);
 		type(doc, note, o, j);
         noteHead(doc, note, o, j);
-        
+      
+        /*
         if(o.beam1Statusfinder.get(j) == null)  
 		beamNumber(doc, note, o, j);
         if(o.beam2Statusfinder.get(j) == null)
@@ -26,7 +27,7 @@ public class DrumNote {
         
 //        for (int i = 0; i < r; i++)
         dot(doc, note, o);
-		
+		*/
 	}
 	
 	static void chord(Document doc, Element note) {
@@ -87,7 +88,7 @@ public class DrumNote {
 		note.appendChild(noteHead);
 		}
 	}
-	
+	/*
 	static void beamNumber(Document doc, Element note, DrumNoteObject o, int j) {
 		Element beamNumber = doc.createElement("beam");   
 		beamNumber.setAttribute("number", "1");
@@ -107,7 +108,7 @@ public class DrumNote {
 		dot.appendChild(doc.createTextNode(""));
 		note.appendChild(dot);	
 	}
-	
+	*/
 	
 	
 	// Note Tester
