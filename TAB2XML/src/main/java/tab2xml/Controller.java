@@ -287,9 +287,9 @@ public class Controller {
 			
 			String editL = "Currently Editing: ";
 			editL += start + "-" + end + "\n";
-			if(sameRepeat) { editL += "Repeats for range: " + b.nodes.get(0).repeat + "\n";}
+			if(sameRepeat) { editL += "Repeats for range: " + b.nodes.get(start-1).repeat + "\n";}
 			else { editL += "Repeats for range: \nDifferent repeats\n";}
-			if(sameTime) { editL += "Time for range: " + b.nodes.get(0).timeSignature + "\n";}
+			if(sameTime) { editL += "Time for range: " + b.nodes.get(start-1).timeSignature + "\n";}
 			else { editL += "Time for range: \nDifferent Time Signature\n";}
 			editLabel.setText(editL);
 			
