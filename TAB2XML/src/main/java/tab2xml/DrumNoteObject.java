@@ -17,8 +17,6 @@ public class DrumNoteObject {
 	ArrayList<DrumPartsList> instruments = new ArrayList<>();
 	ArrayList<Boolean> backUpFinder = new ArrayList<>();
 	ArrayList<Character> noteHeadType = new ArrayList<>();
-	ArrayList<Boolean> beam1finder = new ArrayList<>();
-	ArrayList<Boolean> beam2finder = new ArrayList<>();
 	ArrayList<String> beam1Statusfinder = new ArrayList<>();
 	ArrayList<String> beam2Statusfinder = new ArrayList<>();
 	ArrayList<Boolean> measurefinder = new ArrayList<>();
@@ -86,15 +84,11 @@ public class DrumNoteObject {
 		ArrayList<Boolean> backUpFinders = backUpLocator.BackUpList(tab.nodes.get(i).nodes,rowSymbols);
 		ArrayList<Character> noteHeadTypes = noteHead.NoteHeadReader(tab.nodes.get(i).nodes,rowSymbols);
 		ArrayList<Integer> barlinecol = barLineCols.DrumBarLines(tab.nodes.get(i).nodes);
-		ArrayList<Boolean> beam1finders = drumBeam.BeamNumberOne(rowCoordinate, colCoordinate, noteHeadTypes, barlinecol);
-		ArrayList<Boolean> beam2finders = drumBeam.BeamNumberTwo(rowCoordinate, colCoordinate, noteHeadTypes, barlinecol);
 		ArrayList<String> beam1Statusfinders = drumBeam.BeamOneStatus(rowCoordinate, colCoordinate, noteHeadTypes, barlinecol,rowSymbols);
 		ArrayList<String> beam2Statusfinders = drumBeam.BeamTwoStatus(rowCoordinate, colCoordinate, noteHeadTypes, barlinecol,rowSymbols);
 		ArrayList<Boolean> measurefinders = drumMeasure.FindMeasure(tab.nodes.get(i).nodes, rowSymbols);
 		
 		measurefinder.addAll(measurefinders);
-		beam1finder.addAll(beam1finders);
-		beam2finder.addAll(beam2finders);
 		beam1Statusfinder.addAll(beam1Statusfinders);
 		beam2Statusfinder.addAll(beam2Statusfinders);
 		backUpFinder.addAll(backUpFinders);
