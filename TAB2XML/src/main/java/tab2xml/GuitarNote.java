@@ -2,7 +2,7 @@ package tab2xml;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-
+ 
 public class GuitarNote { 
 	
 	static void note(Document doc, Element measureNumber, GuitarNoteObject g, int j) {
@@ -18,6 +18,7 @@ public class GuitarNote {
 			
 			pitch(doc, note, g, j);	
 				
+			if (g.notes.get(j).isChord != true)
 			duration(doc, note, g, j); 
 			
 			voice(doc, note, g, j); 

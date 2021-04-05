@@ -112,7 +112,6 @@ public class GuitarConverter {
 		//System.out.println("indexToNote fret: " + fret);
 		int rem;
 		int octave;
-		
 		if(i < 2) {
 			rem = (4 + fret + 7 * i) % 12;
 			octave = (4 - i) + (fret + 4 + 7 * i) / 12;
@@ -121,7 +120,7 @@ public class GuitarConverter {
 			rem = (5 + fret + 7 * i) % 12;
 			octave = ((53 - 5*i)  + fret) / 12;
 		}
-
+		
 		return new GuitarNotes(intToNote(rem), octave, i+1 , fret, measure);
 	}
 	
