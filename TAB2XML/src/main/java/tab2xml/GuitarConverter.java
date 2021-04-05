@@ -30,10 +30,11 @@ public class GuitarConverter {
 						chord.put(out[j][i]);
 						skip[j] = 0;
 					}
-					else if(in[j][i] == 'h' || in[j][i] == 'p') {
+					else if(in[j][i] == 'h' || in[j][i] == 'p' || in[j][i] == 'g') {
 						out[j][i] = new GuitarNotes(j+1);
 						chord.put(out[j][i]);
-						skip[j] = 1;
+						if(in[j][i] == 'h' || in[j][i] == 'p')
+							skip[j] = 1;
 					}
 					else {
 						if(skip[j] == 0) {
@@ -67,6 +68,8 @@ public class GuitarConverter {
 								}
 							}
 							hasNotes = true;
+							if(in[j][i-1] == 'g')
+								out[j][i].isGrace = true;
 						}
 						else {
 							skip[j] = 0;
@@ -80,8 +83,8 @@ public class GuitarConverter {
 			}
 			else {
 				dur = 0;
-//				if(i > threshold)
-//					chords[lastChord].setMeasures();
+				if(i > threshold)
+					chords[lastChord].setMeasures();
 			};
 			
 			chords[i2] = chord;

@@ -17,8 +17,6 @@ public class DrumNoteObject {
 	ArrayList<DrumPartsList> instruments = new ArrayList<>();
 	ArrayList<Boolean> backUpFinder = new ArrayList<>();
 	ArrayList<Character> noteHeadType = new ArrayList<>();
-	ArrayList<Boolean> beam1finder = new ArrayList<>();
-	ArrayList<Boolean> beam2finder = new ArrayList<>();
 	ArrayList<String> beam1Statusfinder = new ArrayList<>();
 	ArrayList<String> beam2Statusfinder = new ArrayList<>();
 	ArrayList<Boolean> measurefinder = new ArrayList<>();

@@ -71,7 +71,7 @@ public class DrumXML {
 						Element attributes = doc.createElement("attributes");   
 						measureNumber.appendChild(attributes);
 						
-						
+						//f
 							Divisions.divisions(doc, attributes, o);
 							Key.key(doc, attributes, o);				
 							Time.time(doc, attributes, o);
@@ -80,7 +80,7 @@ public class DrumXML {
 							Element m = measureNumber;
 							int count = 2;
 							
-						for(int j = 0; j < o.notes.size() - 1 ; j++) {
+						for(int j = 0; j < o.notes.size() ; j++) {
 							
 							if (o.measurefinder.get(j) != true) {
 								if(o.backUpFinder.get(j) == true) {
