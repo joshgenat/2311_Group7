@@ -20,9 +20,9 @@ public class GuitarNote {
 				
 			if (g.notes.get(j).isChord != true)
 			duration(doc, note, g, j); 
-			
+		 	
 			voice(doc, note, g, j); 
-			
+			 
 			if (g.notes.get(j).isGrace == true) 
 				stem(doc, note, g);
 			
