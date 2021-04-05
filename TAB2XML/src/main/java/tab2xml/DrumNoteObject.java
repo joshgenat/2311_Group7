@@ -126,7 +126,8 @@ public class DrumNoteObject {
 		}
 		
 	}
-
+//hi
+	
 	public void setBeats(String time) throws NumberFormatException {
         if(time.isBlank()) {
             this.beats = 4;
