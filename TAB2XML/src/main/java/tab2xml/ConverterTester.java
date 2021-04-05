@@ -15,13 +15,11 @@ public class ConverterTester {
 				"|-0---------------|-0---------------|"
 		};
 		
-		String[] testExampleLong = {
-				"|-----------0-----|-0---------------|-----------0-----|-0---------------|",
-				"|---------0---0---|-0---------------|---------0---0---|-0---------------|",
-				"|-------1-------1-|-1---------------|-------1-------1-|-1---------------|",
-				"|-----2-----------|-2---------------|-----2-----------|-2---------------|",
-				"|---2-------------|-2---------------|---2-------------|-2---------------|",
-				"|-0---------------|-0---------------|-0---------------|-0---------------|"
+		String[] testBass4 = {
+				"|0-1-2------------|",
+				"|0-1-2------------|",
+				"|0-1-2------------|",
+				"|0-1-2------------|",
 		};
 		
 		String[] testS = {
@@ -53,11 +51,11 @@ public class ConverterTester {
 		
 		
 		
-		char[][] test3 = stringToCharArray(testP);
+		char[][] test3 = stringToCharArray(testBass4);
 		
 		
 		
-		GuitarChord[] notes = guitar.converter(test3, 1);
+		GuitarChord[] notes = guitar.converter(test3, 1, 'b');
 		
 		//System.out.println("\n test \n");
 		
@@ -81,7 +79,7 @@ public class ConverterTester {
 				if(false)
 					System.out.print("\t" + notes[j].notes[i]);
 				else
-					System.out.print("\t" + notes[j].notes[i] + "[" + notes[j].notes[i].isGrace + "]\t");
+					System.out.print("\t" + notes[j].notes[i] + "\t");
 			}	
 			System.out.print("},\n"); 
 		} 
