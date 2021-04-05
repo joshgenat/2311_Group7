@@ -152,6 +152,10 @@ public int DotValue (int duration)
 			dotnumber = 4;
 		
 		}
+		else
+		{
+			dotnumber = 0;
+		}
 
 		
 	return dotnumber;	
