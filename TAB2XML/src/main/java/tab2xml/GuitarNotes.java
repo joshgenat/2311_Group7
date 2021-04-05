@@ -45,6 +45,12 @@ public class GuitarNotes {
 		this.octave = -1;
 		this.string = string;
 		this.fret = -1;
+		isChord = false;
+		isHammer = false;
+		isPull = false;
+		isGrace = false;
+		hammerTo = null;
+		pullTo = null;
 		type = "16th";
 		this.step = '-';
 		measure = -1;

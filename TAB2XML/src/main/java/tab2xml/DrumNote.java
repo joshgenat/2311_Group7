@@ -18,15 +18,35 @@ public class DrumNote {
 		voice(doc, note, o, j);
 		type(doc, note, o, j);
         noteHead(doc, note, o, j);
-        
+<<<<<<< HEAD
+      
+        /*
         if(o.beam1Statusfinder.get(j) == null)  
+=======
+        
+<<<<<<< HEAD
+        if(o.beam1Statusfinder.get(j) == null)  
+=======
+        if(o.beam1finder.get(j) == true)  
+>>>>>>> branch 'develop' of https://github.com/joshgenat/2311_Group7.git
+>>>>>>> branch 'develop' of https://github.com/joshgenat/2311_Group7.git
 		beamNumber(doc, note, o, j);
         if(o.beam2Statusfinder.get(j) == null)
         beamNumber2(doc, note, o, j);
+<<<<<<< HEAD
         
 //        for (int i = 0; i < r; i++)
         dot(doc, note, o);
+=======
+<<<<<<< HEAD
+        
+//        for (int i = 0; i < r; i++)
+        dot(doc, note, o);
+		*/
+=======
+>>>>>>> branch 'develop' of https://github.com/joshgenat/2311_Group7.git
 		
+>>>>>>> branch 'develop' of https://github.com/joshgenat/2311_Group7.git
 	}
 	
 	static void chord(Document doc, Element note) {
@@ -87,7 +107,7 @@ public class DrumNote {
 		note.appendChild(noteHead);
 		}
 	}
-	
+	/*
 	static void beamNumber(Document doc, Element note, DrumNoteObject o, int j) {
 		Element beamNumber = doc.createElement("beam");   
 		beamNumber.setAttribute("number", "1");
@@ -102,12 +122,24 @@ public class DrumNote {
 		note.appendChild(beamNumber2);	
 	}
 	
+<<<<<<< HEAD
 	static void dot(Document doc, Element note, DrumNoteObject o) {
 		Element dot = doc.createElement("dot");   
 		dot.appendChild(doc.createTextNode(""));
 		note.appendChild(dot);	
 	}
 	
+=======
+<<<<<<< HEAD
+	static void dot(Document doc, Element note, DrumNoteObject o) {
+		Element dot = doc.createElement("dot");   
+		dot.appendChild(doc.createTextNode(""));
+		note.appendChild(dot);	
+	}
+	*/
+=======
+>>>>>>> branch 'develop' of https://github.com/joshgenat/2311_Group7.git
+>>>>>>> branch 'develop' of https://github.com/joshgenat/2311_Group7.git
 	
 	
 	// Note Tester
