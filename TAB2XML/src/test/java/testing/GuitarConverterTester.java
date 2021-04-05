@@ -109,61 +109,61 @@ class GuitarConverterTester {
 				{false, false, false, false, false, false, false, false, false, false},
 				{false, false, false, false, false, false, false, false, false, false},
 				{false, false, false, false, false, false, false, false, true, false}
-		};
+		}; 
 	
-	GuitarChord[] result = guitar.converter(test);
-	
-	int[] i = {rInd(10), rInd(6)};
-	
-	@Test
-	void noteTest() {
-		assertEquals(result[i[0]].notes[i[1]].note, expectedNote[i[1]][i[0]]);
-	}
-	
-	@Test
-	void typeTest() {
-		assertEquals(result[i[0]].notes[i[1]].type, expectedType[i[1]][i[0]]);
-	}
-	
-	@Test
-	void octaveTest() {
-		assertEquals(result[i[0]].notes[i[1]].octave, expectedOctave[i[1]][i[0]]);
-	}
-	
-	@Test
-	void fretTest() {
-		assertEquals(result[i[0]].notes[i[1]].fret, expectedFret[i[1]][i[0]]);
-	}
-	
-	@Test
-	void stringTest() {
-		assertEquals(result[i[0]].notes[i[1]].string, expectedString[i[1]][i[0]]);
-	}
-	
-	@Test
-	void durationTest() {
-		assertEquals(result[i[0]].notes[i[1]].duration, expectedDuration[i[1]][i[0]]);
-	}
-	
-	@Test
-	void chordTest() {
-		assertEquals(result[i[0]].notes[i[1]].isChord, expectedIsChord[i[1]][i[0]]);
-	}
-	
-	@Test
-	void stepTest() {
-		assertEquals(result[i[0]].notes[i[1]].step, expectedStep[i[1]][i[0]]);
-	}
-	
-	@Test
-	void alterTest() {
-		assertEquals(result[i[0]].notes[i[1]].alter, expectedAlter[i[1]][i[0]]);
-	}
-	
-	@Test
-	void measureTest() {
-		assertEquals(result[i[0]].notes[i[1]].nextMeasure, expectedMeasure[i[1]][i[0]]);
-	}
+//	GuitarChord[] result = guitar.converter(test);
+//	
+//	int[] i = {rInd(10), rInd(6)};
+//	
+//	@Test
+//	void noteTest() {
+//		assertEquals(result[i[0]].notes[i[1]].note, expectedNote[i[1]][i[0]]);
+//	}
+//	
+//	@Test
+//	void typeTest() {
+//		assertEquals(result[i[0]].notes[i[1]].type, expectedType[i[1]][i[0]]);
+//	}
+//	
+//	@Test
+//	void octaveTest() {
+//		assertEquals(result[i[0]].notes[i[1]].octave, expectedOctave[i[1]][i[0]]);
+//	}
+//	
+//	@Test
+//	void fretTest() {
+//		assertEquals(result[i[0]].notes[i[1]].fret, expectedFret[i[1]][i[0]]);
+//	}
+//	
+//	@Test
+//	void stringTest() {
+//		assertEquals(result[i[0]].notes[i[1]].string, expectedString[i[1]][i[0]]);
+//	}
+//	
+//	@Test
+//	void durationTest() {
+//		assertEquals(result[i[0]].notes[i[1]].duration, expectedDuration[i[1]][i[0]]);
+//	}
+//	
+//	@Test
+//	void chordTest() {
+//		assertEquals(result[i[0]].notes[i[1]].isChord, expectedIsChord[i[1]][i[0]]);
+//	}
+//	
+//	@Test
+//	void stepTest() {
+//		assertEquals(result[i[0]].notes[i[1]].step, expectedStep[i[1]][i[0]]);
+//	}
+//	
+//	@Test
+//	void alterTest() {
+//		assertEquals(result[i[0]].notes[i[1]].alter, expectedAlter[i[1]][i[0]]);
+//	}
+//	
+//	@Test
+//	void measureTest() {
+//		assertEquals(result[i[0]].notes[i[1]].nextMeasure, expectedMeasure[i[1]][i[0]]);
+//	}
 	
 	private int rInd(int max) {
 		return (int)(random.nextDouble()*max);

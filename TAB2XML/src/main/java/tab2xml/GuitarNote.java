@@ -3,14 +3,18 @@ package tab2xml;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-public class GuitarNote {
+public class GuitarNote { 
 	
 	static void note(Document doc, Element measureNumber, GuitarNoteObject g, int j) {
+		
 		Element note = doc.createElement("note");     
 		measureNumber.appendChild(note); 
 		
+			if (g.notes.get(j).isGrace == true) 
+				grace(doc, note); 
+		
 			if (g.notes.get(j).isChord == true) 
-			chord(doc, note);
+				chord(doc, note);
 			
 			pitch(doc, note, g, j);	
 				
@@ -18,13 +22,19 @@ public class GuitarNote {
 			
 			voice(doc, note, g, j); 
 			
+			if (g.notes.get(j).isGrace == true) 
+				stem(doc, note, g);
+			
 			type(doc, note, g, j);
 			
 			notations(doc, note, g, j);
 			
 	}
 	
-	
+	static void grace(Document doc, Element note) {
+		Element grace = doc.createElement("grace");
+		note.appendChild(grace); 
+	}
 
 	static void chord(Document doc, Element note) {
 		Element chord = doc.createElement("chord");
@@ -62,6 +72,12 @@ public class GuitarNote {
 		Element voice = doc.createElement("voice");   
 		voice.appendChild(doc.createTextNode("" + g.notes.get(j).voice) ); 
 		note.appendChild(voice);
+	}
+	
+	static void stem(Document doc, Element pitch, GuitarNoteObject g) {
+		Element stem = doc.createElement("stem");        
+		stem.appendChild(doc.createTextNode("none") ); 
+		pitch.appendChild(stem);
 	}
 	
 	static void type(Document doc, Element note, GuitarNoteObject g, int j) {
