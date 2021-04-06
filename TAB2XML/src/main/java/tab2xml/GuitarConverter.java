@@ -92,7 +92,6 @@ public class GuitarConverter {
 				chords[lastChord].setDurations((dur+1)/2);
 				dur = 1;
 				lastChord = i2;
-				//System.out.println(chord);
 				i2++;
 			}
 			else if(!hasNotes) {
