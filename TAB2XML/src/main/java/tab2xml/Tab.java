@@ -54,6 +54,7 @@ public class Tab {
 			if(lines.toString().contains("o")) {o = true;}
 		}
 		if(x && o) {type = "Drum";}
+		else if(lines.size() < 6) { type = "Bass"; }
 		return type;
 	}
 	
