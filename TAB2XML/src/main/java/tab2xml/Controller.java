@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -23,7 +22,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
-
+//
 public class Controller {
 	
 	public Controller() {
@@ -67,6 +66,18 @@ public class Controller {
 	private Label measureListMax;
 	
 	@FXML
+	private Label clefLabel;
+	
+	@FXML
+	private Label songNameLabel;
+	
+	@FXML
+	private Label repeatLabel;
+	
+	@FXML
+	private Label editLabel;
+	
+	@FXML
 	private MenuItem drumSample;
 	
 	@FXML
@@ -85,6 +96,9 @@ public class Controller {
 	private TextField timeField;
 	
 	@FXML
+	private TextField repeatField;
+	
+	@FXML
 	private TextField songNameField;
 	
 	@FXML
@@ -101,6 +115,8 @@ public class Controller {
 		clefSignBox.getSelectionModel().select(0);
 		measureListSave.setVisible(false);
 		measureListMax.setVisible(false);
+		repeatLabel.setVisible(false);
+		repeatField.setVisible(false);
 	}
 	
 //	public void initializeTab() {
@@ -125,6 +141,7 @@ public class Controller {
 			}
 			
 			b = new Tab(lines);
+			b.setTime(timeField.getText());
 			
 			if(b.Type.equals("Drum")) {
 				DrumNoteObject c = new DrumNoteObject(b);
@@ -179,21 +196,11 @@ public class Controller {
 	}
 	
 	public void clear(ActionEvent event) {
-		if(tabView.getSelectionModel().isSelected(0)) {
 			tabText.setText("");
 			xmlText.setText("");
 			errorLabel.setText("");
 			timeField.setText("");
 			songNameField.setText("");
-			
-		}
-//		else {
-//			
-//			errorLabel.setText("");
-//			timeField.setText("");
-//			songNameField.setText("");
-//			saveNew.setVisible(false);
-//		}
 	}
 	
 	public void download(ActionEvent event) {
@@ -242,10 +249,16 @@ public class Controller {
 		try {
 			int start = Integer.parseInt(measureListS.getText());
 			int end = Integer.parseInt(measureListE.getText());
+			boolean sameRepeat = true;
+			boolean sameTime = true;
 			measureListS.setEditable(false);
 			measureListE.setEditable(false);
 			String edit = "";
 			for(int i = start-1; i < end; i++) {
+				if(i < end-1) {
+					if(!(b.nodes.get(i).repeat == b.nodes.get(i+1).repeat)) { sameRepeat = false; }
+					if(!(b.nodes.get(i).timeSignature.equals(b.nodes.get(i+1).timeSignature))) { sameTime = false; }
+				}
 				for(int j = 0; j < b.nodes.get(i).nodes.length; j++) {
 					for(int k = 0; k < b.nodes.get(i).nodes[j].length; k++) {
 						edit += b.nodes.get(i).nodes[j][k];
@@ -260,6 +273,26 @@ public class Controller {
 			measureListSave.setVisible(true);
 			convert.setVisible(false);
 			download.setVisible(false);
+			clear.setVisible(false);
+			songNameField.setVisible(false);
+			clefLabel.setVisible(false);
+			songNameLabel.setVisible(false);
+			clefSignBox.setVisible(false);
+			selectFile.setVisible(false);
+			repeatField.setVisible(true);
+			repeatLabel.setVisible(true);
+			editLabel.setVisible(true);
+			timeField.clear();
+			repeatField.clear();
+			
+			String editL = "Currently Editing: ";
+			editL += start + "-" + end + "\n";
+			if(sameRepeat) { editL += "Repeats for range: " + b.nodes.get(start-1).repeat + "\n";}
+			else { editL += "Repeats for range: \nDifferent repeats\n";}
+			if(sameTime) { editL += "Time for range: " + b.nodes.get(start-1).timeSignature + "\n";}
+			else { editL += "Time for range: \nDifferent Time Signature\n";}
+			editLabel.setText(editL);
+			
 		}
 		catch(Exception e) {
 			errorLabel.setText("Invalid Measure\n Inputs");
@@ -293,6 +326,8 @@ public class Controller {
 					newNode[j][k] = pass.get(j).charAt(k);
 				}
 			}
+			if(!timeField.getText().isBlank()) { b.nodes.get(i).timeSignature = timeField.getText(); }
+			if(!repeatField.getText().isBlank()) { b.nodes.get(i).repeat = Integer.parseInt(repeatField.getText());}
 			b.nodes.get(i).nodes = newNode;
 		}	
 		measureListS.setEditable(true);
@@ -301,6 +336,17 @@ public class Controller {
 		measureListSave.setVisible(false);
 		convert.setVisible(true);
 		download.setVisible(true);
+		clear.setVisible(true);
+		songNameField.setVisible(true);
+		clefLabel.setVisible(true);
+		songNameLabel.setVisible(true);
+		clefSignBox.setVisible(true);
+		selectFile.setVisible(true);
+		repeatField.setVisible(false);
+		repeatLabel.setVisible(false);
+		editLabel.setVisible(false);
+		timeField.clear();
+		repeatField.clear();
 		convertNew();
 		String nText = "";
 		for(int i = 0; i < b.nodes.size(); i++) {

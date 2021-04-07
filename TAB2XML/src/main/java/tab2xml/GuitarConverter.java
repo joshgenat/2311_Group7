@@ -3,7 +3,7 @@ package tab2xml;
 public class GuitarConverter {
 	
 
-	public static GuitarChord[] converter(char[][] in, int m) { 
+	public static GuitarChord[] converter(char[][] in, int m, char type) { 
 		GuitarNotes[][] out = new GuitarNotes[in.length][in[0].length];
 		GuitarChord chords[] = new GuitarChord[in[0].length];
 		int[] skip = new int[in.length];
@@ -40,7 +40,7 @@ public class GuitarConverter {
 						if(skip[j] == 0) {
 							if(in[j][i+1] == '-') {
 								fret = ((int)in[j][i] - 48);
-								out[j][i] = indexToNote(j, i, fret, m);
+								out[j][i] = indexToNote(j, i, fret, m, type, in.length);
 								chord.put(out[j][i]);
 								skip[j] = 0;
 								
@@ -48,21 +48,21 @@ public class GuitarConverter {
 							else {
 								if(in[j][i+1] == 'h') {
 									fret = ((int)in[j][i] - 48);
-									out[j][i] = indexToNote(j, i, fret, m);
+									out[j][i] = indexToNote(j, i, fret, m, type, in.length);
 									chord.put(out[j][i]);
 									skip[j] = 0;
-									out[j][i].setHammer(indexToNote(j, i+2, ((int)in[j][i+2] - 48), m));
+									out[j][i].setHammer(indexToNote(j, i+2, ((int)in[j][i+2] - 48), m, type, in.length));
 								}
 								else if(in[j][i+1] == 'p') {
 									fret = ((int)in[j][i] - 48);
-									out[j][i] = indexToNote(j, i, fret, m);
+									out[j][i] = indexToNote(j, i, fret, m, type, in.length);
 									chord.put(out[j][i]);
 									skip[j] = 0;
-									out[j][i].setPull(indexToNote(j, i+2, ((int)in[j][i+2] - 48), m));
+									out[j][i].setPull(indexToNote(j, i+2, ((int)in[j][i+2] - 48), m, type, in.length));
 								}
 								else {
 									fret = 10*((int)in[j][i] - 48) + ((int)in[j][i+1] - 48);
-									out[j][i] = indexToNote(j, i, fret, m);
+									out[j][i] = indexToNote(j, i, fret, m, type, in.length);
 									chord.put(out[j][i]);
 									skip[j] = 1;
 								}
@@ -92,7 +92,6 @@ public class GuitarConverter {
 				chords[lastChord].setDurations((dur+1)/2);
 				dur = 1;
 				lastChord = i2;
-				//System.out.println(chord);
 				i2++;
 			}
 			else if(!hasNotes) {
@@ -108,18 +107,30 @@ public class GuitarConverter {
 	}
 	
 
-	private static GuitarNotes indexToNote(int i, int j, int fret, int measure) {
+	private static GuitarNotes indexToNote(int i, int j, int fret, int measure, char type, int strings) {
 		//System.out.println("indexToNote fret: " + fret);
 		int rem;
 		int octave;
 		
-		if(i < 2) {
-			rem = (4 + fret + 7 * i) % 12;
-			octave = (4 - i) + (fret + 4 + 7 * i) / 12;
+		if(type == 'a') {
+			if(i < 2) {
+				rem = (4 + fret + 7 * i) % 12;
+				octave = (4 - i) + (fret + 4 + 7 * i) / 12;
+			}
+			else {
+				rem = (5 + fret + 7 * i) % 12;
+				octave = ((53 - 5*i) + fret) / 12;
+			}
 		}
 		else {
-			rem = (5 + fret + 7 * i) % 12;
-			octave = ((53 - 5*i)  + fret) / 12;
+			if(strings < 6) {
+				rem = (7 + fret + 7 * i) % 12;
+				octave = (25 - 5*i + 6 + fret) / 12;
+			}
+			else {
+				rem = (7 + 5*(strings - 5) + fret + 7 * i) % 12;
+				octave = (25 - 5*(i - strings + 5) + 6 + fret) / 12;
+			}
 		}
 
 		return new GuitarNotes(intToNote(rem), octave, i+1 , fret, measure);

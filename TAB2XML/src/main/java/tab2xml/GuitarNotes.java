@@ -19,6 +19,7 @@ public class GuitarNotes {
 	public GuitarNotes hammerTo;
 	public boolean isPull;
 	public GuitarNotes pullTo;
+	public boolean isGrace;
 	
 	public GuitarNotes(String note, int octave, int string, int fret, int measure){
 		this.note = note;
@@ -30,6 +31,7 @@ public class GuitarNotes {
 		isChord = false;
 		isHammer = false;
 		isPull = false;
+		isGrace = false;
 		hammerTo = null;
 		pullTo = null;
 		type = "16th";

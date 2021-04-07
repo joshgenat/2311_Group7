@@ -15,7 +15,7 @@ public class GuitarNote {
 			pitch(doc, note, g, j);	
 				
 			duration(doc, note, g, j); 
-			
+		 	
 			voice(doc, note, g, j); 
 			
 			type(doc, note, g, j);

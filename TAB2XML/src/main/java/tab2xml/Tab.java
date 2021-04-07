@@ -54,6 +54,7 @@ public class Tab {
 			if(lines.toString().contains("o")) {o = true;}
 		}
 		if(x && o) {type = "Drum";}
+		else if(lines.size() < 6) { type = "Bass"; }
 		return type;
 	}
 	
@@ -76,10 +77,6 @@ public class Tab {
 			}
 		}
 		return r;
-	}
-	
-	private int getR2() {
-		return 0;
 	}
 	
 	private ArrayList<TabNodes> linesToMeasure(ArrayList<Object> lines){
@@ -143,5 +140,23 @@ public class Tab {
 			}
 		}
 		return measures;
+	}
+	
+	public void setTime(String time) throws Exception {
+		String[] split = time.split("/");
+		try {
+			if(split.length==2) {
+				Integer.parseInt(split[0]);
+				Integer.parseInt(split[1]);
+			}
+			for(int i = 0; i <nodes.size(); i++) {
+				if(time.isBlank()) { nodes.get(i).timeSignature = "4/4"; }
+				else {nodes.get(i).timeSignature = time;}
+			}
+
+		}
+		catch(Exception e) {
+			throw new Exception();
+		}
 	}
 }

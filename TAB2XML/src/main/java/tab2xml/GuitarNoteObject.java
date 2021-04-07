@@ -41,9 +41,10 @@ public class GuitarNoteObject {
 		fifths = 0;
 		beats = 4;
 		beatsType = 4;
-
+		char type = 'a';
+		if(tab.Type.equals("Bass")) { type = 'b'; }
 		for(int i = 0; i < tab.nodes.size(); i++) {
-			chords = convert.converter(tab.nodes.get(i).nodes, i + 1);
+			chords = convert.converter(tab.nodes.get(i).nodes, i + 1, type);
 			for(int j = 0; j < chords.length; j++) {
 				if(chords[j] == null) break;
 				for(int k = 0; k < chords[j].notes.length; k++) {
