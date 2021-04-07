@@ -18,7 +18,6 @@ public class DrumNote {
 		voice(doc, note, o, j);
 		type(doc, note, o, j);
         noteHead(doc, note, o, j);
-<<<<<<< HEAD
       
         /*
         if(o.beam1Statusfinder.get(j) == null)  
@@ -34,9 +33,6 @@ public class DrumNote {
 //        for (int i = 0; i < r; i++)
         dot(doc, note, o);
 		*/
-=======
-		
->>>>>>> branch 'develop' of https://github.com/joshgenat/2311_Group7.git
 	}
 	
 	static void chord(Document doc, Element note) {
@@ -119,8 +115,6 @@ public class DrumNote {
 		note.appendChild(dot);	
 	}
 	*/
-=======
->>>>>>> branch 'develop' of https://github.com/joshgenat/2311_Group7.git
 	
 	
 	// Note Tester
