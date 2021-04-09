@@ -112,10 +112,7 @@ public class DrumNote {
 		dot.appendChild(doc.createTextNode(""));
 		note.appendChild(dot);	
 	}
-<<<<<<< HEAD
-	*/
-=======
->>>>>>> branch 'develop' of https://github.com/joshgenat/2311_Group7.git
+
 	
 	
 	// Note Tester

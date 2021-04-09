@@ -40,7 +40,10 @@ public class GuitarConverter {
 						if(skip[j] == 0) {
 							if(in[j][i+1] == '-') {
 								fret = ((int)in[j][i] - 48);
-								out[j][i] = indexToNote(j, i, fret, m, type, in.length);
+								if(!isNum(in[j][i-1]))
+									out[j][i] = indexToNote(j, i, fret, m, type, in.length);
+								else
+									out[j][i] = new GuitarNotes(j);
 								chord.put(out[j][i]);
 								skip[j] = 0;
 								
@@ -51,19 +54,43 @@ public class GuitarConverter {
 									out[j][i] = indexToNote(j, i, fret, m, type, in.length);
 									chord.put(out[j][i]);
 									skip[j] = 0;
-									out[j][i].setHammer(indexToNote(j, i+2, ((int)in[j][i+2] - 48), m, type, in.length));
+									if(isNum(in[j][i+3]))
+										fret = 10*((int)in[j][i+2] - 48) + ((int)in[j][i+3] - 48);
+									else
+										fret = ((int)in[j][i+2] - 48);
+									out[j][i].setHammer(indexToNote(j, i+2, fret, m, type, in.length));
 								}
 								else if(in[j][i+1] == 'p') {
 									fret = ((int)in[j][i] - 48);
 									out[j][i] = indexToNote(j, i, fret, m, type, in.length);
 									chord.put(out[j][i]);
 									skip[j] = 0;
-									out[j][i].setPull(indexToNote(j, i+2, ((int)in[j][i+2] - 48), m, type, in.length));
+									if(isNum(in[j][i+3]))
+										fret = 10*((int)in[j][i+2] - 48) + ((int)in[j][i+3] - 48);
+									else
+										fret = ((int)in[j][i+2] - 48);
+									out[j][i].setPull(indexToNote(j, i+2, fret, m, type, in.length));
 								}
 								else {
 									fret = 10*((int)in[j][i] - 48) + ((int)in[j][i+1] - 48);
 									out[j][i] = indexToNote(j, i, fret, m, type, in.length);
 									chord.put(out[j][i]);
+									
+									if(in[j][i+2] == 'h') {
+										if(isNum(in[j][i+3]))
+											fret = 10*((int)in[j][i+3] - 48) + ((int)in[j][i+4] - 48);
+										else
+											fret = ((int)in[j][i+3] - 48);
+										out[j][i].setHammer(indexToNote(j, i+2, fret, m, type, in.length));
+									}
+									else if(in[j][i+2] == 'p') {
+										if(isNum(in[j][i+3]))
+											fret = 10*((int)in[j][i+3] - 48) + ((int)in[j][i+4] - 48);
+										else
+											fret = ((int)in[j][i+3] - 48);
+										out[j][i].setPull(indexToNote(j, i+2, fret, m, type, in.length));
+									}
+									
 									skip[j] = 1;
 								}
 							}
