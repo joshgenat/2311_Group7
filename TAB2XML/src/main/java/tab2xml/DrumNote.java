@@ -112,7 +112,7 @@ public class DrumNote {
 		dot.appendChild(doc.createTextNode(""));
 		note.appendChild(dot);	
 	}
-	
+
 	// Note Tester
 	
 	public static String noteTest(int[] s) {
