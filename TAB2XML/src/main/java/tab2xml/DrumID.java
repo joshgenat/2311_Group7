@@ -4,7 +4,7 @@ public class DrumID extends DrumPartsList {
 
 	// need to change how id is calculated 
 	
-	DrumPartsList Instrument(int row, int [] rowSymbols)
+	DrumPartsList Instrument(int row, char head, int [] rowSymbols)
 	{
 		DrumPartsList instrument = new DrumPartsList();
 		
@@ -13,11 +13,15 @@ public class DrumID extends DrumPartsList {
 			instrument.CrashCymbal();
 		}
 		
-		else if (rowSymbols[row] == 2)
+		else if (rowSymbols[row] == 2 && head =='x')
 		{
 			instrument.ClosedHiHat();
 		}
 		
+		else if (rowSymbols[row] == 2 && head =='o')
+		{
+			instrument.OpenHiHat();
+		}
 		else if (rowSymbols[row] == 3)
 		{
 			instrument.RideCymbal();

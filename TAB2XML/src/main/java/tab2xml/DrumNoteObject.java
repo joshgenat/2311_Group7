@@ -101,6 +101,7 @@ public class DrumNoteObject {
 		for(int j = 0; j < rowCoordinate.size(); j++) {
 		int row = rowCoordinate.get(j);
 		int col = colCoordinate.get(j);
+		char head = noteHeadTypes.get(j);
 		int nextCol = 0;
 		int nextNextCol = 0;
 		int preCol = 0;
@@ -116,7 +117,7 @@ public class DrumNoteObject {
 		DrumNotes note1 = new DrumNotes();
 		note1.displayStep = step.StepOrganizer(rowSymbols, row);
 		note1.voiceNumber = voiceValue.FindVoiceValue(row, rowSymbols);
-		note1.instrumentID = instrumentFinder.Instrument(row, rowSymbols).partID;
+		note1.instrumentID = instrumentFinder.Instrument(row, head, rowSymbols).partID;
 		note1.displayOctave = octave.DrumOctaves(rowSymbols, row);
 		note1.duration = noteduration.NoteDurationLength(col, nextCol, nextNextCol, barLineCols.DrumBarLines(tab.nodes.get(i).nodes));
 		note1.stem = stemValue.FindStemValue(note1.voiceNumber);
@@ -124,23 +125,22 @@ public class DrumNoteObject {
 		note1.chord = drumChord.ChordFinder(col, nextCol, nextNextCol,preCol, barLineCols.DrumBarLines(tab.nodes.get(i).nodes));
 		
 		notes.add(note1);
-		System.out.println(note1);
+		//System.out.println(note1);
 
 		}
-		System.out.println(colCoordinate);
-		System.out.println(flamFinder);
-		System.out.println(rowCoordinate);
-		System.out.println(backUpFinders);
-		System.out.println(noteHeadTypes);
-		System.out.println(beam1Statusfinders.size());
-		System.out.println(measurefinders.size());
+		//System.out.println(colCoordinate);
+		//System.out.println(flamFinder);
+		//System.out.println(rowCoordinate);
+		//System.out.println(backUpFinders);
+		//System.out.println(noteHeadTypes);
+		//System.out.println(beam1Statusfinders.size());
+		//System.out.println(measurefinders.size());
 
-		System.out.println();
+		//System.out.println();
 		
 		}
 		
 	}
-//hi
 	
 	public void setBeats(String time) throws NumberFormatException {
         if(time.isBlank()) {
