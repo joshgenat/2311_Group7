@@ -7,7 +7,11 @@ public class DrumNote {
 
 	static void note(Document doc, Element measureNumber, DrumNoteObject o, int j) {
 		Element note = doc.createElement("note");     
-		measureNumber.appendChild(note); 
+		measureNumber.appendChild(note);
+		
+		if (o.notes.get(j).flamCheck == true) {
+			grace(doc, note);
+		}
 		
 		if (o.notes.get(j).chord == true) 
 			chord(doc, note);
@@ -19,19 +23,23 @@ public class DrumNote {
 		type(doc, note, o, j);
         noteHead(doc, note, o, j);
       
-        /*
-=======
-        
->>>>>>> branch 'develop' of https://github.com/joshgenat/2311_Group7
         if(o.beam1Statusfinder.get(j) == null)  
 		beamNumber(doc, note, o, j);
         if(o.beam2Statusfinder.get(j) == null)
         beamNumber2(doc, note, o, j);
         
 //        for (int i = 0; i < r; i++)
-        dot(doc, note, o);
-<<<<<<< HEAD
-		*/
+//        dot(doc, note, o);
+	}
+	
+	// flanCheck to check if grace
+	// grace 
+	// next one has duration
+	//
+	
+	static void grace(Document doc, Element note) {
+		Element grace = doc.createElement("grace");
+		note.appendChild(grace); 
 	}
 	
 	static void chord(Document doc, Element note) {
@@ -64,7 +72,17 @@ public class DrumNote {
 		Element stem = doc.createElement("stem");   
 		stem.appendChild(doc.createTextNode("" + o.notes.get(j).stem) ); 
 		note.appendChild(stem);	
+		
+		if (o.notes.get(j).flamCheck == true)
+		slurNumber(doc, stem, o, j);
 	}
+	
+		static void slurNumber(Document doc, Element stem, DrumNoteObject o, int j) {
+			Element slurNumber = doc.createElement("slur");  
+			slurNumber.setAttribute("number", "1");
+			slurNumber.setAttribute("type", "start");
+			stem.appendChild(slurNumber);
+		}
 	
 	static void instrumentId(Document doc, Element note, DrumNoteObject o, int j) {
 		Element instrumentId = doc.createElement("instrument");   
@@ -113,6 +131,9 @@ public class DrumNote {
 		note.appendChild(dot);	
 	}
 
+	
+	
+	
 	// Note Tester
 	
 	public static String noteTest(int[] s) {

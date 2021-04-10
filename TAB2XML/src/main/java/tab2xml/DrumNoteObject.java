@@ -35,7 +35,7 @@ public class DrumNoteObject {
 	 * These are all objects created so we can use the methods made in the other classes 
 	 */
 	DrumRowSorter note = new DrumRowSorter();
-	DrumNoteRow rowValue = new DrumNoteRow();
+	DrumNoteRow rowValue = new DrumNoteRow(); 
 	DrumNoteCol colValue = new DrumNoteCol();
 	DrumDisplaySteps step = new DrumDisplaySteps();
 	DrumDisplayOctave octave = new DrumDisplayOctave();
