@@ -7,10 +7,8 @@ public class DrumID extends DrumPartsList {
 	DrumPartsList Instrument(int row, int [] rowSymbols)
 	{
 		DrumPartsList instrument = new DrumPartsList();
-		if(row == 1000) {
-			instrument.Nothing();
-		}
-		else if (rowSymbols[row] == 1)
+		
+		if (rowSymbols[row] == 1)
 		{
 			instrument.CrashCymbal();
 		}
