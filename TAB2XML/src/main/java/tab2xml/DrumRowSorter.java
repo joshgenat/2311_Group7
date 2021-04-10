@@ -48,7 +48,7 @@ public class DrumRowSorter {
         		
         	}
         	
-        	else if ((tab[i][0] == 'T' && tab[i][1] == '2') || (tab[i][0] == 'M' && tab[i][1] == 'T'))
+        	else if ((tab[i][0] == 'T' && tab[i][1] == '2') || (tab[i][0] == 'M' && tab[i][1] == 'T')|| (tab[i][0] == 't' && tab[i][1] == ' '))
         	{
         		rowSymbols[i] = 6;
         		// low tom
