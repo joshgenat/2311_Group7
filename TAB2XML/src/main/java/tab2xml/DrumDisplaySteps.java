@@ -7,45 +7,60 @@ public class DrumDisplaySteps {
 	
 	// need to change this based off the what insturment it is 
 	
-	String StepOrganizer(int row, int col)
+	public String StepOrganizer(int [] rowSymbols, int row)
 	{
-		if (row == 0)
+		
+		
+		if (rowSymbols[row]== 1)
 		{
+			//cc
 			displayStep = "A";
 		}
-		
-		else if (row == 1)
+		else if (rowSymbols[row]== 2)
 		{
+			//hi hat
 			displayStep = "G";
+			// just for now
 		}
-		
-		else if (row == 2)
+		else if (rowSymbols[row]== 3)
 		{
-			displayStep = "C";
-		}
-		
-		else if (row == 3)
-		{
-			displayStep = "E";
-		}
-		
-		else if (row == 4)
-		{
-			displayStep = "D";
-		}
-		
-		else if (row == 5)
-		{
+			//ride 
 			displayStep = "F";
 		}
-		else 
+		else if (rowSymbols[row]== 4)
 		{
-			displayStep = "inValid Entry";
+			//snare
+			displayStep = "C";
 		}
+		else if (rowSymbols[row]== 5)
+		{
+			//high tom
+			displayStep = "E";
+		}
+		else if (rowSymbols[row]== 6)
+		{
+			//low tom
+			displayStep = "D";
+		}
+		else if (rowSymbols[row]== 7)
+		{
+			//floor tom
+			displayStep = "A";
+		}
+		else if (rowSymbols[row]== 8)
+		{
+			//bass drum tom
+			displayStep = "F";
+		}
+		else
+		{
+			//error for andy 
+		}
+		
 		
 		return displayStep;
 	
 						
 	}
-	
+
 }
