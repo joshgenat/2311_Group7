@@ -19,7 +19,7 @@ public class DrumNoteObject {
 	ArrayList<Character> noteHeadType = new ArrayList<>();
 	ArrayList<String> beam1Statusfinder = new ArrayList<>();
 	ArrayList<String> beam2Statusfinder = new ArrayList<>();
-	ArrayList<Boolean> measurefinder = new ArrayList<>();
+	ArrayList<Boolean> flamcheck = new ArrayList<>();
 	String sign;
 	int line;
 	int divisions;
@@ -49,6 +49,7 @@ public class DrumNoteObject {
 	DrumChordFinder drumChord = new DrumChordFinder();
 	DrumBeamNumber drumBeam = new DrumBeamNumber();
 	DrumMeasure drumMeasure = new DrumMeasure();
+	DrumFlam isFlam = new DrumFlam();
 	
 	public DrumNoteObject(Tab tab) {
 		// the following values are only needed once for the MusicXML Code
@@ -86,13 +87,13 @@ public class DrumNoteObject {
 		ArrayList<Integer> barlinecol = barLineCols.DrumBarLines(tab.nodes.get(i).nodes);
 		ArrayList<String> beam1Statusfinders = drumBeam.BeamOneStatus(rowCoordinate, colCoordinate, noteHeadTypes, barlinecol,rowSymbols);
 		ArrayList<String> beam2Statusfinders = drumBeam.BeamTwoStatus(rowCoordinate, colCoordinate, noteHeadTypes, barlinecol,rowSymbols);
-		ArrayList<Boolean> measurefinders = drumMeasure.FindMeasure(tab.nodes.get(i).nodes, rowSymbols);
+		ArrayList<Boolean> flamFinder = isFlam.FlamFinder(tab.nodes.get(i).nodes,rowSymbols);
 		
-		measurefinder.addAll(measurefinders);
 		beam1Statusfinder.addAll(beam1Statusfinders);
 		beam2Statusfinder.addAll(beam2Statusfinders);
 		backUpFinder.addAll(backUpFinders);
 		noteHeadType.addAll(noteHeadTypes);
+		flamcheck.addAll(flamFinder);
 		
 		for(int j = 0; j < rowCoordinate.size(); j++) {
 		int row = rowCoordinate.get(j);
