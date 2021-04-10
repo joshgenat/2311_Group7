@@ -19,6 +19,7 @@ public class DrumNoteObject {
 	ArrayList<Character> noteHeadType = new ArrayList<>();
 	ArrayList<String> beam1Statusfinder = new ArrayList<>();
 	ArrayList<String> beam2Statusfinder = new ArrayList<>();
+	ArrayList<Boolean> measurefinder = new ArrayList<>();
 	ArrayList<Boolean> flamcheck = new ArrayList<>();
 	String sign;
 	int line;
@@ -87,8 +88,10 @@ public class DrumNoteObject {
 		ArrayList<Integer> barlinecol = barLineCols.DrumBarLines(tab.nodes.get(i).nodes);
 		ArrayList<String> beam1Statusfinders = drumBeam.BeamOneStatus(rowCoordinate, colCoordinate, noteHeadTypes, barlinecol,rowSymbols);
 		ArrayList<String> beam2Statusfinders = drumBeam.BeamTwoStatus(rowCoordinate, colCoordinate, noteHeadTypes, barlinecol,rowSymbols);
+		ArrayList<Boolean> measurefinders = drumMeasure.FindMeasure(tab.nodes.get(i).nodes, rowSymbols);
 		ArrayList<Boolean> flamFinder = isFlam.FlamFinder(tab.nodes.get(i).nodes,rowSymbols);
 		
+		measurefinder.addAll(measurefinders);
 		beam1Statusfinder.addAll(beam1Statusfinders);
 		beam2Statusfinder.addAll(beam2Statusfinders);
 		backUpFinder.addAll(backUpFinders);
@@ -121,9 +124,19 @@ public class DrumNoteObject {
 		note1.chord = drumChord.ChordFinder(col, nextCol, nextNextCol,preCol, barLineCols.DrumBarLines(tab.nodes.get(i).nodes));
 		
 		notes.add(note1);
+		System.out.println(note1);
 
-		System.out.println(colCoordinate);
 		}
+		System.out.println(colCoordinate);
+		System.out.println(flamFinder);
+		System.out.println(rowCoordinate);
+		System.out.println(backUpFinders);
+		System.out.println(noteHeadTypes);
+		System.out.println(beam1Statusfinders.size());
+		System.out.println(measurefinders.size());
+
+		System.out.println();
+		
 		}
 		
 	}

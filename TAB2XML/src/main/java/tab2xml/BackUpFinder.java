@@ -7,8 +7,8 @@ public class BackUpFinder {
 	// make changes uthith
 	
 	
-	ArrayList<Integer> rowCoordinate;
-	ArrayList<Integer> colCoordinate;
+	//ArrayList<Integer> rowCoordinate;
+	//ArrayList<Integer> colCoordinate;
 	ArrayList<Boolean> backUpFinder;
 
 	int counter = 0; 
@@ -21,8 +21,8 @@ public class BackUpFinder {
 	{
 		counter = 0;
 		mutipleVoices = false;
-		rowCoordinate = new ArrayList<Integer>();
-		colCoordinate = new ArrayList<Integer>();
+		//rowCoordinate = new ArrayList<Integer>();
+		//colCoordinate = new ArrayList<Integer>();
 		backUpFinder = new ArrayList<Boolean>();
 		checker = false; 
 		oldDivider = 0;
@@ -66,8 +66,8 @@ public class BackUpFinder {
             	//if (rowSymbols[row] == 8) means voice two
             	if ((drumTab[row1][col1] == 'x' || drumTab[row1][col1] == 'o'|| drumTab[row1][col1] == 'f')  && (rowSymbols[row1] != 8))
             	{
-            		rowCoordinate.add(row1);
-            		colCoordinate.add(col1);
+            		//rowCoordinate.add(row1);
+            		//colCoordinate.add(col1);
             		backUpFinder.add(false);
             		
 
@@ -91,15 +91,15 @@ public class BackUpFinder {
             	{
             		mutipleVoices = true;
              		backUpFinder.add(true);
-             		rowCoordinate.add(row2);
-             		colCoordinate.add(col2);
+             		//rowCoordinate.add(row2);
+             		//colCoordinate.add(col2);
              		break;            		
             	}
             	
             	 if ((drumTab[row2][col2] == 'x' || drumTab[row2][col2] == 'o')  && (rowSymbols[row2]== 8))
             	{
-            		rowCoordinate.add(row2);
-             		colCoordinate.add(col2);
+            		//rowCoordinate.add(row2);
+             		//colCoordinate.add(col2);
              		backUpFinder.add(false);
             	}
             
