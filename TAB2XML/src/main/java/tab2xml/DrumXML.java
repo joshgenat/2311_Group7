@@ -35,6 +35,13 @@ public class DrumXML {
 				
 			
 			// The actual values
+				Element work = doc.createElement("work"); 
+				rootElement.appendChild(work); 
+				
+					Element workTitle = doc.createElement("work-title"); 
+					workTitle.appendChild(doc.createTextNode("https://www.youtube.com/watch?v=dQw4w9WgXcQ"));
+					work.appendChild(workTitle); 
+			
 				Element partList = doc.createElement("part-list"); 
 				rootElement.appendChild(partList); 
 				
@@ -64,7 +71,7 @@ public class DrumXML {
 						Element attributes = doc.createElement("attributes");   
 						measureNumber.appendChild(attributes);
 						
-						
+						//f
 							Divisions.divisions(doc, attributes, o);
 							Key.key(doc, attributes, o);				
 							Time.time(doc, attributes, o);
@@ -74,21 +81,24 @@ public class DrumXML {
 							int count = 2;
 							
 						for(int j = 0; j < o.notes.size() ; j++) {
-							if(o.backUpFinder.get(j) == true) {
-								Backup.backup(doc, m, o, j);
+							
+							if (o.measurefinder.get(j) != true) {
+								if(o.backUpFinder.get(j) == true) {
+									Backup.backup(doc, m, o, j);
+								}
+								DrumNote.note(doc, m, o, j);
 							}
-							DrumNote.note(doc, m, o, j);
-//							if (o.notes.get(j).nextMeasure != true) {
-//								DrumNote.note(doc, m, o, j);
-//							}
-//							else { 
-//								Element measureNumber2 = doc.createElement("measure"); 
-//								measureNumber2.setAttribute("number", "" + count);
-//								partId.appendChild(measureNumber2);
-//								DrumNote.note(doc, m, o, j);
-//								m = measureNumber2;
-//								count++;	
-//								}
+							else { 
+								Element measureNumber2 = doc.createElement("measure"); 
+								measureNumber2.setAttribute("number", "" + count);
+								partId.appendChild(measureNumber2);
+								if(o.backUpFinder.get(j) == true) {
+									Backup.backup(doc, m, o, j);
+								}
+								DrumNote.note(doc, m, o, j);
+								m = measureNumber2;
+								count++;	
+								}
 							}
 						
 						

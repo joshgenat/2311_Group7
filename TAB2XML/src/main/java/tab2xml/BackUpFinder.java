@@ -4,6 +4,9 @@ import java.util.ArrayList;
 
 public class BackUpFinder {
 
+	// make changes uthith
+	
+	
 	ArrayList<Integer> rowCoordinate;
 	ArrayList<Integer> colCoordinate;
 	ArrayList<Boolean> backUpFinder;
@@ -61,7 +64,7 @@ public class BackUpFinder {
             for (int row1 = drumTab.length - 1; row1 >=0; row1--)
             {
             	//if (rowSymbols[row] == 8) means voice two
-            	if ((drumTab[row1][col1] == 'x' || drumTab[row1][col1] == 'o')  && (rowSymbols[row1] != 8))
+            	if ((drumTab[row1][col1] == 'x' || drumTab[row1][col1] == 'o'|| drumTab[row1][col1] == 'f')  && (rowSymbols[row1] != 8))
             	{
             		rowCoordinate.add(row1);
             		colCoordinate.add(col1);
@@ -104,6 +107,8 @@ public class BackUpFinder {
             
         }
 		 	}
+	
+	
 		     }
 		}
 		return backUpFinder;

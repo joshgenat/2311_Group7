@@ -31,12 +31,12 @@ class GuitarConverterTester {
 		};
 		
 		String[][] expectedType = {
-			{"sixteenth", "sixteenth", "sixteenth", "sixteenth", "sixteenth", "eighth", "sixteenth", "sixteenth", "whole", "sixteenth", },
-			{"sixteenth", "sixteenth", "sixteenth", "sixteenth", "eighth", "sixteenth", "eighth", "sixteenth", "whole", "sixteenth", },
-			{"sixteenth", "sixteenth", "sixteenth", "eighth", "sixteenth", "sixteenth", "sixteenth", "eighth", "whole", "sixteenth", },
-			{"sixteenth", "sixteenth", "eighth", "sixteenth", "sixteenth", "sixteenth", "sixteenth", "sixteenth", "whole", "sixteenth", },
-			{"sixteenth", "eighth", "sixteenth", "sixteenth", "sixteenth", "sixteenth", "sixteenth", "sixteenth", "whole", "sixteenth", },
-			{"eighth", "sixteenth", "sixteenth", "sixteenth", "sixteenth", "sixteenth", "sixteenth", "sixteenth", "whole", "sixteenth", },
+			{"16th", "16th", "16th", "16th", "16th", "eighth", "16th", "16th", "whole", "16th", },
+			{"16th", "16th", "16th", "16th", "eighth", "16th", "eighth", "16th", "whole", "16th", },
+			{"16th", "16th", "16th", "eighth", "16th", "16th", "16th", "eighth", "whole", "16th", },
+			{"16th", "16th", "eighth", "16th", "16th", "16th", "16th", "16th", "whole", "16th", },
+			{"16th", "eighth", "16th", "16th", "16th", "16th", "16th", "16th", "whole", "16th", },
+			{"eighth", "16th", "16th", "16th", "16th", "16th", "16th", "16th", "whole", "16th", },
 		};
 		
 		int[][] expectedOctave = {
@@ -111,7 +111,7 @@ class GuitarConverterTester {
 				{false, false, false, false, false, false, false, false, true, false}
 		};
 	
-	GuitarChord[] result = guitar.converter(test);
+	GuitarChord[] result = guitar.converter(test, 1, 'a');
 	
 	int[] i = {rInd(10), rInd(6)};
 	

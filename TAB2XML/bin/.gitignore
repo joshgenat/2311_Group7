@@ -5,5 +5,9 @@
 build
 /main/
 /test/
+<<<<<<< HEAD
+=======
+/src/
+>>>>>>> branch 'develop' of https://github.com/joshgenat/2311_Group7.git
 /tab2xml/
 /default/

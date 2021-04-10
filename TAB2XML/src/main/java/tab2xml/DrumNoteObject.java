@@ -17,10 +17,14 @@ public class DrumNoteObject {
 	ArrayList<DrumPartsList> instruments = new ArrayList<>();
 	ArrayList<Boolean> backUpFinder = new ArrayList<>();
 	ArrayList<Character> noteHeadType = new ArrayList<>();
+	ArrayList<String> beam1Statusfinder = new ArrayList<>();
+	ArrayList<String> beam2Statusfinder = new ArrayList<>();
+	ArrayList<Boolean> flamcheck = new ArrayList<>();
 	String sign;
 	int line;
 	int divisions;
 	int fifths;
+	
 	int beats;
 	int beatsType;
 	
@@ -43,6 +47,9 @@ public class DrumNoteObject {
 	BackUpFinder backUpLocator = new BackUpFinder();
 	DrumNoteHead noteHead = new DrumNoteHead();
 	DrumChordFinder drumChord = new DrumChordFinder();
+	DrumBeamNumber drumBeam = new DrumBeamNumber();
+	DrumMeasure drumMeasure = new DrumMeasure();
+	DrumFlam isFlam = new DrumFlam();
 	
 	public DrumNoteObject(Tab tab) {
 		// the following values are only needed once for the MusicXML Code
@@ -51,8 +58,8 @@ public class DrumNoteObject {
 		line = 2;
 		divisions = 4;
 		fifths = 0;
-		beats = 4;
-		beatsType = 4;
+		beats = 6;
+		beatsType = 8;
 		
 		//Adds PartList At Top
 		for(int r = 0; r <= 9; r++) {
@@ -76,10 +83,17 @@ public class DrumNoteObject {
 		ArrayList<Integer> rowCoordinate = rowValue.RowReader(tab.nodes.get(i).nodes,rowSymbols);
 		ArrayList<Integer> colCoordinate = colValue.ColReader(tab.nodes.get(i).nodes,rowSymbols);
 		ArrayList<Boolean> backUpFinders = backUpLocator.BackUpList(tab.nodes.get(i).nodes,rowSymbols);
-		ArrayList<Character> noteHeadTypes = noteHead.NoteHeadReader(tab.nodes.get(i).nodes,rowSymbols);		
+		ArrayList<Character> noteHeadTypes = noteHead.NoteHeadReader(tab.nodes.get(i).nodes,rowSymbols);
+		ArrayList<Integer> barlinecol = barLineCols.DrumBarLines(tab.nodes.get(i).nodes);
+		ArrayList<String> beam1Statusfinders = drumBeam.BeamOneStatus(rowCoordinate, colCoordinate, noteHeadTypes, barlinecol,rowSymbols);
+		ArrayList<String> beam2Statusfinders = drumBeam.BeamTwoStatus(rowCoordinate, colCoordinate, noteHeadTypes, barlinecol,rowSymbols);
+		ArrayList<Boolean> flamFinder = isFlam.FlamFinder(tab.nodes.get(i).nodes,rowSymbols);
 		
+		beam1Statusfinder.addAll(beam1Statusfinders);
+		beam2Statusfinder.addAll(beam2Statusfinders);
 		backUpFinder.addAll(backUpFinders);
 		noteHeadType.addAll(noteHeadTypes);
+		flamcheck.addAll(flamFinder);
 		
 		for(int j = 0; j < rowCoordinate.size(); j++) {
 		int row = rowCoordinate.get(j);
@@ -97,10 +111,10 @@ public class DrumNoteObject {
 		 * the following pieces of information are the ones which need to be put into an array for the MusicXML Code
 		 */
 		DrumNotes note1 = new DrumNotes();
-		note1.displayStep = step.StepOrganizer(row, col);
+		note1.displayStep = step.StepOrganizer(rowSymbols, row);
 		note1.voiceNumber = voiceValue.FindVoiceValue(row, rowSymbols);
 		note1.instrumentID = instrumentFinder.Instrument(row, rowSymbols).partID;
-		note1.displayOctave = octave.DrumOctaves(tab.nodes.get(i).nodes,note1.voiceNumber);
+		note1.displayOctave = octave.DrumOctaves(rowSymbols, row);
 		note1.duration = noteduration.NoteDurationLength(col, nextCol, nextNextCol, barLineCols.DrumBarLines(tab.nodes.get(i).nodes));
 		note1.stem = stemValue.FindStemValue(note1.voiceNumber);
 		note1.type = noteType.DrumNoteLength(note1.duration);
@@ -108,24 +122,28 @@ public class DrumNoteObject {
 		
 		notes.add(note1);
 
-		
+		System.out.println(colCoordinate);
 		}
+<<<<<<< HEAD
 
+=======
+>>>>>>> branch 'develop' of https://github.com/joshgenat/2311_Group7.git
 		}
 		
 	}
+//hi
 	
 	public void setBeats(String time) throws NumberFormatException {
-		if(time.isBlank()) {
-			this.beats = 4;
-			this.beatsType = 4;
-		}
-		else {
-			String[] split = time.split("/");
-			this.beats = Integer.parseInt(split[0]);
-			this.beatsType = Integer.parseInt(split[1]);
-		}
-	}
+        if(time.isBlank()) {
+            this.beats = 4;
+            this.beatsType = 4;
+        }
+        else {
+            String[] split = time.split("/");
+            this.beats = Integer.parseInt(split[0]);
+            this.beatsType = Integer.parseInt(split[1]);
+        }
+    }
 	
-			
 }
+	

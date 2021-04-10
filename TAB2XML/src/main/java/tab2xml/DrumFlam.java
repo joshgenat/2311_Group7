@@ -2,13 +2,16 @@ package tab2xml;
 
 import java.util.ArrayList;
 
-public class DrumNoteHead {
+public class DrumFlam {
 
-
+	
+	
 	
 	//ArrayList<Integer> rowCoordinate;
 	//ArrayList<Integer> colCoordinate;
-	ArrayList<Character> noteHead;
+	
+	//ArrayList<Character> noteHead;
+	ArrayList<Boolean> isFlam;
 
 	int counter = 0;
 	//boolean mutipleVoices = false;
@@ -16,13 +19,16 @@ public class DrumNoteHead {
 	int oldDivider = 0;
 	int currentDivider = 0;
 	
-	ArrayList <Character> NoteHeadReader(char [][] drumTab, int [] rowSymbols)
+	ArrayList <Boolean> FlamFinder(char [][] drumTab, int [] rowSymbols)
 	{
 		counter = 0;
 		//mutipleVoices = false;
 		//rowCoordinate = new ArrayList<Integer>();
 		//colCoordinate = new ArrayList<Integer>();
-		noteHead = new ArrayList<Character>();
+		//noteHead = new ArrayList<Character>();
+		
+		isFlam = new ArrayList<Boolean>();
+		
 		checker = false; 
 		oldDivider = 0;
 		currentDivider = 0;
@@ -67,7 +73,8 @@ public class DrumNoteHead {
             	{
             		//rowCoordinate.add(row1);
             		//colCoordinate.add(col1);
-            		noteHead.add('x');
+            	//	noteHead.add('x');
+            		isFlam.add(false);
 
             	}
             	else if ((drumTab[row1][col1] == 'o') && (rowSymbols[row1] != 8))
@@ -75,49 +82,13 @@ public class DrumNoteHead {
             		
             		//rowCoordinate.add(row1);
             		//colCoordinate.add(col1);
-            		noteHead.add('o');
+            		//noteHead.add('o');
+            		isFlam.add(false);
             		
             	}
             	else if ((drumTab[row1][col1] == 'f') && (rowSymbols[row1] != 8))
             	{ 
-            		if (rowSymbols[row1]== 1)
-            		{
-            			//cc
-            			noteHead.add('x');
-            		}
-            		else if (rowSymbols[row1]== 2)
-            		{
-            			// throw an error  @ andy for help 
-            			noteHead.add('x');
-            			// just for now
-            		}
-            		else if (rowSymbols[row1]== 3)
-            		{
-            			//ride 
-            			noteHead.add('x');
-            		}
-            		else if (rowSymbols[row1]== 4)
-            		{
-            			//snare
-            			noteHead.add('o');
-            		}
-            		else if (rowSymbols[row1]== 5)
-            		{
-            			//high tom
-            			noteHead.add('o');
-            		}
-            		else if (rowSymbols[row1]== 6)
-            		{
-            			//low tom
-            			noteHead.add('o');
-            		}
-            		else if (rowSymbols[row1]== 7)
-            		{
-            			//floor tom
-            			noteHead.add('o');
-            		}
-          
-            		
+            		isFlam.add(true);
             	}
             	
             }
@@ -139,14 +110,16 @@ public class DrumNoteHead {
             		{
             			//rowCoordinate.add(row2);
             			//colCoordinate.add(col2);
-            			noteHead.add('x');
+            			//noteHead.add('x');
+            			isFlam.add(false);
             		}
             	
             		else if (( drumTab[row2][col2] == 'o')  && (rowSymbols[row2]== 8))
             		{
             			//rowCoordinate.add(row2);
             			//colCoordinate.add(col2);
-            			noteHead.add('o');
+            			//noteHead.add('o');
+            			isFlam.add(false);
             		}
             
             }
@@ -155,11 +128,10 @@ public class DrumNoteHead {
 		 	}
 		     }
 		}
-		return noteHead;
+		return isFlam;
 		
 		
 		
 	}
 	
 }
-	

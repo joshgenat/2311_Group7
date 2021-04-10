@@ -28,6 +28,14 @@ public class GuitarXML {
 			
 		
 		// The actual values
+		
+			Element work = doc.createElement("work"); 
+			rootElement.appendChild(work); 
+		
+				Element workTitle = doc.createElement("work-title"); 
+				workTitle.appendChild(doc.createTextNode("https://www.youtube.com/watch?v=dQw4w9WgXcQ"));
+				work.appendChild(workTitle); 
+			
 			Element partList = doc.createElement("part-list"); 
 			rootElement.appendChild(partList); 
 			
@@ -58,13 +66,20 @@ public class GuitarXML {
 						Time.time(doc, attributes, g);
 						Clef.clef(doc, attributes, g);
 						Staff.staff(doc, attributes, g);
+						
 						int count = 2;
 						Element m = measureNumber;
 						
-					for(int j = 0; j < g.notes.size() ; j++) {
+					for(int j = 0; j < g.notes.size() - 1 ; j++) {
 						
 					if (g.notes.get(j).nextMeasure != true) {
 						GuitarNote.note(doc, m, g, j);
+						
+						if (g.notes.get(j).hammerTo != null)
+							GuitarNoteHammer.note2(doc, m, g, j);
+						
+						else if (g.notes.get(j).pullTo != null)
+							GuitarNotePull.note3(doc, m, g, j);
 					}
 					
 					else { 
@@ -99,7 +114,7 @@ public class GuitarXML {
 		
 		text = finalstring;
 		
-		}
+		} 
 		
 		catch (TransformerException e) {
 			e.printStackTrace();

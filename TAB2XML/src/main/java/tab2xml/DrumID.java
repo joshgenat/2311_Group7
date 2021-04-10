@@ -2,15 +2,13 @@ package tab2xml;
 
 public class DrumID extends DrumPartsList {
 
-	
+	// need to change how id is calculated 
 	
 	DrumPartsList Instrument(int row, int [] rowSymbols)
 	{
 		DrumPartsList instrument = new DrumPartsList();
-		if(row == 1000) {
-			instrument.Nothing();
-		}
-		else if (rowSymbols[row] == 1)
+		
+		if (rowSymbols[row] == 1)
 		{
 			instrument.CrashCymbal();
 		}
