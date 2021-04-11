@@ -63,7 +63,6 @@ public class DrumNoteGrace {
 		
 	static void stem(Document doc, Element note, DrumNoteObject o, int j) {
 		Element stem = doc.createElement("stem");   
-		stem.appendChild(doc.createTextNode("" + o.notes.get(j).stem) ); 
 		note.appendChild(stem);	
 		
 		if (o.notes.get(j).flamCheck == true)

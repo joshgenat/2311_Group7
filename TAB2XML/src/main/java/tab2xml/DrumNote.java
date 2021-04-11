@@ -69,8 +69,7 @@ public class DrumNote {
 		}
 		
 	static void stem(Document doc, Element note, DrumNoteObject o, int j) {
-		Element stem = doc.createElement("stem");   
-		stem.appendChild(doc.createTextNode("" + o.notes.get(j).stem) ); 
+		Element stem = doc.createElement("stem");
 		note.appendChild(stem);	
 		
 		if (o.notes.get(j).flamCheck == true)

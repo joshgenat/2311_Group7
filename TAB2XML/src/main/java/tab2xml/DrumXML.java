@@ -86,6 +86,9 @@ public class DrumXML {
 									Backup.backup(doc, m, o, j);
 								}
 								DrumNote.note(doc, m, o, j);
+								
+								if (o.notes.get(j).flamCheck == true)
+									DrumNoteGrace.note(doc, m, o, j);
 							}
 							else { 
 								Element measureNumber2 = doc.createElement("measure"); 
@@ -98,7 +101,6 @@ public class DrumXML {
 								DrumNote.note(doc, m, o, j);
 								
 								if (o.notes.get(j).flamCheck == true)
-									
 								DrumNoteGrace.note(doc, m, o, j);
 								
 								m = measureNumber2;
