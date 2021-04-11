@@ -10,7 +10,7 @@ public class DrumNoteType {
 	public String DrumNoteLength (int duration)
 	
 	{
-		
+		// make a parameter of divisions 
 		if (duration == 1)
 		{
 			noteType = "16th";

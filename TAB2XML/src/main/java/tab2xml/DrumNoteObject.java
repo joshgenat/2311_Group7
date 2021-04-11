@@ -102,6 +102,7 @@ public class DrumNoteObject {
 		int row = rowCoordinate.get(j);
 		int col = colCoordinate.get(j);
 		char head = noteHeadTypes.get(j);
+		boolean flam = flamFinder.get(j);
 		int nextCol = 0;
 		int nextNextCol = 0;
 		int preCol = 0;
@@ -123,6 +124,7 @@ public class DrumNoteObject {
 		note1.stem = stemValue.FindStemValue(note1.voiceNumber);
 		note1.type = noteType.DrumNoteLength(note1.duration);
 		note1.chord = drumChord.ChordFinder(col, nextCol, nextNextCol,preCol, barLineCols.DrumBarLines(tab.nodes.get(i).nodes));
+		note1.flamCheck = flam;
 		
 		notes.add(note1);
 		//System.out.println(note1);

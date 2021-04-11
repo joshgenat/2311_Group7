@@ -9,6 +9,7 @@ public class DrumNotes {
 	String type;
 	String instrumentID;
 	boolean chord;
+	public boolean flamCheck;
 	
 	public DrumNotes(){
 		
