@@ -39,8 +39,8 @@ public class GuitarNoteObject {
 		line = 5;
 		divisions = 4;
 		fifths = 0;
-		beats = 4;
-		beatsType = 4;
+		beats = 6;
+		beatsType = 8;
 		char type = 'a';
 		if(tab.Type.equals("Bass")) { type = 'b'; }
 		for(int i = 0; i < tab.nodes.size(); i++) {

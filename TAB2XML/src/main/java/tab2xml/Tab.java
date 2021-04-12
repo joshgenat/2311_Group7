@@ -79,10 +79,59 @@ public class Tab {
 		return r;
 	}
 	
+	private ArrayList<Integer> getR3(ArrayList<Object> lines){
+		String[] a = lines.get(0).toString().split("\\|");
+		ArrayList<Integer> r = new ArrayList<>();
+		
+		//Get Repeats
+		for(int i = 1; i < a.length; i++) {
+			if(a[i].isBlank()) {
+				i++;
+				String b = "" + a[i].charAt(a[i].length()-1);
+				r.add(Integer.parseInt(b));
+			}
+			else {
+				r.add(1);
+			}
+		}
+		//Reconstruct lines
+		//Reconstruct line 0 
+		a = lines.get(0).toString().split("\\|");
+		String newL = a[0] + "|";
+		for(int j = 1; j < a.length; j++) {
+			if(a[j].isBlank()) {
+				j++;
+				newL += a[j].substring(1, a[j].length()-2) + "|";
+			}
+			else {
+				newL += a[j] + "|";
+			}
+		}
+		lines.set(0, newL);
+		//Set Rest
+		for(int i = 1; i < lines.size(); i++) {
+			a = lines.get(i).toString().split("\\|");
+			newL = a[0] + "|";
+			for(int j = 1; j < a.length; j++) {
+				if(a[j].isBlank()) {
+					j++;
+					newL += a[j].substring(1, a[j].length()-1) + "|";
+					j++;
+				}
+				else {
+					newL += a[j] + "|";
+				}
+			}
+			lines.set(i, newL);
+		}
+		return r;
+	}
+	
 	private ArrayList<TabNodes> linesToMeasure(ArrayList<Object> lines){
 		int repeat = getR(lines);
 		ArrayList<TabNodes> measures = new ArrayList<>();
 		ArrayList<Object> upperRepeats = new ArrayList<>();
+		ArrayList<Integer> Repeat3 = getR3(lines);
 		
 		while(lines.get(0).toString().toLowerCase().contains("repeat")) {
 			upperRepeats.add(lines.get(0));
@@ -95,6 +144,8 @@ public class Tab {
 		}
 		measureN--;
 		
+		for(int i = 0; i < measureN; i++) {
+		}
 		//Get Tunings + measures
 		for(int i = 0; i < measureN; i++) {
 			ArrayList<Object> pass = new ArrayList<>();
@@ -112,7 +163,7 @@ public class Tab {
 		
 		//Get Overall Repeats
 		for(int i = 0; i < measureN; i++) {
-			measures.get(i).repeat = repeat;
+			measures.get(i).repeat = repeat * Repeat3.get(i);
 		}
 		//Get Upper repeats
 		for(int i = 0; i < upperRepeats.size(); i++ ) {
@@ -142,6 +193,8 @@ public class Tab {
 		return measures;
 	}
 	
+	
+	
 	public void setTime(String time) throws Exception {
 		String[] split = time.split("/");
 		try {
@@ -153,7 +206,6 @@ public class Tab {
 				if(time.isBlank()) { nodes.get(i).timeSignature = "4/4"; }
 				else {nodes.get(i).timeSignature = time;}
 			}
-
 		}
 		catch(Exception e) {
 			throw new Exception();

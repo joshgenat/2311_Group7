@@ -157,7 +157,7 @@ public class Controller {
 					}
 					else {sign = clefSignBox.getSelectionModel().getSelectedItem().toString();}
 					GuitarNoteObject c = new GuitarNoteObject(b,sign);
-			        c.setBeats(timeField.getText());
+					c.setBeats(timeField.getText());
 					GuitarXML d = new GuitarXML(c);
 					xmlText.setText(d.text);
 				}
@@ -326,7 +326,7 @@ public class Controller {
 					newNode[j][k] = pass.get(j).charAt(k);
 				}
 			}
-			if(!timeField.getText().isBlank()) { b.nodes.get(i).timeSignature = timeField.getText(); }
+			if(!timeField.getText().isBlank()) { b.nodes.get(i).timeSignature = timeField.getText(); b.nodes.get(i).setDiv();}
 			if(!repeatField.getText().isBlank()) { b.nodes.get(i).repeat = Integer.parseInt(repeatField.getText());}
 			b.nodes.get(i).nodes = newNode;
 		}	
