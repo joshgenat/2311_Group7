@@ -7,5 +7,6 @@ public class DurationException extends Exception{
 	public DurationException (String message) 
 	{
 		this.message = message;
+		System.out.println(message);
 	}
 }

@@ -155,6 +155,7 @@ public class DrumNoteHead {
 		 	}
 		     }
 		}
+		
 		return noteHead;
 		
 		

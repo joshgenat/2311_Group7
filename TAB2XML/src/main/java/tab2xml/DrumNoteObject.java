@@ -146,6 +146,7 @@ public class DrumNoteObject {
 		this.beats = b.get(0);
 		this.beatsType = bt.get(0);
 		
+		
 	}
 	
 	public void setBeats(String time) throws NumberFormatException {

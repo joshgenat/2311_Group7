@@ -14,7 +14,7 @@ public class DrumNoteRow {
 	int oldDivider = 0;
 	int currentDivider = 0;
 	
-	ArrayList <Integer> RowReader(char [][] drumTab, int [] rowSymbols)
+	public ArrayList <Integer> RowReader(char [][] drumTab, int [] rowSymbols)
 	{
 		counter = 0;
 		//mutipleVoices = false;
@@ -95,6 +95,7 @@ public class DrumNoteRow {
 		 	}
 		     }
 		}
+			
 		return rowCoordinate;
 		
 		

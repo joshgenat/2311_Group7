@@ -16,7 +16,7 @@ public class DrumBeamNumber {
 	
 
 	
-	ArrayList <String> BeamOneStatus(ArrayList<Integer> rowCoordinate, ArrayList<Integer> colCoordinate, 
+	public ArrayList <String> BeamOneStatus(ArrayList<Integer> rowCoordinate, ArrayList<Integer> colCoordinate, 
 			ArrayList <Character> NoteHeadReader, ArrayList<Integer> barLineCols, int [] rowSymbols, char [][] drumTab)
 	{
 		//[2, 1, 1, 0, 2, 4, 3, 2, 5, 5, 4, 1, 3, 3, 0, 4, 1, 5, 5]
@@ -574,8 +574,6 @@ public class DrumBeamNumber {
 				
 		}
 		
-		
-		
 
 		return beamStatus;
 	
@@ -1132,9 +1130,7 @@ public class DrumBeamNumber {
 		
 		
 		
-		
-		
-		System.out.println(secondBeamStatus.size() + "hehe");
+			System.out.println(secondBeamStatus);
 		
 		
 		

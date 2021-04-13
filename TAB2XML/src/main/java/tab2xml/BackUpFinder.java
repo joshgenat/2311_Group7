@@ -17,7 +17,7 @@ public class BackUpFinder {
 	int oldDivider = 0;
 	int currentDivider = 0;
 	
-	ArrayList <Boolean> BackUpList(char [][] drumTab, int [] rowSymbols)
+	public ArrayList <Boolean> BackUpList(char [][] drumTab, int [] rowSymbols)
 	{
 		counter = 0;
 		mutipleVoices = false;
@@ -111,6 +111,7 @@ public class BackUpFinder {
 	
 		     }
 		}
+		
 		return backUpFinder;
 		
 		

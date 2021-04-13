@@ -22,6 +22,11 @@ public class DrumNoteType {
 		}
 		drumTabLength--;
 		// for divisions of 4 our system supports  tabs of length 
+		
+		if (((divisions == 4) && (drumTabLength == 16)) ||  ((divisions == 2) && (drumTabLength == 8)) || ((divisions == 1) && (drumTabLength == 4)) || ((divisions == 6) && (drumTabLength == 18)) || ((divisions == 3) && (drumTabLength == 9)) || (divisions == 4) && (drumTabLength == 12))
+		{
+			
+		
 		if ((divisions == 4) && (drumTabLength == 16))
 			
 		{
@@ -189,6 +194,7 @@ public class DrumNoteType {
 			{
 				noteType = "half";
 			}
+			
 			else
 			{
 				throw new DurationException("duration: " + duration + "of note at row: " + row + " column: " + col + "invalid for tab of length 18 with division of 6");
@@ -273,6 +279,14 @@ public class DrumNoteType {
 			
 		}
 		
+		}
+		else
+		{
+			//thorw exception because duration for one note is not supported for my program for length 16, division 4 
+			throw new DurationException(" This combination of division: " + duration + " and length of measure: " + drumTabLength   +  " is not supported by our system, refer to User Manual for list of suported division, length combinations" );
+			
+		}
+		
 		
 		
 		
@@ -280,12 +294,25 @@ public class DrumNoteType {
 		
 	}
 	
+	
  public int DotValue (int duration, int divisions, char [][] drumTab) throws Exception
 	
+ 
 	{
+	 int drumTabLength = 0;
+		boolean read = false;
+		for(int i = 0; i < drumTab[0].length; i++) {
+			if(drumTab[0][i] == '|') {
+				read = !read;
+			}
+			if(read) {
+				drumTabLength++;
+			}
+		}
+		drumTabLength--;
 		
 	
-	if ((divisions == 4) && (drumTab[0].length == 16))
+	if ((divisions == 4) && (drumTabLength == 16))
 		
 	{
 		//4/4 time signature 
@@ -340,7 +367,7 @@ public class DrumNoteType {
 		
 	}
 	
-	if ((divisions == 2) && (drumTab[0].length == 8))
+	if ((divisions == 2) && (drumTabLength == 8))
 		
 	{
 		//4/4 time signature
@@ -377,7 +404,7 @@ public class DrumNoteType {
 	}
 		
 	
-	if ((divisions == 1) && (drumTab[0].length == 4))
+	if ((divisions == 1) && (drumTabLength == 4))
 		
 	{
 		//time signature 4/4
@@ -403,7 +430,7 @@ public class DrumNoteType {
 		
 	}
 	
-	if ((divisions == 6) && (drumTab[0].length == 18))
+	if ((divisions == 6) && (drumTabLength == 18))
 	
 	{
 		// time signature 6/8 and 3/4
@@ -441,7 +468,7 @@ public class DrumNoteType {
 		
 	}
 	
-	if ((divisions == 3) && (drumTab[0].length == 9))
+	if ((divisions == 3) && (drumTabLength == 9))
 		
 	{
 		// time signature 6/8 and 3/4
@@ -470,7 +497,7 @@ public class DrumNoteType {
 		
 	}
 	
-	if ((divisions == 4) && (drumTab[0].length == 12))
+	if ((divisions == 4) && (drumTabLength == 12))
 		
 	{
 		// time signature 6/8 and 3/4
@@ -507,7 +534,7 @@ public class DrumNoteType {
 		
 	}
 	
-	
+	System.out.println(dotnumber);
 	 return dotnumber;
 }	
 }

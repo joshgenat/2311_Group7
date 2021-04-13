@@ -13,7 +13,7 @@ public class DrumNoteCol {
 	int oldDivider;
 	int currentDivider;
 	
-	ArrayList <Integer> ColReader(char [][] drumTab, int [] rowSymbols)
+	public ArrayList <Integer> ColReader(char [][] drumTab, int [] rowSymbols)
 	{
 		//mutipleVoices = false;
 		//rowCoordinate = new ArrayList<Integer>();
@@ -90,8 +90,8 @@ public class DrumNoteCol {
         }
 		 	}
 		     }
+		     System.out.println(colCoordinate);
 		}
-		return colCoordinate;
 		
 		
 		
