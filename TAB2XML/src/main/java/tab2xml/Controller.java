@@ -22,7 +22,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
-
+import exceptions.*;
 public class Controller {
 	
 	public Controller() {
@@ -303,6 +303,7 @@ public class Controller {
 			errorLabel.setText("Invalid Measure\n Inputs");
 			errorLabel.setTextFill(Color.PINK);
 		}
+		
 	}
 	
 	public void saveMeasure() {
