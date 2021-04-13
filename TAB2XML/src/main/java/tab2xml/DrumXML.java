@@ -95,6 +95,11 @@ public class DrumXML {
 								measureNumber2.setAttribute("number", "" + count);
 								partId.appendChild(measureNumber2);
 								
+								if (o.notes.get(j).repeat != null) {
+									Barline.barline(doc, measureNumber, o);
+									Direction.direction(doc, measureNumber, o);
+								}
+								
 								if(o.backUpFinder.get(j) == true) {
 									Backup.backup(doc, m, o, j);
 								}

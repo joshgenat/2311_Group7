@@ -8,7 +8,16 @@ import tab2xml.*;
 
 public class XMLTester {
 	
-
+	/**
+	 * Tests:
+	 * Divisions
+	 * Key
+	 * Time
+	 * Clef
+	 * Backup
+	 * Barline
+	 */
+	
 	@Test
 	void divisionsTest() {
 		Random rand = new Random();
@@ -151,6 +160,30 @@ public class XMLTester {
 		
 		sb.append("<backup>");  
 		sb.append("\n" + s[0]); 
+		sb.append("\n</backup>");
+		
+		return sb.toString();
+	}
+	
+	@Test
+	void barlineTest() {
+		Random rand = new Random();
+		int r1 = rand.nextInt(10);
+		int r2 = rand.nextInt(10);
+		int[] t = {r1, r2};
+		
+		String actual = Backup.backupTest(t);
+		String expected = backup(t);
+		
+		assertEquals(expected, actual);
+	}
+	
+	String barline(int[] s) {
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append("<backup>");  
+		sb.append("\n<bar-style>" + s[0] + "\n</bar-style>"); 
+		sb.append("\n<repeat>" + s[1] + "\n</repeat>"); 
 		sb.append("\n</backup>");
 		
 		return sb.toString();
