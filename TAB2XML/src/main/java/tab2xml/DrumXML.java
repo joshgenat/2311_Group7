@@ -78,15 +78,16 @@ public class DrumXML {
 						
 							Element m = measureNumber;
 							int count = 2;
+							if (o.repeats.get(count-2) != 1) {
+							Barline.barline(doc, measureNumber, o.repeats.get(count-2));
+							Direction.direction(doc, measureNumber, o.repeats.get(count-2));
+							}
 							
 						for(int j = 0; j < o.notes.size() ; j++) {
 							
 							if (o.measurefinder.get(j) != true) {
-								if (o.repeats.get(count) != 1) {
-									Barline.barline(doc, measureNumber, o.repeats.get(count));
-									Direction.direction(doc, measureNumber, o.repeats.get(count));
-								}
 								
+
 								if(o.backUpFinder.get(j) == true) {
 									Backup.backup(doc, m, o, j);
 								}
@@ -100,9 +101,9 @@ public class DrumXML {
 								measureNumber2.setAttribute("number", "" + count);
 								partId.appendChild(measureNumber2);
 								
-								if (o.repeats.get(count) != 1) {
-									Barline.barline(doc, measureNumber, o.repeats.get(count));
-									Direction.direction(doc, measureNumber, o.repeats.get(j));
+								if (o.repeats.get(count-2) != 1) {
+									Barline.barline(doc, measureNumber, o.repeats.get(count-2));
+									Direction.direction(doc, measureNumber, o.repeats.get(count-2));
 								}
 								
 								if(o.backUpFinder.get(j) == true) {

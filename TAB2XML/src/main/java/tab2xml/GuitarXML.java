@@ -75,6 +75,9 @@ public class GuitarXML {
 //						if (g.repeats.get(count) != 1) {
 //							Barline.barline(doc, measureNumber, g.repeats.get(count));
 //							Direction.direction(doc, measureNumber, g.repeats.get(j));
+//						if (g.notes.get(j).isChord != null) {
+//							Barline.barline(doc, measureNumber, g);
+//							Direction.direction(doc, measureNumber, g);
 //						}
 						
 						if (g.notes.get(j).nextMeasure != true) {
