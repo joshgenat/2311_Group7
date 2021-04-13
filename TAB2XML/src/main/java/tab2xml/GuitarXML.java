@@ -100,7 +100,7 @@ public class GuitarXML {
 					
 					Barline2.barline(doc, measureNumber, g); 
 				
-				
+				 
 	
 		// write content into XML file
 		TransformerFactory transformerFactory = TransformerFactory.newInstance();
