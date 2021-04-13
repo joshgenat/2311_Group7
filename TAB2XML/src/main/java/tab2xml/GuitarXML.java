@@ -44,7 +44,10 @@ public class GuitarXML {
 				partList.appendChild(scorePart); 
 
 					Element partName = doc.createElement("part-name");   
-//					partName.appendChild(doc.createTextNode("" + g.instrument)); 
+					if (g.type == 'a')
+					partName.appendChild(doc.createTextNode("Guitar")); 
+					else if (g.type == 'b')
+					partName.appendChild(doc.createTextNode("Bass")); 
 					scorePart.appendChild(partName);               
     
 			

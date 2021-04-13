@@ -6,7 +6,7 @@ import org.w3c.dom.Element;
 public class Direction {
 
 		static void direction(Document doc, Element measureNumber, Integer integer) {
-			Element direction = doc.createElement("direction-type");
+			Element direction = doc.createElement("direction");
 			measureNumber.appendChild(direction); 
 			
 				directionType(doc, direction, integer); 
