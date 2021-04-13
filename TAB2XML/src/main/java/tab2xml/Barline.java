@@ -6,22 +6,22 @@ import org.w3c.dom.Element;
 public class Barline {
 
 	// For Drums
-	static void barline(Document doc, Element measureNumber, DrumNoteObject g) {
+	static void barline(Document doc, Element measureNumber, Integer integer) {
 		Element barline = doc.createElement("barline");
 		barline.setAttribute("location", "left");
 		measureNumber.appendChild(barline); 
 		
-			barStyle(doc, barline, g);
-			repeat(doc, barline, g);
+			barStyle(doc, barline, integer);
+			repeat(doc, barline, integer);
 	}
 	
-		static void barStyle(Document doc, Element barline, DrumNoteObject g) {
+		static void barStyle(Document doc, Element barline, Integer integer) {
 			Element barstyle = doc.createElement("bar-style");        
 			barstyle.appendChild(doc.createTextNode("heavy-light") ); 
 			barline.appendChild(barstyle); 
 		}
 		
-		static void repeat(Document doc, Element barline, DrumNoteObject g) {
+		static void repeat(Document doc, Element barline, Integer integer) {
 			Element repeat = doc.createElement("repeat");
 			repeat.setAttribute("direction", "forward");
 			barline.appendChild(repeat); 

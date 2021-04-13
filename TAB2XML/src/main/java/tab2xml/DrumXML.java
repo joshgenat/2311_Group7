@@ -19,7 +19,7 @@ public class DrumXML {
 	String text; 
 	
 	DrumXML(DrumNoteObject o) {
-		try {
+		try { 
 			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 
@@ -82,6 +82,11 @@ public class DrumXML {
 						for(int j = 0; j < o.notes.size() ; j++) {
 							
 							if (o.measurefinder.get(j) != true) {
+								if (o.repeats.get(count) != 1) {
+									Barline.barline(doc, measureNumber, o.repeats.get(count));
+									Direction.direction(doc, measureNumber, o.repeats.get(count));
+								}
+								
 								if(o.backUpFinder.get(j) == true) {
 									Backup.backup(doc, m, o, j);
 								}
@@ -95,9 +100,9 @@ public class DrumXML {
 								measureNumber2.setAttribute("number", "" + count);
 								partId.appendChild(measureNumber2);
 								
-								if (o.notes.get(j).repeat != null) {
-									Barline.barline(doc, measureNumber, o);
-									Direction.direction(doc, measureNumber, o);
+								if (o.repeats.get(count) != 1) {
+									Barline.barline(doc, measureNumber, o.repeats.get(count));
+									Direction.direction(doc, measureNumber, o.repeats.get(j));
 								}
 								
 								if(o.backUpFinder.get(j) == true) {
