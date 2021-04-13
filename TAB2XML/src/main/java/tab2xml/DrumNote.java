@@ -33,14 +33,10 @@ public class DrumNote {
         if(o.beam2Statusfinder.get(j) != null)
         beamNumber2(doc, note, o, j);
         
-//        for (int i = 0; i < r; i++)
-//        dot(doc, note, o);
+        for (int i = 0; i < o.notes.get(j).dot; i++)
+        dot(doc, note, o);
+        
 	}
-	
-	// flanCheck to check if grace
-	// grace 
-	// next one has duration
-	//
 	
 	static void grace(Document doc, Element note) {
 		Element grace = doc.createElement("grace");
@@ -53,7 +49,7 @@ public class DrumNote {
 	}
 	
 	static void unpitched(Document doc, Element note, DrumNoteObject o, int j) {
-		Element unpitched = doc.createElement("unpitched");    
+		Element unpitched = doc.createElement("unpitched" + o.notes.get(j).dot);    
 		note.appendChild(unpitched);
 			
 			displayStep(doc, unpitched,  o, j);
@@ -143,7 +139,6 @@ public class DrumNote {
 	
 	static void dot(Document doc, Element note, DrumNoteObject o) {
 		Element dot = doc.createElement("dot");   
-		dot.appendChild(doc.createTextNode(""));
 		note.appendChild(dot);	
 	}
 	

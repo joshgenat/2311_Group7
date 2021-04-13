@@ -136,6 +136,7 @@ public class DrumXML {
 							else {
 								Barline2.barline(doc, m, 0);
 							}
+							
 						
 						
 						
