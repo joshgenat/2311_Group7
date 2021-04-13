@@ -38,7 +38,7 @@ public class GuitarConverter {
 							skip[j] = 1;
 					}
 					else if(!isNum(in[j][i])) {
-						throw new InproperInputException("bruh");
+						throw new InproperInputException("bruh2");
 					}
 					else {
 						if(skip[j] == 0) {
