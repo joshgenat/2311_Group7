@@ -6,7 +6,7 @@ public class InproperInputException  extends Exception{
 		
 	public InproperInputException (int measure, int row, int col) 
 	{
-		this.message = "Bad Tab! measure: " + measure + ", row: " + row + ", col: " + col;
+		this.message = "Measure: " + measure + ", row: " + row + ", col: " + col;
 	}
 	
 }
