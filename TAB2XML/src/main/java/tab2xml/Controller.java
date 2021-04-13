@@ -367,25 +367,30 @@ public class Controller {
 	}
 	
 	public void convertNew() {
-		if(b.Type.equals("Drum")) {
-			DrumNoteObject c = new DrumNoteObject(b);
-			c.setBeats(timeField.getText());
- 			DrumXML d = new DrumXML(c);
- 			xmlText.setText(d.text);
- 			clefSignBox.getSelectionModel().select(3);
-			}
-			else {
-				String sign = "Treble";
-				if(clefSignBox.getSelectionModel().getSelectedIndex()==3) {
-					clefSignBox.getSelectionModel().select(0);
+		try {
+			if(b.Type.equals("Drum")) {
+				DrumNoteObject c = new DrumNoteObject(b);
+				c.setBeats(timeField.getText());
+	 			DrumXML d = new DrumXML(c);
+	 			xmlText.setText(d.text);
+	 			clefSignBox.getSelectionModel().select(3);
 				}
-				else {sign = clefSignBox.getSelectionModel().getSelectedItem().toString();}
-				GuitarNoteObject c = new GuitarNoteObject(b,sign);
-		        c.setBeats(timeField.getText());
-				GuitarXML d = new GuitarXML(c);
-				xmlText.setText(d.text);
-			}
-		tabView.getSelectionModel().select(1);
+				else {
+					String sign = "Treble";
+					if(clefSignBox.getSelectionModel().getSelectedIndex()==3) {
+						clefSignBox.getSelectionModel().select(0);
+					}
+					else {sign = clefSignBox.getSelectionModel().getSelectedItem().toString();}
+					GuitarNoteObject c = new GuitarNoteObject(b,sign);
+			        c.setBeats(timeField.getText());
+					GuitarXML d = new GuitarXML(c);
+					xmlText.setText(d.text);
+				}
+			tabView.getSelectionModel().select(1);
+		}
+		catch(Exception e) {
+			
+		}
 		
 	}
 	

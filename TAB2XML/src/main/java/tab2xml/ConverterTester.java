@@ -1,8 +1,10 @@
 package tab2xml;
 
+import exceptions.InproperInputException;
+
 public class ConverterTester {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		GuitarConverter guitar = new GuitarConverter();
 		
 

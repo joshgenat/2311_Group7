@@ -3,7 +3,7 @@ import exceptions.*;
 
 public class GuitarConverter {
 	
-
+	
 	public static GuitarChord[] converter(char[][] in, int m, char type) throws InproperInputException { 
 		GuitarNotes[][] out = new GuitarNotes[in.length][in[0].length];
 		GuitarChord chords[] = new GuitarChord[in[0].length];
