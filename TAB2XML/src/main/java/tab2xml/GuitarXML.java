@@ -70,15 +70,12 @@ public class GuitarXML {
 						int count = 2;
 						Element m = measureNumber;
 						
-					for(int j = 0; j < g.notes.size() - 1 ; j++) {
+						if (g.repeats.get(count-2) != 1) {
+							Barline.barline(doc, measureNumber);
+							Direction.direction(doc, measureNumber, g.repeats.get(count-2));
+						}
 						
-//						if (g.repeats.get(count) != 1) {
-//							Barline.barline(doc, measureNumber, g.repeats.get(count));
-//							Direction.direction(doc, measureNumber, g.repeats.get(j));
-//						if (g.notes.get(j).isChord != null) {
-//							Barline.barline(doc, measureNumber, g);
-//							Direction.direction(doc, measureNumber, g);
-//						}
+					for(int j = 0; j < g.notes.size() - 1 ; j++) {
 						
 						if (g.notes.get(j).nextMeasure != true) {
 							GuitarNote.note(doc, m, g, j);
@@ -95,12 +92,10 @@ public class GuitarXML {
 						measureNumber2.setAttribute("number", "" + count);
 						partId.appendChild(measureNumber2);
 						
-//						if (g.repeats.get(count) != 1) {
-//							Barline.barline(doc, measureNumber, g.repeats.get(count));
-//							Direction.direction(doc, measureNumber, g.repeats.get(j));
-//						}
 						
 						GuitarNote.note(doc, m, g, j);
+						
+						Barline2.barline(doc, m, g.repeats.get(count-2));
 						
 						if (g.notes.get(j).hammerTo != null)
 							GuitarNoteHammer.note2(doc, m, g, j);
@@ -109,12 +104,20 @@ public class GuitarXML {
 							GuitarNotePull.note3(doc, m, g, j);
 						
 						m = measureNumber2;
+						if (g.repeats.get(count-2) != 1) {
+							Barline.barline(doc, m);
+							Direction.direction(doc, m, g.repeats.get(count-2));
+						}
 						count++;	
 						}
 					}
 					
-					
-					Barline2.barline(doc, measureNumber, g); 
+					if(g.repeats.get(g.repeats.size()-1) != 1) {
+						Barline2.barline(doc, m, g.repeats.get(count-2));
+					}
+					else {
+						Barline2.barline(doc, m, 0);
+					}
 				
 				 
 	

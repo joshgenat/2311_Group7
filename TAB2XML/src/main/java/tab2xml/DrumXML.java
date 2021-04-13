@@ -79,7 +79,7 @@ public class DrumXML {
 							Element m = measureNumber;
 							int count = 2;
 							if (o.repeats.get(count-2) != 1) {
-							Barline.barline(doc, measureNumber, o.repeats.get(count-2));
+							Barline.barline(doc, measureNumber);
 							Direction.direction(doc, measureNumber, o.repeats.get(count-2));
 							}
 							
@@ -113,11 +113,10 @@ public class DrumXML {
 								if (o.notes.get(j).flamCheck == true)
 								DrumNoteGrace.note(doc, m, o, j);
 								
-//								Barline2.barline(doc, measureNumber2, o.repeats.get(count-2));
 								
 								m = measureNumber2;
 								if (o.repeats.get(count-2) != 1) {
-									Barline.barline(doc, m, o.repeats.get(count-2));
+									Barline.barline(doc, m);
 									Direction.direction(doc, m, o.repeats.get(count-2));
 								}
 								count++;	
