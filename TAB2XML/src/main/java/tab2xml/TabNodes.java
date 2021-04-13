@@ -34,6 +34,10 @@ public class TabNodes {
 	public void setDiv() {
 		String a = "" + timeSignature.charAt(0);
 		divisions = (maxsize - 2)/(Integer.parseInt(a));
+		if(Integer.parseInt(a) == 6)
+		{
+			divisions = (maxsize - 2)/3;
+		}
 	}
 
 }

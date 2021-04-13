@@ -82,6 +82,7 @@ public class DrumNoteObject {
 		int [] rowSymbols = note.rowSymbolsSorter(tab.nodes.get(i).nodes);	 
 		
 		repeats.add(tab.nodes.get(i).repeat);
+		divisions = tab.nodes.get(i).divisions;
 
 		ArrayList<Integer> rowCoordinate = rowValue.RowReader(tab.nodes.get(i).nodes,rowSymbols);
 		ArrayList<Integer> colCoordinate = colValue.ColReader(tab.nodes.get(i).nodes,rowSymbols);

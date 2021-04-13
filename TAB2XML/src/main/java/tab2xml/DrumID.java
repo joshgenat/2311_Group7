@@ -66,46 +66,47 @@ public class DrumID extends DrumPartsList {
 		{
 			instrument.CrashCymbal();
 		}
-		
 		else if (r == 2)
 		{
+			
 			instrument.ClosedHiHat();
 		}
 		
 		else if (r == 3)
 		{
-			instrument.RideCymbal();
+			instrument.OpenHiHat();
 		}
 		
 		else if (r == 4)
 		{
-			instrument.Snare();
+			instrument.RideCymbal();
 		}
 		
 		else if (r == 5)
 		{
-			instrument.HighTom();
+			instrument.Snare();
 		}
 		
 		else if (r == 6)
 		{
-			instrument.LowTom();
+			instrument.HighTom();
 		}
 		
 		else if (r == 7)
 		{
-			instrument.LowFloorTom();
+			instrument.LowTom();
 		}
 		
 		else if (r == 8)
 		{
-			instrument.BassDrum1();
+			instrument.LowFloorTom();
 		}
 		
 		else if (r == 9)
 		{
-			instrument.PedalHiHat();
+			instrument.BassDrum1();
 		}
+		
 		
 		return instrument;
 	}
