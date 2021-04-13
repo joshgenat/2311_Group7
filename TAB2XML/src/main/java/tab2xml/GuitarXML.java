@@ -61,15 +61,15 @@ public class GuitarXML {
 					Element attributes = doc.createElement("attributes");   
 					measureNumber.appendChild(attributes);   
 					
-						Divisions.divisions(doc, attributes, g);
+						Divisions.divisions(doc, attributes, g.div.get(0));
 						Key.key(doc, attributes, g);
-						Time.time(doc, attributes, g);
+						Time.time(doc, attributes, g.b.get(0), g.bt.get(0));
 						Clef.clef(doc, attributes, g);
 						Staff.staff(doc, attributes, g);
 						
 						int count = 2;
 						Element m = measureNumber;
-						
+						Element a = attributes;
 						if (g.repeats.get(count-2) != 1) {
 							Barline.barline(doc, measureNumber);
 							Direction.direction(doc, measureNumber, g.repeats.get(count-2));
@@ -109,6 +109,19 @@ public class GuitarXML {
 							Direction.direction(doc, m, g.repeats.get(count-2));
 						}
 						count++;	
+						if (g.b.get(count - 2) != g.b.get(count - 3) || 
+								g.bt.get(count - 2) != g.bt.get(count - 3)) {
+								Element attributes2 = doc.createElement("attributes");   
+								m.appendChild(attributes2);
+								a = attributes2;
+								
+								System.out.println(g.b.get(count-2) + "/" + g.bt.get(count-2));
+								Divisions.divisions(doc, a, g.div.get(count-2));
+								Key.key(doc, a, g);
+								Time.time(doc, a, g.b.get(count-2), g.bt.get(count-2));
+								Clef.clef(doc, a, g);
+								Staff.staff(doc, a, g);
+							}
 						}
 					}
 					
