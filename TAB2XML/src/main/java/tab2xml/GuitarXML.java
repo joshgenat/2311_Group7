@@ -114,8 +114,6 @@ public class GuitarXML {
 								Element attributes2 = doc.createElement("attributes");   
 								m.appendChild(attributes2);
 								a = attributes2;
-								
-								System.out.println(g.b.get(count-2) + "/" + g.bt.get(count-2));
 								Divisions.divisions(doc, a, g.div.get(count-2));
 								Key.key(doc, a, g);
 								Time.time(doc, a, g.b.get(count-2), g.bt.get(count-2));
