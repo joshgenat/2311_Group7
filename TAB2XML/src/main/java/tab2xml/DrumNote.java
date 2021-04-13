@@ -19,13 +19,18 @@ public class DrumNote {
 		unpitched(doc, note, o, j);
 		stem(doc, note, o, j);
 		instrumentId(doc, note, o, j);
+		
+		if (o.notes.get(j).flamCheck != true) {
+		duration(doc, note, o, j);
+		}
+		
 		voice(doc, note, o, j);
 		type(doc, note, o, j);
         noteHead(doc, note, o, j);
       
-        if(o.beam1Statusfinder.get(j) == null)  
+        if(o.beam1Statusfinder.get(j) != null)  
 		beamNumber(doc, note, o, j);
-        if(o.beam2Statusfinder.get(j) == null)
+        if(o.beam2Statusfinder.get(j) != null)
         beamNumber2(doc, note, o, j);
         
 //        for (int i = 0; i < r; i++)
@@ -93,6 +98,12 @@ public class DrumNote {
 		Element instrumentId = doc.createElement("instrument");   
 		instrumentId.setAttribute("id", "" + o.notes.get(j).instrumentID);
 		note.appendChild(instrumentId);	
+	}
+	
+	static void duration(Document doc, Element note, DrumNoteObject o, int j) {
+		Element duration = doc.createElement("duration");   
+		duration.appendChild(doc.createTextNode("" + o.notes.get(j).duration) ); 
+		note.appendChild(duration); 
 	}
 	
 	static void voice(Document doc, Element note, DrumNoteObject o, int j) {
