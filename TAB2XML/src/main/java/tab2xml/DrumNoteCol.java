@@ -90,7 +90,6 @@ public class DrumNoteCol {
         }
 		 	}
 		     }
-		     System.out.println(colCoordinate);
 		}
 		
 		
