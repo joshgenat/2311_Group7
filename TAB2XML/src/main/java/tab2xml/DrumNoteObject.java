@@ -53,7 +53,7 @@ public class DrumNoteObject {
 	DrumMeasure drumMeasure = new DrumMeasure();
 	DrumFlam isFlam = new DrumFlam();
 	
-	public DrumNoteObject(Tab tab) {
+	public DrumNoteObject(Tab tab) throws Exception {
 		// the following values are only needed once for the MusicXML Code
 		this.tab = tab;
 		sign = "percussion";
@@ -124,7 +124,7 @@ public class DrumNoteObject {
 		note1.displayOctave = octave.DrumOctaves(rowSymbols, row);
 		note1.duration = noteduration.NoteDurationLength(col, nextCol, nextNextCol, barLineCols.DrumBarLines(tab.nodes.get(i).nodes));
 		note1.stem = stemValue.FindStemValue(note1.voiceNumber);
-		note1.type = noteType.DrumNoteLength(note1.duration,divisions, tab.nodes.get(i).nodes);
+		note1.type = noteType.DrumNoteLength(note1.duration,divisions, tab.nodes.get(i).nodes, row, col);
 		note1.chord = drumChord.ChordFinder(col, nextCol, nextNextCol,preCol, barLineCols.DrumBarLines(tab.nodes.get(i).nodes));
 		note1.flamCheck = flam;
 		
