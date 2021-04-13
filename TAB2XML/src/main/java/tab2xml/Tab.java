@@ -131,13 +131,13 @@ public class Tab {
 		int repeat = getR(lines);
 		ArrayList<TabNodes> measures = new ArrayList<>();
 		ArrayList<Object> upperRepeats = new ArrayList<>();
-		ArrayList<Integer> Repeat3 = getR3(lines);
+		
 		
 		while(lines.get(0).toString().toLowerCase().contains("repeat")) {
 			upperRepeats.add(lines.get(0));
 			lines.remove(0);
 		}
-		
+		ArrayList<Integer> Repeat3 = getR3(lines);
 		int measureN = 0;
 		for(int i = 0; i < lines.get(0).toString().length(); i++) {
 			if(lines.get(0).toString().charAt(i) == '|') {measureN++;}
