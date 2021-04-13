@@ -9,6 +9,7 @@ public class TabNodes {
 	int repeat = 1;
 	int divisions;
 	int maxsize;
+	int s;
 	
 	/**
 	 * Constructor for the individual nodes (lines of Tabs)
@@ -18,10 +19,16 @@ public class TabNodes {
 		//Get The size of 2D string array and initialize
 		System.out.println();
 		maxsize = lines.get(1).toString().length();
+		s = lines.get(1).toString().substring(lines.get(1).toString().indexOf("|")).length()-2;
 		
 		nodes = new char[lines.size()][maxsize];
 		String a = "" + timeSignature.charAt(0);
-		divisions = (maxsize - 2)/(Integer.parseInt(a));
+		divisions = (s)/(Integer.parseInt(a));
+		if(Integer.parseInt(a) == 6)
+		{
+			divisions = (s)/3;
+		}
+		
 		
 		for(int i = 0; i < nodes.length; i++) {
 			for(int j = 0; j < nodes[i].length; j++) {
@@ -33,11 +40,11 @@ public class TabNodes {
 
 	public void setDiv() {
 		String a = "" + timeSignature.charAt(0);
-		divisions = (maxsize - 2)/(Integer.parseInt(a));
+		divisions = (s)/(Integer.parseInt(a));
 		if(Integer.parseInt(a) == 6)
 		{
-			divisions = (maxsize - 2)/3;
-		}
+			divisions = (s)/3;
+		}	
 	}
 
 }

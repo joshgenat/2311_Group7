@@ -205,6 +205,7 @@ public class Tab {
 			for(int i = 0; i <nodes.size(); i++) {
 				if(time.isBlank()) { nodes.get(i).timeSignature = "4/4"; }
 				else {nodes.get(i).timeSignature = time;}
+				nodes.get(i).setDiv();
 			}
 		}
 		catch(Exception e) {
