@@ -114,6 +114,8 @@ public class DrumXML {
 								if (o.notes.get(j).flamCheck == true)
 								DrumNoteGrace.note(doc, m, o, j);
 								
+								Barline2.barline(doc, measureNumber2, o.repeats.get(count-2));
+								
 								m = measureNumber2;
 								count++;	
 								}
