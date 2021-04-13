@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Test;
 import tab2xml.BackUpFinder;
 import tab2xml.DrumBeamNumber;
 import tab2xml.DrumNoteCol;
+import tab2xml.DrumNoteHead;
 import tab2xml.DrumNoteRow;
 import tab2xml.DrumNoteType;
 import tab2xml.DrumStem;
@@ -20,11 +21,6 @@ import tab2xml.DrumStem;
 
 public class DrumTester { 
 	
-<<<<<<< HEAD
-	//tester classes
-=======
-	
->>>>>>> branch 'develop' of https://github.com/joshgenat/2311_Group7.git
 	@Test
 	
 	public void RowArrayListTest()
@@ -257,5 +253,34 @@ public class DrumTester {
 		 
 		}
 	
-	
+	@Test
+	public void NoteHeadTest()
+	{
+		
+		DrumNoteHead head = new DrumNoteHead();	
+		
+		char[][] testTab = 
+			{
+					{'C', 'C', '|', 'x', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '|'},
+					{'H', 'H', '|', '-', '-', 'x', '-', 'x', '-', 'x', '-', 'x', '-', 'x', '-', 'x', '-', 'x', '-', '|'},
+					{'S', 'D', '|', '-', '-', '-', '-', 'o', '-', '-', '-', '-', '-', '-', '-', 'o', '-', '-', '-', '|'},
+					{'H', 'T', '|', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '|'},
+					{'M', 'T', '|', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '|'},
+					{'B', 'D', '|', 'o', '-', '-', '-', '-', '-', '-', '-', 'o', '-', '-', '-', '-', '-', '-', '-', '|'} 
+			};
+		
+		int [] rowSymbol = {1,2,4,5,6,8};
+		
+		ArrayList<Character> exp = new ArrayList<>();
+		ArrayList<Character> act = new ArrayList<>();
+		
+		
+		Character[] expectedValues = {'x', 'x', 'o', 'x', 'x', 'x', 'x', 'o', 'x', 'x', 'o', 'o'};
+		
+		exp = new ArrayList<Character>(Arrays.asList(expectedValues));
+		 
+		 act = head.NoteHeadReader(testTab, rowSymbol);
+		 assertEquals(exp, act);
+		 
+		}
 }
