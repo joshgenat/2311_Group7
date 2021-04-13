@@ -110,13 +110,14 @@ public class Controller {
 	private Tab b;
 	
 	public void initialize() {
-		ObservableList<String> signClefList = FXCollections.observableArrayList("Treble","Bass", "Tenor", "Percussion", "Tab");
+		ObservableList<String> signClefList = FXCollections.observableArrayList("Auto-Detect", "Treble","Bass", "Tenor", "Percussion", "Tab");
 		clefSignBox.setItems(signClefList);
 		clefSignBox.getSelectionModel().select(0);
 		measureListSave.setVisible(false);
 		measureListMax.setVisible(false);
 		repeatLabel.setVisible(false);
 		repeatField.setVisible(false);
+		editLabel.setVisible(false);
 	}
 	
 //	public void initializeTab() {
@@ -148,12 +149,14 @@ public class Controller {
 				c.setBeats(timeField.getText());
 	 			DrumXML d = new DrumXML(c);
 	 			xmlText.setText(d.text);
-	 			clefSignBox.getSelectionModel().select(3);
+	 			if(clefSignBox.getSelectionModel().getSelectedIndex() == 0) {
+	 			clefSignBox.getSelectionModel().select(4);
+	 			}
 				}
 				else {
-					String sign = "Treble";
-					if(clefSignBox.getSelectionModel().getSelectedIndex()==3) {
-						clefSignBox.getSelectionModel().select(0);
+					String sign = "Tab";
+					if(clefSignBox.getSelectionModel().getSelectedIndex()==0) {
+						clefSignBox.getSelectionModel().select(5);
 					}
 					else {sign = clefSignBox.getSelectionModel().getSelectedItem().toString();}
 					GuitarNoteObject c = new GuitarNoteObject(b,sign);
