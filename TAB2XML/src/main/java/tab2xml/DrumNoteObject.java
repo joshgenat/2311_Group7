@@ -16,6 +16,7 @@ public class DrumNoteObject {
 	ArrayList<Integer> repeats = new ArrayList<>();
 	ArrayList<Integer> b = new ArrayList<>();
 	ArrayList<Integer> bt = new ArrayList<>();
+	ArrayList<Integer> div = new ArrayList<>();
 	ArrayList<DrumNotes> notes = new ArrayList<DrumNotes>();
 	ArrayList<DrumPartsList> instruments = new ArrayList<>();
 	ArrayList<Boolean> backUpFinder = new ArrayList<>();
@@ -89,6 +90,7 @@ public class DrumNoteObject {
 		this.setBeats(tab.nodes.get(i).timeSignature);
 		b.add(this.beats);
 		bt.add(this.beatsType);
+		div.add(divisions);
 
 		ArrayList<Integer> rowCoordinate = rowValue.RowReader(tab.nodes.get(i).nodes,rowSymbols);
 		ArrayList<Integer> colCoordinate = colValue.ColReader(tab.nodes.get(i).nodes,rowSymbols);
@@ -141,6 +143,8 @@ public class DrumNoteObject {
 		}
 		
 		}
+		this.beats = b.get(0);
+		this.beatsType = bt.get(0);
 		
 	}
 	

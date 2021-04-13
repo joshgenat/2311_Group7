@@ -68,15 +68,16 @@ public class DrumXML {
 					measureNumber.setAttribute("number", "1");
 					partId.appendChild(measureNumber); 
 					
-						Element attributes = doc.createElement("attributes");   
-						measureNumber.appendChild(attributes);
+					Element attributes = doc.createElement("attributes");   
+					measureNumber.appendChild(attributes);
 						
-							Divisions.divisions(doc, attributes, o);
+							Divisions.divisions(doc, attributes, o.div.get(0));
 							Key.key(doc, attributes, o);				
-							Time.time(doc, attributes, o);
+							Time.time(doc, attributes, o.b.get(0), o.bt.get(0));
 							Clef.clef(doc, attributes, o);
 						
 							Element m = measureNumber;
+							Element a = attributes;
 							int count = 2;
 							if (o.repeats.get(count-2) != 1) {
 							Barline.barline(doc, measureNumber);
@@ -124,9 +125,13 @@ public class DrumXML {
 								
 								if (o.b.get(count - 2) != o.b.get(count - 3) || 
 										o.bt.get(count - 2) != o.bt.get(count - 3)) {
-										
-										Divisions.divisions(doc, attributes, o);
-										Time.time(doc, attributes, o);
+										Element attributes2 = doc.createElement("attributes");   
+										m.appendChild(attributes2);
+										a = attributes2;
+										Divisions.divisions(doc, a, o.div.get(count-2));
+										Key.key(doc, a, o);				
+										Time.time(doc, a, o.b.get(count-2), o.bt.get(count-2));
+										Clef.clef(doc, a, o);
 									}
 								}
 							}
