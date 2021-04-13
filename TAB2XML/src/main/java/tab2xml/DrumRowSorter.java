@@ -1,10 +1,12 @@
 package tab2xml;
 
+import exceptions.*;
+
 public class DrumRowSorter {
 
 	static int [] rowSymbols; 	
 	
-	public int [] rowSymbolsSorter(char [][] tab)
+	public int [] rowSymbolsSorter(char [][] tab) throws Exception
 	{
 		rowSymbols = new int[tab.length];
 		//i checks rowSymbols and j checks col 
@@ -76,6 +78,12 @@ public class DrumRowSorter {
         	{
         		rowSymbols[i] = 9;
         		
+        		
+        	}
+			
+        	else 
+        	{
+        		throw new InproperInstrumentException(i);
         		
         	}
         }

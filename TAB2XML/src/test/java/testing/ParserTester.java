@@ -69,6 +69,16 @@ class ParserTester {
 		
 	}
 	
+	@Test
+	public void isBassTypeCorrect() {
+		File a = new File("src/test/resources/sampleg.txt");
+		ArrayList<Object> lines = readFile(a);
+		lines.remove(lines.size()-1);
+		Tab b = new Tab(lines);
+		assertEquals("Bass", b.Type);
+		
+	}
+	
 //	//Tests if |------Repeatx8------| type of repeat works
 //	@Test
 //	public void repeatType1() {

@@ -15,10 +15,14 @@ public class GuitarNoteObject {
 	String sign;
 	int line;
 	int staffLines;
+	char type;
 	ArrayList<GuitarNotes> notes = new ArrayList<GuitarNotes>();
 	ArrayList<Character> tStep = new ArrayList<>();
 	ArrayList<Integer> tOctave = new ArrayList<>();
 	ArrayList<Integer> repeats = new ArrayList<>();
+	ArrayList<Integer> b = new ArrayList<>();
+	ArrayList<Integer> bt = new ArrayList<>();
+	ArrayList<Integer> div = new ArrayList<>();
 	int maxMeasure;
 	GuitarChord chords[];
 	
@@ -45,10 +49,15 @@ public class GuitarNoteObject {
 		fifths = 0;
 		beats = 6;
 		beatsType = 8;
-		char type = 'a';
+		type = 'a';
 		if(tab.Type.equals("Bass")) { type = 'b'; }
 		for(int i = 0; i < tab.nodes.size(); i++) {
 			repeats.add(tab.nodes.get(i).repeat);
+			divisions = tab.nodes.get(i).divisions;
+			this.setBeats(tab.nodes.get(i).timeSignature);
+			b.add(this.beats);
+			bt.add(this.beatsType);
+			div.add(divisions);
 			chords = convert.converter(tab.nodes.get(i).nodes, i + 1, type);
 			for(int j = 0; j < chords.length; j++) {
 				if(chords[j] == null) break;
@@ -59,6 +68,8 @@ public class GuitarNoteObject {
 			}
 		}
 		maxMeasure = notes.get(notes.size()-1).measure;
+		this.beats = b.get(0);
+		this.beatsType = bt.get(0);
 	}
 	
 	public void setSign(String sign) {

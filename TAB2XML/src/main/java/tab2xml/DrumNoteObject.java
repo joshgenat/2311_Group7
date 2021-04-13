@@ -14,6 +14,9 @@ public class DrumNoteObject {
 	String title = "Untitled";
 	Tab tab;
 	ArrayList<Integer> repeats = new ArrayList<>();
+	ArrayList<Integer> b = new ArrayList<>();
+	ArrayList<Integer> bt = new ArrayList<>();
+	ArrayList<Integer> div = new ArrayList<>();
 	ArrayList<DrumNotes> notes = new ArrayList<DrumNotes>();
 	ArrayList<DrumPartsList> instruments = new ArrayList<>();
 	ArrayList<Boolean> backUpFinder = new ArrayList<>();
@@ -45,6 +48,7 @@ public class DrumNoteObject {
 	DrumVoice voiceValue = new DrumVoice();
 	DrumStem stemValue = new DrumStem();
 	DrumNoteType noteType = new DrumNoteType();
+	DrumNoteType dotnumber = new DrumNoteType();
 	DrumDividers barLineCols = new DrumDividers();
 	BackUpFinder backUpLocator = new BackUpFinder();
 	DrumNoteHead noteHead = new DrumNoteHead();
@@ -76,12 +80,17 @@ public class DrumNoteObject {
 		 * noteRowValues and noteColValues are parallel arrays which store the coordinates of the notes being played
 		 *  arrays are programmed in a way where, voice one notes go first, then followed by voice 2 notes
 		 *  When noteRowValue[counter] and noteColValues[counter] = 100, this means switching from voice one to voice two, temporally voice will be equal to 0
-		 *  this will signal the back up funtion of the MusicXML codesd
+		 *  this will signal the back up funtion of the MusicXML codess
 		 */
 		
 		int [] rowSymbols = note.rowSymbolsSorter(tab.nodes.get(i).nodes);	 
 		
 		repeats.add(tab.nodes.get(i).repeat);
+		divisions = tab.nodes.get(i).divisions;
+		this.setBeats(tab.nodes.get(i).timeSignature);
+		b.add(this.beats);
+		bt.add(this.beatsType);
+		div.add(divisions);
 
 		ArrayList<Integer> rowCoordinate = rowValue.RowReader(tab.nodes.get(i).nodes,rowSymbols);
 		ArrayList<Integer> colCoordinate = colValue.ColReader(tab.nodes.get(i).nodes,rowSymbols);
@@ -125,6 +134,7 @@ public class DrumNoteObject {
 		note1.duration = noteduration.NoteDurationLength(col, nextCol, nextNextCol, barLineCols.DrumBarLines(tab.nodes.get(i).nodes));
 		note1.stem = stemValue.FindStemValue(note1.voiceNumber);
 		note1.type = noteType.DrumNoteLength(note1.duration,divisions, tab.nodes.get(i).nodes, row, col);
+		note1.dot =  dotnumber.DotValue(note1.duration, divisions, tab.nodes.get(i).nodes);
 		note1.chord = drumChord.ChordFinder(col, nextCol, nextNextCol,preCol, barLineCols.DrumBarLines(tab.nodes.get(i).nodes));
 		note1.flamCheck = flam;
 		
@@ -133,6 +143,8 @@ public class DrumNoteObject {
 		}
 		
 		}
+		this.beats = b.get(0);
+		this.beatsType = bt.get(0);
 		
 	}
 	

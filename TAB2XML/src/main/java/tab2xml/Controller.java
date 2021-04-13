@@ -120,17 +120,6 @@ public class Controller {
 		editLabel.setVisible(false);
 	}
 	
-//	public void initializeTab() {
-//		String [] parse = tabText.getText().split("\n");
-//		ArrayList<Object> lines = new ArrayList<Object>();
-//		
-//		for(int i = 0; i < parse.length; i++) {
-//			lines.add(parse[i]);
-//		}
-//		
-//		b = new Tab(lines);
-//		System.out.println("test");
-//	}
 	
 	public void convert(ActionEvent Event) throws IOException {
 		try {
@@ -143,11 +132,11 @@ public class Controller {
 			
 			b = new Tab(lines);
 			b.setTime(timeField.getText());
-			
+			System.out.println(b.nodes.get(0).timeSignature);
 			if(b.Type.equals("Drum")) {
 				DrumNoteObject c = new DrumNoteObject(b);
 				if(!songNameField.getText().isBlank()) { c.title = songNameField.getText(); }
-				c.setBeats(timeField.getText());
+				
 	 			DrumXML d = new DrumXML(c);
 	 			xmlText.setText(d.text);
 	 			if(clefSignBox.getSelectionModel().getSelectedIndex() == 0) {
@@ -162,7 +151,7 @@ public class Controller {
 					else {sign = clefSignBox.getSelectionModel().getSelectedItem().toString();}
 					GuitarNoteObject c = new GuitarNoteObject(b,sign);
 					if(!songNameField.getText().isBlank()) { c.title = songNameField.getText(); }
-					c.setBeats(timeField.getText());
+					
 					GuitarXML d = new GuitarXML(c);
 					xmlText.setText(d.text);
 				}

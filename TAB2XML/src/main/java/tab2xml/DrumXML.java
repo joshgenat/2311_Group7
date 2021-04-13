@@ -68,22 +68,23 @@ public class DrumXML {
 					measureNumber.setAttribute("number", "1");
 					partId.appendChild(measureNumber); 
 					
-						Element attributes = doc.createElement("attributes");   
-						measureNumber.appendChild(attributes);
+					Element attributes = doc.createElement("attributes");   
+					measureNumber.appendChild(attributes);
 						
-							Divisions.divisions(doc, attributes, o);
+							Divisions.divisions(doc, attributes, o.div.get(0));
 							Key.key(doc, attributes, o);				
-							Time.time(doc, attributes, o);
+							Time.time(doc, attributes, o.b.get(0), o.bt.get(0));
 							Clef.clef(doc, attributes, o);
 						
 							Element m = measureNumber;
+							Element a = attributes;
 							int count = 2;
 							if (o.repeats.get(count-2) != 1) {
 							Barline.barline(doc, measureNumber);
 							Direction.direction(doc, measureNumber, o.repeats.get(count-2));
 							}
 							
-						for(int j = 0; j < o.notes.size()-1; j++) {
+						for(int j = 0; j < o.notes.size(); j++) {
 							
 							if (o.measurefinder.get(j) != true) {
 								
@@ -98,8 +99,10 @@ public class DrumXML {
 							}
 							else { 
 								
+								
 								Element measureNumber2 = doc.createElement("measure"); 
 								measureNumber2.setAttribute("number", "" + count);
+								if(count-1 < o.repeats.size())
 								partId.appendChild(measureNumber2);
 								
 								
@@ -120,10 +123,23 @@ public class DrumXML {
 									Direction.direction(doc, m, o.repeats.get(count-2));
 								}
 								count++;	
+								
+								if(count-2 < o.b.size())
+								if (o.b.get(count - 2) != o.b.get(count - 3) || 
+										o.bt.get(count - 2) != o.bt.get(count - 3)) {
+										Element attributes2 = doc.createElement("attributes");   
+										m.appendChild(attributes2);
+										a = attributes2;
+										Divisions.divisions(doc, a, o.div.get(count-2));
+										Key.key(doc, a, o);				
+										Time.time(doc, a, o.b.get(count-2), o.bt.get(count-2));
+										Clef.clef(doc, a, o);
+									}
 								}
 							}
-							if(o.repeats.get(o.repeats.size()-1) != 1) {
-								Barline2.barline(doc, m, o.repeats.get(count-2));
+							
+						    if(o.repeats.get(o.repeats.size()-1) != 1) {
+								Barline2.barline(doc, m, o.repeats.get(count-3));
 							}
 							else {
 								Barline2.barline(doc, m, 0);
