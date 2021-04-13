@@ -33,7 +33,7 @@ public class GuitarXML {
 			rootElement.appendChild(work); 
 		
 				Element workTitle = doc.createElement("work-title"); 
-				workTitle.appendChild(doc.createTextNode("https://www.youtube.com/watch?v=dQw4w9WgXcQ"));
+				workTitle.appendChild(doc.createTextNode(g.title));
 				work.appendChild(workTitle); 
 			
 			Element partList = doc.createElement("part-list"); 

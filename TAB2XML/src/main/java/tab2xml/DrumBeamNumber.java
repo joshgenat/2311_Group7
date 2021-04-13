@@ -19,7 +19,7 @@ public class DrumBeamNumber {
 
 	
 	ArrayList <String> BeamOneStatus(ArrayList<Integer> rowCoordinate, ArrayList<Integer> colCoordinate, 
-			ArrayList <Character> NoteHeadReader, ArrayList<Integer> barLineCols, int [] rowSymbols)
+			ArrayList <Character> NoteHeadReader, ArrayList<Integer> barLineCols, int [] rowSymbols, char [][] drumTab)
 	{
 		//[2, 1, 1, 0, 2, 4, 3, 2, 5, 5, 4, 1, 3, 3, 0, 4, 1, 5, 5]
 		//[3, 4, 5, 5, 6, 7, 8, 8, 4, 8, 10, 10, 13, 14, 14, 15, 16, 10, 12]
@@ -36,7 +36,10 @@ public class DrumBeamNumber {
 		
 		voice = new ArrayList <Integer> ();
 		 duration = new ArrayList <Integer> ();			 
-				 
+				
+		 
+		 
+		 //duration calculator 
 			for(int j = 0; j < rowCoordinate.size(); j++) {
 				
 				int row = rowCoordinate.get(j);
@@ -56,16 +59,6 @@ public class DrumBeamNumber {
 				{
 					for (int i = 0; i < barLineCols.size(); i++) 
 					{
-						if(i+1 < barLineCols.size()) 
-						{
-							if ((barLineCols.get(i) < col) && (nextCol > barLineCols.get(i+1)) && (col< barLineCols.get(i+1)))
-							{
-							durationcount = barLineCols.get(i+1) - col; 
-							breaksDivider  = true;
-							
-							}
-						}
-						
 						
 						if (breaksDivider == false)
 						{
@@ -94,15 +87,6 @@ public class DrumBeamNumber {
 					
 					for (int i = 0; i < barLineCols.size(); i++) 
 					{
-						if(i+1 < barLineCols.size()) 
-						{
-							if ((barLineCols.get(i) < col) && (nextNextCol > barLineCols.get(i+1)) && (col< barLineCols.get(i+1)))
-								{
-								durationcount = barLineCols.get(i+1) - col; 
-								breaksDivider  = true;
-							
-								}
-						}
 						
 						
 						if (breaksDivider == false)
@@ -127,11 +111,6 @@ public class DrumBeamNumber {
 				}
 				duration.add(durationcount);
 				breaksDivider = false;
-				
-				
-				
-				
-				
 			
 			}
 			 
@@ -156,11 +135,10 @@ public class DrumBeamNumber {
 			
 			
 			
-			
-			
 			}
 			
-			
+			System.out.println(voice.size() + "hehe");
+			System.out.println(duration);
 			
 			
 			
@@ -221,6 +199,7 @@ public class DrumBeamNumber {
 				//int [] colsample = {3, 5, 7, 7, 9, 11, 13, 15, 15, 17, 3, 11, 20, 21, 22, 23, 24, 25, 26, 27, 28, 20, 28};
 				//char [] headsample = {'x', 'x', 'o', 'x', 'x', 'x', 'x', 'o', 'x', 'x', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'x', 'o', 'o'};
 				
+				
 				if(preCol == col)
 				{
 					// tells us we are dealing with a coard situation so we dont need to enter a beam 
@@ -230,17 +209,16 @@ public class DrumBeamNumber {
 				chord = true;
 				}	
 			
-				if (nextCol == nextNextCol)
+				if ((nextCol == nextNextCol) && (nextCol != 0))
 				{
 					isNextchord = true; 
 				}
 						
-				
 				if ((currentDuration == 2) || (currentDuration == 1))
 						{
 										
-			
-										if (((nextDuration == 2) || (nextDuration == 1)) && (nextHead == currentHead) && (currentVoice == nextVoice) || (isNextchord = true))
+
+										if (((nextDuration == 2) || (nextDuration == 1)) && (nextHead == currentHead) && (currentVoice == nextVoice) || (isNextchord == true))
 										{
 											
 											//lets us know there's a chance of a beam, could be cpntinue or begin 
@@ -348,7 +326,7 @@ public class DrumBeamNumber {
 																											secondBeamStatus.add("end");
 																											//means 1,2,2 
 																											//measure 1 = continue 
-																											//measure 2 = end 
+																											//measure 2 = end v
 																										}
 																	
 																							}
@@ -508,7 +486,7 @@ public class DrumBeamNumber {
 												
 									    }
 										
-										else if (((preDuration == 2) || (preDuration == 1)  && (preHead == currentHead)) || (j == 0))
+										else if ((((preDuration == 2) || (preDuration == 1))  && (preHead == currentHead)) || (j == 0))
 										{
 											// example 1,2,3
 											// tells us the current duration is the end of a beam 
@@ -573,11 +551,16 @@ public class DrumBeamNumber {
 							}
 							else
 							{
-								NumofNotes = NumofNotes - 1;
+								if(NumofNotes != 0) {NumofNotes = NumofNotes - 1;}
+								else {NumofNotes = 0;}
 							}
 							
 							chord = false;
 						}		
+				
+				
+				
+				isNextchord = false;
 				
 				if (currentVoice != nextVoice)
 				{
@@ -591,10 +574,11 @@ public class DrumBeamNumber {
 					NumofNotes = 0;
 				}
 				
-				if (counter > 8)
+				if (counter > (drumTab[0].length/2))
 				{
 					counter = 0;
 				}
+				
 				
 		}
 		
@@ -605,17 +589,16 @@ public class DrumBeamNumber {
 		
 		
 		
-		
+			System.out.println(beamStatus);
 		
 		return beamStatus;
-	
 	
 	
 			
 }
 	
 	ArrayList <String> BeamTwoStatus(ArrayList<Integer> rowCoordinate, ArrayList<Integer> colCoordinate, 
-			ArrayList <Character> NoteHeadReader, ArrayList<Integer> barLineCols, int [] rowSymbols)
+			ArrayList <Character> NoteHeadReader, ArrayList<Integer> barLineCols, int [] rowSymbols, char [][] drumTab)
 	{
 		//[2, 1, 1, 0, 2, 4, 3, 2, 5, 5, 4, 1, 3, 3, 0, 4, 1, 5, 5]
 		//[3, 4, 5, 5, 6, 7, 8, 8, 4, 8, 10, 10, 13, 14, 14, 15, 16, 10, 12]
@@ -1186,7 +1169,7 @@ public class DrumBeamNumber {
 					NumofNotes = 0;
 				}
 				
-				if (counter > 8)
+				if (counter > (drumTab[0].length/2))
 				{
 					counter = 0;
 				}
