@@ -15,6 +15,7 @@ public class GuitarNoteObject {
 	String sign;
 	int line;
 	int staffLines;
+	char type;
 	ArrayList<GuitarNotes> notes = new ArrayList<GuitarNotes>();
 	ArrayList<Character> tStep = new ArrayList<>();
 	ArrayList<Integer> tOctave = new ArrayList<>();
@@ -48,7 +49,7 @@ public class GuitarNoteObject {
 		fifths = 0;
 		beats = 6;
 		beatsType = 8;
-		char type = 'a';
+		type = 'a';
 		if(tab.Type.equals("Bass")) { type = 'b'; }
 		for(int i = 0; i < tab.nodes.size(); i++) {
 			repeats.add(tab.nodes.get(i).repeat);
