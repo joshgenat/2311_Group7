@@ -14,6 +14,8 @@ public class DrumNoteObject {
 	String title = "Untitled";
 	Tab tab;
 	ArrayList<Integer> repeats = new ArrayList<>();
+	ArrayList<Integer> b = new ArrayList<>();
+	ArrayList<Integer> bt = new ArrayList<>();
 	ArrayList<DrumNotes> notes = new ArrayList<DrumNotes>();
 	ArrayList<DrumPartsList> instruments = new ArrayList<>();
 	ArrayList<Boolean> backUpFinder = new ArrayList<>();
@@ -83,6 +85,9 @@ public class DrumNoteObject {
 		
 		repeats.add(tab.nodes.get(i).repeat);
 		divisions = tab.nodes.get(i).divisions;
+		this.setBeats(tab.nodes.get(i).timeSignature);
+		b.add(this.beats);
+		bt.add(this.beatsType);
 
 		ArrayList<Integer> rowCoordinate = rowValue.RowReader(tab.nodes.get(i).nodes,rowSymbols);
 		ArrayList<Integer> colCoordinate = colValue.ColReader(tab.nodes.get(i).nodes,rowSymbols);

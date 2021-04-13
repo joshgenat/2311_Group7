@@ -98,6 +98,7 @@ public class DrumXML {
 							}
 							else { 
 								
+								
 								Element measureNumber2 = doc.createElement("measure"); 
 								measureNumber2.setAttribute("number", "" + count);
 								partId.appendChild(measureNumber2);
@@ -120,6 +121,13 @@ public class DrumXML {
 									Direction.direction(doc, m, o.repeats.get(count-2));
 								}
 								count++;	
+								
+								if (o.b.get(count - 2) != o.b.get(count - 3) || 
+										o.bt.get(count - 2) != o.bt.get(count - 3)) {
+										
+										Divisions.divisions(doc, attributes, o);
+										Time.time(doc, attributes, o);
+									}
 								}
 							}
 							if(o.repeats.get(o.repeats.size()-1) != 1) {
