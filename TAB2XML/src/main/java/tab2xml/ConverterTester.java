@@ -1,18 +1,19 @@
 package tab2xml;
+import exceptions.*;
 
 public class ConverterTester {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		GuitarConverter guitar = new GuitarConverter();
 		
 
 		String[] testExample = {
 				"|-----------0-----|-0---------------|",
-				"|---------0---0---|-0---------------|",
-				"|-------1-------1-|-1---------------|",
-				"|-----2-----------|-2---------------|",
+				"|-------------0---|-0---------------|",
+				"|---------------1-|-1---------------|",
+				"|-----12h11-------|-1---------------|",
 				"|---2-------------|-2---------------|",
-				"|-0---------------|-0---------------|"
+				"|-1---------------|-0---------------|"
 		};
 		
 		String[] test4 = {
@@ -78,11 +79,16 @@ public class ConverterTester {
 		
 		
 		
-		char[][] test3 = stringToCharArray(testP);
+		char[][] test3 = stringToCharArray(testExample);
 		
+		GuitarChord[] notes = null;
+		try {
+			notes = guitar.converter(test3, 1, 'b');
+		}
+		catch(InproperInputException e) {
+			System.out.println(e.message);
+		}
 		
-		
-		GuitarChord[] notes = guitar.converter(test3, 1, 'b');
 		
 		//System.out.println("\n test \n");
 		

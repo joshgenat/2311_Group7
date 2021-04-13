@@ -2,11 +2,11 @@ package exceptions;
 
 public class InproperInputException  extends Exception{
 
-	String message;
+	public String message;
 		
-	public InproperInputException (String message) 
+	public InproperInputException (int measure, int row, int col) 
 	{
-		this.message = message;
+		this.message = "Bad Tab! measure: " + measure + ", row: " + row + ", col: " + col;
 	}
 	
 }
