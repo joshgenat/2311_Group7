@@ -47,6 +47,7 @@ public class DrumNoteObject {
 	DrumVoice voiceValue = new DrumVoice();
 	DrumStem stemValue = new DrumStem();
 	DrumNoteType noteType = new DrumNoteType();
+	DrumNoteType dotnumber = new DrumNoteType();
 	DrumDividers barLineCols = new DrumDividers();
 	BackUpFinder backUpLocator = new BackUpFinder();
 	DrumNoteHead noteHead = new DrumNoteHead();
@@ -131,6 +132,7 @@ public class DrumNoteObject {
 		note1.duration = noteduration.NoteDurationLength(col, nextCol, nextNextCol, barLineCols.DrumBarLines(tab.nodes.get(i).nodes));
 		note1.stem = stemValue.FindStemValue(note1.voiceNumber);
 		note1.type = noteType.DrumNoteLength(note1.duration,divisions, tab.nodes.get(i).nodes, row, col);
+		note1.dot =  dotnumber.DotValue(note1.duration, divisions, tab.nodes.get(i).nodes);
 		note1.chord = drumChord.ChordFinder(col, nextCol, nextNextCol,preCol, barLineCols.DrumBarLines(tab.nodes.get(i).nodes));
 		note1.flamCheck = flam;
 		
