@@ -94,7 +94,7 @@ public class DrumNoteCol {
 		}
 		
 		
-		
+		return colCoordinate;
 	}
 	
 }
