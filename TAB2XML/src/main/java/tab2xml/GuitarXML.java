@@ -44,7 +44,7 @@ public class GuitarXML {
 				partList.appendChild(scorePart); 
 
 					Element partName = doc.createElement("part-name");   
-					partName.appendChild(doc.createTextNode("" + g.part)); 
+//					partName.appendChild(doc.createTextNode("" + g.part)); 
 					scorePart.appendChild(partName);               
     
 			
@@ -72,10 +72,10 @@ public class GuitarXML {
 						
 					for(int j = 0; j < g.notes.size() - 1 ; j++) {
 						
-						if (g.notes.get(j).isChord != null) {
-							Barline.barline(doc, measureNumber, g);
-							Direction.direction(doc, measureNumber, g);
-						}
+//						if (g.notes.get(j).isChord != null) {
+//							Barline.barline(doc, measureNumber, g);
+//							Direction.direction(doc, measureNumber, g);
+//						}
 						
 						if (g.notes.get(j).nextMeasure != true) {
 							GuitarNote.note(doc, m, g, j);
