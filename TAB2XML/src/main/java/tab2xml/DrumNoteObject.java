@@ -13,6 +13,7 @@ public class DrumNoteObject {
 	
 	String title = "Untitled";
 	Tab tab;
+	ArrayList<Integer> repeats = new ArrayList<>();
 	ArrayList<DrumNotes> notes = new ArrayList<DrumNotes>();
 	ArrayList<DrumPartsList> instruments = new ArrayList<>();
 	ArrayList<Boolean> backUpFinder = new ArrayList<>();
@@ -80,6 +81,7 @@ public class DrumNoteObject {
 		
 		int [] rowSymbols = note.rowSymbolsSorter(tab.nodes.get(i).nodes);	 
 		
+		repeats.add(tab.nodes.get(i).repeat);
 		
 		ArrayList<Integer> rowCoordinate = rowValue.RowReader(tab.nodes.get(i).nodes,rowSymbols);
 		ArrayList<Integer> colCoordinate = colValue.ColReader(tab.nodes.get(i).nodes,rowSymbols);
@@ -127,18 +129,8 @@ public class DrumNoteObject {
 		note1.flamCheck = flam;
 		
 		notes.add(note1);
-		//System.out.println(note1);
 
 		}
-		System.out.println(colCoordinate);
-		//System.out.println(flamFinder);
-		//System.out.println(rowCoordinate);
-		//System.out.println(backUpFinders);
-		System.out.println(noteHeadTypes);
-		System.out.println(beam1Statusfinders.size());
-		System.out.println(measurefinders.size());
-
-		//System.out.println();
 		
 		}
 		
