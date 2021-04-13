@@ -20,7 +20,11 @@ import tab2xml.DrumStem;
 
 public class DrumTester { 
 	
+<<<<<<< HEAD
 	//tester classes
+=======
+	
+>>>>>>> branch 'develop' of https://github.com/joshgenat/2311_Group7.git
 	@Test
 	
 	public void RowArrayListTest()
