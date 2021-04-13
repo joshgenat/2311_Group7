@@ -2,8 +2,7 @@ package tab2xml;
 import exceptions.*;
 
 public class GuitarConverter {
-	
-	
+
 	public static GuitarChord[] converter(char[][] in, int m, char type) throws InproperInputException { 
 		GuitarNotes[][] out = new GuitarNotes[in.length][in[0].length];
 		GuitarChord chords[] = new GuitarChord[in[0].length];
@@ -38,7 +37,7 @@ public class GuitarConverter {
 							skip[j] = 1;
 					}
 					else if(!isNum(in[j][i])) {
-						throw new InproperInputException("bruh2");
+						throw new InproperInputException(m, j+1, i+1);
 					}
 					else {
 						if(skip[j] == 0) {
