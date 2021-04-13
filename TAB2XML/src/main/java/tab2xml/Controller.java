@@ -146,6 +146,7 @@ public class Controller {
 			
 			if(b.Type.equals("Drum")) {
 				DrumNoteObject c = new DrumNoteObject(b);
+				if(!songNameField.getText().isBlank()) { c.title = songNameField.getText(); }
 				c.setBeats(timeField.getText());
 	 			DrumXML d = new DrumXML(c);
 	 			xmlText.setText(d.text);
@@ -160,6 +161,7 @@ public class Controller {
 					}
 					else {sign = clefSignBox.getSelectionModel().getSelectedItem().toString();}
 					GuitarNoteObject c = new GuitarNoteObject(b,sign);
+					if(!songNameField.getText().isBlank()) { c.title = songNameField.getText(); }
 					c.setBeats(timeField.getText());
 					GuitarXML d = new GuitarXML(c);
 					xmlText.setText(d.text);

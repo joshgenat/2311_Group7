@@ -11,7 +11,7 @@ public class DrumNoteObject {
 	 * 
 	 */
 	
-	
+	String title = "Untitled";
 	Tab tab;
 	ArrayList<DrumNotes> notes = new ArrayList<DrumNotes>();
 	ArrayList<DrumPartsList> instruments = new ArrayList<>();
