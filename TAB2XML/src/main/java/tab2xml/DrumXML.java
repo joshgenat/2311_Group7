@@ -19,7 +19,7 @@ public class DrumXML {
 	String text; 
 	
 	DrumXML(DrumNoteObject o) {
-		try {
+		try { 
 			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 
@@ -39,7 +39,7 @@ public class DrumXML {
 				rootElement.appendChild(work); 
 				
 					Element workTitle = doc.createElement("work-title"); 
-					workTitle.appendChild(doc.createTextNode("https://www.youtube.com/watch?v=dQw4w9WgXcQ"));
+					workTitle.appendChild(doc.createTextNode(o.title));
 					work.appendChild(workTitle); 
 			
 				Element partList = doc.createElement("part-list"); 
@@ -78,10 +78,16 @@ public class DrumXML {
 						
 							Element m = measureNumber;
 							int count = 2;
+							if (o.repeats.get(count-2) != 1) {
+							Barline.barline(doc, measureNumber, o.repeats.get(count-2));
+							Direction.direction(doc, measureNumber, o.repeats.get(count-2));
+							}
 							
 						for(int j = 0; j < o.notes.size() ; j++) {
 							
 							if (o.measurefinder.get(j) != true) {
+								
+
 								if(o.backUpFinder.get(j) == true) {
 									Backup.backup(doc, m, o, j);
 								}
@@ -94,6 +100,11 @@ public class DrumXML {
 								Element measureNumber2 = doc.createElement("measure"); 
 								measureNumber2.setAttribute("number", "" + count);
 								partId.appendChild(measureNumber2);
+								
+								if (o.repeats.get(count-2) != 1) {
+									Barline.barline(doc, measureNumber, o.repeats.get(count-2));
+									Direction.direction(doc, measureNumber, o.repeats.get(count-2));
+								}
 								
 								if(o.backUpFinder.get(j) == true) {
 									Backup.backup(doc, m, o, j);

@@ -11,8 +11,9 @@ public class DrumNoteObject {
 	 * 
 	 */
 	
-	
+	String title = "Untitled";
 	Tab tab;
+	ArrayList<Integer> repeats = new ArrayList<>();
 	ArrayList<DrumNotes> notes = new ArrayList<DrumNotes>();
 	ArrayList<DrumPartsList> instruments = new ArrayList<>();
 	ArrayList<Boolean> backUpFinder = new ArrayList<>();
@@ -80,14 +81,15 @@ public class DrumNoteObject {
 		
 		int [] rowSymbols = note.rowSymbolsSorter(tab.nodes.get(i).nodes);	 
 		
-		
+		repeats.add(tab.nodes.get(i).repeat);
+
 		ArrayList<Integer> rowCoordinate = rowValue.RowReader(tab.nodes.get(i).nodes,rowSymbols);
 		ArrayList<Integer> colCoordinate = colValue.ColReader(tab.nodes.get(i).nodes,rowSymbols);
 		ArrayList<Boolean> backUpFinders = backUpLocator.BackUpList(tab.nodes.get(i).nodes,rowSymbols);
 		ArrayList<Character> noteHeadTypes = noteHead.NoteHeadReader(tab.nodes.get(i).nodes,rowSymbols);
 		ArrayList<Integer> barlinecol = barLineCols.DrumBarLines(tab.nodes.get(i).nodes);
-		ArrayList<String> beam1Statusfinders = drumBeam.BeamOneStatus(rowCoordinate, colCoordinate, noteHeadTypes, barlinecol,rowSymbols);
-		ArrayList<String> beam2Statusfinders = drumBeam.BeamTwoStatus(rowCoordinate, colCoordinate, noteHeadTypes, barlinecol,rowSymbols);
+		ArrayList<String> beam1Statusfinders = drumBeam.BeamOneStatus(rowCoordinate, colCoordinate, noteHeadTypes, barlinecol,rowSymbols, tab.nodes.get(i).nodes);
+		ArrayList<String> beam2Statusfinders = drumBeam.BeamTwoStatus(rowCoordinate, colCoordinate, noteHeadTypes, barlinecol,rowSymbols, tab.nodes.get(i).nodes);
 		ArrayList<Boolean> measurefinders = drumMeasure.FindMeasure(tab.nodes.get(i).nodes, rowSymbols);
 		ArrayList<Boolean> flamFinder = isFlam.FlamFinder(tab.nodes.get(i).nodes,rowSymbols);
 		
@@ -122,23 +124,13 @@ public class DrumNoteObject {
 		note1.displayOctave = octave.DrumOctaves(rowSymbols, row);
 		note1.duration = noteduration.NoteDurationLength(col, nextCol, nextNextCol, barLineCols.DrumBarLines(tab.nodes.get(i).nodes));
 		note1.stem = stemValue.FindStemValue(note1.voiceNumber);
-		note1.type = noteType.DrumNoteLength(note1.duration);
+		note1.type = noteType.DrumNoteLength(note1.duration,divisions, tab.nodes.get(i).nodes);
 		note1.chord = drumChord.ChordFinder(col, nextCol, nextNextCol,preCol, barLineCols.DrumBarLines(tab.nodes.get(i).nodes));
 		note1.flamCheck = flam;
 		
 		notes.add(note1);
-		//System.out.println(note1);
 
 		}
-		//System.out.println(colCoordinate);
-		//System.out.println(flamFinder);
-		//System.out.println(rowCoordinate);
-		//System.out.println(backUpFinders);
-		//System.out.println(noteHeadTypes);
-		//System.out.println(beam1Statusfinders.size());
-		//System.out.println(measurefinders.size());
-
-		//System.out.println();
 		
 		}
 		

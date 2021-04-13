@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class GuitarNoteObject {
 
+	String title = "Untitled";
 	Tab tab;
 	int divisions;
 	int fifths;

@@ -33,7 +33,7 @@ public class GuitarXML {
 			rootElement.appendChild(work); 
 		
 				Element workTitle = doc.createElement("work-title"); 
-				workTitle.appendChild(doc.createTextNode("https://www.youtube.com/watch?v=dQw4w9WgXcQ"));
+				workTitle.appendChild(doc.createTextNode(g.title));
 				work.appendChild(workTitle); 
 			
 			Element partList = doc.createElement("part-list"); 
@@ -44,7 +44,7 @@ public class GuitarXML {
 				partList.appendChild(scorePart); 
 
 					Element partName = doc.createElement("part-name");   
-					partName.appendChild(doc.createTextNode("Guitar")); 
+//					partName.appendChild(doc.createTextNode("" + g.part)); 
 					scorePart.appendChild(partName);               
     
 			
@@ -72,8 +72,16 @@ public class GuitarXML {
 						
 					for(int j = 0; j < g.notes.size() - 1 ; j++) {
 						
-					if (g.notes.get(j).nextMeasure != true) {
-						GuitarNote.note(doc, m, g, j);
+//						if (g.repeats.get(count) != 1) {
+//							Barline.barline(doc, measureNumber, g.repeats.get(count));
+//							Direction.direction(doc, measureNumber, g.repeats.get(j));
+//						if (g.notes.get(j).isChord != null) {
+//							Barline.barline(doc, measureNumber, g);
+//							Direction.direction(doc, measureNumber, g);
+//						}
+						
+						if (g.notes.get(j).nextMeasure != true) {
+							GuitarNote.note(doc, m, g, j);
 						
 						if (g.notes.get(j).hammerTo != null)
 							GuitarNoteHammer.note2(doc, m, g, j);
@@ -86,16 +94,29 @@ public class GuitarXML {
 						Element measureNumber2 = doc.createElement("measure"); 
 						measureNumber2.setAttribute("number", "" + count);
 						partId.appendChild(measureNumber2);
+						
+//						if (g.repeats.get(count) != 1) {
+//							Barline.barline(doc, measureNumber, g.repeats.get(count));
+//							Direction.direction(doc, measureNumber, g.repeats.get(j));
+//						}
+						
 						GuitarNote.note(doc, m, g, j);
+						
+						if (g.notes.get(j).hammerTo != null)
+							GuitarNoteHammer.note2(doc, m, g, j);
+						
+						else if (g.notes.get(j).pullTo != null)
+							GuitarNotePull.note3(doc, m, g, j);
+						
 						m = measureNumber2;
 						count++;	
 						}
 					}
 					
 					
-					Barline.barline(doc, measureNumber, g);
+					Barline2.barline(doc, measureNumber, g); 
 				
-				
+				 
 	
 		// write content into XML file
 		TransformerFactory transformerFactory = TransformerFactory.newInstance();

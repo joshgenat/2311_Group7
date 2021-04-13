@@ -63,17 +63,23 @@ public class DrumNoteGrace {
 		
 	static void stem(Document doc, Element note, DrumNoteObject o, int j) {
 		Element stem = doc.createElement("stem");   
+		stem.appendChild(doc.createTextNode("" + o.notes.get(j).stem) ); 
 		note.appendChild(stem);	
-		
-		if (o.notes.get(j).flamCheck == true)
-		slurNumber(doc, stem, o, j);
 	}
 	
-		static void slurNumber(Document doc, Element stem, DrumNoteObject o, int j) {
+	static void notations(Document doc, Element note, DrumNoteObject o, int j) {
+		Element notations = doc.createElement("notations");
+		note.appendChild(notations);	
+		
+		if (o.notes.get(j).flamCheck == true)
+		slurNumber(doc, notations, o, j);
+	}
+	
+		static void slurNumber(Document doc, Element notations, DrumNoteObject o, int j) {
 			Element slurNumber = doc.createElement("slur");  
 			slurNumber.setAttribute("number", "1");
-			slurNumber.setAttribute("type", "stop");
-			stem.appendChild(slurNumber);
+			slurNumber.setAttribute("type", "start");
+			notations.appendChild(slurNumber);
 		}
 	
 	static void instrumentId(Document doc, Element note, DrumNoteObject o, int j) {
