@@ -23,6 +23,15 @@ class GuitarConverterTester {
 			{'|', '-', '0', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '|', '-', '0', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '|'}
 	};
 	
+	char[][] testSpecial = {
+			{'|', '-', '1', 'h', '2', '-', '-', '|'},
+			{'|', '-', '1', '1', 'h', '1', '2', '|'},
+			{'|', '-', '1', 'p', '2', '-', '-', '|'},
+			{'|', '-', '1', '1', 'p', '1', '2', '|'},
+			{'|', 'g', '1', '-', '-', '-', '-', '|'},
+			{'|', 'g', '1', '1', '-', '-', '-', '|'}
+	};
+	
 	String[][] expectedNote = {
 			{"-", "-", "-", "-", "-", "E", "-", "-", "E", "-"},
 			{"-", "-", "-", "-", "C", "-", "B", "-", "B", "-"},
@@ -237,6 +246,55 @@ class GuitarConverterTester {
 			assertEquals(false, true);
 		}
 		
+	}
+	
+	@Test
+	void hammerTest() {
+		try {
+			GuitarChord[] result = guitar.converter(testSpecial, 1, 'a');
+			assertEquals(result[0].notes[0].isHammer, true);
+			assertEquals(result[0].notes[0].note, "F");
+			assertEquals(result[0].notes[0].hammerTo.note, "F#");
+			
+			assertEquals(result[0].notes[1].isHammer, true);
+			assertEquals(result[0].notes[1].note, "A#");
+			assertEquals(result[0].notes[1].hammerTo.note, "B");
+		}
+		catch(InproperInputException e) {
+			assertEquals(false, true);
+		}
+	}
+	
+	@Test
+	void pullTest() {
+		try {
+			GuitarChord[] result = guitar.converter(testSpecial, 1, 'a');
+			assertEquals(result[0].notes[2].isPull, true);
+			assertEquals(result[0].notes[2].note, "G#");
+			assertEquals(result[0].notes[2].pullTo.note, "A");
+			
+			assertEquals(result[0].notes[3].isPull, true);
+			assertEquals(result[0].notes[3].note, "C#");
+			assertEquals(result[0].notes[3].pullTo.note, "D");
+		}
+		catch(InproperInputException e) {
+			assertEquals(false, true);
+		}
+	}
+	
+	@Test
+	void graceTest() {
+		try {
+			GuitarChord[] result = guitar.converter(testSpecial, 1, 'a');
+			assertEquals(result[0].notes[4].isGrace, true);
+			assertEquals(result[0].notes[4].note, "A#");
+			
+			assertEquals(result[0].notes[5].isGrace, true);
+			assertEquals(result[0].notes[5].note, "D#");
+		}
+		catch(InproperInputException e) {
+			assertEquals(false, true);
+		}
 	}
 	
 	private int rInd(int max) {

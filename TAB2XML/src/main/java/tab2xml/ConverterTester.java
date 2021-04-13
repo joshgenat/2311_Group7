@@ -34,12 +34,12 @@ public class ConverterTester {
 		};
 		
 		String[] test6 = {
-				"|0-1-2-3-4-5-6-----|",
-				"|0-1-2-3-4-5-6-----|",
-				"|0-1-2-3-4-5-6-----|",
-				"|0-1-2-3-4-5-6-----|",
-				"|0-1-2-3-4-5-6-----|",
-				"|0-1-2-3-4-5-6-----|"
+				"|0-1-2-10-1--1-|",
+				"|0-1-2-10-2----|",
+				"|0-1-2-10-4--1-|",
+				"|0-1-2-10-8----|",
+				"|0-1-2-10-16-1-|",
+				"|0-1-2-10-21---|"
 		};
 		
 		String[] test7 = {
@@ -81,11 +81,11 @@ public class ConverterTester {
 		
 		
 		
-		char[][] test3 = stringToCharArray(testExample);
+		char[][] test3 = stringToCharArray(test6);
 		
 		GuitarChord[] notes = null;
 		try {
-			notes = guitar.converter(test3, 1, 'b');
+			notes = guitar.converter(test3, 1, 'a');
 		}
 		catch(InproperInputException e) {
 			System.out.println(e.message);
@@ -96,7 +96,7 @@ public class ConverterTester {
 		
 		for(int i = 0; i < test3.length; i++) {
 			for(int j = 0; j < test3[0].length; j++) {
-					System.out.print(test3[i][j]);
+					System.out.print("\'" + test3[i][j] + "\',");
 				}
 			System.out.println();
 		}
@@ -112,9 +112,9 @@ public class ConverterTester {
 				//System.out.print("\'" + notes[j].notes[i].step + "\', ");
 				//System.out.print(notes[j].notes[i].nextMeasure + ", ");
 				if(false)
-					System.out.print("\t" + notes[j].notes[i]);
+					System.out.print(notes[j].notes[i].octave + ", ");
 				else
-					System.out.print("\t" + notes[j].notes[i].fret + "\t");
+					System.out.print(notes[j].notes[i] + "\", \"");
 			}	
 			System.out.print("},\n"); 
 		} 
