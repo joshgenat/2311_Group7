@@ -84,7 +84,7 @@ public class DrumXML {
 							Direction.direction(doc, measureNumber, o.repeats.get(count-2));
 							}
 							
-						for(int j = 0; j < o.notes.size()-1; j++) {
+						for(int j = 0; j < o.notes.size(); j++) {
 							
 							if (o.measurefinder.get(j) != true) {
 								
@@ -102,6 +102,7 @@ public class DrumXML {
 								
 								Element measureNumber2 = doc.createElement("measure"); 
 								measureNumber2.setAttribute("number", "" + count);
+								if(count-1 < o.repeats.size())
 								partId.appendChild(measureNumber2);
 								
 								
@@ -123,6 +124,7 @@ public class DrumXML {
 								}
 								count++;	
 								
+								if(count-2 < o.b.size())
 								if (o.b.get(count - 2) != o.b.get(count - 3) || 
 										o.bt.get(count - 2) != o.bt.get(count - 3)) {
 										Element attributes2 = doc.createElement("attributes");   
@@ -135,8 +137,9 @@ public class DrumXML {
 									}
 								}
 							}
-							if(o.repeats.get(o.repeats.size()-1) != 1) {
-								Barline2.barline(doc, m, o.repeats.get(count-2));
+							
+						    if(o.repeats.get(o.repeats.size()-1) != 1) {
+								Barline2.barline(doc, m, o.repeats.get(count-3));
 							}
 							else {
 								Barline2.barline(doc, m, 0);

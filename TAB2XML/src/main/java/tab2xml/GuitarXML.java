@@ -75,7 +75,7 @@ public class GuitarXML {
 							Direction.direction(doc, measureNumber, g.repeats.get(count-2));
 						}
 						
-					for(int j = 0; j < g.notes.size() - 1 ; j++) {
+					for(int j = 0; j < g.notes.size() ; j++) {
 						
 						if (g.notes.get(j).nextMeasure != true) {
 							GuitarNote.note(doc, m, g, j);
@@ -90,6 +90,7 @@ public class GuitarXML {
 					else { 
 						Element measureNumber2 = doc.createElement("measure"); 
 						measureNumber2.setAttribute("number", "" + count);
+						if(count-1 < g.repeats.size())
 						partId.appendChild(measureNumber2);
 						
 						
@@ -109,6 +110,7 @@ public class GuitarXML {
 							Direction.direction(doc, m, g.repeats.get(count-2));
 						}
 						count++;	
+						if(count-2 < g.b.size())
 						if (g.b.get(count - 2) != g.b.get(count - 3) || 
 								g.bt.get(count - 2) != g.bt.get(count - 3)) {
 								Element attributes2 = doc.createElement("attributes");   
@@ -124,7 +126,7 @@ public class GuitarXML {
 					}
 					
 					if(g.repeats.get(g.repeats.size()-1) != 1) {
-						Barline2.barline(doc, m, g.repeats.get(count-2));
+						Barline2.barline(doc, m, g.repeats.get(count-3));
 					}
 					else {
 						Barline2.barline(doc, m, 0);
