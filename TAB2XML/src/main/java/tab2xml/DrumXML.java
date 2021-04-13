@@ -83,7 +83,7 @@ public class DrumXML {
 							Direction.direction(doc, measureNumber, o.repeats.get(count-2));
 							}
 							
-						for(int j = 0; j < o.notes.size() ; j++) {
+						for(int j = 0; j < o.notes.size()-1; j++) {
 							
 							if (o.measurefinder.get(j) != true) {
 								
@@ -97,30 +97,38 @@ public class DrumXML {
 									DrumNoteGrace.note(doc, m, o, j);
 							}
 							else { 
+								
 								Element measureNumber2 = doc.createElement("measure"); 
 								measureNumber2.setAttribute("number", "" + count);
 								partId.appendChild(measureNumber2);
 								
-								if (o.repeats.get(count-2) != 1) {
-									Barline.barline(doc, measureNumber, o.repeats.get(count-2));
-									Direction.direction(doc, measureNumber, o.repeats.get(count-2));
-								}
 								
 								if(o.backUpFinder.get(j) == true) {
 									Backup.backup(doc, m, o, j);
 								}
 								DrumNote.note(doc, m, o, j);
 								
+								Barline2.barline(doc, m, o.repeats.get(count-2));
+								
 								if (o.notes.get(j).flamCheck == true)
 								DrumNoteGrace.note(doc, m, o, j);
 								
-								Barline2.barline(doc, measureNumber2, o.repeats.get(count-2));
+//								Barline2.barline(doc, measureNumber2, o.repeats.get(count-2));
 								
 								m = measureNumber2;
+								if (o.repeats.get(count-2) != 1) {
+									Barline.barline(doc, m, o.repeats.get(count-2));
+									Direction.direction(doc, m, o.repeats.get(count-2));
+								}
 								count++;	
 								}
 							}
-						
+							if(o.repeats.get(o.repeats.size()-1) != 1) {
+								Barline2.barline(doc, m, o.repeats.get(count-2));
+							}
+							else {
+								Barline2.barline(doc, m, 0);
+							}
 						
 						
 						

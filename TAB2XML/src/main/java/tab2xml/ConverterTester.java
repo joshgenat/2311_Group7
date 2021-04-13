@@ -1,6 +1,8 @@
 package tab2xml;
 import exceptions.*;
 
+import exceptions.InproperInputException;
+
 public class ConverterTester {
 
 	public static void main(String[] args) throws Exception {

@@ -2,6 +2,8 @@ package tab2xml;
 
 import java.util.ArrayList;
 
+import exceptions.InproperInputException;
+
 public class GuitarNoteObject {
 
 	String title = "Untitled";
@@ -16,12 +18,13 @@ public class GuitarNoteObject {
 	ArrayList<GuitarNotes> notes = new ArrayList<GuitarNotes>();
 	ArrayList<Character> tStep = new ArrayList<>();
 	ArrayList<Integer> tOctave = new ArrayList<>();
+	ArrayList<Integer> repeats = new ArrayList<>();
 	int maxMeasure;
 	GuitarChord chords[];
 	
 	GuitarConverter convert = new GuitarConverter();
 	
-	public GuitarNoteObject(Tab tab, String sign) {
+	public GuitarNoteObject(Tab tab, String sign) throws Exception {
 		//Intilization for now
 		tStep.add('E');
 		tStep.add('A');
@@ -45,6 +48,7 @@ public class GuitarNoteObject {
 		char type = 'a';
 		if(tab.Type.equals("Bass")) { type = 'b'; }
 		for(int i = 0; i < tab.nodes.size(); i++) {
+			repeats.add(tab.nodes.get(i).repeat);
 			chords = convert.converter(tab.nodes.get(i).nodes, i + 1, type);
 			for(int j = 0; j < chords.length; j++) {
 				if(chords[j] == null) break;

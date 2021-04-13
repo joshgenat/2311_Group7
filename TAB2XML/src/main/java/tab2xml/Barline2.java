@@ -13,6 +13,7 @@ public class Barline2 {
 		measureNumber.appendChild(barline); 
 		
 			barStyle(doc, barline, integer); 
+			if(integer != 0)
 			repeat(doc, barline, integer);
 	}
 	
