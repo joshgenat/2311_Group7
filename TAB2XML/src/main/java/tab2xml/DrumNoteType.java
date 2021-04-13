@@ -7,101 +7,208 @@ public class DrumNoteType {
 	
 	// need to leave duration 
 	
-	public String DrumNoteLength (int duration)
+	public String DrumNoteLength (int duration, int divisions, char [][] drumTab)
 	
 	{
-		// make a parameter of divisionss
-		if (duration == 1)
+		// for divisions of 4 our system supports  tabs of length 
+		if ((divisions == 4) && (drumTab[0].length == 16))
+			
 		{
-			noteType = "16th";
-		}
-		else if (duration == 2)
-		{
-			noteType = "eighth";
-		}
-		else if (duration == 4)
-		{
-			noteType = "quarter";
-		}
-		else if (duration == 8)
-		{
-			noteType = "half";
-		}
-		else if (duration == 16)
-		{
-			noteType = "whole";
-		}
-		else if (duration == 3)
-		{
-			noteType = "eighth";
-			// one dot
-		}
-		else if (duration == 6)
-		{
-			noteType = "quarter";
-			//one dot
-		}
-		else if (duration == 12)
-		{
-			noteType = "half";
-			//one dot
-		
-		}
-		else if (duration == 24)
-		{
-			noteType = "whole";
-			//one dot 
-		
+			//4/4 time signature 
+			
+			// make a parameter of divisionss
+			if (duration == 1)
+			{
+				noteType = "16th";
+			}
+			else if (duration == 2)
+			{
+				noteType = "eighth";
+			}
+			else if (duration == 4)
+			{
+				noteType = "quarter";
+			}
+			else if (duration == 8)
+			{
+				noteType = "half";
+			}
+			else if (duration == 16)
+			{
+				noteType = "whole";
+			}
+			else
+			{
+				//throw exception saying duration is not supported by our program, refer to user manual for list of non supported durations 
+			}
+			
 		}
 		
-		else if (duration == 7)
+		if ((divisions == 2) && (drumTab[0].length == 8))
+			
 		{
-			noteType = "quarter";
-			//two dot 
-		
+			//4/4 time signature
+			
+			// make a parameter of divisionss
+			if (duration == 1)
+			{
+				noteType = "eighth";
+			}
+			else if (duration == 2)
+			{
+				noteType = "quarter";
+			}
+			else if (duration == 4)
+			{
+				noteType = "half";
+			}
+			else if (duration == 8)
+			{
+				noteType = "whole";
+			}
+			else
+			{
+				//throw exception saying duration is not supported by our program, refer to user manual for list of non supported durations 
+			}
+			
 		}
 		
-		else if (duration == 14)
+		if ((divisions == 1) && (drumTab[0].length == 4))
+			
 		{
-			noteType = "half";
-			//two dot 
+			//time signature 4/4
+			
+			// make a parameter of divisionss
+			if (duration == 1)
+			{
+				noteType = "quarter";
+			}
+			else if (duration == 2)
+			{
+				noteType = "half";
+			}
+			else if (duration == 4)
+			{
+				noteType = "whole";
+			}
+			else
+			{
+				//throw exception saying duration is not supported by our program, refer to user manual for list of non supported durations 
+			}
+			
+		}
 		
-		}
-		else if (duration == 15)
-		{
-			noteType = "half";
-			//three dots
+		if ((divisions == 6) && (drumTab[0].length == 18))
 		
-		}
-		else if (duration == 28)
 		{
-			noteType = "whole";
-			//two dots
+			// time signature 6/8 and 3/4
+			
+			// make a parameter of divisionss
+			if (duration == 1)
+			{
+				noteType = "eighth";
+			}
+			else if (duration == 2)
+			{
+				noteType = "eighth";
+			}
+			else if (duration == 3)
+			{
+				noteType = "eighth";
+			}
+			else if (duration == 6)
+			{
+				noteType = "quarter";
+			}
+			else if (duration == 12)
+			{
+				noteType = "half";
+			}
+			else if (duration == 24)
+			{
+				noteType = "whole";
+			}
+			else
+			{
+				//throw exception saying duration is not supported by our program, refer to user manual for list of non supported durations 
+			}
+			
+		}
 		
-		}
-		else if (duration == 30)
+		if ((divisions == 3) && (drumTab[0].length == 9))
+			
 		{
-			noteType = "whole";
-			//three dots
+			// time signature 6/8 and 3/4
+			
+			// make a parameter of divisionss
+			if (duration == 1)
+			{
+				noteType = "eighth";
+			}
+			else if (duration == 2)
+			{
+				noteType = "eighth";
+			}
+			else if (duration == 3)
+			{
+				noteType = "quarter";
+			}
+			else if (duration == 6)
+			{
+				noteType = "half";
+			}
+			else if (duration == 12)
+			{
+				noteType = "whole";
+			}
+			else
+			{
+				//throw exception saying duration is not supported by our program, refer to user manual for list of non supported durations 
+			}
+			
+		}
 		
-		}
-		else if (duration == 31)
+		if ((divisions == 4) && (drumTab[0].length == 12))
+			
 		{
-			noteType = "whole";
-			//four dots
+			// time signature 6/8 and 3/4
+			
+			// make a parameter of divisionss
+			if (duration == 1)
+			{
+				noteType = "16th";
+			}
+			else if (duration == 2)
+			{
+				noteType = "eighth";
+			}
+			else if (duration == 4)
+			{
+				noteType = "quarter";
+			}
+			else if (duration == 8)
+			{
+				noteType = "half";
+			}
+			else if (duration == 16)
+			{
+				noteType = "whole";
+			}
+			else
+			{
+				//throw exception saying duration is not supported by our program, refer to user manual for list of non supported durations 
+			}
+			
+		}
 		
-		}
-		else
-		{
-			//throw exception saying duration is not supported by our program, refer to user manual for list of non supported durations 
-		}
+		
 		
 		
 	return noteType;	
 		
 	}
 	
-public int DotValue (int duration)
+public int DotValue (int duration, int divisions, char [][] drumTab)
 	
 	{
 		

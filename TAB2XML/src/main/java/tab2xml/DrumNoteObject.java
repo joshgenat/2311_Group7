@@ -86,8 +86,8 @@ public class DrumNoteObject {
 		ArrayList<Boolean> backUpFinders = backUpLocator.BackUpList(tab.nodes.get(i).nodes,rowSymbols);
 		ArrayList<Character> noteHeadTypes = noteHead.NoteHeadReader(tab.nodes.get(i).nodes,rowSymbols);
 		ArrayList<Integer> barlinecol = barLineCols.DrumBarLines(tab.nodes.get(i).nodes);
-		ArrayList<String> beam1Statusfinders = drumBeam.BeamOneStatus(rowCoordinate, colCoordinate, noteHeadTypes, barlinecol,rowSymbols);
-		ArrayList<String> beam2Statusfinders = drumBeam.BeamTwoStatus(rowCoordinate, colCoordinate, noteHeadTypes, barlinecol,rowSymbols);
+		ArrayList<String> beam1Statusfinders = drumBeam.BeamOneStatus(rowCoordinate, colCoordinate, noteHeadTypes, barlinecol,rowSymbols, tab.nodes.get(i).nodes);
+		ArrayList<String> beam2Statusfinders = drumBeam.BeamTwoStatus(rowCoordinate, colCoordinate, noteHeadTypes, barlinecol,rowSymbols, tab.nodes.get(i).nodes);
 		ArrayList<Boolean> measurefinders = drumMeasure.FindMeasure(tab.nodes.get(i).nodes, rowSymbols);
 		ArrayList<Boolean> flamFinder = isFlam.FlamFinder(tab.nodes.get(i).nodes,rowSymbols);
 		
@@ -122,7 +122,7 @@ public class DrumNoteObject {
 		note1.displayOctave = octave.DrumOctaves(rowSymbols, row);
 		note1.duration = noteduration.NoteDurationLength(col, nextCol, nextNextCol, barLineCols.DrumBarLines(tab.nodes.get(i).nodes));
 		note1.stem = stemValue.FindStemValue(note1.voiceNumber);
-		note1.type = noteType.DrumNoteLength(note1.duration);
+		note1.type = noteType.DrumNoteLength(note1.duration,divisions, tab.nodes.get(i).nodes);
 		note1.chord = drumChord.ChordFinder(col, nextCol, nextNextCol,preCol, barLineCols.DrumBarLines(tab.nodes.get(i).nodes));
 		note1.flamCheck = flam;
 		
@@ -130,13 +130,13 @@ public class DrumNoteObject {
 		//System.out.println(note1);
 
 		}
-		//System.out.println(colCoordinate);
+		System.out.println(colCoordinate);
 		//System.out.println(flamFinder);
 		//System.out.println(rowCoordinate);
 		//System.out.println(backUpFinders);
-		//System.out.println(noteHeadTypes);
-		//System.out.println(beam1Statusfinders.size());
-		//System.out.println(measurefinders.size());
+		System.out.println(noteHeadTypes);
+		System.out.println(beam1Statusfinders.size());
+		System.out.println(measurefinders.size());
 
 		//System.out.println();
 		
