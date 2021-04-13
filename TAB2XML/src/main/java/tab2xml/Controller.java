@@ -22,7 +22,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
-//
+
 public class Controller {
 	
 	public Controller() {
@@ -254,8 +254,6 @@ public class Controller {
 			int end = Integer.parseInt(measureListE.getText());
 			boolean sameRepeat = true;
 			boolean sameTime = true;
-			measureListS.setEditable(false);
-			measureListE.setEditable(false);
 			String edit = "";
 			for(int i = start-1; i < end; i++) {
 				if(i < end-1) {
@@ -285,6 +283,8 @@ public class Controller {
 			repeatField.setVisible(true);
 			repeatLabel.setVisible(true);
 			editLabel.setVisible(true);
+			measureListS.setEditable(false);
+			measureListE.setEditable(false);
 			timeField.clear();
 			repeatField.clear();
 			
