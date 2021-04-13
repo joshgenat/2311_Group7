@@ -16,9 +16,6 @@ public class TabNodes {
 	 */
 	public TabNodes(ArrayList<Object> lines) {
 		//Get The size of 2D string array and initialize
-		for(int i = 0; i < lines.size(); i++) {
-			System.out.println(lines.get(i).toString());
-		}
 		System.out.println();
 		maxsize = lines.get(1).toString().length();
 		
