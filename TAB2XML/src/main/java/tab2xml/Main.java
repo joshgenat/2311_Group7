@@ -23,8 +23,12 @@ public class Main extends Application {
 			primaryStage.getIcons().add(new Image("/logo.png"));
 			primaryStage.setTitle("Tab2XML");
 			primaryStage.setScene(new Scene(root, 900, 550));
-			primaryStage.show();
 			
+			primaryStage.setResizable(false);
+//			primaryStage.setMinWidth(900);
+//			primaryStage.setMinHeight(550);
+			
+			primaryStage.show();
 		 
 	}
 	

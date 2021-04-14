@@ -49,4 +49,26 @@ public class Clef {
 				line.appendChild(doc.createTextNode("" + g.line) ); 
 				clef.appendChild(line);
           }
+			
+			// Clef Tester
+			public static String clefTest(int[] s) {
+				StringBuilder sb = new StringBuilder();
+				sb.append("<clef>");  
+							
+				if (s[0] != 0)
+					sign(s, sb);
+									
+				if (s[1] != 0)
+					line(s, sb);
+							
+				sb.append("\n</clef>");
+				return sb.toString();
+			}
+			static void sign(int[] o, StringBuilder sb) {
+				sb.append("\n\t<sign>" + o[0] + "</sign>");
+			}
+
+			static void line(int[] o, StringBuilder sb) {
+				sb.append("\n\t<line>" + o[1] + "</line>");
+			}
 }

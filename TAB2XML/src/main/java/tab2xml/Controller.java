@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -15,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextArea;
@@ -22,7 +24,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
-
+import exceptions.*;
 public class Controller {
 	
 	public Controller() {
@@ -41,6 +43,12 @@ public class Controller {
 	@FXML
 	private Button download;
 	
+	@FXML
+	private Button measureListSave;
+	
+	@FXML
+	private Button measureListEdit;
+	
 	@FXML 
 	private TextArea tabText;
 	
@@ -57,6 +65,27 @@ public class Controller {
 	private Label errorLabel;
 	
 	@FXML
+	private Label measureListMax;
+	
+	@FXML
+	private Label clefLabel;
+	
+	@FXML
+	private Label songNameLabel;
+	
+	@FXML
+	private Label repeatLabel;
+	
+	@FXML
+	private Label editLabel;
+	
+	@FXML
+	private Menu helpBar;
+	
+	@FXML
+	private Menu sampleBar;
+	
+	@FXML
 	private MenuItem drumSample;
 	
 	@FXML
@@ -69,63 +98,104 @@ public class Controller {
 	private ComboBox clefSignBox;
 	
 	@FXML
-	private TextField beatsField;
+	private ComboBox measureList;
 	
 	@FXML
-	private TextField beatTypeField;
+	private TextField timeField;
 	
+	@FXML
+	private TextField repeatField;
+	
+	@FXML
+	private TextField songNameField;
+	
+	@FXML
+	private TextField measureListS;
+	
+	@FXML
+	private TextField measureListE;
+	//
+	private Tab b;
 	
 	public void initialize() {
-		ObservableList<String> signClefList = FXCollections.observableArrayList("Treble","Bass", "Tenor", "Percussion", "Tab");
+		ObservableList<String> signClefList = FXCollections.observableArrayList("Auto-Detect", "Treble","Bass", "Tenor", "Percussion", "Tab");
 		clefSignBox.setItems(signClefList);
 		clefSignBox.getSelectionModel().select(0);
+		measureListSave.setVisible(false);
+		measureListMax.setVisible(false);
+		repeatLabel.setVisible(false);
+		repeatField.setVisible(false);
+		editLabel.setVisible(false);
 	}
 	
-	public void convert(ActionEvent event) throws IOException {
+	
+	public void convert(ActionEvent Event) throws IOException {
 		try {
-  	        String [] parse = tabText.getText().split("\n");
+			String [] parse = tabText.getText().split("\n");
 			ArrayList<Object> lines = new ArrayList<Object>();
 			
 			for(int i = 0; i < parse.length; i++) {
 				lines.add(parse[i]);
 			}
 			
-			Tab b = new Tab(lines);
+			b = new Tab(lines);
+			b.setTime(timeField.getText());
+			System.out.println(b.nodes.get(0).timeSignature);
 			if(b.Type.equals("Drum")) {
 				DrumNoteObject c = new DrumNoteObject(b);
-				try {
-					c.beats = Integer.parseInt(beatsField.getText());
-					c.beatsType = Integer.parseInt(beatTypeField.getText());
-				}
-				catch(Exception e) {
-					errorLabel.setTextFill(Color.RED);
-					errorLabel.setText("Error converting,\nInvalid Beats Input\nError Number: #003");
-				}
+				if(!songNameField.getText().isBlank()) { c.title = songNameField.getText(); }
+				
 	 			DrumXML d = new DrumXML(c);
 	 			xmlText.setText(d.text);
-	 			clefSignBox.getSelectionModel().select(3);
+	 			if(clefSignBox.getSelectionModel().getSelectedIndex() == 0) {
+	 			clefSignBox.getSelectionModel().select(4);
+	 			}
 				}
 				else {
-					String sign = "Treble";
-					if(clefSignBox.getSelectionModel().getSelectedIndex()==3) {
-						clefSignBox.getSelectionModel().select(0);
+					String sign = "Tab";
+					if(clefSignBox.getSelectionModel().getSelectedIndex()==0) {
+						clefSignBox.getSelectionModel().select(5);
 					}
 					else {sign = clefSignBox.getSelectionModel().getSelectedItem().toString();}
 					GuitarNoteObject c = new GuitarNoteObject(b,sign);
+					if(!songNameField.getText().isBlank()) { c.title = songNameField.getText(); }
 					
 					GuitarXML d = new GuitarXML(c);
 					xmlText.setText(d.text);
 				}
 			tabView.getSelectionModel().select(1);
-			errorLabel.setTextFill(Color.BLUE);
+			
+			errorLabel.setTextFill(Color.WHITE);
 			errorLabel.setText(b.Type + "\n" + "Conversion Complete");
+			
+		}
+		catch(UnsupportedTimeException e) {
+			e.printStackTrace();
+			errorLabel.setTextFill(Color.PINK);
+			errorLabel.setText("Error converting,\nInvalid Time Input\nError Number: #003");
+		}
+		catch(DurationException e) {
+			e.printStackTrace();
+			errorLabel.setTextFill(Color.PINK);
+			errorLabel.setText("Error converting," + e.message + "\n Error Number: #004");
+		}
+		catch(InproperInputException e) {
+			e.printStackTrace();
+			errorLabel.setTextFill(Color.PINK);
+			errorLabel.setText("Error converting," + e.message + "\n Error Number: #005");
+		}
+		catch(InproperInstrumentException e) {
+			e.printStackTrace();
+			errorLabel.setTextFill(Color.PINK);
+			errorLabel.setText("Error converting," + e.message + "\n Error Number: #006");
 		}
 		catch(Exception e) {
 			e.printStackTrace();
-			errorLabel.setTextFill(Color.RED);
+			errorLabel.setTextFill(Color.PINK);
 			errorLabel.setText("Error converting,\nmake sure your tab is\ncorrect and Try Again!\nError Number: #001");
 		}
-		
+		measureListMax.setText("Range\n 1-" + b.nodes.size());
+		measureListMax.setVisible(true);
 	}
 	
 	public void selectFile(ActionEvent event) {
@@ -144,25 +214,18 @@ public class Controller {
 	}
 	
 	public void clear(ActionEvent event) {
-		if(tabView.getSelectionModel().isSelected(0)) {
 			tabText.setText("");
-			errorLabel.setText("");
-			beatsField.setText("");
-			beatTypeField.setText("");
-		}
-		else {
 			xmlText.setText("");
 			errorLabel.setText("");
-			beatsField.setText("");
-			beatTypeField.setText("");
-		}
+			timeField.setText("");
+			songNameField.setText("");
 	}
 	
 	public void download(ActionEvent event) {
 		tabView.getSelectionModel().select(1);
 		if(xmlText.getText().equals("")) {
 			errorLabel.setText("XML textarea empty...\nError Number: #002");
-			errorLabel.setTextFill(Color.RED);	
+			errorLabel.setTextFill(Color.PINK);
 		}
 		else {
 		FileChooser fc = new FileChooser();
@@ -198,6 +261,183 @@ public class Controller {
 		tabView.getSelectionModel().select(0);
 		
 		
+	}
+	
+	public void editMeasure() {
+		try {
+			int start = Integer.parseInt(measureListS.getText());
+			int end = Integer.parseInt(measureListE.getText());
+			boolean sameRepeat = true;
+			boolean sameTime = true;
+			String edit = "";
+			for(int i = start-1; i < end; i++) {
+				if(i < end-1) {
+					if(!(b.nodes.get(i).repeat == b.nodes.get(i+1).repeat)) { sameRepeat = false; }
+					if(!(b.nodes.get(i).timeSignature.equals(b.nodes.get(i+1).timeSignature))) { sameTime = false; }
+				}
+				for(int j = 0; j < b.nodes.get(i).nodes.length; j++) {
+					for(int k = 0; k < b.nodes.get(i).nodes[j].length; k++) {
+						edit += b.nodes.get(i).nodes[j][k];
+					}
+					edit += "\n";
+				}
+				edit += "\n";
+			}
+			tabText.setText(edit);
+			tabView.getSelectionModel().select(0);
+			measureListEdit.setVisible(false);
+			measureListSave.setVisible(true);
+			convert.setVisible(false);
+			download.setVisible(false);
+			clear.setVisible(false);
+			songNameField.setVisible(false);
+			clefLabel.setVisible(false);
+			songNameLabel.setVisible(false);
+			clefSignBox.setVisible(false);
+			selectFile.setVisible(false);
+			repeatField.setVisible(true);
+			repeatLabel.setVisible(true);
+			editLabel.setVisible(true);
+			measureListS.setEditable(false);
+			measureListE.setEditable(false);
+			timeField.clear();
+			repeatField.clear();
+			
+			String editL = "Currently Editing: ";
+			editL += start + "-" + end + "\n";
+			if(sameRepeat) { editL += "Repeats for range: " + b.nodes.get(start-1).repeat + "\n";}
+			else { editL += "Repeats for range: \nDifferent repeats\n";}
+			if(sameTime) { editL += "Time for range: " + b.nodes.get(start-1).timeSignature + "\n";}
+			else { editL += "Time for range: \nDifferent Time Signature\n";}
+			editLabel.setText(editL);
+			
+		}
+		catch(Exception e) {
+			errorLabel.setText("Invalid Measure\n Inputs");
+			errorLabel.setTextFill(Color.PINK);
+		}
+		
+	}
+	
+	public void saveMeasure() {
+		try {
+		String text = tabText.getText();
+		String [] split = text.split("\n");
+		int index = 0;
+		int start = Integer.parseInt(measureListS.getText());
+		int end = Integer.parseInt(measureListE.getText());
+		
+		for(int i = start-1; i < end; i++) {
+			ArrayList<String> pass = new ArrayList<>();
+			while(true) {
+				if(index >= split.length) {
+					break;
+				}
+				if(split[index].isEmpty()) {
+					index++;
+					break;
+				}
+				pass.add(split[index]);
+				index++;
+			}
+			char [][] newNode = new char[pass.size()][pass.get(0).length()];
+			for(int j = 0; j < pass.size(); j++) {
+				for(int k = 0; k < pass.get(j).length(); k++) {
+					newNode[j][k] = pass.get(j).charAt(k);
+				}
+			}
+			if(!timeField.getText().isBlank()) { b.nodes.get(i).timeSignature = timeField.getText(); b.nodes.get(i).setDiv();}
+			if(!repeatField.getText().isBlank()) { b.nodes.get(i).repeat = Integer.parseInt(repeatField.getText());}
+			b.nodes.get(i).nodes = newNode;
+		}	
+		measureListS.setEditable(true);
+		measureListE.setEditable(true);
+		measureListEdit.setVisible(true);
+		measureListSave.setVisible(false);
+		convert.setVisible(true);
+		download.setVisible(true);
+		clear.setVisible(true);
+		songNameField.setVisible(true);
+		clefLabel.setVisible(true);
+		songNameLabel.setVisible(true);
+		clefSignBox.setVisible(true);
+		selectFile.setVisible(true);
+		repeatField.setVisible(false);
+		repeatLabel.setVisible(false);
+		editLabel.setVisible(false);
+		timeField.clear();
+		repeatField.clear();
+		convertNew();
+		String nText = "";
+		for(int i = 0; i < b.nodes.size(); i++) {
+			for(int j = 0; j < b.nodes.get(i).nodes.length; j++) {
+				for(int k = 0; k < b.nodes.get(i).nodes[j].length; k++) {
+					nText += b.nodes.get(i).nodes[j][k];
+				}
+				nText += "\n";
+			}
+			nText += "\n";
+		}
+		tabText.setText(nText);
+		}
+		catch(NumberFormatException e) {
+			e.printStackTrace();
+			errorLabel.setTextFill(Color.PINK);
+			errorLabel.setText("Error Saving,\nInvalid Time or Repeat Input\nError Number: #007");
+		}
+		catch(Exception e) {
+			errorLabel.setTextFill(Color.PINK);
+			errorLabel.setText("Error Saving,\nError Number: #008");
+		}
+	}
+	
+	public void convertNew() {
+		try {
+			if(b.Type.equals("Drum")) {
+				DrumNoteObject c = new DrumNoteObject(b);
+				c.setBeats(timeField.getText());
+	 			DrumXML d = new DrumXML(c);
+	 			xmlText.setText(d.text);
+	 			clefSignBox.getSelectionModel().select(3);
+				}
+				else {
+					String sign = "Treble";
+					if(clefSignBox.getSelectionModel().getSelectedIndex()==3) {
+						clefSignBox.getSelectionModel().select(0);
+					}
+					else {sign = clefSignBox.getSelectionModel().getSelectedItem().toString();}
+					GuitarNoteObject c = new GuitarNoteObject(b,sign);
+			        c.setBeats(timeField.getText());
+					GuitarXML d = new GuitarXML(c);
+					xmlText.setText(d.text);
+				}
+			tabView.getSelectionModel().select(1);
+		}
+		catch(NumberFormatException e) {
+			e.printStackTrace();
+			errorLabel.setTextFill(Color.PINK);
+			errorLabel.setText("Error Saving,\nInvalid Time or Repeat Input\nError Number: #007");
+		}
+		catch(DurationException e) {
+			e.printStackTrace();
+			errorLabel.setTextFill(Color.PINK);
+			errorLabel.setText("Error converting," + e.message + "\n Error Number: #004");
+		}
+		catch(InproperInputException e) {
+			e.printStackTrace();
+			errorLabel.setTextFill(Color.PINK);
+			errorLabel.setText("Error converting," + e.message + "\n Error Number: #005");
+		}
+		catch(InproperInstrumentException e) {
+			e.printStackTrace();
+			errorLabel.setTextFill(Color.PINK);
+			errorLabel.setText("Error converting," + e.message + "\n Error Number: #006");
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			errorLabel.setTextFill(Color.PINK);
+			errorLabel.setText("Error converting,\nmake sure your tab is\ncorrect and Try Again!\nError Number: #001");
+		}
 	}
 	
 	public void getHelp() {

@@ -7,20 +7,41 @@ public class DrumNote {
 
 	static void note(Document doc, Element measureNumber, DrumNoteObject o, int j) {
 		Element note = doc.createElement("note");     
-		measureNumber.appendChild(note); 
+		measureNumber.appendChild(note);
+		
+		if (o.notes.get(j).flamCheck == true) {
+			grace(doc, note);
+		}
 		
 		if (o.notes.get(j).chord == true) 
 			chord(doc, note);
 		
 		unpitched(doc, note, o, j);
-		duration(doc, note, o, j);
+		stem(doc, note, o, j);
+		notations(doc, note, o, j);
 		instrumentId(doc, note, o, j);
+		
+		if (o.notes.get(j).flamCheck != true) 
+		duration(doc, note, o, j);
+		
+		
 		voice(doc, note, o, j);
 		type(doc, note, o, j);
-		stem(doc, note, o, j);
         noteHead(doc, note, o, j);
-		//beamNumber(doc, note, o, j);
-		
+      
+        if(o.beam1Statusfinder.get(j) != null)  
+		beamNumber(doc, note, o, j);
+        if(o.beam2Statusfinder.get(j) != null)
+        beamNumber2(doc, note, o, j);
+        
+        for (int i = 0; i < o.notes.get(j).dot; i++)
+        dot(doc, note, o);
+        
+	}
+	
+	static void grace(Document doc, Element note) {
+		Element grace = doc.createElement("grace");
+		note.appendChild(grace); 
 	}
 	
 	static void chord(Document doc, Element note) {
@@ -32,7 +53,7 @@ public class DrumNote {
 		Element unpitched = doc.createElement("unpitched");    
 		note.appendChild(unpitched);
 			
-			displayStep(doc, unpitched, o, j);
+			displayStep(doc, unpitched,  o, j);
 			displayOctave(doc, unpitched, o, j);
 		
 	}
@@ -49,16 +70,37 @@ public class DrumNote {
 			unpitched.appendChild(displayOctave);
 		}
 		
-	static void duration(Document doc, Element note, DrumNoteObject o, int j) {
-		Element duration = doc.createElement("duration");   
-		duration.appendChild(doc.createTextNode("" + o.notes.get(j).duration) ); 
-		note.appendChild(duration);	
+	static void stem(Document doc, Element note, DrumNoteObject o, int j) {
+		Element stem = doc.createElement("stem");
+		stem.appendChild(doc.createTextNode("" + o.notes.get(j).stem) ); 
+		note.appendChild(stem);	
 	}
+	
+	static void notations(Document doc, Element note, DrumNoteObject o, int j) {
+		Element notations = doc.createElement("notations");
+		note.appendChild(notations);	
+		
+		if (o.notes.get(j).flamCheck == true)
+		slurNumber(doc, notations, o, j);
+	}
+	
+		static void slurNumber(Document doc, Element notations, DrumNoteObject o, int j) {
+			Element slurNumber = doc.createElement("slur");  
+			slurNumber.setAttribute("number", "1");
+			slurNumber.setAttribute("type", "start");
+			notations.appendChild(slurNumber);
+		}
 	
 	static void instrumentId(Document doc, Element note, DrumNoteObject o, int j) {
 		Element instrumentId = doc.createElement("instrument");   
 		instrumentId.setAttribute("id", "" + o.notes.get(j).instrumentID);
 		note.appendChild(instrumentId);	
+	}
+	
+	static void duration(Document doc, Element note, DrumNoteObject o, int j) {
+		Element duration = doc.createElement("duration");   
+		duration.appendChild(doc.createTextNode("" + o.notes.get(j).duration) ); 
+		note.appendChild(duration); 
 	}
 	
 	static void voice(Document doc, Element note, DrumNoteObject o, int j) {
@@ -73,12 +115,6 @@ public class DrumNote {
 		note.appendChild(type);	
 	}
 	
-	static void stem(Document doc, Element note, DrumNoteObject o, int j) {
-		Element stem = doc.createElement("stem");   
-		stem.appendChild(doc.createTextNode("" + o.notes.get(j).stem) ); 
-		note.appendChild(stem);	
-	}
-	
 	static void noteHead(Document doc, Element note, DrumNoteObject o, int j) {
 		// Check if noteHead is an 'x' or an 'o'
 		if (o.noteHeadType.get(j).equals('x')) {
@@ -88,10 +124,85 @@ public class DrumNote {
 		}
 	}
 	
-//	static void beamNumber(Document doc, Element note, DrumNoteObject o, int j) {
-//		Element beamNumber = doc.createElement("beam");   
-//		beamNumber.setAttribute("number", "1");
-//		beamNumber.appendChild(doc.createTextNode("" + o.notes.get(j).beamNumber) );
-//		note.appendChild(beamNumber);	
-//	}
+	static void beamNumber(Document doc, Element note, DrumNoteObject o, int j) {
+		Element beamNumber = doc.createElement("beam");   
+		beamNumber.setAttribute("number", "1");
+		beamNumber.appendChild(doc.createTextNode("" + o.beam1Statusfinder.get(j)) );
+		note.appendChild(beamNumber);	
+	}
+	
+	static void beamNumber2(Document doc, Element note, DrumNoteObject o, int j) {
+		Element beamNumber2 = doc.createElement("beam");   
+		beamNumber2.setAttribute("number", "2");
+		beamNumber2.appendChild(doc.createTextNode("" + o.beam2Statusfinder.get(j)) );
+		note.appendChild(beamNumber2);	
+	}
+	
+	static void dot(Document doc, Element note, DrumNoteObject o) {
+		Element dot = doc.createElement("dot");   
+		note.appendChild(dot);	
+	}
+	
+	
+
+	
+	
+	
+	// Note Tester
+	
+	public static String noteTest(int[] s) {
+		StringBuilder sb = new StringBuilder();
+		sb.append("<note>");  
+		
+		if (s[0] != 0)
+			chord(s, sb);
+		
+		
+				
+		
+		sb.append("\n</note>");
+		return sb.toString();
+	}
+	static void chord(int[] s, StringBuilder sb) {
+		sb.append("\n\t<chord>" + s[0] + "</chord>");
+	}
+	
+	static void unpitched(int[] s, StringBuilder sb) {
+		sb.append("\n\t<unpitched>" + s[0] + "</unpitched>");
+		
+		displayStep(s, sb);
+		displayOctave(s, sb);
+	}
+	
+		static void displayStep(int[] s, StringBuilder sb) {
+			sb.append("\n\t<displayStep>" + s[0] + "</displayStep>");
+		}
+	
+		static void displayOctave(int[] s, StringBuilder sb) {
+			sb.append("\n\t<displayOctave>" + s[0] + "</displayOctave>");
+		}
+		
+	static void stem(int[] s, StringBuilder sb) {
+		sb.append("\n\t<stem>" + s[0] + "</stem>");
+	}
+	
+	static void instrumentID(int[] s, StringBuilder sb) {
+		sb.append("\n\t<instrumentID>" + s[0] + "</instrumentID>");
+	}
+	
+	static void voice(int[] s, StringBuilder sb) {
+		sb.append("\n\t<voice>" + s[0] + "</voice>");
+	}
+	
+	static void type(int[] s, StringBuilder sb) {
+		sb.append("\n\t<type>" + s[0] + "</type>");
+	}
+	
+	static void noteHead(int[] s, StringBuilder sb) {
+		sb.append("\n\t<noteHead>" + s[0] + "</noteHead>");
+	}
+	
+		
 }
+
+

@@ -6,22 +6,22 @@ public class DrumNoteHead {
 
 
 	
-	ArrayList<Integer> rowCoordinate;
-	ArrayList<Integer> colCoordinate;
+	//ArrayList<Integer> rowCoordinate;
+	//ArrayList<Integer> colCoordinate;
 	ArrayList<Character> noteHead;
 
 	int counter = 0;
-	boolean mutipleVoices = false;
+	//boolean mutipleVoices = false;
 	boolean checker = false; 
 	int oldDivider = 0;
 	int currentDivider = 0;
 	
-	ArrayList <Character> NoteHeadReader(char [][] drumTab, int [] rowSymbols)
+	public ArrayList <Character> NoteHeadReader(char [][] drumTab, int [] rowSymbols)
 	{
 		counter = 0;
-		mutipleVoices = false;
-		rowCoordinate = new ArrayList<Integer>();
-		colCoordinate = new ArrayList<Integer>();
+		//mutipleVoices = false;
+		//rowCoordinate = new ArrayList<Integer>();
+		//colCoordinate = new ArrayList<Integer>();
 		noteHead = new ArrayList<Character>();
 		checker = false; 
 		oldDivider = 0;
@@ -65,20 +65,60 @@ public class DrumNoteHead {
             	//if (rowSymbols[row] == 8) means voice two
             	if ((drumTab[row1][col1] == 'x' ) && (rowSymbols[row1] != 8))
             	{
-            		rowCoordinate.add(row1);
-            		colCoordinate.add(col1);
+            		//rowCoordinate.add(row1);
+            		//colCoordinate.add(col1);
             		noteHead.add('x');
 
             	}
             	else if ((drumTab[row1][col1] == 'o') && (rowSymbols[row1] != 8))
             	{ 
             		
-            		rowCoordinate.add(row1);
-            		colCoordinate.add(col1);
+            		//rowCoordinate.add(row1);
+            		//colCoordinate.add(col1);
             		noteHead.add('o');
             		
             	}
-            	
+            	else if ((drumTab[row1][col1] == 'f') && (rowSymbols[row1] != 8))
+            	{ 
+            		if (rowSymbols[row1]== 1)
+            		{
+            			//cc
+            			noteHead.add('x');
+            		}
+            		else if (rowSymbols[row1]== 2)
+            		{
+            			// throw an error  @ andy for help 
+            			noteHead.add('x');
+            			// just for now
+            		}
+            		else if (rowSymbols[row1]== 3)
+            		{
+            			//ride 
+            			noteHead.add('x');
+            		}
+            		else if (rowSymbols[row1]== 4)
+            		{
+            			//snare
+            			noteHead.add('o');
+            		}
+            		else if (rowSymbols[row1]== 5)
+            		{
+            			//high tom
+            			noteHead.add('o');
+            		}
+            		else if (rowSymbols[row1]== 6)
+            		{
+            			//low tom
+            			noteHead.add('o');
+            		}
+            		else if (rowSymbols[row1]== 7)
+            		{
+            			//floor tom
+            			noteHead.add('o');
+            		}
+          
+            		
+            	}
             	
             }
             
@@ -87,7 +127,6 @@ public class DrumNoteHead {
 		
 		
 		// run the loop a second time, now to find the notes in voice 2 
-		mutipleVoices = false;
 		for (int col2 = oldDivider; col2 < currentDivider; col2++)
         {
 			
@@ -95,23 +134,18 @@ public class DrumNoteHead {
             {
             	
             	
-            	if(((drumTab[row2][col2] == 'x' || drumTab[row2][col2] == 'o') && (rowSymbols[row2]== 8)) && mutipleVoices == false)
-            	{
-            		mutipleVoices = true;
-            		
-            	}
             	
             		if ((drumTab[row2][col2] == 'x')  && (rowSymbols[row2]== 8))
             		{
-            			rowCoordinate.add(row2);
-            			colCoordinate.add(col2);
+            			//rowCoordinate.add(row2);
+            			//colCoordinate.add(col2);
             			noteHead.add('x');
             		}
             	
             		else if (( drumTab[row2][col2] == 'o')  && (rowSymbols[row2]== 8))
             		{
-            			rowCoordinate.add(row2);
-            			colCoordinate.add(col2);
+            			//rowCoordinate.add(row2);
+            			//colCoordinate.add(col2);
             			noteHead.add('o');
             		}
             
@@ -121,6 +155,7 @@ public class DrumNoteHead {
 		 	}
 		     }
 		}
+		
 		return noteHead;
 		
 		

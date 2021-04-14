@@ -3,49 +3,51 @@ package tab2xml;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-public class Barline {
+public class Barline2 {
 
-	// For Drums
-	static void barline(Document doc, Element measureNumber) {
+	
+	// Drums
+	static void barline(Document doc, Element measureNumber, Integer integer) {
 		Element barline = doc.createElement("barline");
-		barline.setAttribute("location", "left");
+		barline.setAttribute("location", "right");
 		measureNumber.appendChild(barline); 
 		
-			barStyle(doc, barline);
-			repeat(doc, barline);
+			barStyle(doc, barline, integer); 
+			if(integer != 0)
+			repeat(doc, barline, integer);
 	}
 	
-		static void barStyle(Document doc, Element barline) {
+		static void barStyle(Document doc, Element barline, Integer integer) {
 			Element barstyle = doc.createElement("bar-style");        
-			barstyle.appendChild(doc.createTextNode("heavy-light") ); 
+			barstyle.appendChild(doc.createTextNode("light-heavy")); 
 			barline.appendChild(barstyle); 
 		}
 		
-		static void repeat(Document doc, Element barline) {
+		static void repeat(Document doc, Element barline, Integer integer) {
 			Element repeat = doc.createElement("repeat");
-			repeat.setAttribute("direction", "forward");
+			repeat.setAttribute("direction", "backward");
 			barline.appendChild(repeat); 
 		}
 	
-	// for Guitar
+	// Guitar
 	static void barline(Document doc, Element measureNumber, GuitarNoteObject g) {
 		Element barline = doc.createElement("barline");
-		barline.setAttribute("location", "left");
+		barline.setAttribute("location", "right");
 		measureNumber.appendChild(barline); 
 		
-			barStyle(doc, barline, g);
+			barStyle(doc, barline, g); 
 			repeat(doc, barline, g);
 	}
 	
 		static void barStyle(Document doc, Element barline, GuitarNoteObject g) {
 			Element barstyle = doc.createElement("bar-style");        
-			barstyle.appendChild(doc.createTextNode("heavy-light") ); 
+			barstyle.appendChild(doc.createTextNode("light-heavy")); 
 			barline.appendChild(barstyle); 
 		}
 		
 		static void repeat(Document doc, Element barline, GuitarNoteObject g) {
 			Element repeat = doc.createElement("repeat");
-			repeat.setAttribute("direction", "forward");
+			repeat.setAttribute("direction", "backward");
 			barline.appendChild(repeat); 
 		}
 		

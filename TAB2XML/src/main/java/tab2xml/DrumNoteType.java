@@ -1,41 +1,542 @@
 package tab2xml;
+import exceptions.*;
 
 public class DrumNoteType {
 	
 	String noteType;
+	int dotnumber;
+	// need to leave duration 
 	
-	public String DrumNoteLength (int duration)
+	public String DrumNoteLength (int duration, int divisions, char [][] drumTab, int row, int col) throws Exception
 	
 	{
+		int drumTabLength = 0;
+		boolean read = false;
+		for(int i = 0; i < drumTab[0].length; i++) {
+			if(drumTab[0][i] == '|') {
+				read = !read;
+			}
+			if(read) {
+				drumTabLength++;
+			}
+		}
+		drumTabLength--;
+		// for divisions of 4 our system supports  tabs of length 
 		
-		if (duration == 1)
+		if (((divisions == 4) && (drumTabLength == 16)) ||  ((divisions == 2) && (drumTabLength == 8)) || ((divisions == 1) && (drumTabLength == 4)) || ((divisions == 6) && (drumTabLength == 18)) || ((divisions == 3) && (drumTabLength == 9)) || (divisions == 4) && (drumTabLength == 12))
 		{
-			noteType = "16th";
+			
+		
+		if ((divisions == 4) && (drumTabLength == 16))
+			
+		{
+			//4/4 time signature 
+			
+			// make a parameter of divisions
+			
+			
+			if (duration == 1)
+			{
+				noteType = "16th";
+			}
+			else if (duration == 2)
+			{
+				noteType = "eighth";
+			}
+			else if (duration == 3)
+			{
+				noteType = "eighth";
+			}
+			else if (duration == 4)
+			{
+				noteType = "quarter";
+			}
+			else if (duration == 6)
+			{
+				noteType = "quarter";
+			}
+			else if (duration == 7)
+			{
+				noteType = "quarter";
+			}
+			else if (duration == 8)
+			{
+				noteType = "half";
+			}
+			else if (duration == 12)
+			{
+				noteType = "half";
+			}
+			else if (duration == 14)
+			{
+				noteType = "half";
+			}
+			else if (duration == 15)
+			{
+				noteType = "half";
+			}
+			else if (duration == 16)
+			{
+				noteType = "whole";
+			}
+			else
+			{
+				//thorw exception because duration for one note is not supported for my program for length 16, division 4 
+				throw new DurationException("duration: " + duration + "\nof note at row: " + row + "\n column: " + col + "\ninvalid for tab of length 16 with division of 4");
+				
+			}
+			
 		}
-		else if (duration == 2)
+		
+		if ((divisions == 2) && (drumTabLength == 8))
+			
 		{
-			noteType = "eighth";
+			//4/4 time signature
+			
+			// make a parameter of divisionss
+			if (duration == 1)
+			{
+				noteType = "eighth";
+			}
+			else if (duration == 2)
+			{
+				noteType = "quarter";
+			}
+			else if (duration == 3)
+			{
+				noteType = "quarter";
+			}
+			else if (duration == 4)
+			{
+				noteType = "half";
+			}
+			else if (duration == 6)
+			{
+				noteType = "half";
+			}
+			else if (duration == 7)
+			{
+				noteType = "half";
+			}
+			else if (duration == 8)
+			{
+				noteType = "whole";
+			}
+			else
+			{
+				//throw exception saying duration is not supported by our program, refer to user manual for list of non supported durations 
+				throw new DurationException("duration: " + duration + "\nof note at row: " + row + "\ncolumn: " + col + "\ninvalid for tab of length 8 with division of 2");
+			}
+			
 		}
-		else if (duration == 4)
+		
+		if ((divisions == 1) && (drumTabLength == 4))
+			
 		{
-			noteType = "quarter";
+			//time signature 4/4
+			
+			// make a parameter of divisionss
+			if (duration == 1)
+			{
+				noteType = "quarter";
+			}
+			else if (duration == 2)
+			{
+				noteType = "half";
+			}
+			else if (duration == 3)
+			{
+				noteType = "half";
+			}
+			else if (duration == 4)
+			{
+				noteType = "whole";
+			}
+			else
+			{
+				//throw exception saying duration is not supported by our program, refer to user manual for list of non supported durations 
+				throw new DurationException("duration: " + duration + "\nof note at row: " + row + "\ncolumn: " + col + "\ninvalid for tab of length 4 with division of 1");
+			}
+			
 		}
-		else if (duration == 8)
+		
+		if ((divisions == 6) && (drumTabLength == 18))
+		
 		{
-			noteType = "half";
+			// time signature 6/8 and 3/4
+			
+			// make a parameter of divisionss
+			if (duration == 1)
+			{
+				noteType = "eighth";
+			}
+			else if (duration == 2)
+			{
+				noteType = "eighth";
+			}
+			else if (duration == 3)
+			{
+				noteType = "eighth";
+			}
+			else if (duration == 6)
+			{
+				noteType = "quarter";
+			}
+			else if (duration == 9)
+			{
+				noteType = "quarter";
+			}
+			else if (duration == 12)
+			{
+				noteType = "half";
+			}
+			else if (duration == 18)
+			{
+				noteType = "half";
+			}
+			
+			else
+			{
+				throw new DurationException("duration: " + duration + "\nof note at row: " + row + "\ncolumn: " + col + "\ninvalid for tab of length 18 with division of 6");
+				//throw exception saying duration is not supported by our program, refer to user manual for list of non supported durations 
+			}
+			
 		}
-		else if (duration == 16)
+		
+		if ((divisions == 3) && (drumTabLength == 9))
+			
 		{
-			noteType = "whole";
+			// time signature 6/8 and 3/4
+			
+			// make a parameter of divisionss
+			if (duration == 1)
+			{
+				noteType = "eighth";
+			}
+			else if (duration == 2)
+			{
+				noteType = "eighth";
+			}
+			else if (duration == 3)
+			{
+				noteType = "quarter";
+			}
+			else if (duration == 6)
+			{
+				noteType = "half";
+			}
+			else if (duration == 9)
+			{
+				noteType = "half";
+			}
+			else
+			{
+				throw new DurationException("duration: " + duration + "\nof note at row: " + row + "\ncolumn: " + col + "\ninvalid for tab of length 9 with division of 3");
+				//throw exception saying duration is not supported by our program, refer to user manual for list of non supported durations 
+			}
+			
+		}
+		
+		if ((divisions == 4) && (drumTabLength == 12))
+			
+		{
+			// time signature 6/8 and 3/4
+			
+			// make a parameter of divisionss
+			if (duration == 1)
+			{
+				noteType = "16th";
+			}
+			else if (duration == 2)
+			{
+				noteType = "eighth";
+			}
+			else if (duration == 4)
+			{
+				noteType = "quarter";
+			}
+			else if (duration == 6)
+			{
+				noteType = "quarter";
+			}
+			else if (duration == 7)
+			{
+				noteType = "quarter";
+			}
+			else if (duration == 8)
+			{
+				noteType = "half";
+			}
+			else if (duration == 12)
+			{
+				noteType = "half";
+			}
+			else
+			{
+				throw new DurationException("duration: " + duration + "\nof note at row: " + row + "\ncolumn: " + col + "\ninvalid for tab of length 12 with division of 4");
+				//throw exception saying duration is not supported by our program, refer to user manual for list of non supported durations 
+			}
+			
+		}
+		
 		}
 		else
 		{
-			noteType = "Incorrect  Value";
+			//thorw exception because duration for one note is not supported for my program for length 16, division 4 
+			throw new DurationException(" This combination of division: " + duration + "\nand length of measure: " + drumTabLength   +  "\nis not supported by our system, refer to User Manual for list of suported division, length combinations" );
+			
 		}
+		
+		
+		
 		
 	return noteType;	
 		
 	}
 	
+	
+ public int DotValue (int duration, int divisions, char [][] drumTab) throws Exception
+	
+ 
+	{
+	 int drumTabLength = 0;
+		boolean read = false;
+		for(int i = 0; i < drumTab[0].length; i++) {
+			if(drumTab[0][i] == '|') {
+				read = !read;
+			}
+			if(read) {
+				drumTabLength++;
+			}
+		}
+		drumTabLength--;
+		
+	
+	if ((divisions == 4) && (drumTabLength == 16))
+		
+	{
+		//4/4 time signature 
+		
+		// make a parameter of divisions
+		
+		
+		if (duration == 1)
+		{
+			dotnumber = 0;
+		}
+		else if (duration == 2)
+		{
+			dotnumber = 0;
+		}
+		else if (duration == 3)
+		{
+			dotnumber = 1;
+		}
+		else if (duration == 4)
+		{
+			dotnumber = 0;
+		}
+		else if (duration == 6)
+		{
+			dotnumber = 1;
+		}
+		else if (duration == 7)
+		{
+			dotnumber = 2;
+		}
+		else if (duration == 8)
+		{
+			dotnumber = 0;
+		}
+		else if (duration == 12)
+		{
+			dotnumber = 1;
+		}
+		else if (duration == 14)
+		{
+			dotnumber = 2;
+		}
+		else if (duration == 15)
+		{
+			dotnumber = 3;
+		}
+		else if (duration == 16)
+		{
+			dotnumber = 0;
+		}
+		
+	}
+	
+	if ((divisions == 2) && (drumTabLength == 8))
+		
+	{
+		//4/4 time signature
+		
+		// make a parameter of divisionss
+		if (duration == 1)
+		{
+			dotnumber = 0;
+		}
+		else if (duration == 2)
+		{
+			dotnumber = 0;
+		}
+		else if (duration == 3)
+		{
+			dotnumber = 0;
+		}
+		else if (duration == 4)
+		{
+			dotnumber = 1;
+		}
+		else if (duration == 6)
+		{
+			dotnumber = 0;
+		}
+		else if (duration == 7)
+		{
+			dotnumber = 1;
+		}
+		else if (duration == 8)
+		{
+			dotnumber = 0;
+		}
+	}
+		
+	
+	if ((divisions == 1) && (drumTabLength == 4))
+		
+	{
+		//time signature 4/4
+		
+		// make a parameter of divisionss
+		if (duration == 1)
+		{
+			dotnumber = 0;
+		}
+		else if (duration == 2)
+		{
+			dotnumber = 0;
+		}
+		else if (duration == 3)
+		{
+			dotnumber = 1;
+		}
+		else if (duration == 4)
+		{
+			dotnumber = 0;
+		}
+		
+		
+	}
+	
+	if ((divisions == 6) && (drumTabLength == 18))
+	
+	{
+		// time signature 6/8 and 3/4
+		
+		// make a parameter of divisionss
+		
+		if (duration == 1)
+		{
+			dotnumber = 0;
+		}
+		else if (duration == 2)
+		{
+			dotnumber = 0;
+		}
+		else if (duration == 3)
+		{
+			dotnumber = 0;
+		}
+		else if (duration == 6)
+		{
+			dotnumber = 0;
+		}
+		else if (duration == 9)
+		{
+			dotnumber = 1;
+		}
+		else if (duration == 12)
+		{
+			dotnumber = 0;
+		}
+		else if (duration == 18)
+		{
+			dotnumber = 1;
+		}
+		
+	}
+	
+	if ((divisions == 3) && (drumTabLength == 9))
+		
+	{
+		// time signature 6/8 and 3/4
+		
+		// make a parameter of divisionss
+		if (duration == 1)
+		{
+			dotnumber = 0;
+		}
+		else if (duration == 2)
+		{
+			dotnumber = 0;
+		}
+		else if (duration == 3)
+		{
+			dotnumber = 0;
+		}
+		else if (duration == 6)
+		{
+			dotnumber = 0;
+		}
+		else if (duration == 9)
+		{
+			dotnumber = 1;
+		}
+		
+	}
+	
+	if ((divisions == 4) && (drumTabLength == 12))
+		
+	{
+		// time signature 6/8 and 3/4
+		
+		// make a parameter of divisionss
+		if (duration == 1)
+		{
+			dotnumber = 0;
+		}
+		else if (duration == 2)
+		{
+			dotnumber = 0;
+		}
+		else if (duration == 4)
+		{
+			dotnumber = 0;
+		}
+		else if (duration == 6)
+		{
+			dotnumber = 1;
+		}
+		else if (duration == 7)
+		{
+			dotnumber = 2;
+		}
+		else if (duration == 8)
+		{
+			dotnumber = 0;
+		}
+		else if (duration == 12)
+		{
+			dotnumber = 1;
+		}
+		
+	}
+	
+
+	 return dotnumber;
+}	
 }
+
 

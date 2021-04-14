@@ -6,6 +6,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Test.*;
 import org.junit.jupiter.api.Test;
 
+import exceptions.InproperInputException;
+
 class GuitarConverterTester {
 	
 	Random random = new Random();
@@ -21,6 +23,15 @@ class GuitarConverterTester {
 			{'|', '-', '0', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '|', '-', '0', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '|'}
 	};
 	
+	char[][] testSpecial = {
+			{'|', '-', '1', 'h', '2', '-', '-', '|'},
+			{'|', '-', '1', '1', 'h', '1', '2', '|'},
+			{'|', '-', '1', 'p', '2', '-', '-', '|'},
+			{'|', '-', '1', '1', 'p', '1', '2', '|'},
+			{'|', 'g', '1', '-', '-', '-', '-', '|'},
+			{'|', 'g', '1', '1', '-', '-', '-', '|'}
+	};
+	
 	String[][] expectedNote = {
 			{"-", "-", "-", "-", "-", "E", "-", "-", "E", "-"},
 			{"-", "-", "-", "-", "C", "-", "B", "-", "B", "-"},
@@ -31,12 +42,12 @@ class GuitarConverterTester {
 		};
 		
 		String[][] expectedType = {
-			{"sixteenth", "sixteenth", "sixteenth", "sixteenth", "sixteenth", "eighth", "sixteenth", "sixteenth", "whole", "sixteenth", },
-			{"sixteenth", "sixteenth", "sixteenth", "sixteenth", "eighth", "sixteenth", "eighth", "sixteenth", "whole", "sixteenth", },
-			{"sixteenth", "sixteenth", "sixteenth", "eighth", "sixteenth", "sixteenth", "sixteenth", "eighth", "whole", "sixteenth", },
-			{"sixteenth", "sixteenth", "eighth", "sixteenth", "sixteenth", "sixteenth", "sixteenth", "sixteenth", "whole", "sixteenth", },
-			{"sixteenth", "eighth", "sixteenth", "sixteenth", "sixteenth", "sixteenth", "sixteenth", "sixteenth", "whole", "sixteenth", },
-			{"eighth", "sixteenth", "sixteenth", "sixteenth", "sixteenth", "sixteenth", "sixteenth", "sixteenth", "whole", "sixteenth", },
+			{"16th", "16th", "16th", "16th", "16th", "eighth", "16th", "16th", "whole", "16th", },
+			{"16th", "16th", "16th", "16th", "eighth", "16th", "eighth", "16th", "whole", "16th", },
+			{"16th", "16th", "16th", "eighth", "16th", "16th", "16th", "eighth", "whole", "16th", },
+			{"16th", "16th", "eighth", "16th", "16th", "16th", "16th", "16th", "whole", "16th", },
+			{"16th", "eighth", "16th", "16th", "16th", "16th", "16th", "16th", "whole", "16th", },
+			{"eighth", "16th", "16th", "16th", "16th", "16th", "16th", "16th", "whole", "16th", },
 		};
 		
 		int[][] expectedOctave = {
@@ -110,59 +121,180 @@ class GuitarConverterTester {
 				{false, false, false, false, false, false, false, false, false, false},
 				{false, false, false, false, false, false, false, false, true, false}
 		};
+		
 	
-	GuitarChord[] result = guitar.converter(test);
+
+	
 	
 	int[] i = {rInd(10), rInd(6)};
 	
 	@Test
 	void noteTest() {
-		assertEquals(result[i[0]].notes[i[1]].note, expectedNote[i[1]][i[0]]);
+		try {
+			GuitarChord[] result = guitar.converter(test, 1, 'a');
+			assertEquals(result[i[0]].notes[i[1]].note, expectedNote[i[1]][i[0]]);
+		}
+		catch(InproperInputException e) {
+			assertEquals(false, true);
+		}
+		
 	}
 	
 	@Test
 	void typeTest() {
-		assertEquals(result[i[0]].notes[i[1]].type, expectedType[i[1]][i[0]]);
+		try {
+			GuitarChord[] result = guitar.converter(test, 1, 'a');
+			assertEquals(result[i[0]].notes[i[1]].type, expectedType[i[1]][i[0]]);
+		}
+		catch(InproperInputException e) {
+			assertEquals(false, true);
+		}
+		
 	}
 	
 	@Test
 	void octaveTest() {
-		assertEquals(result[i[0]].notes[i[1]].octave, expectedOctave[i[1]][i[0]]);
+		try {
+			GuitarChord[] result = guitar.converter(test, 1, 'a');
+			assertEquals(result[i[0]].notes[i[1]].octave, expectedOctave[i[1]][i[0]]);
+		}
+		catch(InproperInputException e) {
+			assertEquals(false, true);
+		}
+		
 	}
 	
 	@Test
 	void fretTest() {
-		assertEquals(result[i[0]].notes[i[1]].fret, expectedFret[i[1]][i[0]]);
+		try {
+			GuitarChord[] result = guitar.converter(test, 1, 'a');
+			assertEquals(result[i[0]].notes[i[1]].fret, expectedFret[i[1]][i[0]]);
+		}
+		catch(InproperInputException e) {
+			assertEquals(false, true);
+		}
+		
 	}
 	
 	@Test
 	void stringTest() {
-		assertEquals(result[i[0]].notes[i[1]].string, expectedString[i[1]][i[0]]);
+		try {
+			GuitarChord[] result = guitar.converter(test, 1, 'a');
+			assertEquals(result[i[0]].notes[i[1]].string, expectedString[i[1]][i[0]]);
+		}
+		catch(InproperInputException e) {
+			assertEquals(false, true);
+		}
+		
 	}
 	
 	@Test
 	void durationTest() {
-		assertEquals(result[i[0]].notes[i[1]].duration, expectedDuration[i[1]][i[0]]);
+		try {
+			GuitarChord[] result = guitar.converter(test, 1, 'a');
+			assertEquals(result[i[0]].notes[i[1]].duration, expectedDuration[i[1]][i[0]]);
+		}
+		catch(InproperInputException e) {
+			assertEquals(false, true);
+		}
+		
 	}
 	
 	@Test
 	void chordTest() {
-		assertEquals(result[i[0]].notes[i[1]].isChord, expectedIsChord[i[1]][i[0]]);
+		try {
+			GuitarChord[] result = guitar.converter(test, 1, 'a');
+			assertEquals(result[i[0]].notes[i[1]].isChord, expectedIsChord[i[1]][i[0]]);
+		}
+		catch(InproperInputException e) {
+			assertEquals(false, true);
+		}
+		
 	}
 	
 	@Test
 	void stepTest() {
-		assertEquals(result[i[0]].notes[i[1]].step, expectedStep[i[1]][i[0]]);
+		try {
+			GuitarChord[] result = guitar.converter(test, 1, 'a');
+			assertEquals(result[i[0]].notes[i[1]].step, expectedStep[i[1]][i[0]]);
+		}
+		catch(InproperInputException e) {
+			assertEquals(false, true);
+		}
+		
 	}
 	
 	@Test
 	void alterTest() {
-		assertEquals(result[i[0]].notes[i[1]].alter, expectedAlter[i[1]][i[0]]);
+		try {
+			GuitarChord[] result = guitar.converter(test, 1, 'a');
+			assertEquals(result[i[0]].notes[i[1]].alter, expectedAlter[i[1]][i[0]]);
+		}
+		catch(InproperInputException e) {
+			assertEquals(false, true);
+		}
+		
 	}
 	
 	@Test
 	void measureTest() {
-		assertEquals(result[i[0]].notes[i[1]].nextMeasure, expectedMeasure[i[1]][i[0]]);
+		try {
+			GuitarChord[] result = guitar.converter(test, 1, 'a');
+			assertEquals(result[i[0]].notes[i[1]].nextMeasure, expectedMeasure[i[1]][i[0]]);
+		}
+		catch(InproperInputException e) {
+			assertEquals(false, true);
+		}
+		
+	}
+	
+	@Test
+	void hammerTest() {
+		try {
+			GuitarChord[] result = guitar.converter(testSpecial, 1, 'a');
+			assertEquals(result[0].notes[0].isHammer, true);
+			assertEquals(result[0].notes[0].note, "F");
+			assertEquals(result[0].notes[0].hammerTo.note, "F#");
+			
+			assertEquals(result[0].notes[1].isHammer, true);
+			assertEquals(result[0].notes[1].note, "A#");
+			assertEquals(result[0].notes[1].hammerTo.note, "B");
+		}
+		catch(InproperInputException e) {
+			assertEquals(false, true);
+		}
+	}
+	
+	@Test
+	void pullTest() {
+		try {
+			GuitarChord[] result = guitar.converter(testSpecial, 1, 'a');
+			assertEquals(result[0].notes[2].isPull, true);
+			assertEquals(result[0].notes[2].note, "G#");
+			assertEquals(result[0].notes[2].pullTo.note, "A");
+			
+			assertEquals(result[0].notes[3].isPull, true);
+			assertEquals(result[0].notes[3].note, "C#");
+			assertEquals(result[0].notes[3].pullTo.note, "D");
+		}
+		catch(InproperInputException e) {
+			assertEquals(false, true);
+		}
+	}
+	
+	@Test
+	void graceTest() {
+		try {
+			GuitarChord[] result = guitar.converter(testSpecial, 1, 'a');
+			assertEquals(result[0].notes[4].isGrace, true);
+			assertEquals(result[0].notes[4].note, "A#");
+			
+			assertEquals(result[0].notes[5].isGrace, true);
+			assertEquals(result[0].notes[5].note, "D#");
+		}
+		catch(InproperInputException e) {
+			assertEquals(false, true);
+		}
 	}
 	
 	private int rInd(int max) {

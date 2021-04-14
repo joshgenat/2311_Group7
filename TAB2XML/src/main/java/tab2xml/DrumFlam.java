@@ -2,28 +2,33 @@ package tab2xml;
 
 import java.util.ArrayList;
 
-public class BackUpFinder {
+public class DrumFlam {
 
-	// make changes uthith
+	
 	
 	
 	//ArrayList<Integer> rowCoordinate;
 	//ArrayList<Integer> colCoordinate;
-	ArrayList<Boolean> backUpFinder;
+	
+	//ArrayList<Character> noteHead;
+	ArrayList<Boolean> isFlam;
 
-	int counter = 0; 
-	boolean mutipleVoices = false;
+	int counter = 0;
+	//boolean mutipleVoices = false;
 	boolean checker = false; 
 	int oldDivider = 0;
 	int currentDivider = 0;
 	
-	public ArrayList <Boolean> BackUpList(char [][] drumTab, int [] rowSymbols)
+	ArrayList <Boolean> FlamFinder(char [][] drumTab, int [] rowSymbols)
 	{
 		counter = 0;
-		mutipleVoices = false;
+		//mutipleVoices = false;
 		//rowCoordinate = new ArrayList<Integer>();
 		//colCoordinate = new ArrayList<Integer>();
-		backUpFinder = new ArrayList<Boolean>();
+		//noteHead = new ArrayList<Character>();
+		
+		isFlam = new ArrayList<Boolean>();
+		
 		checker = false; 
 		oldDivider = 0;
 		currentDivider = 0;
@@ -32,7 +37,7 @@ public class BackUpFinder {
 		
 		/*
 		 * This for loop which goes through the tab, and finds the column values for the barlines 
-		 * The first two if statement find the column barline value and put the value in currentDivider, since a tab has more than one  barline 
+		 * The first two if statement find the column barline value and put the value in currentDivider, since a tab has more than one barline
 		 * we put the old barline column value inside oldDivider. 
 		 */
 		for (int col = 0; col<drumTab[0].length; col++)
@@ -64,14 +69,28 @@ public class BackUpFinder {
             for (int row1 = drumTab.length - 1; row1 >=0; row1--)
             {
             	//if (rowSymbols[row] == 8) means voice two
-            	if ((drumTab[row1][col1] == 'x' || drumTab[row1][col1] == 'o'|| drumTab[row1][col1] == 'f')  && (rowSymbols[row1] != 8))
+            	if ((drumTab[row1][col1] == 'x' ) && (rowSymbols[row1] != 8))
             	{
             		//rowCoordinate.add(row1);
             		//colCoordinate.add(col1);
-            		backUpFinder.add(false);
-            		
+            	//	noteHead.add('x');
+            		isFlam.add(false);
 
             	}
+            	else if ((drumTab[row1][col1] == 'o') && (rowSymbols[row1] != 8))
+            	{ 
+            		
+            		//rowCoordinate.add(row1);
+            		//colCoordinate.add(col1);
+            		//noteHead.add('o');
+            		isFlam.add(false);
+            		
+            	}
+            	else if ((drumTab[row1][col1] == 'f') && (rowSymbols[row1] != 8))
+            	{ 
+            		isFlam.add(true);
+            	}
+            	
             }
             
         }
@@ -79,7 +98,6 @@ public class BackUpFinder {
 		
 		
 		// run the loop a second time, now to find the notes in voice 2 
-		mutipleVoices = false;
 		for (int col2 = oldDivider; col2 < currentDivider; col2++)
         {
 			
@@ -87,32 +105,30 @@ public class BackUpFinder {
             {
             	
             	
-            	if(((drumTab[row2][col2] == 'x' || drumTab[row2][col2] == 'o') && (rowSymbols[row2]== 8)) && mutipleVoices == false)
-            	{
-            		mutipleVoices = true;
-             		backUpFinder.add(true);
-             		//rowCoordinate.add(row2);
-             		//colCoordinate.add(col2);
-             		break;            		
-            	}
             	
-            	 if ((drumTab[row2][col2] == 'x' || drumTab[row2][col2] == 'o')  && (rowSymbols[row2]== 8))
-            	{
-            		//rowCoordinate.add(row2);
-             		//colCoordinate.add(col2);
-             		backUpFinder.add(false);
-            	}
+            		if ((drumTab[row2][col2] == 'x')  && (rowSymbols[row2]== 8))
+            		{
+            			//rowCoordinate.add(row2);
+            			//colCoordinate.add(col2);
+            			//noteHead.add('x');
+            			isFlam.add(false);
+            		}
+            	
+            		else if (( drumTab[row2][col2] == 'o')  && (rowSymbols[row2]== 8))
+            		{
+            			//rowCoordinate.add(row2);
+            			//colCoordinate.add(col2);
+            			//noteHead.add('o');
+            			isFlam.add(false);
+            		}
             
             }
             
         }
 		 	}
-	
-	
 		     }
 		}
-		
-		return backUpFinder;
+		return isFlam;
 		
 		
 		

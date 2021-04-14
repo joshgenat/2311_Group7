@@ -21,5 +21,23 @@ public class Divisions {
 		
 	}
 	
+	// ForBOTH
+	static void divisions(Document doc, Element attributes, int div) {
+		Element divisions = doc.createElement("divisions");        
+		divisions.appendChild(doc.createTextNode("" + div) ); 
+		attributes.appendChild(divisions); 
+		
+	}
+	
+	// Divisions Tester
+	public static String divisionsTest(int[] s) {
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append("<divisions>");  
+		sb.append("\n" + s[0]); 
+		sb.append("\n</divisions>");
+		
+		return sb.toString();
+	}
 	
 }

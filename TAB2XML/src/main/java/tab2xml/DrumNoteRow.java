@@ -6,20 +6,20 @@ public class DrumNoteRow {
 
 	
 	ArrayList<Integer> rowCoordinate;
-	ArrayList<Integer> colCoordinate;
+	//ArrayList<Integer> colCoordinate;
 
 	int counter = 0;
-	boolean mutipleVoices = false;
+	//boolean mutipleVoices = false;
 	boolean checker = false; 
 	int oldDivider = 0;
 	int currentDivider = 0;
 	
-	ArrayList <Integer> RowReader(char [][] drumTab, int [] rowSymbols)
+	public ArrayList <Integer> RowReader(char [][] drumTab, int [] rowSymbols)
 	{
 		counter = 0;
-		mutipleVoices = false;
+		//mutipleVoices = false;
 		rowCoordinate = new ArrayList<Integer>();
-		colCoordinate = new ArrayList<Integer>();
+		//colCoordinate = new ArrayList<Integer>();
 		checker = false; 
 		oldDivider = 0;
 		currentDivider = 0;
@@ -60,10 +60,10 @@ public class DrumNoteRow {
             for (int row1 = drumTab.length - 1; row1 >=0; row1--)
             {
             	//if (rowSymbols[row] == 8) means voice two
-            	if ((drumTab[row1][col1] == 'x' || drumTab[row1][col1] == 'o')  && (rowSymbols[row1] != 8))
+            	if ((drumTab[row1][col1] == 'x' || drumTab[row1][col1] == 'o'|| drumTab[row1][col1] == 'f')  && (rowSymbols[row1] != 8))
             	{
             		rowCoordinate.add(row1);
-            		colCoordinate.add(col1);
+            		//colCoordinate.add(col1);
 
             	}
             }
@@ -72,8 +72,8 @@ public class DrumNoteRow {
 		 
 		
 		
-		// run the loop a second time, now to find the notes in voice 2 
-		mutipleVoices = false;
+		// run the loop a second time, now to find the notes in voice 2 3
+		
 		for (int col2 = oldDivider; col2 < currentDivider; col2++)
         {
 			
@@ -81,16 +81,12 @@ public class DrumNoteRow {
             {
             	
             	
-            	if(((drumTab[row2][col2] == 'x' || drumTab[row2][col2] == 'o') && (rowSymbols[row2]== 8)) && mutipleVoices == false)
-            	{
-            		mutipleVoices = true;
-            		
-            	}
+   
             	
             	 if ((drumTab[row2][col2] == 'x' || drumTab[row2][col2] == 'o')  && (rowSymbols[row2]== 8))
             	{
             		rowCoordinate.add(row2);
-             		colCoordinate.add(col2);
+             		//colCoordinate.add(col2);
             	}
             
             }
@@ -99,6 +95,7 @@ public class DrumNoteRow {
 		 	}
 		     }
 		}
+			
 		return rowCoordinate;
 		
 		

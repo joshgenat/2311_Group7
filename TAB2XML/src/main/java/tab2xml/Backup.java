@@ -13,4 +13,15 @@ public class Backup {
 			duration.appendChild(doc.createTextNode("" + 16)); 
 			backup.appendChild(duration);	
 	}
+	
+	// Backup Tester
+		public static String backupTest(int[] s) {
+			StringBuilder sb = new StringBuilder();
+			
+			sb.append("<backup>");  
+			sb.append("\n" + s[0]); 
+			sb.append("\n</backup>");
+			
+			return sb.toString();
+		}
 }

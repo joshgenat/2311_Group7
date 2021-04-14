@@ -16,8 +16,9 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="550.0" prefWidth="900.0" style="-fx-background-color: #339966;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tab2xml.Controller">
+<AnchorPane prefHeight="550.0" prefWidth="900.0" style="-fx-background-color: #126e59;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tab2xml.Controller">
    <children>
       <TabPane fx:id="tabView" layoutX="163.0" layoutY="39.0" prefHeight="504.0" prefWidth="589.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="306.0" AnchorPane.topAnchor="39.0">
         <tabs>
@@ -48,9 +49,9 @@
               <MenuItem mnemonicParsing="false" onAction="#selectFile" text="Open File" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Help">
+          <Menu fx:id="helpBar" mnemonicParsing="false" text="Help">
             <items>
-                  <Menu mnemonicParsing="false" text="Samples">
+                  <Menu fx:id="sampleBar" mnemonicParsing="false" text="Samples">
                     <items>
                       <MenuItem fx:id="drumSample" mnemonicParsing="false" onAction="#sample" text="Drum" />
                         <MenuItem fx:id="guitarSample" mnemonicParsing="false" onAction="#sample" text="Guitar" />
@@ -62,20 +63,25 @@
           </Menu>
         </menus>
       </MenuBar>
-      <AnchorPane layoutX="750.0" layoutY="67.0" prefHeight="475.0" prefWidth="278.0" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="67.0">
+      <AnchorPane layoutX="608.0" layoutY="68.0" prefHeight="475.0" prefWidth="278.0" AnchorPane.bottomAnchor="7.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="68.0">
          <children>
-            <Button fx:id="convert" layoutX="101.0" layoutY="353.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#convert" prefHeight="25.0" prefWidth="75.0" text="Convert" />
-            <Button fx:id="selectFile" layoutX="188.0" layoutY="21.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#selectFile" prefHeight="25.0" prefWidth="75.0" text="Select File" />
-            <Button fx:id="clear" layoutX="188.0" layoutY="59.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#clear" prefHeight="25.0" prefWidth="75.0" text="Clear" />
-            <Button fx:id="download" layoutX="188.0" layoutY="100.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#download" prefHeight="25.0" prefWidth="75.0" text="Download" />
-            <ImageView fitHeight="45.0" fitWidth="117.0" layoutX="147.0" layoutY="418.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="14.50674819946289" AnchorPane.leftAnchor="147.0" AnchorPane.rightAnchor="14.0">
-               <image>
-                  <Image url="@group7.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="errorLabel" layoutX="14.0" layoutY="385.0" prefHeight="76.0" prefWidth="117.0" />
-            <ComboBox fx:id="clefSignBox" layoutX="14.0" layoutY="33.0" prefHeight="25.0" prefWidth="126.0" />
-            <Label layoutX="14.0" layoutY="12.0" text="Clef:">
+            <TextField fx:id="repeatField" layoutX="6.0" layoutY="76.0" prefHeight="25.0" prefWidth="126.0" promptText="Repeat Number" />
+            <Button fx:id="measureListEdit" layoutX="145.0" layoutY="199.0" mnemonicParsing="false" onAction="#editMeasure" prefHeight="38.0" prefWidth="99.0" text="Edit Measure" />
+            <Button fx:id="convert" layoutX="83.0" layoutY="270.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#convert" prefHeight="37.0" prefWidth="112.0" text="Convert">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
+            <Button fx:id="clear" layoutX="33.0" layoutY="199.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#clear" prefHeight="38.0" prefWidth="99.0" text="Clear" />
+            <Button fx:id="download" layoutX="83.0" layoutY="318.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#download" prefHeight="38.0" prefWidth="112.0" text="Download">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
+            <Label fx:id="errorLabel" layoutX="6.0" layoutY="374.0" prefHeight="87.0" prefWidth="267.0">
+               <font>
+                  <Font size="10.0" />
+               </font></Label>
+            <ComboBox fx:id="clefSignBox" layoutX="146.0" layoutY="76.0" prefHeight="25.0" prefWidth="126.0" />
+            <Label fx:id="clefLabel" layoutX="146.0" layoutY="49.0" text="Clef:">
                <textFill>
                   <LinearGradient endX="1.0" endY="1.0">
                      <stops>
@@ -92,13 +98,173 @@
                      </stops>
                   </LinearGradient>
                </textFill>
+               <font>
+                  <Font size="14.0" />
+               </font>
             </Label>
-            <Label layoutX="11.0" layoutY="75.0" text="Time:" />
-            <TextField fx:id="beatsField" layoutX="65.0" layoutY="100.0" prefHeight="25.0" prefWidth="75.0" promptText="#" />
-            <TextField fx:id="beatTypeField" layoutX="65.0" layoutY="139.0" prefHeight="25.0" prefWidth="75.0" promptText="#" />
-            <Label layoutX="10.0" layoutY="104.0" text="Beats:" />
-            <Label layoutX="10.0" layoutY="143.0" text="Beat Type:" />
+            <Label layoutX="6.0" layoutY="114.0" text="Time Signature:">
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.9966799121614557">
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <TextField fx:id="timeField" layoutX="6.0" layoutY="144.0" prefHeight="25.0" prefWidth="126.0" promptText="Timing eg. 4/4" />
+            <Label fx:id="songNameLabel" layoutX="6.0" layoutY="49.0" text="Song Title:">
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="songNameField" layoutX="6.0" layoutY="76.0" prefHeight="25.0" prefWidth="126.0" promptText="Song Title" />
+            <Label layoutX="146.0" layoutY="113.0" text="Measure List:">
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Button fx:id="measureListSave" layoutX="88.0" layoutY="199.0" mnemonicParsing="false" onAction="#saveMeasure" prefHeight="38.0" prefWidth="99.0" text="Save new" />
+            <Button fx:id="selectFile" layoutX="83.0" layoutY="-12.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#selectFile" prefHeight="38.0" prefWidth="112.0" text="Select File" />
+            <TextField fx:id="measureListS" layoutX="146.0" layoutY="144.0" prefHeight="25.0" prefWidth="38.0" />
+            <TextField fx:id="measureListE" layoutX="200.0" layoutY="144.0" prefHeight="25.0" prefWidth="38.0" />
+            <Label layoutX="189.0" layoutY="144.0" text="-">
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="measureListMax" layoutX="241.0" layoutY="125.0" prefHeight="37.0" prefWidth="38.0" text="range">
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Label fx:id="repeatLabel" layoutX="7.0" layoutY="49.0" text="Repeats:">
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="editLabel" alignment="TOP_LEFT" layoutX="146.0" layoutY="40.0" prefHeight="77.0" prefWidth="126.0">
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
+      <ImageView fitHeight="25.0" fitWidth="65.0" layoutX="823.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="486.0" AnchorPane.leftAnchor="823.0" AnchorPane.rightAnchor="14.823833465576172">
+         <image>
+            <Image url="@logo.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

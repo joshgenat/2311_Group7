@@ -28,6 +28,14 @@ public class GuitarXML {
 			
 		
 		// The actual values
+		
+			Element work = doc.createElement("work"); 
+			rootElement.appendChild(work); 
+		
+				Element workTitle = doc.createElement("work-title"); 
+				workTitle.appendChild(doc.createTextNode(g.title));
+				work.appendChild(workTitle); 
+			
 			Element partList = doc.createElement("part-list"); 
 			rootElement.appendChild(partList); 
 			
@@ -36,7 +44,10 @@ public class GuitarXML {
 				partList.appendChild(scorePart); 
 
 					Element partName = doc.createElement("part-name");   
+					if (g.type == 'a')
 					partName.appendChild(doc.createTextNode("Guitar")); 
+					else if (g.type == 'b')
+					partName.appendChild(doc.createTextNode("Bass")); 
 					scorePart.appendChild(partName);               
     
 			
@@ -53,34 +64,78 @@ public class GuitarXML {
 					Element attributes = doc.createElement("attributes");   
 					measureNumber.appendChild(attributes);   
 					
-						Divisions.divisions(doc, attributes, g);
+						Divisions.divisions(doc, attributes, g.div.get(0));
 						Key.key(doc, attributes, g);
-						Time.time(doc, attributes, g);
+						Time.time(doc, attributes, g.b.get(0), g.bt.get(0));
 						Clef.clef(doc, attributes, g);
 						Staff.staff(doc, attributes, g);
+						
 						int count = 2;
 						Element m = measureNumber;
+						Element a = attributes;
+						if (g.repeats.get(count-2) != 1) {
+							Barline.barline(doc, measureNumber);
+							Direction.direction(doc, measureNumber, g.repeats.get(count-2));
+						}
 						
 					for(int j = 0; j < g.notes.size() ; j++) {
 						
-					if (g.notes.get(j).nextMeasure != true) {
-						GuitarNote.note(doc, m, g, j);
+						if (g.notes.get(j).nextMeasure != true) {
+							GuitarNote.note(doc, m, g, j);
+						
+						if (g.notes.get(j).hammerTo != null)
+							GuitarNoteHammer.note2(doc, m, g, j);
+						
+						else if (g.notes.get(j).pullTo != null)
+							GuitarNotePull.note3(doc, m, g, j);
 					}
 					
 					else { 
 						Element measureNumber2 = doc.createElement("measure"); 
 						measureNumber2.setAttribute("number", "" + count);
+						if(count-1 < g.repeats.size())
 						partId.appendChild(measureNumber2);
+						
+						
 						GuitarNote.note(doc, m, g, j);
+						
+						Barline2.barline(doc, m, g.repeats.get(count-2));
+						
+						if (g.notes.get(j).hammerTo != null)
+							GuitarNoteHammer.note2(doc, m, g, j);
+						
+						else if (g.notes.get(j).pullTo != null)
+							GuitarNotePull.note3(doc, m, g, j);
+						
 						m = measureNumber2;
+						if (g.repeats.get(count-2) != 1) {
+							Barline.barline(doc, m);
+							Direction.direction(doc, m, g.repeats.get(count-2));
+						}
 						count++;	
+						if(count-2 < g.b.size())
+						if (g.b.get(count - 2) != g.b.get(count - 3) || 
+								g.bt.get(count - 2) != g.bt.get(count - 3)) {
+								Element attributes2 = doc.createElement("attributes");   
+								m.appendChild(attributes2);
+								a = attributes2;
+								Divisions.divisions(doc, a, g.div.get(count-2));
+								Key.key(doc, a, g);
+								Time.time(doc, a, g.b.get(count-2), g.bt.get(count-2));
+								Clef.clef(doc, a, g);
+								Staff.staff(doc, a, g);
+							}
 						}
 					}
 					
-					
-					Barline.barline(doc, measureNumber, g);
+					if(g.repeats.get(g.repeats.size()-1) != 1) {
+						Barline2.barline(doc, m, g.repeats.get(count-3));
+					}
+					else {
+						Barline2.barline(doc, m, 0);
+					}
 				
-				
+				 
 	
 		// write content into XML file
 		TransformerFactory transformerFactory = TransformerFactory.newInstance();
@@ -99,7 +154,7 @@ public class GuitarXML {
 		
 		text = finalstring;
 		
-		}
+		} 
 		
 		catch (TransformerException e) {
 			e.printStackTrace();

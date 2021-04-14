@@ -10,6 +10,10 @@ import java.util.Scanner;
 
 import org.junit.jupiter.api.Test;
 
+import tab2xml.BackUpFinder;
+import tab2xml.DrumBeamNumber;
+import tab2xml.DrumNoteCol;
+import tab2xml.DrumNoteHead;
 import tab2xml.DrumNoteRow;
 import tab2xml.DrumNoteType;
 import tab2xml.DrumStem;
@@ -17,189 +21,68 @@ import tab2xml.DrumStem;
 
 public class DrumTester { 
 	
-	
 	@Test
-	
-	/* 
-	 * should be able to find the row values of all the points in the test1 in the correct order 
-	 */
 	
 	public void RowArrayListTest()
 	{
 	 
+		DrumNoteRow rows = new DrumNoteRow();	
 		
-	char[][] test1 = 
+	char[][] testTab= 
 		{
-				{'C', ' ', '|', '-', '-', 'x', '-', '-', '-','|', ' ', '-', '-', '-', 'x', '-', '-', '|'},
-				{'R', ' ', '|', '-', 'o', 'x', '-', '-', '-','|', 'x', '-', '-', '-', '-', '-', 'x', '|'},
-				{'F', 'T', '|', '-', '-', '-', 'x', '-', 'x','|', ' ', '-', '-', '-', '-', '-', '-', '|'},
-				{'H', 'f', '|', 'o', '-', '-', '-', '-', 'x','|', '-', '-', '-', 'o', 'x', '-', '-', '|'},
-				{'S', 'D', '|', '-', '-', '-', '-', 'x', '-','|', 'x', '-', '-', '-', '-', 'x', '-', '|'},
-				{'B', ' ', '|', '-', 'x', '-', '-', '-', 'o','|', 'o', '-', 'o', '-', '-', '-', '-', '|'} 
+				{'C', 'C', '|', 'x', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '|'},
+				{'H', 'H', '|', '-', '-', 'x', '-', 'x', '-', 'x', '-', 'x', '-', 'x', '-', 'x', '-', 'x', '-', '|'},
+				{'S', 'D', '|', '-', '-', '-', '-', 'o', '-', '-', '-', '-', '-', '-', '-', 'o', '-', '-', '-', '|'},
+				{'H', 'T', '|', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '|'},
+				{'M', 'T', '|', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '|'},
+				{'B', 'D', '|', 'o', '-', '-', '-', '-', '-', '-', '-', 'o', '-', '-', '-', '-', '-', '-', '-', '|'} 
 		};
 	
-	boolean checker = false; 
-	int oldDivider = 0; 
-	int currentDivider = 0;
+	int [] rowSymbol = {1,2,4,5,6,8};
+	
 	ArrayList<Integer> exp = new ArrayList<>();
 	ArrayList<Integer> act = new ArrayList<>();
 	
-	for (int col = 0; col<test1[0].length; col++)
-	{
-	     for (int row = test1.length - 1; row >= 0 ; row--)
-	     {
-	    	 
-	    	 if (currentDivider == col)
-	    	 {
-	    		checker = true;
-	    		break; 
-	    	 }		    	 
-	    	
-	    	 else if (test1[row][col] == '|')
-	    		{
-	    		 oldDivider = currentDivider;
-	    		 currentDivider = col;
-	    		 checker = false;
-	    		
-	    		}
 	
-	
-
-						if (checker == false)
-						{
-						
-							for (int col1 = oldDivider; col1 < currentDivider; col1++)
-						    {
-								
-						        for (int row1 = test1.length - 1; row1 >=0; row1--)
-						        {
-						        	//if (rowSymbols[row] == 8) means voice two
-						        	if ((test1[row1][col1] == 'x' || test1[row1][col1] == 'o')  && (row1 != 5))
-						        	{
-						        		act.add(row1);
-						
-						        	}
-						        }
-						        
-						    }
-							 
-							
-							
-							// run the loop a second time now to find the notes in voice 2 
-						
-							for (int col2 = oldDivider; col2 < currentDivider; col2++)
-						    {
-								
-						        for (int row2 = test1.length - 1;row2>=0; row2--)
-						        {
-						        	
-						        	 if ((test1[row2][col2] == 'x' || test1[row2][col2] == 'o')  && (row2== 5))
-						        	{
-						        		act.add(row2);
-						        	}
-						        
-						        }
-						        
-						    }
-							
-						}
-	     		}
-	
-			}    
-	
-	Integer[] expectedValues = {3, 1, 1, 0, 2, 4, 3, 2, 5, 5, 4, 1, 3, 3, 0, 4, 1, 5, 5};
-	 exp = new ArrayList<>(Arrays.asList(expectedValues));
+	Integer[] expectedValues = {0, 1, 2, 1, 1, 1, 1, 2, 1, 1, 5, 5};
+	exp = new ArrayList<>(Arrays.asList(expectedValues));
+	 
+	 act = rows.RowReader(testTab, rowSymbol);
 	 assertEquals(exp, act);
 	}
 	
 	
 	
 	@Test
-	public void ColArrayListTest()
+	 public void ColArrayListTest()
+	 
 	{
-		char[][] test1 = 
+		
+		DrumNoteCol cols = new DrumNoteCol();	
+		
+		char[][] test= 
 			{
-					{'C', ' ', '|', '-', '-', 'x', '-', '-', '-','|', ' ', '-', '-', '-', 'x', '-', '-', '|'},
-					{'R', ' ', '|', '-', 'o', 'x', '-', '-', '-','|', 'x', '-', '-', '-', '-', '-', 'x', '|'},
-					{'F', 'T', '|', '-', '-', '-', 'x', '-', 'x','|', ' ', '-', '-', '-', '-', '-', '-', '|'},
-					{'H', 'f', '|', 'o', '-', '-', '-', '-', 'x','|', '-', '-', '-', 'o', 'x', '-', '-', '|'},
-					{'S', 'D', '|', '-', '-', '-', '-', 'x', '-','|', 'x', '-', '-', '-', '-', 'x', '-', '|'},
-					{'B', ' ', '|', '-', 'x', '-', '-', '-', 'o','|', 'o', '-', 'o', '-', '-', '-', '-', '|'} 
+					{'C', 'C', '|', 'x', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '|'},
+					{'H', 'H', '|', '-', '-', 'x', '-', 'x', '-', 'x', '-', 'x', '-', 'x', '-', 'x', '-', 'x', '-', '|'},
+					{'S', 'D', '|', '-', '-', '-', '-', 'o', '-', '-', '-', '-', '-', '-', '-', 'o', '-', '-', '-', '|'},
+					{'H', 'T', '|', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '|'},
+					{'M', 'T', '|', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '|'},
+					{'B', 'D', '|', 'o', '-', '-', '-', '-', '-', '-', '-', 'o', '-', '-', '-', '-', '-', '-', '-', '|'} 
 			};
-		boolean checker = false; 
-		int oldDivider = 0; 
-		int currentDivider = 0;
+		
+		int [] rowSymbol = {1,2,4,5,6,8};
+		
 		ArrayList<Integer> exp = new ArrayList<>();
 		ArrayList<Integer> act = new ArrayList<>();
 		
-		for (int col = 0; col<test1[0].length; col++)
-		{
-		     for (int row = test1.length - 1; row >= 0 ; row--)
-		     {
-		    	 
-		    	 if (currentDivider == col)
-		    	 {
-		    		checker = true;
-		    		break; 
-		    	 }		    	 
-		    	
-		    	 else if (test1[row][col] == '|')
-		    		{
-		    		 oldDivider = currentDivider;
-		    		 currentDivider = col;
-		    		 checker = false;
-		    		}
 		
-								
-						
-							if (checker == false)
-							{
-						
-								for (int col1 = oldDivider; col1 < currentDivider; col1++)
-							    {
-									
-							        for (int row1 = test1.length - 1; row1 >=0; row1--)
-							        {
-							        	//if (rowSymbols[row] == 8) means voice two
-							        	if ((test1[row1][col1] == 'x' || test1[row1][col1] == 'o')  && (row1 != 5))
-							        	{
-							        		act.add(col1);
-						
-							        	}
-							        }
-							        
-							    }
-								 
-								
-								
-								// run the loop a second time now to find the notes in voice 2 
-								for (int col2 = oldDivider; col2 < currentDivider; col2++)
-							    {
-									
-							        for (int row2 = test1.length - 1;row2>=0; row2--)
-							        {
-							        	
-							        	 if ((test1[row2][col2] == 'x' || test1[row2][col2] == 'o')  && (row2== 5))
-							        	{
-							        		act.add(col2);
-							        	}
-							        
-							        }
-							        
-							    }
-								
-							}
-								
-		     			}
-		
-				}    
-		
-		Integer[] expectedValues = {3, 4, 5, 5, 6, 7, 8, 8, 4, 8, 10, 10, 13, 14, 14, 15, 16, 10, 12};
+		Integer[] expectedValues = {3, 5, 7, 7, 9, 11, 13, 15, 15, 17, 3, 11};
 		 exp = new ArrayList<>(Arrays.asList(expectedValues));
+		 
+		 act = cols.ColReader(test, rowSymbol);
 		 assertEquals(exp, act);
 		 
 		}
-	
 	
 	
 	@Test
@@ -220,23 +103,184 @@ public class DrumTester {
 	}
 	
 	@Test
-	public void noteType()
+	public void StepDirectionTwo()
 	{
-		DrumNoteType note = new DrumNoteType();
+		DrumStem direction = new DrumStem();
 		
-		int duration = 1;
+		int voice = 1;
 		
 		String exp;
-		String act = note.DrumNoteLength (duration);
+		String act = direction.FindStemValue(voice);
 		
 		
-		exp = "16th";
+		exp = "up";
 		// change this to "DOWN to get the correct junit test lab 
 		assertEquals(exp, act);
 		
 	}
 	
 	
+	@Test
+	public void BackUpTest()
+	{
+		
+		BackUpFinder isBackup = new BackUpFinder ();	
+		
+		char[][] testTab = 
+			{
+					{'C', 'C', '|', 'x', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '|'},
+					{'H', 'H', '|', '-', '-', 'x', '-', 'x', '-', 'x', '-', 'x', '-', 'x', '-', 'x', '-', 'x', '-', '|'},
+					{'S', 'D', '|', '-', '-', '-', '-', 'o', '-', '-', '-', '-', '-', '-', '-', 'o', '-', '-', '-', '|'},
+					{'H', 'T', '|', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '|'},
+					{'M', 'T', '|', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '|'},
+					{'B', 'D', '|', 'o', '-', '-', '-', '-', '-', '-', '-', 'o', '-', '-', '-', '-', '-', '-', '-', '|'} 
+			};
+		
+		int [] rowSymbol = {1,2,4,5,6,8};
+		
+		ArrayList<Boolean> exp = new ArrayList<>();
+		ArrayList<Boolean> act = new ArrayList<>();
+		
+		
+		Boolean[] expectedValues = {false, false, false, false, false, false, false, false, false, false, true, false};
+		
+		exp = new ArrayList<Boolean>(Arrays.asList(expectedValues));
+		 
+		 act = isBackup.BackUpList(testTab, rowSymbol);
+		 assertEquals(exp, act);
+		 
+		}
 	
 	
+	@Test
+	public void BeamStatusOne()
+	{
+		
+		DrumBeamNumber beamStatus = new DrumBeamNumber ();	
+		
+		char[][] testTab = 
+			{
+					{'C', 'C', '|', 'x', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '|'},
+					{'H', 'H', '|', '-', '-', 'x', '-', 'x', '-', 'x', '-', 'x', '-', 'x', '-', 'x', '-', 'x', '-', '|'},
+					{'S', 'D', '|', '-', '-', '-', '-', 'o', '-', '-', '-', '-', '-', '-', '-', 'o', '-', '-', '-', '|'},
+					{'H', 'T', '|', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '|'},
+					{'M', 'T', '|', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '|'},
+					{'B', 'D', '|', 'o', '-', '-', '-', '-', '-', '-', '-', 'o', '-', '-', '-', '-', '-', '-', '-', '|'} 
+			};
+		
+		int [] rowSymbol = {1,2,4,5,6,8};
+		
+		ArrayList<String> exp = new ArrayList<>();
+		ArrayList<String> act = new ArrayList<>();
+		ArrayList <Character> NoteHeadReader = new ArrayList<>();
+		ArrayList<Integer> RowValue = new ArrayList<>();
+		ArrayList<Integer> ColValue = new ArrayList<>();
+		ArrayList<Boolean> BackUpFinder = new ArrayList<>();
+		ArrayList<Integer> barLine = new ArrayList<>();
+		
+		
+		Integer[] row = {0, 1, 2, 1, 1, 1, 1, 2, 1, 1, 5, 5};
+		Integer[] col = {3, 5, 7, 7, 9, 11, 13, 15, 15, 17, 3, 11};
+		Boolean[] backUp = {false, false, false, false, false, false, false, false, false, false, true, false};
+		Character [] head = { 'x', 'x', 'o', 'x', 'x', 'x', 'x', 'o', 'x', 'x', 'o', 'o'};
+		Integer[] divider = {2,19};
+	
+				
+				
+		BackUpFinder = new ArrayList<Boolean>(Arrays.asList(backUp));
+		RowValue = new ArrayList<Integer>(Arrays.asList(row));
+		ColValue = new ArrayList<Integer>(Arrays.asList(col));
+		NoteHeadReader = new ArrayList<Character>(Arrays.asList(head));
+		barLine = new ArrayList<Integer>(Arrays.asList(divider));
+		 
+		String[] expectedValues = {"begin", "continue", null, null, "end", "begin", "continue", null, null, "end", null, null};
+		
+		exp = new ArrayList<String>(Arrays.asList(expectedValues));
+		
+		 act = beamStatus.BeamOneStatus(RowValue,ColValue, NoteHeadReader, barLine, rowSymbol, testTab);
+		 assertEquals(exp, act);
+		 
+		}
+	
+
+	@Test
+	public void BeamTwoStatusTest()
+	{
+		
+		DrumBeamNumber beamtwoStatus = new DrumBeamNumber ();	
+		
+		char[][] testTab = 
+			{
+					{'C', 'C', '|', 'x', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '|'},
+					{'H', 'H', '|', '-', '-', 'x', '-', 'x', '-', 'x', '-', 'x', '-', 'x', '-', 'x', '-', 'x', '-', '|'},
+					{'S', 'D', '|', '-', '-', '-', '-', 'o', '-', '-', '-', '-', '-', '-', '-', 'o', '-', '-', '-', '|'},
+					{'H', 'T', '|', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '|'},
+					{'M', 'T', '|', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '|'},
+					{'B', 'D', '|', 'o', '-', '-', '-', '-', '-', '-', '-', 'o', '-', '-', '-', '-', '-', '-', '-', '|'} 
+			};
+		
+		int [] rowSymbol = {1,2,4,5,6,8};
+		
+		ArrayList<String> exp = new ArrayList<>();
+		ArrayList<String> act = new ArrayList<>();
+		ArrayList <Character> NoteHeadReader = new ArrayList<>();
+		ArrayList<Integer> RowValue = new ArrayList<>();
+		ArrayList<Integer> ColValue = new ArrayList<>();
+		ArrayList<Boolean> BackUpFinder = new ArrayList<>();
+		ArrayList<Integer> barLine = new ArrayList<>();
+		
+		
+		Integer[] row = {0, 1, 2, 1, 1, 1, 1, 2, 1, 1, 5, 5};
+		Integer[] col = {3, 5, 7, 7, 9, 11, 13, 15, 15, 17, 3, 11};
+		Boolean[] backUp = {false, false, false, false, false, false, false, false, false, false, true, false};
+		Character [] head = { 'x', 'x', 'o', 'x', 'x', 'x', 'x', 'o', 'x', 'x', 'o', 'o'};
+		Integer[] divider = {2,19};
+	
+				
+				
+		BackUpFinder = new ArrayList<Boolean>(Arrays.asList(backUp));
+		RowValue = new ArrayList<Integer>(Arrays.asList(row));
+		ColValue = new ArrayList<Integer>(Arrays.asList(col));
+		NoteHeadReader = new ArrayList<Character>(Arrays.asList(head));
+		barLine = new ArrayList<Integer>(Arrays.asList(divider));
+		 
+		String[] expectedValues = {null, null, null, null, null, null, null, null, null, null, null, null};
+		
+		exp = new ArrayList<String>(Arrays.asList(expectedValues));
+		
+		 act = beamtwoStatus.BeamTwoStatus(RowValue,ColValue, NoteHeadReader, barLine, rowSymbol, testTab);
+		 assertEquals(exp, act);
+		 
+		}
+	
+	@Test
+	public void NoteHeadTest()
+	{
+		
+		DrumNoteHead head = new DrumNoteHead();	
+		
+		char[][] testTab = 
+			{
+					{'C', 'C', '|', 'x', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '|'},
+					{'H', 'H', '|', '-', '-', 'x', '-', 'x', '-', 'x', '-', 'x', '-', 'x', '-', 'x', '-', 'x', '-', '|'},
+					{'S', 'D', '|', '-', '-', '-', '-', 'o', '-', '-', '-', '-', '-', '-', '-', 'o', '-', '-', '-', '|'},
+					{'H', 'T', '|', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '|'},
+					{'M', 'T', '|', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '|'},
+					{'B', 'D', '|', 'o', '-', '-', '-', '-', '-', '-', '-', 'o', '-', '-', '-', '-', '-', '-', '-', '|'} 
+			};
+		
+		int [] rowSymbol = {1,2,4,5,6,8};
+		
+		ArrayList<Character> exp = new ArrayList<>();
+		ArrayList<Character> act = new ArrayList<>();
+		
+		
+		Character[] expectedValues = {'x', 'x', 'o', 'x', 'x', 'x', 'x', 'o', 'x', 'x', 'o', 'o'};
+		
+		exp = new ArrayList<Character>(Arrays.asList(expectedValues));
+		 
+		 act = head.NoteHeadReader(testTab, rowSymbol);
+		 assertEquals(exp, act);
+		 
+		}
 }

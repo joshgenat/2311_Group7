@@ -15,6 +15,10 @@ dependencies {
     
     //Xembly for xml
     implementation 'com.jcabi.incubator:xembly:0.25.0'
+    //GUI stuff
+    testCompile "org.testfx:testfx-core:4.0.16-alpha"
+    testCompile "org.testfx:testfx-junit5:4.0.16-alpha"
+    testCompile group: 'org.hamcrest', name: 'hamcrest', version: '2.1'
 }
 
 test {
