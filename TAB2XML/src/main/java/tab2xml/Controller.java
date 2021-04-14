@@ -177,17 +177,17 @@ public class Controller {
 		catch(DurationException e) {
 			e.printStackTrace();
 			errorLabel.setTextFill(Color.PINK);
-			errorLabel.setText("Error converting,\n" + e.message + "\n Error Number: #004");
+			errorLabel.setText("Error converting," + e.message + "\n Error Number: #004");
 		}
 		catch(InproperInputException e) {
 			e.printStackTrace();
 			errorLabel.setTextFill(Color.PINK);
-			errorLabel.setText("Error converting,\n" + e.message + "\n Error Number: #005");
+			errorLabel.setText("Error converting," + e.message + "\n Error Number: #005");
 		}
 		catch(InproperInstrumentException e) {
 			e.printStackTrace();
 			errorLabel.setTextFill(Color.PINK);
-			errorLabel.setText("Error converting,\n" + e.message + "\n Error Number: #006");
+			errorLabel.setText("Error converting," + e.message + "\n Error Number: #006");
 		}
 		catch(Exception e) {
 			e.printStackTrace();
@@ -421,17 +421,17 @@ public class Controller {
 		catch(DurationException e) {
 			e.printStackTrace();
 			errorLabel.setTextFill(Color.PINK);
-			errorLabel.setText("Error converting,\n" + e.message + "\n Error Number: #004");
+			errorLabel.setText("Error converting," + e.message + "\n Error Number: #004");
 		}
 		catch(InproperInputException e) {
 			e.printStackTrace();
 			errorLabel.setTextFill(Color.PINK);
-			errorLabel.setText("Error converting,\n" + e.message + "\n Error Number: #005");
+			errorLabel.setText("Error converting," + e.message + "\n Error Number: #005");
 		}
 		catch(InproperInstrumentException e) {
 			e.printStackTrace();
 			errorLabel.setTextFill(Color.PINK);
-			errorLabel.setText("Error converting,\n" + e.message + "\n Error Number: #006");
+			errorLabel.setText("Error converting," + e.message + "\n Error Number: #006");
 		}
 		catch(Exception e) {
 			e.printStackTrace();

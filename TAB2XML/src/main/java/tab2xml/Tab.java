@@ -204,10 +204,10 @@ public class Tab {
 				Integer.parseInt(split[0]);
 				Integer.parseInt(split[1]);
 			}
-			if((!time.isBlank()) && (Integer.parseInt(split[0]) != 3 || Integer.parseInt(split[0]) != 4 || Integer.parseInt(split[0]) != 8)) {
+			if((!time.isBlank()) && (Integer.parseInt(split[0]) != 3 && Integer.parseInt(split[0]) != 4 && Integer.parseInt(split[0]) != 6)) {
 				throw new UnsupportedTimeException();
 			}
-			if((!time.isBlank()) && (Integer.parseInt(split[1]) != 4 || Integer.parseInt(split[1]) != 8)) {
+			if((!time.isBlank()) && (Integer.parseInt(split[1]) != 4 && Integer.parseInt(split[1]) != 8)) {
 				throw new UnsupportedTimeException();
 			}
 			for(int i = 0; i <nodes.size(); i++) {

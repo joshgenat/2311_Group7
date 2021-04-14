@@ -39,7 +39,6 @@ public class ControllerTester {
 	@Test
 	void convertBtnClick(FxRobot robot) {
 		robot.clickOn("#convert");
-		robot.sleep(1000);
 		FxAssert.verifyThat("#errorLabel", LabeledMatchers.hasText("Error converting,\nmake sure your tab is\ncorrect and Try Again!\nError Number: #001"));
 	}
 	
@@ -48,7 +47,6 @@ public class ControllerTester {
 		robot.clickOn("#timeField");
 		robot.write("5/5");
 		robot.clickOn("#convert");
-		robot.sleep(1000);
 		FxAssert.verifyThat("#errorLabel", LabeledMatchers.hasText("Error converting,\nInvalid Time Input\nError Number: #003"));
 	}
 	
@@ -56,11 +54,8 @@ public class ControllerTester {
 	void drumSample(FxRobot robot) {
 		robot.clickOn("#helpBar");
 		robot.clickOn("#sampleBar");
-		robot.sleep(1000);
 		robot.clickOn("#drumSample");
-		robot.sleep(1000);
 		robot.clickOn("#convert");
-		robot.sleep(1000);
 		FxAssert.verifyThat("#errorLabel", LabeledMatchers.hasText("Drum" + "\n" + "Conversion Complete"));
 	}
 	
@@ -68,12 +63,9 @@ public class ControllerTester {
 	void guitarSample(FxRobot robot) {
 		robot.clickOn("#helpBar");
 		robot.clickOn("#sampleBar");
-		robot.sleep(1000);
 		robot.moveTo("#drumSample");
 		robot.clickOn("#guitarSample");
-		robot.sleep(1000);
 		robot.clickOn("#convert");
-		robot.sleep(1000);
 		FxAssert.verifyThat("#errorLabel", LabeledMatchers.hasText("Guitar" + "\n" + "Conversion Complete"));
 	}
 	
@@ -122,9 +114,7 @@ public class ControllerTester {
 		robot.clickOn("#measureListEdit");
 		robot.clickOn("#repeatField");
 		robot.write("2");
-		robot.sleep(100);
 		robot.clickOn("#measureListSave");
-		robot.sleep(1000);
 		FxAssert.verifyThat("#errorLabel", LabeledMatchers.hasText("Drum" + "\n" + "Conversion Complete"));
 	}
 	

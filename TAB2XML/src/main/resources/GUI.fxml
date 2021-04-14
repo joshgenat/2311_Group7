@@ -76,12 +76,10 @@
                <font>
                   <Font size="14.0" />
                </font></Button>
-            <ImageView fitHeight="25.0" fitWidth="65.0" layoutX="210.0" layoutY="436.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="210.0" AnchorPane.rightAnchor="7.157166798909486">
-               <image>
-                  <Image url="@logo.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="errorLabel" layoutX="14.0" layoutY="391.0" prefHeight="70.0" prefWidth="192.0" />
+            <Label fx:id="errorLabel" layoutX="6.0" layoutY="374.0" prefHeight="87.0" prefWidth="267.0">
+               <font>
+                  <Font size="10.0" />
+               </font></Label>
             <ComboBox fx:id="clefSignBox" layoutX="146.0" layoutY="76.0" prefHeight="25.0" prefWidth="126.0" />
             <Label fx:id="clefLabel" layoutX="146.0" layoutY="49.0" text="Clef:">
                <textFill>
@@ -263,5 +261,10 @@
             </Label>
          </children>
       </AnchorPane>
+      <ImageView fitHeight="25.0" fitWidth="65.0" layoutX="823.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="486.0" AnchorPane.leftAnchor="823.0" AnchorPane.rightAnchor="14.823833465576172">
+         <image>
+            <Image url="@logo.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
