@@ -20,6 +20,7 @@ To run this application, import the java files and load the file into Eclipse. T
 - Required Documents <a href="Requirements Document.pdf">(PDF)</a>
 - User Manual <a href="User Manual.pdf">(PDF)</a>
 - Testing Document <a href="Testing Document.pdf">(PDF)</a>
+- Design Document <a href="Design Document.pdf">(PDF)</a>
 
 
 ## Team
