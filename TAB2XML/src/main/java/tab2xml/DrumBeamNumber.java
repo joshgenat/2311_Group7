@@ -1083,7 +1083,7 @@ public class DrumBeamNumber {
 						
 						else 
 						{
-							// if current duration isnt 2 or 1 not par of a beam 
+							// if current duration isnt 2 or 1 not par of a beams
 							//hasBeamNum.add(false);
 							//secondBeamNum.add(false);
 							beamStatus.add(null);
