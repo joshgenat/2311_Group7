@@ -1128,11 +1128,7 @@ public class DrumBeamNumber {
 				
 		}
 		
-		
-		
-			System.out.println(secondBeamStatus);
-		
-		
+				
 		
 		
 		return secondBeamStatus;

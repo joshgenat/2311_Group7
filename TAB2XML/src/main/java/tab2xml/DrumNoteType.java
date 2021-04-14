@@ -534,7 +534,7 @@ public class DrumNoteType {
 		
 	}
 	
-	System.out.println(dotnumber);
+
 	 return dotnumber;
 }	
 }
