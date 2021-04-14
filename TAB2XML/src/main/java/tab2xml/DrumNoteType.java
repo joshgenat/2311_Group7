@@ -82,7 +82,7 @@ public class DrumNoteType {
 			else
 			{
 				//thorw exception because duration for one note is not supported for my program for length 16, division 4 
-				throw new DurationException("duration: " + duration + "of note at row: " + row + " column: " + col + "invalid for tab of length 16 with division of 4");
+				throw new DurationException("duration: " + duration + "\nof note at row: " + row + "\n column: " + col + "\ninvalid for tab of length 16 with division of 4");
 				
 			}
 			
@@ -125,7 +125,7 @@ public class DrumNoteType {
 			else
 			{
 				//throw exception saying duration is not supported by our program, refer to user manual for list of non supported durations 
-				throw new DurationException("duration: " + duration + "of note at row: " + row + " column: " + col + "invalid for tab of length 8 with division of 2");
+				throw new DurationException("duration: " + duration + "\nof note at row: " + row + "\ncolumn: " + col + "\ninvalid for tab of length 8 with division of 2");
 			}
 			
 		}
@@ -155,7 +155,7 @@ public class DrumNoteType {
 			else
 			{
 				//throw exception saying duration is not supported by our program, refer to user manual for list of non supported durations 
-				throw new DurationException("duration: " + duration + "of note at row: " + row + " column: " + col + "invalid for tab of length 4 with division of 1");
+				throw new DurationException("duration: " + duration + "\nof note at row: " + row + "\ncolumn: " + col + "\ninvalid for tab of length 4 with division of 1");
 			}
 			
 		}
@@ -197,7 +197,7 @@ public class DrumNoteType {
 			
 			else
 			{
-				throw new DurationException("duration: " + duration + "of note at row: " + row + " column: " + col + "invalid for tab of length 18 with division of 6");
+				throw new DurationException("duration: " + duration + "\nof note at row: " + row + "\ncolumn: " + col + "\ninvalid for tab of length 18 with division of 6");
 				//throw exception saying duration is not supported by our program, refer to user manual for list of non supported durations 
 			}
 			
@@ -231,7 +231,7 @@ public class DrumNoteType {
 			}
 			else
 			{
-				throw new DurationException("duration: " + duration + "of note at row: " + row + " column: " + col + "invalid for tab of length 9 with division of 3");
+				throw new DurationException("duration: " + duration + "\nof note at row: " + row + "\ncolumn: " + col + "\ninvalid for tab of length 9 with division of 3");
 				//throw exception saying duration is not supported by our program, refer to user manual for list of non supported durations 
 			}
 			
@@ -273,7 +273,7 @@ public class DrumNoteType {
 			}
 			else
 			{
-				throw new DurationException("duration: " + duration + "of note at row: " + row + " column: " + col + "invalid for tab of length 12 with division of 4");
+				throw new DurationException("duration: " + duration + "\nof note at row: " + row + "\ncolumn: " + col + "\ninvalid for tab of length 12 with division of 4");
 				//throw exception saying duration is not supported by our program, refer to user manual for list of non supported durations 
 			}
 			
@@ -283,7 +283,7 @@ public class DrumNoteType {
 		else
 		{
 			//thorw exception because duration for one note is not supported for my program for length 16, division 4 
-			throw new DurationException(" This combination of division: " + duration + " and length of measure: " + drumTabLength   +  " is not supported by our system, refer to User Manual for list of suported division, length combinations" );
+			throw new DurationException(" This combination of division: " + duration + "\nand length of measure: " + drumTabLength   +  "\nis not supported by our system, refer to User Manual for list of suported division, length combinations" );
 			
 		}
 		
