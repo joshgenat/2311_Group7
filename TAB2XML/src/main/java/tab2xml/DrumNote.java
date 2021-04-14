@@ -18,11 +18,12 @@ public class DrumNote {
 		
 		unpitched(doc, note, o, j);
 		stem(doc, note, o, j);
+		notations(doc, note, o, j);
 		instrumentId(doc, note, o, j);
 		
-		if (o.notes.get(j).flamCheck != true) {
+		if (o.notes.get(j).flamCheck != true) 
 		duration(doc, note, o, j);
-		}
+		
 		
 		voice(doc, note, o, j);
 		type(doc, note, o, j);
@@ -49,7 +50,7 @@ public class DrumNote {
 	}
 	
 	static void unpitched(Document doc, Element note, DrumNoteObject o, int j) {
-		Element unpitched = doc.createElement("unpitched" + o.notes.get(j).dot);    
+		Element unpitched = doc.createElement("unpitched");    
 		note.appendChild(unpitched);
 			
 			displayStep(doc, unpitched,  o, j);
