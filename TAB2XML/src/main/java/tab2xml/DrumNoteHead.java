@@ -16,7 +16,7 @@ public class DrumNoteHead {
 	int oldDivider = 0;
 	int currentDivider = 0;
 	
-	ArrayList <Character> NoteHeadReader(char [][] drumTab, int [] rowSymbols)
+	public ArrayList <Character> NoteHeadReader(char [][] drumTab, int [] rowSymbols)
 	{
 		counter = 0;
 		//mutipleVoices = false;
