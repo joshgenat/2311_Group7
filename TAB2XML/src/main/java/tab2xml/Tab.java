@@ -2,6 +2,8 @@ package tab2xml;
 
 import java.util.ArrayList;
 
+import exceptions.UnsupportedTimeException;
+
 
 public class Tab {
 
@@ -185,7 +187,7 @@ public class Tab {
 				}
 				if(length > endIndex) { break; }
 				if(length <= endIndex && length >= startIndex) {
-					measures.get(j).repeat *= repeatN;
+					measures.get(j).repeat *= (repeatN+1);
 				}
 				length += line.length();
 			}
@@ -202,11 +204,21 @@ public class Tab {
 				Integer.parseInt(split[0]);
 				Integer.parseInt(split[1]);
 			}
+			if((!time.isBlank()) && (Integer.parseInt(split[0]) != 3 || Integer.parseInt(split[0]) != 4 || Integer.parseInt(split[0]) != 8)) {
+				throw new UnsupportedTimeException();
+			}
+			if((!time.isBlank()) && (Integer.parseInt(split[1]) != 4 || Integer.parseInt(split[1]) != 8)) {
+				throw new UnsupportedTimeException();
+			}
 			for(int i = 0; i <nodes.size(); i++) {
 				if(time.isBlank()) { nodes.get(i).timeSignature = "4/4"; }
 				else {nodes.get(i).timeSignature = time;}
 				nodes.get(i).setDiv();
 			}
+			
+		}
+		catch(UnsupportedTimeException e) {
+			throw new UnsupportedTimeException();
 		}
 		catch(Exception e) {
 			throw new Exception();

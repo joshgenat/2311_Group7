@@ -6,10 +6,10 @@ public class TabNodes {
 
 	public char [][] nodes;
 	String timeSignature = "4/4";
-	int repeat = 1;
-	int divisions;
-	int maxsize;
-	int s;
+	public int repeat = 1;
+	public int divisions;
+	public int maxsize;
+	public int s;
 	
 	/**
 	 * Constructor for the individual nodes (lines of Tabs)

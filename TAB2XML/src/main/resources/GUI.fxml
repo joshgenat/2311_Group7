@@ -49,9 +49,9 @@
               <MenuItem mnemonicParsing="false" onAction="#selectFile" text="Open File" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Help">
+          <Menu fx:id="helpBar" mnemonicParsing="false" text="Help">
             <items>
-                  <Menu mnemonicParsing="false" text="Samples">
+                  <Menu fx:id="sampleBar" mnemonicParsing="false" text="Samples">
                     <items>
                       <MenuItem fx:id="drumSample" mnemonicParsing="false" onAction="#sample" text="Drum" />
                         <MenuItem fx:id="guitarSample" mnemonicParsing="false" onAction="#sample" text="Guitar" />
@@ -76,12 +76,12 @@
                <font>
                   <Font size="14.0" />
                </font></Button>
-            <ImageView fitHeight="45.0" fitWidth="117.0" layoutX="147.0" layoutY="418.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="14.50674819946289" AnchorPane.leftAnchor="147.0" AnchorPane.rightAnchor="14.0">
+            <ImageView fitHeight="25.0" fitWidth="65.0" layoutX="210.0" layoutY="436.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="210.0" AnchorPane.rightAnchor="7.157166798909486">
                <image>
                   <Image url="@logo.png" />
                </image>
             </ImageView>
-            <Label fx:id="errorLabel" layoutX="14.0" layoutY="391.0" prefHeight="70.0" prefWidth="117.0" />
+            <Label fx:id="errorLabel" layoutX="14.0" layoutY="391.0" prefHeight="70.0" prefWidth="192.0" />
             <ComboBox fx:id="clefSignBox" layoutX="146.0" layoutY="76.0" prefHeight="25.0" prefWidth="126.0" />
             <Label fx:id="clefLabel" layoutX="146.0" layoutY="49.0" text="Clef:">
                <textFill>

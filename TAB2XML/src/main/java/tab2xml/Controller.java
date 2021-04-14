@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextArea;
@@ -76,6 +78,12 @@ public class Controller {
 	
 	@FXML
 	private Label editLabel;
+	
+	@FXML
+	private Menu helpBar;
+	
+	@FXML
+	private Menu sampleBar;
 	
 	@FXML
 	private MenuItem drumSample;
@@ -159,11 +167,27 @@ public class Controller {
 			
 			errorLabel.setTextFill(Color.WHITE);
 			errorLabel.setText(b.Type + "\n" + "Conversion Complete");
+			
 		}
-		catch(NumberFormatException e) {
+		catch(UnsupportedTimeException e) {
 			e.printStackTrace();
 			errorLabel.setTextFill(Color.PINK);
 			errorLabel.setText("Error converting,\nInvalid Time Input\nError Number: #003");
+		}
+		catch(DurationException e) {
+			e.printStackTrace();
+			errorLabel.setTextFill(Color.PINK);
+			errorLabel.setText("Error converting,\n" + e.message + "\n Error Number: #004");
+		}
+		catch(InproperInputException e) {
+			e.printStackTrace();
+			errorLabel.setTextFill(Color.PINK);
+			errorLabel.setText("Error converting,\n" + e.message + "\n Error Number: #005");
+		}
+		catch(InproperInstrumentException e) {
+			e.printStackTrace();
+			errorLabel.setTextFill(Color.PINK);
+			errorLabel.setText("Error converting,\n" + e.message + "\n Error Number: #006");
 		}
 		catch(Exception e) {
 			e.printStackTrace();
@@ -296,6 +320,7 @@ public class Controller {
 	}
 	
 	public void saveMeasure() {
+		try {
 		String text = tabText.getText();
 		String [] split = text.split("\n");
 		int index = 0;
@@ -354,6 +379,16 @@ public class Controller {
 			nText += "\n";
 		}
 		tabText.setText(nText);
+		}
+		catch(NumberFormatException e) {
+			e.printStackTrace();
+			errorLabel.setTextFill(Color.PINK);
+			errorLabel.setText("Error Saving,\nInvalid Time or Repeat Input\nError Number: #007");
+		}
+		catch(Exception e) {
+			errorLabel.setTextFill(Color.PINK);
+			errorLabel.setText("Error Saving,\nError Number: #008");
+		}
 	}
 	
 	public void convertNew() {
@@ -378,10 +413,31 @@ public class Controller {
 				}
 			tabView.getSelectionModel().select(1);
 		}
-		catch(Exception e) {
-			
+		catch(NumberFormatException e) {
+			e.printStackTrace();
+			errorLabel.setTextFill(Color.PINK);
+			errorLabel.setText("Error Saving,\nInvalid Time or Repeat Input\nError Number: #007");
 		}
-		
+		catch(DurationException e) {
+			e.printStackTrace();
+			errorLabel.setTextFill(Color.PINK);
+			errorLabel.setText("Error converting,\n" + e.message + "\n Error Number: #004");
+		}
+		catch(InproperInputException e) {
+			e.printStackTrace();
+			errorLabel.setTextFill(Color.PINK);
+			errorLabel.setText("Error converting,\n" + e.message + "\n Error Number: #005");
+		}
+		catch(InproperInstrumentException e) {
+			e.printStackTrace();
+			errorLabel.setTextFill(Color.PINK);
+			errorLabel.setText("Error converting,\n" + e.message + "\n Error Number: #006");
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			errorLabel.setTextFill(Color.PINK);
+			errorLabel.setText("Error converting,\nmake sure your tab is\ncorrect and Try Again!\nError Number: #001");
+		}
 	}
 	
 	public void getHelp() {

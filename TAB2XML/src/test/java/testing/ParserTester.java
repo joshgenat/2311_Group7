@@ -79,23 +79,85 @@ class ParserTester {
 		
 	}
 	
-//	//Tests if |------Repeatx8------| type of repeat works
-//	@Test
-//	public void repeatType1() {
-//		
-//	}
-//	
-//	//Tests if x7 type of repeat works
-//	@Test
-//	public void repeatType2() {
-//		
-//	}
-//	
-//	//Tests if the star repeats work
-//	@Test
-//	public void repeatType3() {
-//		
-//	}
+	//Tests if |------Repeatx8------| type of repeat works
+	@Test
+	public void repeatType1() {
+		ArrayList<Object> lines = new ArrayList<>();
+		boolean a = true;
+		lines.add("1st Verse ");
+		lines.add("  |------------REPEAT-1x------------|");
+		lines.add("C |xx--------------|----------------|xx--------------|----------------|");
+		lines.add("HH|----x-x-x-x-x-x-|x-x-x-x-xox-x-x-|----x-x-x-x-x-x-|----------x-x-x-|");
+		lines.add("T |----------------|----------------|----------------|--o-------------|");
+		lines.add("SD|----------------|----------------|----------------|o----o--f-------|");
+		lines.add("B |oo--------------|----------------|oo--------------|-------o-o-oo-o-|");
+		
+		Tab b = new Tab(lines);
+		if(b.nodes.get(0).repeat != 2) { a = false; }
+		if(b.nodes.get(1).repeat != 2) { a = false; }
+		if(b.nodes.get(2).repeat != 1) { a = false; }
+		if(b.nodes.get(3).repeat != 1) { a = false; }
+
+		assertEquals(a, true);
+	}
+	
+	//Tests if x7 type of repeat works
+	@Test
+	public void repeatType2() {
+		ArrayList<Object> lines = new ArrayList<>();
+		boolean a = true;
+		lines.add("C |xx--------------|----------------|xx--------------|----------------|");
+		lines.add("HH|----x-x-x-x-x-x-|x-x-x-x-xox-x-x-|----x-x-x-x-x-x-|----------x-x-x-|");
+		lines.add("T |----------------|----------------|----------------|--o-------------| x2");
+		lines.add("SD|----------------|----------------|----------------|o----o--f-------|");
+		lines.add("B |oo--------------|----------------|oo--------------|-------o-o-oo-o-|");
+		
+		Tab b = new Tab(lines);
+		if(b.nodes.get(0).repeat != 2) { a = false; }
+		if(b.nodes.get(1).repeat != 2) { a = false; }
+		if(b.nodes.get(2).repeat != 2) { a = false; }
+		if(b.nodes.get(3).repeat != 2) { a = false; }
+		assertEquals(a, true);
+	}
+	
+	//Tests if the star repeats work
+	@Test
+	public void repeatType3() {
+		ArrayList<Object> lines = new ArrayList<>();
+		boolean a = true;
+		lines.add("|-----------0-----||----------0--------4|");
+		lines.add("|---------0---0---||----------0--------||");
+		lines.add("|-------1-------1-||*---------1-------*||");
+		lines.add("|-----2-----------||*---------2-------*||");
+		lines.add("|---2-------------||------2---2--------||");
+		lines.add("|-0---------------||--0-------0--------||");
+			
+		Tab b = new Tab(lines);
+		if(b.nodes.get(0).repeat != 1) { a = false; }
+		if(b.nodes.get(1).repeat != 4) { a = false; }
+		assertEquals(a, true);
+	}
+	
+	
+	//Tests all 3 Repeats same time
+	@Test
+	public void repeatTypeAll() {
+		ArrayList<Object> lines = new ArrayList<>();
+		boolean a = true;
+		lines.add("|-----Repeat-x9-----------------------|");
+		lines.add("|-----Repeat-x3--|");
+		lines.add("|-----------0-----||----------0--------4|");
+		lines.add("|---------0---0---||----------0--------||");
+		lines.add("|-------1-------1-||*---------1-------*|| x3");
+		lines.add("|-----2-----------||*---------2-------*||");
+		lines.add("|---2-------------||------2---2--------||");
+		lines.add("|-0---------------||--0-------0--------||");
+			
+		Tab b = new Tab(lines);
+		if(b.nodes.get(0).repeat != 120) { a = false; } // (9+1) * (3+1) * 3 * 1 = 120
+		if(b.nodes.get(1).repeat != 120) { a = false; } // (9+1) * 3 * 4 = 120
+		assertEquals(a, true);
+	}
 
 	private ArrayList<Object> readFile(File file){
 		ArrayList<Object> lines = new ArrayList<>();
