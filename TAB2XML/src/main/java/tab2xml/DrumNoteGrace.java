@@ -18,6 +18,7 @@ public class DrumNoteGrace {
 		duration(doc, note, o, j);
 		voice(doc, note, o, j);
 		type(doc, note, o, j);
+		notations(doc, note, o, j);
         noteHead(doc, note, o, j);
       
         if(o.beam1Statusfinder.get(j) == null)  
@@ -78,7 +79,7 @@ public class DrumNoteGrace {
 		static void slurNumber(Document doc, Element notations, DrumNoteObject o, int j) {
 			Element slurNumber = doc.createElement("slur");  
 			slurNumber.setAttribute("number", "1");
-			slurNumber.setAttribute("type", "start");
+			slurNumber.setAttribute("type", "stop");
 			notations.appendChild(slurNumber);
 		}
 	
